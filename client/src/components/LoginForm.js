@@ -161,9 +161,9 @@ const LoginForm = props => {
                     >
                         <Link
                             to="/register"
-                            className="flatLink"
+                            className="flatLinkPurple"
                         >
-                            <span className="rIPurple">
+                            <span className="flatLinkPurple">
                                 <strong>
                                     Don't have an account? Sign up here!*&emsp;
                                 </strong>
@@ -177,9 +177,9 @@ const LoginForm = props => {
                     >
                         <Link
                             to={"/"}
-                            className="flatLink"
+                            className="flatLinkPurple"
                         >
-                            <span className="rIPurple">
+                            <span className="flatLinkPurple">
                                 <strong>
                                     Nevermind...&emsp;
                                 </strong>

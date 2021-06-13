@@ -31,7 +31,9 @@ const useStyles = makeStyles((theme) => ({
 const Login = props => {
 
     // retrieves the logged state variables from props
-    const { logged, setLogged } = props;
+    const { logged,
+        setLogged,
+        setAudioLoaded } = props;
 
     // generates CSS rulesets
     const classes = useStyles();
@@ -82,6 +84,7 @@ const Login = props => {
             <NavBar
                 logged={logged}
                 setLogged={setLogged}
+                setAudioLoaded={setAudioLoaded}
             />
             <Container
                 component="main"

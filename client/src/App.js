@@ -24,6 +24,8 @@ function App() {
         JSON.parse(sessionStorage.getItem('logged'))
     );
 
+    // state variables to be passed by each view to the NavBar to force rerender of audio player when redirecting to Search.js
+    const [audioLoaded, setAudioLoaded] = useState(false);
 
     // hook to update logged User in sessionStorage when the state changes
     React.useEffect(() => {
@@ -40,36 +42,44 @@ function App() {
                     path="/"
                     logged={logged}
                     setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
                 />
                 <Search
                     path="/search/:query"
                     logged={logged}
                     setLogged={setLogged}
+                    audioLoaded={audioLoaded}
+                    setAudioLoaded={setAudioLoaded}
                 />
                 <Register
                     path="register/"
                     logged={logged}
                     setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
                 />
                 <Login
                     path="login/"
                     logged={logged}
                     setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
                 />
                 <Detail
                     path="user/account"
                     logged={logged}
                     setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
                 />
                 <Update
                     path="user/account/edit"
                     logged={logged}
                     setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
                 />
                 <Delete
                     path="user/account/delete"
                     logged={logged}
                     setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
                 />
             </Router>
         </div>

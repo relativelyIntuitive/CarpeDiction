@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import Axios from '../../../server/node_modules/axios';
 
+import Sensitive from './Sensitive';
+
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -37,8 +39,11 @@ const MWDictRes = props => {
         setIsOffensive,
         setNotOffensive,
         setPronunciations,
+        mp3s,
         setMp3s,
+        wavs,
         setWavs,
+        audioLoaded,
         setAudioLoaded,
         setHeadWords } = props;
 
@@ -48,13 +53,15 @@ const MWDictRes = props => {
     // state variables to keep track of search progress and results
     const [entries, setEntries] = useState([]);
     const [entriesByType, setEntriesByType] = useState({});
+    const [audioEntries, setAudioEntries] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState("");
 
 
+
     // retrieves the query results and saves them
     useEffect(() => {
-        Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query + '?key=' + process.env.MW_DICT_KEY)
+        Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query + '?key=' + Sensitive.MW_DICT_KEY)
             .then(res => {
                 // generates an array of the entries found by the search
                 const resEntries = [];
@@ -63,7 +70,6 @@ const MWDictRes = props => {
                         resEntries.push(res.data[entryKey]);
                 }
                 setEntries(resEntries);
-                console.log(resEntries);
 
                 // generates an object with key for each type of entry found and values containing arrays of entries matching the type
                 const entryTypes = {}
@@ -72,9 +78,9 @@ const MWDictRes = props => {
                 let notOffensive = 0;
                 let newPronunciations = [];
                 let newHeadWords = [];
-                let audio = [];
-                let newMp3s = [];
-                let newWavs = [];
+                let newAudioEntries = [];
+                let newMp3s = {};
+                let newWavs = {};
 
                 // processes each entry retrieved
                 for (const entry of resEntries) {
@@ -84,10 +90,10 @@ const MWDictRes = props => {
                     (newEntry.meta.offensive === true) ? isOffensive += 1 : notOffensive += 1;
                     // gathers pronunciation data if present
                     if (newEntry.hwi && newEntry.hwi.prs && newEntry.hwi.prs[0] && newEntry.hwi.prs[0].mw)
-                    newPronunciations.push(newEntry.hwi.prs[0].mw);
-                        // gathers headwords if present
+                        newPronunciations.push(newEntry.hwi.prs[0].mw);
+                    // gathers headwords if present
                     if (newEntry.hwi && newEntry.hwi.hw && !newHeadWords.includes(newEntry.hwi.hw))
-                        newHeadWords.push(newEntry.hwi.hw)
+                        newHeadWords.push(newEntry.hwi.hw.replace(/(\*+)/g, ''))
                     // removes format bracket pairs and leftover references to other entries
                     if (newEntry.et && newEntry.et[0][1]) {
                         newEntry.et[0][1] = newEntry.et[0][1].replace(/\{.*?\}/g, '');
@@ -96,33 +102,34 @@ const MWDictRes = props => {
                     }
                     // checks if the type of entry exists in the object and adds it to the appropriate array if so, and creates a new one if not
                     if (`${newEntry.fl}` in entryTypes) {
-                        entryTypes[`${newEntry.fl}`].push(newEntry);
-                        continue;
+                        entryTypes[`${newEntry.fl}`].entries.push(newEntry);
                     } else {
-                        entryTypes[`${newEntry.fl}`] = [newEntry];
+                        entryTypes[`${newEntry.fl}`] = {
+                            entries: [newEntry],
+                            hasAudio: 0
+                        };
                     }
-                    // gathers audio URLs if present
-                    if (newEntry.hwi && newEntry.hwi.prs && newEntry.hwi.prs[0] && newEntry.hwi.prs[0].sound)
-                        audio.push(newEntry.hwi.prs[0].sound);
-                    for (let i = 0; i < audio.length; i++){
-                        // determines which subdirectory to place in the URL request based on rules from MW API docs
-                        let subDirectory = "";
-                        if (audio[i].audio.toString().slice(2) === "bix") {
-                            subDirectory = "bix";
-                        } else if (audio[i].audio.toString().slice(1) === "gg") {
-                            subDirectory = "gg";
-                        } else if (!!audio[i].audio.toString()[0].match(/^[`~@#$%^&*()_=+/-[\]{}\\|.,:;!?'"<>123456789]/)) {
-                            subDirectory = "number";
-                        } else {
-                            subDirectory = audio[i].audio.toString()[0];
-                        }
-                        newMp3s.push('https://media.merriam-webster.com/audio/prons/en/us/mp3/' + subDirectory + '/' + audio[i].audio + '.mp3');
-                        newWavs.push('https://media.merriam-webster.com/audio/prons/en/us/wav/' + subDirectory + '/' + audio[i].audio + '.wav');
+                    // notes and gathers any entries with audio
+                    if (newEntry.hwi && newEntry.hwi.prs && newEntry.hwi.prs[0] && newEntry.hwi.prs[0].sound) {
+                        entryTypes[`${newEntry.fl}`].hasAudio += 1;
+                        newAudioEntries.push(newEntry);
                     }
                 }
-                console.log(audio)
-                console.log(newMp3s);
-                console.log(newWavs);
+                // determines which subdirectory to place in the URL request based on rules from MW API docs
+                for (let i = 0; i < newAudioEntries.length; i++) {
+                    let subDirectory = "";
+                    if (newAudioEntries[i].hwi.prs[0].sound.audio.toString().slice(0, 3) === "bix") {
+                        subDirectory = "bix";
+                    } else if (newAudioEntries[i].hwi.prs[0].sound.audio.toString().slice(0, 2) === "gg") {
+                        subDirectory = "gg";
+                    } else if (!!newAudioEntries[i].hwi.prs[0].sound.audio.toString()[0].match(/^[`~@#$%^&*()_=+/-[\]{}\\|.,:;!?'"<>123456789]/)) {
+                        subDirectory = "number";
+                    } else {
+                        subDirectory = newAudioEntries[i].hwi.prs[0].sound.audio.toString()[0];
+                    }
+                    newMp3s[newAudioEntries[i].meta.id] = 'https://media.merriam-webster.com/audio/prons/en/us/mp3/' + subDirectory + '/' + newAudioEntries[i].hwi.prs[0].sound.audio + '.mp3';
+                    newWavs[newAudioEntries[i].meta.id] = 'https://media.merriam-webster.com/audio/prons/en/us/wav/' + subDirectory + '/' + newAudioEntries[i].hwi.prs[0].sound.audio + '.wav';
+                }
                 // updates all pertinent state variables
                 if (resEntries.length === 0)
                     setError(`No results for "${query.replace(query[0], query[0].toUpperCase())}" from the Merriam-Webster Collegiate Dictionary...`);
@@ -131,39 +138,73 @@ const MWDictRes = props => {
                 setPronunciations(newPronunciations);
                 setHeadWords(newHeadWords);
                 setEntriesByType(entryTypes);
+                setAudioEntries(newAudioEntries);
                 setMp3s(newMp3s);
                 setWavs(newWavs);
                 setAudioLoaded(true);
                 setLoaded(true);
             })
             .catch(err => console.log(err));
-    }, [query, setIsOffensive, setNotOffensive, setPronunciations, setHeadWords, setMp3s, setWavs, setAudioLoaded]);
+    }, [query, setIsOffensive, setNotOffensive, setPronunciations, setHeadWords, setMp3s, setWavs, setAudioLoaded, setAudioEntries]);
 
 
     // returns a material UI accordion component displaying the results from the MW dictionary API
     return (
         <div className={classes.root}>
-            <Accordion>
+            <Accordion className="rIAccordion">
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography className={classes.heading}>
-                        <strong>
-                            (
-                            {entries.length}
-                            )
-                            <span className="rIOrange">
-                                &nbsp;-&nbsp;
-                            </span>
-                            <i>
-                                <u>
-                                    Merriam-Webster Collegiate Dictionary
-                                </u>
-                            </i>
-                        </strong>
-                    </Typography>
+                    <Grid
+                        container
+                        justify="space-between"
+                        alignItems="center"
+                    >
+                        <Grid
+                            item
+                            xs={9}
+                        >
+                            <Typography className={classes.heading}>
+                                <strong>
+                                    (
+                                    {entries.length}
+                                    )
+                                    <span className="rIOrange">
+                                        &nbsp;-&nbsp;
+                                    </span>
+                                    <i>
+                                        <u>
+                                            Merriam-Webster Collegiate Dictionary
+                                        </u>
+                                    </i>
+                                </strong>
+                            </Typography>
+                        </Grid>
+                        {audioEntries.length > 0 && (
+                            <Grid
+                                item
+                                xs={3}
+                            >
+                                <Typography className={classes.heading}>
+                                    <strong className="mgFlRight">
+                                        <i>
+                                            <span className="rIOrange">
+                                                +
+                                            </span>
+                                            <span className="rIPurple">
+                                                &nbsp;Audio
+                                                (
+                                                {audioEntries.length}
+                                                )
+                                            </span>
+                                        </i>
+                                    </strong>
+                                </Typography>
+                            </Grid>
+                        )}
+                    </Grid>
                 </AccordionSummary>
                 <AccordionDetails>
                     {loaded && (
@@ -171,33 +212,70 @@ const MWDictRes = props => {
                             <>
                                 {Object.keys(entriesByType).length > 0 && (
                                     Object.keys(entriesByType).map((type, index) => (
-                                        <Accordion key={index}>
+                                        <Accordion
+                                            key={index}
+                                            className="rIAccordion"
+                                        >
                                             <AccordionSummary
                                                 expandIcon={<ExpandMoreIcon />}
                                                 aria-controls="panel1a-content"
                                                 id="panel1a-header"
                                             >
-                                                <Typography className={classes.heading}>
-                                                    <strong>
-                                                        (
-                                                        {entriesByType[type].length}
-                                                        )
-                                                        <span className="rIOrange">
-                                                            &nbsp;-&nbsp;
-                                                        </span>
-                                                    <i>
-                                                        {type.replace(type[0], type[0].toUpperCase())}
-                                                        &nbsp;entries...
-                                                    </i>
-                                                    </strong>
-                                                </Typography>
+                                                <Grid
+                                                    container
+                                                    justify="space-between"
+                                                    alignItems="center"
+                                                >
+                                                    <Grid
+                                                        item
+                                                        xs={9}
+                                                    >
+                                                        <Typography className={classes.heading}>
+                                                            <strong>
+                                                                (
+                                                                {entriesByType[type].entries.length}
+                                                                )
+                                                                <span className="rIOrange">
+                                                                    &nbsp;-&nbsp;
+                                                                </span>
+                                                                <i>
+                                                                    {type.replace(type[0], type[0].toUpperCase())}
+                                                                    &nbsp;entries...
+                                                                </i>
+                                                            </strong>
+                                                        </Typography>
+                                                    </Grid>
+                                                    <Grid
+                                                        item
+                                                        xs={3}
+                                                    >
+                                                        {entriesByType[type].hasAudio > 0 && (
+                                                            <Typography className={classes.heading}>
+                                                                <strong className="mgFlRight">
+                                                                    <i>
+                                                                        <span className="rIOrange">
+                                                                            +
+                                                                        </span>
+                                                                        <span className="rIPurple">
+                                                                            &nbsp;Audio
+                                                                            (
+                                                                            {entriesByType[type].hasAudio}
+                                                                            )
+                                                                        </span>
+                                                                    </i>
+                                                                </strong>
+                                                            </Typography>
+                                                        )}
+                                                    </Grid>
+                                                </Grid>
                                             </AccordionSummary>
                                             <AccordionDetails>
                                                 <div className={classes.root}>
-                                                    {entriesByType[type].length > 0 && (
-                                                        entriesByType[type].map((entry, index) => (
+                                                    {entriesByType[type].entries.length > 0 && (
+                                                        entriesByType[type].entries.map((entry, index2) => (
                                                             <Accordion
-                                                                key={index}
+                                                                key={index2}
+                                                                className="rIAccordion"
                                                             >
                                                                 <AccordionSummary
                                                                     expandIcon={<ExpandMoreIcon />}
@@ -206,12 +284,12 @@ const MWDictRes = props => {
                                                                 >
                                                                     <Grid
                                                                         container
-                                                                        justify="space-evenly"
+                                                                        justify="space-between"
                                                                         alignItems="center"
                                                                     >
                                                                         <Grid
                                                                             item
-                                                                            xs={10}
+                                                                            xs={9}
                                                                         >
                                                                             <Typography className={classes.heading}>
                                                                                 <strong>
@@ -222,87 +300,116 @@ const MWDictRes = props => {
                                                                                     {entry.shortdef.length}
                                                                                     )
                                                                                     <span className="text-muted">
-                                                                                        &emsp;
+                                                                                        &ensp;
                                                                                         {'{'}
                                                                                         &nbsp;
                                                                                         {entry.meta.id}
                                                                                         &nbsp;
                                                                                         {'}'}
                                                                                     </span>
+                                                                                    {(entry.meta.offensive === true) && (
+                                                                                        <>
+                                                                                            <span className="rIOrange">
+                                                                                                &nbsp;:&nbsp;
+                                                                                            </span>
+                                                                                            <span className="text-danger">
+                                                                                                Vulgar?
+                                                                                            </span>
+                                                                                        </>
+                                                                                    )}
+                                                                                    {(entry.meta.offensive === false) && (
+                                                                                        <>
+                                                                                            <span className="rIOrange">
+                                                                                                &nbsp;:&nbsp;
+                                                                                            </span>
+                                                                                            <span className="text-success">
+                                                                                                <i>
+                                                                                                    Clean!
+                                                                                                </i>
+                                                                                            </span>
+                                                                                        </>
+                                                                                    )}
                                                                                 </strong>
                                                                             </Typography>
                                                                         </Grid>
                                                                         <Grid
                                                                             item
-                                                                            xs={2}
+                                                                            xs={3}
                                                                         >
-                                                                            {(entry.meta.offensive === true) && (
-                                                                                <Typography className={classes.heading}>
-                                                                                    <span className="text-danger isOffensive">
-                                                                                        <strong>
-                                                                                            <i>
-                                                                                                Vulgar?
-                                                                                            </i>
-                                                                                        </strong>
-                                                                                    </span>
-                                                                                </Typography>
-                                                                            )}
-                                                                            {(entry.meta.offensive === false) && (
-                                                                                <Typography className={classes.heading}>
-                                                                                    <span className="text-success isOffensive">
-                                                                                        <strong>
-                                                                                            <i>
-                                                                                                Clean!
-                                                                                            </i>
-                                                                                        </strong>
-                                                                                    </span>
-                                                                                </Typography>
-                                                                            )}
+                                                                            <Typography className={classes.heading}>
+                                                                                {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].sound) && (
+                                                                                    <strong className="mgFlRight">
+                                                                                        <i>
+                                                                                            <span className="rIOrange">
+                                                                                                +
+                                                                                            </span>
+                                                                                            <span className="rIPurple">
+                                                                                                &nbsp;Audio!
+                                                                                            </span>
+                                                                                        </i>
+                                                                                    </strong>
+                                                                                )}
+                                                                            </Typography>
                                                                         </Grid>
                                                                     </Grid>
                                                                 </AccordionSummary>
                                                                 <AccordionDetails>
                                                                     <div className={classes.root}>
+                                                                        {(audioLoaded && (mp3s || wavs)) && (
+                                                                            <div className="resHeading" style={{ overflow: 'hidden' }}>
+                                                                                {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].sound) && (
+                                                                                    <>
+                                                                                        <audio controls className="rIAudio">
+                                                                                            {`${entry.meta.id}` in mp3s && (
+                                                                                                <source src={mp3s[entry.meta.id]} type="audio/mpeg" />
+                                                                                            )}
+                                                                                            {`${entry.meta.id}` in wavs && (
+                                                                                                <source src={wavs[entry.meta.id]} type="audio/wav" />
+                                                                                            )}
+                                                                                            Your browser does not support the audio element!
+                                                                                        </audio>
+                                                                                    </>
+                                                                                )}
+                                                                            </div>
+                                                                        )}
                                                                         <Typography>
                                                                             <strong>
                                                                                 [
                                                                                 {type.replace(type[0], type[0].toUpperCase())}
                                                                                 ]
-                                                                            </strong>
-                                                                            {(entry.hwi && entry.hwi.hw) && (
-                                                                                <span className="text-muted">
-                                                                                    <strong>
+                                                                                {(entry.hwi && entry.hwi.hw) && (
+                                                                                    <span className="text-muted">
                                                                                         <span className="rIOrange">
                                                                                             &nbsp;&ensp;|&ensp;
                                                                                         </span>
                                                                                         "
                                                                                         {entry.hwi.hw}
                                                                                         "&ensp;
-                                                                                    </strong>
-                                                                                </span>
-                                                                            )}
-                                                                            {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].mw) && (
-                                                                                <strong>
-                                                                                    <span className="rIOrange">
-                                                                                        |
                                                                                     </span>
-                                                                                    <i>
-                                                                                        <span className="text-info">
-                                                                                            &ensp;\&nbsp;
-                                                                                            {entry.hwi.prs[0].mw}
-                                                                                            &nbsp;\
+                                                                                )}
+                                                                                {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].mw) && (
+                                                                                    <>
+                                                                                        <span className="rIOrange">
+                                                                                            |
                                                                                         </span>
-                                                                                    </i>
-                                                                                </strong>
-                                                                            )}
+                                                                                        <i>
+                                                                                            <span className="text-info">
+                                                                                                &ensp;\&nbsp;
+                                                                                                {entry.hwi.prs[0].mw}
+                                                                                                &nbsp;\
+                                                                                            </span>
+                                                                                        </i>
+                                                                                    </>
+                                                                                )}
+                                                                            </strong>
                                                                         </Typography>
                                                                         <br />
                                                                         {entry.shortdef.length > 0 && (
-                                                                            entry.shortdef.map((def, index) => (
-                                                                                <div key={index}>
+                                                                            entry.shortdef.map((def, index3) => (
+                                                                                <div key={index3}>
                                                                                     <Typography>
                                                                                         <strong>
-                                                                                            {index + 1}
+                                                                                            {index3 + 1}
                                                                                             :
                                                                                         </strong>
                                                                                         &nbsp;"
@@ -324,10 +431,10 @@ const MWDictRes = props => {
                                                                                         <>
                                                                                             <i>
                                                                                                 {entry.date.replace(/{.*}/g, '')}
+                                                                                                <strong>
+                                                                                                    &nbsp;;
+                                                                                                </strong>
                                                                                             </i>
-                                                                                            <strong>
-                                                                                                &nbsp;;
-                                                                                            </strong>
                                                                                         </>
                                                                                     )}
                                                                                     {(entry.et && entry.et[0][1]) && (

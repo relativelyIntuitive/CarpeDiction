@@ -9,8 +9,8 @@
 
 /* body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -23,77 +23,34 @@ code {
 
 /* || .CLASS Selectors */
 
-.rIOrange {
-    color: #ffa500;
-}
-
-.rIGreen {
-    color: #adff2f;
-}
-
-.rIPurple {
-    color: #800080;
-}
-
-.mgInlineBlock {
-    display: inline-block;
+.dButt {
+    background-color: #343a40;
 }
 
 .flatLink:hover {
     text-decoration: none;
 }
 
-.inlineList {
-    list-style-type: none;
-}
-
-.topList {
-    list-style-type: none;
-    text-align: center;
-}
-
-.searchBx {
-    border-color: #800080;
-    /* box-shadow: 0px 1px 1px #800080 inset, 0px 0px 8px #800080; */
-}
-
-.searchBx:hover {
-    border-color: #800080;
-    box-shadow: 0px 1px 1px #800080 inset, 0px 0px 8px #800080;
-}
-
-.searchBx:focus {
-    border-color: #ffa500;
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
-}
-
-.sButt {
+.flatLinkPurple {
     color: #800080;
-    background-color: #ffa500;
-    border: 3px solid #800080;
-    border-radius: 11px;
+    text-decoration: none;
 }
 
-.sButt:hover {
-    color: #800080;
-    background-color: #ffa500;
-    border: 3px solid #ffa500;
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+.flatLinkPurple:hover {
+    text-decoration: none;
+    color: #adff2f;
+    text-shadow: -1.5px 0 #0d0d0e, 0 1.5px #0d0d0e, 1.5px 0 #0d0d0e, 0 -1.5px #0d0d0e;
 }
 
-.sButt:focus {
-    color: #800080;
-    background-color: #ffa500;
-    border: 3px solid #800080;
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+.flatLinkOrange {
+    color: #ffa500;
+    text-decoration: none;
 }
 
-.resHeading {
-    text-align: center;
-}
-
-.isOffensive {
-    float: right;
+.flatLinkOrange:hover {
+    text-decoration: none;
+    color: #adff2f;
+    text-shadow: -1.5px 0 #0d0d0e, 0 1.5px #0d0d0e, 1.5px 0 #0d0d0e, 0 -1.5px #0d0d0e;
 }
 
 .formButt {
@@ -104,13 +61,6 @@ code {
     width: 100%;
 }
 
-.formButt:hover {
-    color: #800080;
-    background-color: #ffa500;
-    border: 3px solid #ffa500;
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
-}
-
 .formButt:focus {
     color: #800080;
     background-color: #ffa500;
@@ -118,8 +68,103 @@ code {
     box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
 }
 
-.dButt {
-    background-color: #343a40;
+.formButt:hover {
+    color: #800080;
+    background-color: #ffa500;
+    border: 3px solid #ffa500;
+    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+}
+
+.inlineList {
+    list-style-type: none;
+}
+
+.mgFlRight {
+    float: right;
+}
+
+.mgInlineBlock {
+    display: inline-block;
+}
+
+.mgSmFont {
+    font-size: small;
+}
+
+.resHeading {
+    text-align: center;
+    width: 100%;
+}
+
+.rIAccordion {
+    border: 2px solid #800080;
+    margin: 0.15rem;
+}
+
+.rIAccordion:hover {
+    border: 2px solid #ffa500;
+    margin: 0.3rem;
+}
+
+.rIAudio {
+    box-shadow: 0px 1px 1px #800080 inset, 0px 0px 8px #800080;
+    border: 3px solid #800080;
+    border-radius: 30px;
+    margin-top: 0.7rem;
+    margin-bottom: 1.7rem;
+    width: 75%;
+}
+
+.rIAudio:hover {
+    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+}
+
+.rIOrange {
+    color: #ffa500;
+}
+
+.rIPurple {
+    color: #800080;
+}
+
+.rIGreen {
+    color: #adff2f;
+}
+
+.sButt {
+    color: #800080;
+    background-color: #ffa500;
+    border: 3px solid #800080;
+    border-radius: 11px;
+}
+
+.sButt:focus {
+    color: #800080;
+    background-color: #ffa500;
+    border: 3px solid #800080;
+    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+}
+
+.sButt:hover {
+    color: #800080;
+    background-color: #ffa500;
+    border: 3px solid #ffa500;
+    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+}
+
+.searchBx {
+    border-color: #800080;
+    /* box-shadow: 0px 1px 1px #800080 inset, 0px 0px 8px #800080; */
+}
+
+.searchBx:focus {
+    border-color: #ffa500;
+    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+}
+
+.searchBx:hover {
+    border-color: #800080;
+    box-shadow: 0px 1px 1px #800080 inset, 0px 0px 8px #800080;
 }
 
 .socialIcon {
@@ -131,6 +176,12 @@ code {
 .socialIcon:hover {
     box-shadow: 0px 1px 1px #adff2f inset, 0px 0px 8px #adff2f;
 }
+
+.topList {
+    list-style-type: none;
+    text-align: center;
+}
+
 
 /* || #ID Selectors */
 

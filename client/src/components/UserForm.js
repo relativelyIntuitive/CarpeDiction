@@ -145,6 +145,16 @@ const UserForm = props => {
                                 autoComplete="username"
                                 onChange={handleInputChange}
                             />
+                                <Typography
+                                    className="rIPurple"
+                                    variant="body2"
+                                >
+                                    <Container>
+                                        <strong className="mgSmFont">
+                                            &ensp;*Username will display on all comments
+                                        </strong>
+                                    </Container>
+                                </Typography>
                         </Grid>
                         <Grid
                             item
@@ -166,9 +176,11 @@ const UserForm = props => {
                                 className="rIPurple"
                                 variant="body2"
                             >
-                                <strong>
-                                    &emsp;*For sign-in purposes only. We will never email you!
-                                </strong>
+                                <Container>
+                                    <strong className="mgSmFont">
+                                        &ensp;*Email is for sign-in purposes only
+                                    </strong>
+                                </Container>
                             </Typography>
                         </Grid>
                         <Grid
@@ -191,9 +203,11 @@ const UserForm = props => {
                                 className="rIPurple"
                                 variant="body2"
                             >
-                                <strong>
-                                    &emsp;*Password must contain 8 or more characters
-                                </strong>
+                                <Container>
+                                    <strong className="mgSmFont">
+                                        &ensp;*Password must contain 8 or more characters with no spaces
+                                    </strong>
+                                </Container>
                             </Typography>
                         </Grid>
                         <Grid
@@ -216,9 +230,11 @@ const UserForm = props => {
                                 className="rIOrange"
                                 variant="body2"
                             >
-                                <strong>
-                                    &emsp;*Password can not be recovered!
-                                </strong>
+                                <Container>
+                                    <strong className="mgSmFont">
+                                        &ensp;*Password can NOT be recovered!
+                                    </strong>
+                                </Container>
                             </Typography>
                         </Grid>
                     </Grid>
@@ -251,9 +267,9 @@ const UserForm = props => {
                             >
                                 <Link
                                     to="/login"
-                                    className="flatLink"
+                                    className="flatLinkPurple"
                                 >
-                                    <span className="rIPurple">
+                                    <span className="flatLinkPurple">
                                         <strong>
                                             Already have an account? Sign in here!*&emsp;
                                         </strong>
@@ -267,9 +283,9 @@ const UserForm = props => {
                             >
                                 <Link
                                     to={"/"}
-                                    className="flatLink"
+                                    className="flatLinkPurple"
                                 >
-                                    <span className="rIPurple">
+                                    <span className="flatLinkPurple">
                                         <strong>
                                             Nevermind...&emsp;
                                         </strong>

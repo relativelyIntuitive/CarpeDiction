@@ -22,7 +22,9 @@ import Typography from '@material-ui/core/Typography';
 const NavBar = props => {
 
     // grabs logged state variables from props
-    const { logged, setLogged } = props;
+    const { logged,
+        setLogged,
+        setAudioLoaded } = props;
 
     // state variables to keep track of what is being typed in search
     const [query, setQuery] = useState();
@@ -37,6 +39,8 @@ const NavBar = props => {
     const handleSubmit = e => {
         // prevent default behavior of the submit
         e.preventDefault();
+        // reset audioLoaded to force rerender of player on Search.js
+        setAudioLoaded(false);
         // if query is present, redirect to search view, passing along the query
         if (query !== undefined && query.replace(/\s/g, '').length)
             navigate('/search/' + query);
@@ -144,9 +148,9 @@ const NavBar = props => {
                                     You are browsing as a guest.&nbsp;
                                     <Link
                                         to={"/register"}
-                                        className="flatLink"
+                                        className="flatLinkOrange"
                                     >
-                                        <span className="rIOrange">
+                                        <span className="flatLinkOrange">
                                             <strong>
                                                 Register&nbsp;
                                             </strong>
@@ -156,9 +160,9 @@ const NavBar = props => {
                                     or&ensp;
                                     <Link
                                         to={"/login"}
-                                        className="flatLink"
+                                        className="flatLinkOrange"
                                     >
-                                        <span className="rIOrange">
+                                        <span className="flatLinkOrange">
                                             <strong>
                                                 Login&nbsp;
                                             </strong>

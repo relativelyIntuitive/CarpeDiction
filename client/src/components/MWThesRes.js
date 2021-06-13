@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Axios from '../../../server/node_modules/axios';
 import { Link } from '@reach/router';
 
+import Sensitive from './Sensitive';
+
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -48,7 +50,7 @@ const MWThesRes = props => {
 
     // retrieves the query results and saves them
     useEffect(() => {
-        Axios.get('https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query + '?key=' + process.env.MW_THES_KEY)
+        Axios.get('https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query + '?key=' + Sensitive.MW_THES_KEY)
             .then(res => {
                 // generates an array of the entries found by the search
                 const resEntries = [];
@@ -56,7 +58,6 @@ const MWThesRes = props => {
                     if (res.data[entryKey].fl !== undefined)
                         resEntries.push(res.data[entryKey]);
                 }
-                console.log(resEntries);
 
                 // generates an object with key for each type of entry found and values containing arrays of entries matching the type
                 const entryTypes = {};
@@ -97,7 +98,7 @@ const MWThesRes = props => {
     // returns a material UI accordion component displaying the results from the MW dictionary API
     return (
         <div className={classes.root}>
-            <Accordion>
+            <Accordion className="rIAccordion">
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -125,7 +126,10 @@ const MWThesRes = props => {
                             <>
                                 {Object.keys(entriesByType).length > 0 && (
                                     Object.keys(entriesByType).map((type, index) => (
-                                        <Accordion key={index}>
+                                        <Accordion
+                                            key={index}
+                                            className="rIAccordion"
+                                        >
                                             <AccordionSummary
                                                 expandIcon={<ExpandMoreIcon />}
                                                 aria-controls="panel1a-content"
@@ -149,9 +153,10 @@ const MWThesRes = props => {
                                             <AccordionDetails>
                                                 <div className={classes.root}>
                                                     {entriesByType[type].length > 0 && (
-                                                        entriesByType[type].map((entry, index) => (
+                                                        entriesByType[type].map((entry, index2) => (
                                                             <Accordion
-                                                                key={index}
+                                                                key={index2}
+                                                                className="rIAccordion"
                                                             >
                                                                 <AccordionSummary
                                                                     expandIcon={<ExpandMoreIcon />}
@@ -237,11 +242,11 @@ const MWThesRes = props => {
                                                                         </Typography>
                                                                         <br />
                                                                         {entry.shortdef.length > 0 && (
-                                                                            entry.shortdef.map((def, index) => (
-                                                                                <div key={index}>
+                                                                            entry.shortdef.map((def, index3) => (
+                                                                                <div key={index3}>
                                                                                     <Typography>
                                                                                         <strong>
-                                                                                            {index + 1}:
+                                                                                            {index3 + 1}:
                                                                                         </strong>
                                                                                         &nbsp;"
                                                                                         {def}
@@ -256,9 +261,9 @@ const MWThesRes = props => {
                                                                                                 </strong>
                                                                                             </Typography>
                                                                                         </li>
-                                                                                        {(entry.meta.syns.length > 0 && entry.meta.syns[index] && entry.meta.syns[index].length > 0) && (
-                                                                                            entry.meta.syns[index].map((syn, index) => (
-                                                                                                <li key={index} className="mgInlineBlock">
+                                                                                        {(entry.meta.syns.length > 0 && entry.meta.syns[index3] && entry.meta.syns[index3].length > 0) && (
+                                                                                            entry.meta.syns[index3].map((syn, index4) => (
+                                                                                                <li key={index4} className="mgInlineBlock">
                                                                                                     <Typography>
                                                                                                         &nbsp;
                                                                                                         <Link to={`/search/${syn}`} >
@@ -268,17 +273,26 @@ const MWThesRes = props => {
                                                                                                                 </i>
                                                                                                             </span>
                                                                                                         </Link>
-                                                                                                        ,
+                                                                                                        {(entry.meta.syns[index3].indexOf(syn) !== (entry.meta.syns[index3].length - 1)) && (
+                                                                                                            <>
+                                                                                                                ,
+                                                                                                            </>
+                                                                                                        )}
+                                                                                                        {!(entry.meta.syns[index3].indexOf(syn) !== (entry.meta.syns[index3].length - 1)) && (
+                                                                                                            <>
+                                                                                                                ;
+                                                                                                            </>
+                                                                                                        )}
                                                                                                     </Typography>
                                                                                                 </li>
                                                                                             ))
                                                                                         )}
-                                                                                        {!(entry.meta.syns.length > 0 && entry.meta.syns[index] && entry.meta.syns[index].length > !0) && (
+                                                                                        {!(entry.meta.syns.length > 0 && entry.meta.syns[index3] && entry.meta.syns[index3].length > !0) && (
                                                                                             <li className="mgInlineBlock">
                                                                                                 <Typography>
                                                                                                     <span className="rIPurple">
                                                                                                         <i>
-                                                                                                            (N/A)
+                                                                                                            (N/A);
                                                                                                         </i>
                                                                                                     </span>
                                                                                                 </Typography>
@@ -293,9 +307,9 @@ const MWThesRes = props => {
                                                                                                 </strong>
                                                                                             </Typography>
                                                                                         </li>
-                                                                                        {(entry.meta.ants.length > 0 && entry.meta.ants[index] && entry.meta.ants[index].length > 0) && (
-                                                                                            entry.meta.ants[index].map((ant, index) => (
-                                                                                                <li key={index} className="mgInlineBlock">
+                                                                                        {(entry.meta.ants.length > 0 && entry.meta.ants[index3] && entry.meta.ants[index3].length > 0) && (
+                                                                                            entry.meta.ants[index3].map((ant, index4) => (
+                                                                                                <li key={index4} className="mgInlineBlock">
                                                                                                     <Typography>
                                                                                                         &nbsp;
                                                                                                         <Link to={`/search/${ant}`} >
@@ -305,17 +319,26 @@ const MWThesRes = props => {
                                                                                                                 </i>
                                                                                                             </span>
                                                                                                         </Link>
-                                                                                                        ,
+                                                                                                        {(entry.meta.ants[index3].indexOf(ant) !== (entry.meta.ants[index3].length - 1)) && (
+                                                                                                            <>
+                                                                                                                ,
+                                                                                                            </>
+                                                                                                        )}
+                                                                                                        {!(entry.meta.ants[index3].indexOf(ant) !== (entry.meta.ants[index3].length - 1)) && (
+                                                                                                            <>
+                                                                                                                ;
+                                                                                                            </>
+                                                                                                        )}
                                                                                                     </Typography>
                                                                                                 </li>
                                                                                             ))
                                                                                         )}
-                                                                                        {!(entry.meta.ants.length > 0 && entry.meta.ants[index] && entry.meta.ants[index].length > 0) && (
+                                                                                        {!(entry.meta.ants.length > 0 && entry.meta.ants[index3] && entry.meta.ants[index3].length > 0) && (
                                                                                             <li className="mgInlineBlock">
                                                                                                 <Typography>
                                                                                                     <span className="rIPurple">
                                                                                                         <i>
-                                                                                                            (N/A)
+                                                                                                            (N/A);
                                                                                                         </i>
                                                                                                     </span>
                                                                                                 </Typography>

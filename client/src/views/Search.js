@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import Axios from '../../../server/node_modules/axios';
 
 import MWDictRes from '../components/MWDictRes';
 import MWThesRes from '../components/MWThesRes';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
+import WordsApiRhymes from '../components/WordsApiRhymes';
+import WordsApiFreq from '../components/WordsApiFreq';
 import WordAssocRes from '../components/WordAssocRes';
 
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import Sensitive from '../components/Sensitive';
 
 
 
@@ -20,16 +24,19 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        maxWidth: '100vw',
     },
     main: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(5),
+        maxWidth: '69vw',
     },
     paper: {
         marginTop: theme.spacing(8),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        maxWidth: '100',
     },
 }));
 
@@ -40,7 +47,9 @@ const Search = props => {
     // retrieves the logged state variables from props
     const { logged,
         setLogged,
-        query } = props;
+        query,
+        audioLoaded,
+        setAudioLoaded } = props;
 
     // generates CSS rulesets
     const classes = useStyles();
@@ -49,10 +58,38 @@ const Search = props => {
     const [isOffensive, setIsOffensive] = useState(0);
     const [notOffensive, setNotOffensive] = useState(0);
     const [pronunciations, setPronunciations] = useState([]);
-    const [mp3s, setMp3s] = useState([]);
-    const [wavs, setWavs] = useState([]);
-    const [audioLoaded, setAudioLoaded] = useState(false);
+    const [mp3s, setMp3s] = useState({});
+    const [wavs, setWavs] = useState({});
     const [headWords, setHeadWords] = useState([]);
+    const [syllables, setSyllables] = useState("");
+    const [loaded, setLoaded] = useState(true);
+
+    useEffect(() => {
+        const options = {
+            method: 'GET',
+            url: `https://wordsapiv1.p.rapidapi.com/words/${query}/syllables`,
+            headers: {
+                'x-rapidapi-key': Sensitive.X_RAPIDAPI_KEY,
+                'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com'
+            }
+        };
+
+        Axios.request(options)
+            .then(res => {
+                let entry = res.data;
+                let resSyllables = "";
+                for (let i = 0; i < entry.syllables.list.length; i++) {
+                    if (i !== entry.syllables.list.length - 1) {
+                        resSyllables += (res.data.syllables.list[i] + '*');
+                    } else {
+                        resSyllables += res.data.syllables.list[i];
+                    }
+                }
+                setSyllables(resSyllables);
+                setLoaded(true);
+            })
+            .catch(err => console.log(err));
+    }, [query])
 
     // returns the homepage
     return (
@@ -61,8 +98,7 @@ const Search = props => {
             <NavBar
                 logged={logged}
                 setLogged={setLogged}
-                setIsOffensive={setIsOffensive}
-                setNotOffensive={setNotOffensive}
+                setAudioLoaded={setAudioLoaded}
             />
             <Container
                 component="main"
@@ -70,40 +106,31 @@ const Search = props => {
                 maxWidth="sm"
             >
                 <div className={classes.paper}>
-                    {(audioLoaded && mp3s.length) && (
-                        mp3s.map((mp3, index) => {
-                            return(
-                                <div key={index}>
-                                    <audio controls key={index}>
-                                        if (mp3s.length)
-                                            <source src={mp3} type="audio/mpeg"/>
-                                        if (wavs.length)
-                                            <source src={wavs[index]} type="audio/wav"/>
-                                        Your browser does not support the audio element!
-                                    </audio>
-                                </div>
-                            );
-                        })
-                    )}
                     <div className="resHeading">
-                        <Typography
-                            component="h1"
-                            variant="h3"
-                        >
-                            You queried:
-                        </Typography>
-                        <Typography
-                            component="h2"
-                            variant="h2"
-                        >
+                        <h4>
+                            Query results for:
+                        </h4>
+                        <h1>
                             <strong>
                                 "
-                                <span className="rIPurple">
+                                <span className="rIPurple resHeading">
                                     {query.replace(query[0], query[0].toUpperCase())}
                                 </span>
                                 "
                             </strong>
-                        </Typography>
+                        </h1>
+                        {(loaded && syllables.length > 0) && (
+                            <>
+                                <h3 className="rIOrange">
+                                    <strong>
+                                        "
+                                        {syllables}
+                                        "
+                                    </strong>
+                                </h3>
+                                <br />
+                            </>
+                        )}
                         {pronunciations.length > 0 && (
                             <ul className="inlineList topList">
                                 {pronunciations.map((variant, index) => (
@@ -111,123 +138,128 @@ const Search = props => {
                                         key={index}
                                         className="mgInlineBlock"
                                     >
-                                        <Typography
-                                            className="text-info"
-                                            component="h3"
-                                            variant="h5"
-                                        >
+                                        <h5 className="text-info">
                                             <strong>
-                                            <i>
-                                                \&nbsp;
-                                                {variant}
-                                                &nbsp;\
-                                            </i>
+                                                <i>
+                                                    \&nbsp;
+                                                    {variant}
+                                                    &nbsp;
+                                                    {(pronunciations.indexOf(variant) === (pronunciations.length - 1)) && (
+                                                        <>
+                                                            \
+                                                        </>
+                                                    )}
+                                                </i>
                                             </strong>
-                                        </Typography>
+                                        </h5>
                                     </li>
                                 ))}
                             </ul>
                         )}
+                        {(audioLoaded && ((mp3s && Object.keys(mp3s).length > 0) || (wavs && Object.keys(wavs).length > 0))) && (
+                            <audio controls className="rIAudio">
+                                {(mp3s && Object.keys(mp3s).length > 0) && (
+                                    <source src={mp3s[Object.keys(mp3s)[0]]} type="audio/mpeg" />
+                                )}
+                                {(wavs && Object.keys(wavs).length > 0) && (
+                                    <source src={[Object.keys(wavs)[0]]} type="audio/wav" />
+                                )}
+                                Your browser does not support the audio element!
+                            </audio>
+                        )}
                         {headWords.length > 0 && (
                             <>
-                                <Typography
-                                    className="text-muted"
-                                    component="h4"
-                                    variant="h6"
-                                >
-                                    Found results for:
-                                </Typography>
+                                <h6 className="text-muted">
+                                    Definitions retrieved for:
+                                </h6>
                                 <ul className="inlineList topList">
                                     {headWords.map((headWord, index) => (
                                         <li
                                             key={index}
                                             className="mgInlineBlock"
-                                        >
-                                            <Typography
-                                                className="text-muted"
-                                                component="h5"
-                                                variant="h5"
-                                            >
-                                                <strong>
-                                                    <i>
-                                                        &nbsp;"
-                                                        {headWord}
-                                                        ",
-                                                    </i>
-                                                </strong>
-                                            </Typography>
+                                        >   
+                                            <Link href={`/search/${headWord}`} style={{textDecoration: 'none'}}>
+                                                <h5 className="text-muted flatLink">
+                                                    <strong>
+                                                        <i>
+                                                            &nbsp;"
+                                                            {headWord}
+                                                            "
+                                                            {(headWords.indexOf(headWord) !== (headWords.length - 1)) && (
+                                                                <>
+                                                                    ,
+                                                                </>
+                                                            )}
+                                                            {!(headWords.indexOf(headWord) !== (headWords.length - 1)) && (
+                                                                <>
+                                                                    ;
+                                                                </>
+                                                            )}
+                                                        </i>
+                                                    </strong>
+                                                </h5>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
                             </>
                         )}
                         {isOffensive === 0 && (
-                            <Typography
-                                className="text-success"
-                                component="h6"
-                                variant="h6"
-                            >
+                            <h6 className="text-success">
                                 <strong>
                                     "
                                     {query.replace(query[0], query[0].toUpperCase())}
                                     "
-                                    is not considered offensive by any sources.
+                                    is not considered offensive by any sources!
                                 </strong>
-                            </Typography>
+                            </h6>
                         )}
                         {(isOffensive > 0 && isOffensive <= notOffensive) && (
-                            <Typography
-                                className="text-warning"
-                                component="h6"
-                                variant="h6"
-                            >
+                            <h6 className="text-warning">
                                 <strong>
                                     "
                                     {query.replace(query[0], query[0].toUpperCase())}
                                     "
                                     is considered offensive by some sources...
                                 </strong>
-                            </Typography>
+                            </h6>
                         )}
                         {(isOffensive > notOffensive) && (
-                            <Typography
-                                className="text-danger" 
-                                component="h6"
-                                variant="h6"
-                            >
+                            <h6 className="text-danger">
                                 <strong>
                                     "
                                     {query.replace(query[0], query[0].toUpperCase())}
                                     "
                                     is considered offensive by most sources!
                                 </strong>
-                            </Typography>
+                            </h6>
                         )}
+                        <hr />
                     </div>
-                    <br />
-                    <MWDictRes 
+                    <MWDictRes
                         query={query}
                         setIsOffensive={setIsOffensive}
                         setNotOffensive={setNotOffensive}
                         setPronunciations={setPronunciations}
+                        mp3s={mp3s}
                         setMp3s={setMp3s}
+                        wavs={wavs}
                         setWavs={setWavs}
+                        audioLoaded={audioLoaded}
                         setAudioLoaded={setAudioLoaded}
                         setHeadWords={setHeadWords}
                     />
-                    <MWThesRes 
-                        query={query}
-                    />
-                    <WordAssocRes
-                        query={query}
-                    />
+                    <MWThesRes query={query} />
+                    <WordsApiRhymes query={query} />
+                    <WordsApiFreq query={query} />
+                    <WordAssocRes query={query} />
                     <br />
-                    <Link 
+                    <Link
                         href={"http://www.google.com/search?q=" + query}
                         target="_blank"
-                        style={{ textDecoration: "none"}}
+                        style={{ textDecoration: "none" }}
                     >
-                        <strong className="rIPurple">
+                        <strong className="flatLinkPurple">
                             Search Google for "
                             {query.replace(query[0], query[0].toUpperCase())}
                             "

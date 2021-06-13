@@ -9,7 +9,7 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Grid from '@material-ui/core/Grid/';
+import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-// MWDictRes retrieves and displays query results from the Merriam-Webster Collegiate Dictionary API
-const WordAssocRes = props => {
+// WordsApiRhymes retrieves and displays rhyme results for the qury from Words API
+const WordsApiRhymes = props => {
 
     // retrieves search variables from props
     const { query } = props;
@@ -53,11 +53,10 @@ const WordAssocRes = props => {
         // set the options for the query request through rapidAPI
         const options = {
             method: 'GET',
-            url: 'https://twinword-word-associations-v1.p.rapidapi.com/associations/',
-            params: { entry: `${query}` },
+            url: `https://wordsapiv1.p.rapidapi.com/words/${query}/rhymes`,
             headers: {
                 'x-rapidapi-key': Sensitive.X_RAPIDAPI_KEY,
-                'x-rapidapi-host': 'twinword-word-associations-v1.p.rapidapi.com'
+                'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com'
             }
         };
 
@@ -65,15 +64,17 @@ const WordAssocRes = props => {
         Axios.request(options)
             .then(res => {
                 const resEntry = res.data;
-                // generates an array of the entries found by the search
+                // generates an array of the rhymes found by the search
                 const resWords = [];
-                for (const resWord in res.data.associations_scored) {
-                    resWords.push(`${resWord} : ${res.data.associations_scored[resWord].toString().split(".")[0]}%`)
+                if (res.data.rhymes.all && res.data.rhymes.all.length !== 0) {
+                    for (const resWord of res.data.rhymes.all) {
+                        resWords.push(resWord);
+                    }
                 }
 
                 // updates all pertinent state variables
-                if (resEntry.result_code === "462")
-                    setError(`No results for words related to "${query.replace(query[0], query[0].toUpperCase())}" from Word Associations API...`);
+                if (Object.keys(res.data.rhymes).length === 0)
+                    setError(`No results for rhymes of "${query.replace(query[0], query[0].toUpperCase())}" from Words API...`);
                 setEntry(resEntry);
                 setWords(resWords);
                 setLoaded(true);
@@ -82,7 +83,7 @@ const WordAssocRes = props => {
     }, [query]);
 
 
-    // returns a material UI accordion component displaying the results from the MW dictionary API
+    // returns a material UI accordion component displaying the rhymes retrieved
     return (
         <div className={classes.root}>
             <Accordion className="rIAccordion">
@@ -110,7 +111,7 @@ const WordAssocRes = props => {
                                     </span>
                                     <i>
                                         <u>
-                                            Related Words
+                                            Rhymes
                                         </u>
                                     </i>
                                 </strong>
@@ -127,7 +128,7 @@ const WordAssocRes = props => {
                                             ...&nbsp;from&nbsp;
                                         </span>
                                         <span className="rIPurple">
-                                            Word Associations API
+                                            Words API
                                         </span>
                                     </i>
                                 </strong>
@@ -138,20 +139,20 @@ const WordAssocRes = props => {
                 <AccordionDetails>
                     {loaded && (
                         <div className={classes.root}>
-                            {(words.length > 0 && entry.associations_scored) && (
+                            {(words.length > 0 && entry.rhymes && entry.rhymes.all) && (
                                 <ul className="inlineList">
                                     <li className="mgInlineBlock text-muted">
                                         <strong>
-                                            &emsp;Related words / similarity score for&nbsp;
+                                            &emsp;Words that rhyme with
                                             "
-                                            {query}
-                                            ":
+                                            {query.toLowerCase()}
+                                            " ~ (A-Z):
                                         </strong>
                                     </li>
                                     {words.map((word, index) => (
                                         <li key={index} className="mgInlineBlock">
                                             &nbsp;
-                                            <Link to={`/search/${Object.keys(entry.associations_scored)[index]}`}>
+                                            <Link to={`/search/${entry.rhymes.all[index]}`}>
                                                 <i>
                                                     <span className="rIPurple">
                                                         {word}
@@ -160,7 +161,7 @@ const WordAssocRes = props => {
                                             </Link>
                                             {(words.indexOf(word) !== (words.length - 1)) && (
                                                 <span className="rIOrange">
-                                                    &nbsp;|&nbsp;
+                                                    &ensp;|&nbsp;
                                                 </span>
                                             )}
                                         </li>
@@ -185,4 +186,4 @@ const WordAssocRes = props => {
     );
 }
 
-export default WordAssocRes;
+export default WordsApiRhymes;
