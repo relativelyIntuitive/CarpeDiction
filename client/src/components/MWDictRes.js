@@ -188,7 +188,7 @@ const MWDictRes = props => {
                                 xs={3}
                             >
                                 <Typography className={classes.heading}>
-                                    <strong className="mgFlRight">
+                                    <strong className="mgFlRight mgSmFont">
                                         <i>
                                             <span className="rIOrange">
                                                 +
@@ -251,7 +251,7 @@ const MWDictRes = props => {
                                                     >
                                                         {entriesByType[type].hasAudio > 0 && (
                                                             <Typography className={classes.heading}>
-                                                                <strong className="mgFlRight">
+                                                                <strong className="mgFlRight mgSmFont">
                                                                     <i>
                                                                         <span className="rIOrange">
                                                                             +
@@ -338,7 +338,7 @@ const MWDictRes = props => {
                                                                         >
                                                                             <Typography className={classes.heading}>
                                                                                 {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].sound) && (
-                                                                                    <strong className="mgFlRight">
+                                                                                    <strong className="mgFlRight mgSmFont">
                                                                                         <i>
                                                                                             <span className="rIOrange">
                                                                                                 +

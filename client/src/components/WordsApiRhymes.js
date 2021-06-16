@@ -142,28 +142,32 @@ const WordsApiRhymes = props => {
                             {(words.length > 0 && entry.rhymes && entry.rhymes.all) && (
                                 <ul className="inlineList">
                                     <li className="mgInlineBlock text-muted">
-                                        <strong>
-                                            &emsp;Words that rhyme with
-                                            "
-                                            {entry.word.toLowerCase()}
-                                            " ~ (A-Z):
-                                        </strong>
+                                        <Typography>
+                                            <strong>
+                                                &emsp;Words that rhyme with
+                                                "
+                                                {entry.word.toLowerCase()}
+                                                " ~ (A-Z):
+                                            </strong>
+                                        </Typography>
                                     </li>
                                     {words.map((word, index) => (
                                         <li key={index} className="mgInlineBlock">
-                                            &nbsp;
-                                            <Link to={`/search/${entry.rhymes.all[index]}`}>
-                                                <i>
-                                                    <span className="rIPurple">
-                                                        {word}
+                                            <Typography>
+                                                &nbsp;
+                                                <Link to={`/search/${entry.rhymes.all[index]}`}>
+                                                    <i>
+                                                        <span className="rIPurple">
+                                                            {word}
+                                                        </span>
+                                                    </i>
+                                                </Link>
+                                                {(words.indexOf(word) !== (words.length - 1)) && (
+                                                    <span className="rIOrange">
+                                                        &ensp;|&nbsp;
                                                     </span>
-                                                </i>
-                                            </Link>
-                                            {(words.indexOf(word) !== (words.length - 1)) && (
-                                                <span className="rIOrange">
-                                                    &ensp;|&nbsp;
-                                                </span>
-                                            )}
+                                                )}
+                                            </Typography>
                                         </li>
                                     ))}
                                 </ul>

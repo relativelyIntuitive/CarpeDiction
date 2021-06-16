@@ -119,10 +119,6 @@ code {
     display: inline-block;
 }
 
-.mgSmFont {
-    font-size: small;
-}
-
 .resHeading {
     text-align: center;
     width: 100%;
@@ -249,9 +245,17 @@ code {
         background-size: 150%;
     }
 
+    .mgSmFont {
+        font-size: smaller;
+    }
+
     .filling {
         max-width: 100vw;
         padding: 0.31rem;
+    }
+
+    .rIAccordion p {
+        font-size: small;
     }
 
     .rIAudio {

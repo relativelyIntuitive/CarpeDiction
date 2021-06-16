@@ -141,28 +141,32 @@ const WordAssocRes = props => {
                             {(words.length > 0 && entry.associations_scored) && (
                                 <ul className="inlineList">
                                     <li className="mgInlineBlock text-muted">
-                                        <strong>
-                                            &emsp;Related words / similarity score for&nbsp;
-                                            "
-                                            {query.toLowerCase()}
-                                            ":
-                                        </strong>
+                                        <Typography>
+                                            <strong>
+                                                &emsp;Related words / similarity score for&nbsp;
+                                                "
+                                                {query.toLowerCase()}
+                                                ":
+                                            </strong>
+                                        </Typography>
                                     </li>
                                     {words.map((word, index) => (
                                         <li key={index} className="mgInlineBlock">
-                                            &nbsp;
-                                            <Link to={`/search/${Object.keys(entry.associations_scored)[index]}`}>
-                                                <i>
-                                                    <span className="rIPurple">
-                                                        {word}
+                                            <Typography>
+                                                &nbsp;
+                                                <Link to={`/search/${Object.keys(entry.associations_scored)[index]}`}>
+                                                    <i>
+                                                        <span className="rIPurple">
+                                                            {word}
+                                                        </span>
+                                                    </i>
+                                                </Link>
+                                                {(words.indexOf(word) !== (words.length - 1)) && (
+                                                    <span className="rIOrange">
+                                                        &nbsp;|&nbsp;
                                                     </span>
-                                                </i>
-                                            </Link>
-                                            {(words.indexOf(word) !== (words.length - 1)) && (
-                                                <span className="rIOrange">
-                                                    &nbsp;|&nbsp;
-                                                </span>
-                                            )}
+                                                )}
+                                            </Typography>
                                         </li>
                                     ))}
                                 </ul>
