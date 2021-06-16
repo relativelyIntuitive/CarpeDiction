@@ -95,11 +95,20 @@ const MWDictRes = props => {
                     // gathers headwords if present
                     if (newEntry.hwi && newEntry.hwi.hw && !newHeadWords.includes(newEntry.hwi.hw))
                         newHeadWords.push(newEntry.hwi.hw.replace(/(\*+)/g, ''))
-                    // removes format bracket pairs and leftover references to other entries
+                    // removes format bracket pairs and leftover references to other entries from etymology data and it's supplemental note, if present
                     if (newEntry.et && newEntry.et[0][1]) {
-                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{.*?\}/g, '');
-                        if (newEntry.et[0][1].split(" ").length <= 4)
-                            newEntry.et[0][1] = undefined;
+                        newEntry.et[0][1] = newEntry.et[0][1].replace(/et_link\|/g, '');
+                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{....\}/g, '');
+                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{...\}/g, '');
+                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{..\}/g, '');
+                        newEntry.et[0][1] = newEntry.et[0][1].replace(newEntry.et[0][1][0], newEntry.et[0][1][0].toUpperCase())
+                    }
+                    if (newEntry.et && newEntry.et[1] && newEntry.et[1][1] && newEntry.et[1][1][0] && newEntry.et[1][1][0][1]) {
+                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/et_link\|/g, '');
+                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{....\}/g, '');
+                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{...\}/g, '');
+                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{..\}/g, '');
+                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(newEntry.et[1][1][0][1][0], newEntry.et[1][1][0][1][0].toUpperCase())
                     }
                     // checks if the type of entry exists in the object and adds it to the appropriate array if so, and creates a new one if not
                     if (`${newEntry.fl}` in entryTypes) {
@@ -187,9 +196,10 @@ const MWDictRes = props => {
                             <Grid
                                 item
                                 xs={3}
+                                className="mgTxtRight"
                             >
                                 <Typography className={classes.heading}>
-                                    <strong className="mgFlRight mgSmFont">
+                                    <strong className="mgSmFont">
                                         <i>
                                             <span className="rIOrange">
                                                 +
@@ -249,10 +259,11 @@ const MWDictRes = props => {
                                                     <Grid
                                                         item
                                                         xs={3}
+                                                        className="mgTxtRight"
                                                     >
                                                         {entriesByType[type].hasAudio > 0 && (
                                                             <Typography className={classes.heading}>
-                                                                <strong className="mgFlRight mgSmFont">
+                                                                <strong className="mgSmFont">
                                                                     <i>
                                                                         <span className="rIOrange">
                                                                             +
@@ -334,10 +345,11 @@ const MWDictRes = props => {
                                                                         <Grid
                                                                             item
                                                                             xs={3}
+                                                                            className="mgTxtRight"
                                                                         >
                                                                             <Typography className={classes.heading}>
                                                                                 {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].sound) && (
-                                                                                    <strong className="mgFlRight mgSmFont">
+                                                                                    <strong className="mgSmFont">
                                                                                         <i>
                                                                                             <span className="rIOrange">
                                                                                                 +
@@ -443,11 +455,16 @@ const MWDictRes = props => {
                                                                                             {entry.et[0][1]}
                                                                                         </>
                                                                                     )}
-                                                                                    {(entry.et && entry.et[1] && entry.et[1][1]) && (
+                                                                                    {(entry.et && entry.et[1] && entry.et[1][1] && entry.et[1][1][0] && entry.et[1][1][0][1]) && (
                                                                                         <>
                                                                                             <br />
-                                                                                            &emsp;*Note:
-                                                                                            {entry.et[1][1]}
+                                                                                            <br />
+                                                                                            <i>
+                                                                                                <strong className="rIPurple">
+                                                                                                    &emsp;&ensp;*Note:&nbsp;
+                                                                                                </strong>
+                                                                                                {entry.et[1][1][0][1]}
+                                                                                            </i>
                                                                                         </>
                                                                                     )}
                                                                                 </Typography>

@@ -62,10 +62,7 @@ const Delete = props => {
                 setAudioLoaded={setAudioLoaded}
                 setSyllables={setSyllables}
             />
-            <Container
-                component="main"
-                className="chocolate"
-            >
+            <div className="chocolate">
                 <div className={classes.paper}>
                     <Typography
                         component="h1"
@@ -107,7 +104,7 @@ const Delete = props => {
                         setLogged={setLogged}
                     />
                 </ div>
-            </Container>
+            </div>
             <StickyFooter />
         </div>
     );

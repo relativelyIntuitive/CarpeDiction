@@ -7,7 +7,6 @@ import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
 import UserForm from '../components/UserForm';
 
-import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -86,17 +85,14 @@ const Register = props => {
                 setAudioLoaded={setAudioLoaded}
                 setSyllables={setSyllables}
             />
-            <Container
-                component="main"
-                className="chocolate"
-            >
+            <div className="chocolate">
                 <UserForm
                     submitCallback={createUser}
                     formFunc="Register"
                     errors={errors}
                     initialUser={initialReg}
                 />
-            </Container>
+            </div>
             <StickyFooter />
         </div>
     );

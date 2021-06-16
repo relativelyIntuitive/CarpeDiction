@@ -108,10 +108,7 @@ const Search = props => {
                 setAudioLoaded={setAudioLoaded}
                 setSyllables={setSyllables}
             />
-            <div
-                component="main"
-                className="chocolate"
-            >
+            <div className="chocolate">
                 <div className="filling">
                     <div className={classes.paper}>
                         <div className="resHeading">

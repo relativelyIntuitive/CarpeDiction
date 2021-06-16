@@ -6,7 +6,6 @@ import { Link, navigate } from '@reach/router';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
 
-import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -80,10 +79,7 @@ const Detail = props => {
                 setAudioLoaded={setAudioLoaded}
                 setSyllables={setSyllables}
             />
-            <Container
-                component="main"
-                className="chocolate"
-            >
+            <div className="chocolate">
                 <div className={classes.paper}>
                     {loaded && (
                         <>
@@ -114,7 +110,7 @@ const Detail = props => {
                         </span>
                     </Link>
                 </div>
-            </Container>
+            </div>
             <StickyFooter />
         </div>
     );

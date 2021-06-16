@@ -119,9 +119,10 @@ const WordAssocRes = props => {
                         <Grid
                             item
                             xs={6}
+                            className="mgTxtRight"
                         >
                             <Typography className={classes.heading}>
-                                <strong className="mgFlRight mgSmFont">
+                                <strong className="mgSmFont">
                                     <i>
                                         <span className="rIOrange">
                                             ...&nbsp;from&nbsp;
