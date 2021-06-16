@@ -423,9 +423,8 @@ const MWDictRes = props => {
                                                                                             {index3 + 1}
                                                                                             :
                                                                                         </strong>
-                                                                                        &nbsp;"
+                                                                                        &nbsp;
                                                                                         {def}
-                                                                                        "
                                                                                     </Typography>
                                                                                     <br />
                                                                                 </div>
@@ -460,8 +459,13 @@ const MWDictRes = props => {
                                                                                             <br />
                                                                                             <br />
                                                                                             <i>
-                                                                                                <strong className="rIPurple">
-                                                                                                    &emsp;&ensp;*Note:&nbsp;
+                                                                                                <strong>
+                                                                                                    <span className="rIOrange">
+                                                                                                        &emsp;&ensp;*
+                                                                                                    </span>
+                                                                                                    <span className="rIPurple">
+                                                                                                        Note:&nbsp;
+                                                                                                    </span>
                                                                                                 </strong>
                                                                                                 {entry.et[1][1][0][1]}
                                                                                             </i>

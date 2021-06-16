@@ -84,7 +84,6 @@ const WordsApiRhymes = props => {
                 setEntry(resEntry);
                 setWords(resWords);
                 setPhrases(resPhrases);
-                console.log(resPhrases)
                 setLoaded(true);
             })
             .catch(err => console.log(err));

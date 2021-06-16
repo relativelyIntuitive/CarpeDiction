@@ -51,7 +51,6 @@ const MWThesRes = props => {
     useEffect(() => {
         Axios.get('https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query + '?key=' + Sensitive.MW_THES_KEY)
             .then(res => {
-                console.log(res)
                 // generates an array of the entries found by the search
                 const resEntries = [];
                 for (const entryKey of Object.keys(res.data)) {
@@ -62,18 +61,16 @@ const MWThesRes = props => {
                 // generates an object with key for each type of entry found and values containing arrays of entries matching the type
                 const entryTypes = {};
                 // local offensive counters to manipulate and push their sums to overall offensive score
-                let isOffensive = 0;
-                let notOffensive = 0;
                 for (const entry of resEntries) {
                     // local variable to store working entry for processing
                     const newEntry = entry;
-                    // tallies offensive entries
-                    (newEntry.meta.offensive === true) ? isOffensive += 1 : notOffensive += 1;
-                    // removes format bracket pairs and leftover references to other entries
-                    if (newEntry.et && newEntry.et[0][1]) {
-                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{.*?\}/g, '');
-                        if (newEntry.et[0][1].split(" ").length <= 3)
-                            newEntry.et[0][1] = undefined;
+                    // removes format bracket pairs and leftover references to other entries from example sentence data if present
+                    if (entry.def && entry.def[0] && entry.def[0].sseq[resEntries.indexOf(entry)] && entry.def[0].sseq[resEntries.indexOf(entry)][0] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1][1] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1][1][0] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1][1][0].t) {
+                        for (let sense of entry.def[0].sseq) {
+                            entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t = entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t.replace(/\{....\}/g, '');
+                            entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t = entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t.replace(/\{...\}/g, '');
+                            entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t = entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t.replace(/\{..\}/g, '');
+                        }
                     }
                     // checks if the type of entry exists in the object and adds it to the appropriate array if so, and creates a new one if not
                     if (`${newEntry.fl}` in entryTypes) {
@@ -231,10 +228,32 @@ const MWThesRes = props => {
                                                                                         <strong>
                                                                                             {index3 + 1}:
                                                                                         </strong>
-                                                                                        &nbsp;"
+                                                                                        &nbsp;
                                                                                         {def}
-                                                                                        "
                                                                                     </Typography>
+                                                                                    {(entry.def && entry.def[0] && entry.def[0].sseq[index3] && entry.def[0].sseq[index3][0] && entry.def[0].sseq[index3][0][1] && entry.def[0].sseq[index3][0][1].dt && entry.def[0].sseq[index3][0][1].dt[1] && entry.def[0].sseq[index3][0][1].dt[1][1] && entry.def[0].sseq[index3][0][1].dt[1][1][0] && entry.def[0].sseq[index3][0][1].dt[1][1][0].t && entry.def[0].sseq[index3][0][1].dt[1][1][0].t) && (
+                                                                                        <>
+                                                                                            <br />
+                                                                                            <Typography>
+                                                                                                <i>
+                                                                                                    <strong>
+                                                                                                        <span className="rIOrange">
+                                                                                                            &emsp;&ensp;*
+                                                                                                        </span>
+                                                                                                        <span className="rIPurple">
+                                                                                                            e.g.,&nbsp;
+                                                                                                        </span>
+                                                                                                        <span className="text-muted">
+                                                                                                            "&nbsp;...&nbsp;
+                                                                                                            {entry.def[0].sseq[index3][0][1].dt[1][1][0].t}
+                                                                                                            &nbsp;"
+                                                                                                        </span>
+                                                                                                    </strong>
+                                                                                                </i>
+                                                                                            </Typography>
+                                                                                            <br />
+                                                                                        </>
+                                                                                    )}
                                                                                     <br />
                                                                                     <ul className="inlineList">
                                                                                         <li className="mgInlineBlock text-muted">

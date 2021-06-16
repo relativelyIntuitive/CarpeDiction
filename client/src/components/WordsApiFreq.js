@@ -76,7 +76,7 @@ const WordsApiFreq = props => {
                 console.log(err);
                 setError(`No results for frequency data of "${query.toLowerCase()}" from Words API...`);
                 setEntry(null);
-                // setError(`No results for frequency data of "${query.replace(query[0], query[0].toUpperCase())}" from Words API...`);
+                setLoaded(true);
             });
     }, [query]);
 

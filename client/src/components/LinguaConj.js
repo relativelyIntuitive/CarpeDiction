@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 import Axios from '../../../server/node_modules/axios';
+import { Link } from '@reach/router';
 
 import Sensitive from './Sensitive';
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
-import Container from '@material-ui/core/Container';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -63,7 +63,6 @@ const LinguaCons = props => {
         // makes the request
         Axios.request(options)
             .then(res => {
-                console.log(res);
                 const resEntry = res.data;
                 // updates all pertinent state variables
                 if (resEntry.result !== 'OK') {
@@ -174,8 +173,13 @@ const LinguaCons = props => {
                                                     </span>
                                                     <span className="rIPurple">
                                                         &nbsp;
-                                                        "&nbsp;...&nbsp;
-                                                        {form[1]}
+                                                        "&nbsp;
+                                                        <Link to={`/search/` + form[1]}>
+                                                            <span className="rIPurple">
+                                                                ...&nbsp;
+                                                                {form[1]}
+                                                            </span>
+                                                        </Link>
                                                         &nbsp;"
                                                     </span>
                                                 </strong>
