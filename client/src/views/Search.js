@@ -96,7 +96,7 @@ const Search = props => {
                 setLoaded(true);
             })
             .catch(err => console.log(err));
-    }, [query])
+    }, [query, setAudioLoaded])
 
     // returns the homepage
     return (
