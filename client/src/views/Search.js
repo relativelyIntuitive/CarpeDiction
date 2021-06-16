@@ -76,8 +76,8 @@ const Search = props => {
                 // retrieve syllable data
                 if (entry.syllables && entry.syllables.list) {
                     for (let i = 0; i < entry.syllables.list.length; i++) {
-                        if (i !== entry.syllables.list.length - 1 && res.data.syllables.list[i+1] !== "") {
-                            resSyllables += (res.data.syllables.list[i] + '*');
+                        if (i !== entry.syllables.list.length - 1 && res.data.syllables.list[i + 1] !== "") {
+                            resSyllables += (res.data.syllables.list[i] + ' * ');
                         } else {
                             resSyllables += res.data.syllables.list[i];
                         }
@@ -118,12 +118,12 @@ const Search = props => {
                                 You queried:
                             </h4>
                             <h1>
-                                <strong>
-                                    "
+                                <strong className="qQuotes">
+                                    "&nbsp;
                                     <span className="rIPurple resHeading">
                                         {query.replace(query[0], query[0].toUpperCase())}
                                     </span>
-                                    "
+                                    &nbsp;"
                                 </strong>
                             </h1>
                             {headWords.length > 0 && (
@@ -188,11 +188,13 @@ const Search = props => {
                             )}
                             {(loaded && syllables.length > 0) && (
                                 <>
-                                    <h2 className="rIOrange syllables">
-                                        <strong>
-                                            "
-                                            {syllables}
-                                            "
+                                    <h2>
+                                        <strong className="text-muted">
+                                            (&nbsp;
+                                            <span className="rIOrange syllables">
+                                                {syllables}
+                                            </span>
+                                            &nbsp;)
                                         </strong>
                                     </h2>
                                     <br />
