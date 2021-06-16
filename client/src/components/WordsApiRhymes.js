@@ -44,6 +44,7 @@ const WordsApiRhymes = props => {
     // state variables to keep track of search progress and results
     const [entry, setEntry] = useState([]);
     const [words, setWords] = useState([]);
+    const [phrases, setPhrases] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState("");
 
@@ -66,9 +67,14 @@ const WordsApiRhymes = props => {
                 const resEntry = res.data;
                 // generates an array of the rhymes found by the search
                 const resWords = [];
+                const resPhrases = [];
                 if (res.data.rhymes.all && res.data.rhymes.all.length !== 0) {
                     for (const resWord of res.data.rhymes.all) {
-                        resWords.push(resWord);
+                        if (resWord.split(" ").length > 1) {
+                            resPhrases.push(resWord)
+                        } else {
+                            resWords.push(resWord);
+                        }
                     }
                 }
 
@@ -77,6 +83,8 @@ const WordsApiRhymes = props => {
                     setError(`No results for rhymes of "${query.toLowerCase()}" from Words API...`);
                 setEntry(resEntry);
                 setWords(resWords);
+                setPhrases(resPhrases);
+                console.log(resPhrases)
                 setLoaded(true);
             })
             .catch(err => console.log(err));
@@ -164,6 +172,39 @@ const WordsApiRhymes = props => {
                                                     </i>
                                                 </Link>
                                                 {(words.indexOf(word) !== (words.length - 1)) && (
+                                                    <span className="rIOrange">
+                                                        &ensp;|&nbsp;
+                                                    </span>
+                                                )}
+                                            </Typography>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            {(phrases.length > 0 && entry.rhymes && entry.rhymes.all) && (
+                                <ul className="inlineList">
+                                    <li className="mgInlineBlock text-muted">
+                                        <Typography>
+                                            <strong>
+                                                &emsp;Phrases that rhyme with
+                                                "
+                                                {entry.word.toLowerCase()}
+                                                " ~ (A-Z):
+                                            </strong>
+                                        </Typography>
+                                    </li>
+                                    {phrases.map((phrase, index) => (
+                                        <li key={index} className="mgInlineBlock">
+                                            <Typography>
+                                                &nbsp;
+                                                <Link to={`/search/${phrases[index]}`}>
+                                                    <i>
+                                                        <span className="rIPurple">
+                                                            {phrase}
+                                                        </span>
+                                                    </i>
+                                                </Link>
+                                                {(phrases.indexOf(phrase) !== (phrases.length - 1)) && (
                                                     <span className="rIOrange">
                                                         &ensp;|&nbsp;
                                                     </span>
