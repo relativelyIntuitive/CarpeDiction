@@ -63,7 +63,6 @@ const MWDictRes = props => {
     useEffect(() => {
         Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query + '?key=' + Sensitive.MW_DICT_KEY)
             .then(res => {
-                console.log(res.data)
                 // generates an array of the entries found by the search
                 const resEntries = [];
                 for (const entryKey of Object.keys(res.data)) {
@@ -220,281 +219,277 @@ const MWDictRes = props => {
                 <AccordionDetails>
                     {loaded && (
                         <div className={classes.root}>
-                            <>
-                                {Object.keys(entriesByType).length > 0 && (
-                                    Object.keys(entriesByType).map((type, index) => (
-                                        <Accordion
-                                            key={index}
-                                            className="rIAccordion"
+                            {Object.keys(entriesByType).length > 0 && (
+                                Object.keys(entriesByType).map((type, index) => (
+                                    <Accordion
+                                        key={index}
+                                        className="rIAccordion"
+                                    >
+                                        <AccordionSummary
+                                            expandIcon={<ExpandMoreIcon />}
+                                            aria-controls="panel1a-content"
+                                            id="panel1a-header"
                                         >
-                                            <AccordionSummary
-                                                expandIcon={<ExpandMoreIcon />}
-                                                aria-controls="panel1a-content"
-                                                id="panel1a-header"
+                                            <Grid
+                                                container
+                                                justify="space-between"
+                                                alignItems="center"
                                             >
                                                 <Grid
-                                                    container
-                                                    justify="space-between"
-                                                    alignItems="center"
+                                                    item
+                                                    xs={9}
                                                 >
-                                                    <Grid
-                                                        item
-                                                        xs={9}
-                                                    >
+                                                    <Typography className={classes.heading}>
+                                                        <strong>
+                                                            (
+                                                            {entriesByType[type].entries.length}
+                                                            )
+                                                            <span className="rIOrange">
+                                                                &nbsp;-&nbsp;
+                                                            </span>
+                                                            <i>
+                                                                {type.replace(type[0], type[0].toUpperCase())}
+                                                                &nbsp;entries...
+                                                            </i>
+                                                        </strong>
+                                                    </Typography>
+                                                </Grid>
+                                                <Grid
+                                                    item
+                                                    xs={3}
+                                                    className="mgTxtRight"
+                                                >
+                                                    {entriesByType[type].hasAudio > 0 && (
                                                         <Typography className={classes.heading}>
-                                                            <strong>
-                                                                (
-                                                                {entriesByType[type].entries.length}
-                                                                )
-                                                                <span className="rIOrange">
-                                                                    &nbsp;-&nbsp;
-                                                                </span>
+                                                            <strong className="mgSmFont">
                                                                 <i>
-                                                                    {type.replace(type[0], type[0].toUpperCase())}
-                                                                    &nbsp;entries...
+                                                                    <span className="rIOrange">
+                                                                        +
+                                                                    </span>
+                                                                    <span className="rIPurple">
+                                                                        &nbsp;Audio
+                                                                        (
+                                                                        {entriesByType[type].hasAudio}
+                                                                        )
+                                                                    </span>
                                                                 </i>
                                                             </strong>
                                                         </Typography>
-                                                    </Grid>
-                                                    <Grid
-                                                        item
-                                                        xs={3}
-                                                        className="mgTxtRight"
-                                                    >
-                                                        {entriesByType[type].hasAudio > 0 && (
-                                                            <Typography className={classes.heading}>
-                                                                <strong className="mgSmFont">
-                                                                    <i>
-                                                                        <span className="rIOrange">
-                                                                            +
-                                                                        </span>
-                                                                        <span className="rIPurple">
-                                                                            &nbsp;Audio
-                                                                            (
-                                                                            {entriesByType[type].hasAudio}
-                                                                            )
-                                                                        </span>
-                                                                    </i>
-                                                                </strong>
-                                                            </Typography>
-                                                        )}
-                                                    </Grid>
+                                                    )}
                                                 </Grid>
-                                            </AccordionSummary>
-                                            <AccordionDetails>
-                                                <div className={classes.root}>
-                                                    {entriesByType[type].entries.length > 0 && (
-                                                        entriesByType[type].entries.map((entry, index2) => (
-                                                            <Accordion
-                                                                key={index2}
-                                                                className="rIAccordion"
+                                            </Grid>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                            <div className={classes.root}>
+                                                {entriesByType[type].entries.length > 0 && (
+                                                    entriesByType[type].entries.map((entry, index2) => (
+                                                        <Accordion
+                                                            key={index2}
+                                                            className="rIAccordion"
+                                                        >
+                                                            <AccordionSummary
+                                                                expandIcon={<ExpandMoreIcon />}
+                                                                aria-controls="panel1a-content"
+                                                                id="panel1a-header"
                                                             >
-                                                                <AccordionSummary
-                                                                    expandIcon={<ExpandMoreIcon />}
-                                                                    aria-controls="panel1a-content"
-                                                                    id="panel1a-header"
+                                                                <Grid
+                                                                    container
+                                                                    justify="space-between"
+                                                                    alignItems="center"
                                                                 >
                                                                     <Grid
-                                                                        container
-                                                                        justify="space-between"
-                                                                        alignItems="center"
+                                                                        item
+                                                                        xs={9}
                                                                     >
-                                                                        <Grid
-                                                                            item
-                                                                            xs={9}
-                                                                        >
-                                                                            <Typography className={classes.heading}>
-                                                                                <strong>
-                                                                                    <span className="rIOrange">
-                                                                                        :&nbsp;
-                                                                                    </span>
-                                                                                    (
-                                                                                    {entry.shortdef.length}
-                                                                                    )
-                                                                                    <span className="text-muted">
-                                                                                        &ensp;
-                                                                                        {'{'}
-                                                                                        &nbsp;
-                                                                                        {entry.meta.id}
-                                                                                        &nbsp;
-                                                                                        {'}'}
-                                                                                    </span>
-                                                                                    {(entry.meta.offensive === true) && (
-                                                                                        <i className="mgSmFont">
-                                                                                            <span className="rIOrange">
-                                                                                                &nbsp;:&nbsp;
-                                                                                            </span>
-                                                                                            <span className="text-danger">
-                                                                                                Offensive?
-                                                                                            </span>
-                                                                                        </i>
-                                                                                    )}
-                                                                                    {(entry.meta.offensive === false) && (
-                                                                                        <i className="mgSmFont">
-                                                                                            <span className="rIOrange">
-                                                                                                &nbsp;:&nbsp;
-                                                                                            </span>
-                                                                                            <span className="text-success">
-                                                                                                Inoffensive!
-                                                                                            </span>
-                                                                                        </i>
-                                                                                    )}
-                                                                                </strong>
-                                                                            </Typography>
-                                                                        </Grid>
-                                                                        <Grid
-                                                                            item
-                                                                            xs={3}
-                                                                            className="mgTxtRight"
-                                                                        >
-                                                                            <Typography className={classes.heading}>
-                                                                                {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].sound) && (
-                                                                                    <strong className="mgSmFont">
-                                                                                        <i>
-                                                                                            <span className="rIOrange">
-                                                                                                +
-                                                                                            </span>
-                                                                                            <span className="rIPurple">
-                                                                                                &nbsp;Audio!
-                                                                                            </span>
-                                                                                        </i>
-                                                                                    </strong>
-                                                                                )}
-                                                                            </Typography>
-                                                                        </Grid>
-                                                                    </Grid>
-                                                                </AccordionSummary>
-                                                                <AccordionDetails>
-                                                                    <div className={classes.root}>
-                                                                        {(audioLoaded && (mp3s || wavs)) && (
-                                                                            <div className="resHeading" style={{ overflow: 'hidden' }}>
-                                                                                {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].sound) && (
-                                                                                    <>
-                                                                                        <audio controls className="rIAudioSm">
-                                                                                            {`${entry.meta.id}` in mp3s && (
-                                                                                                <source src={mp3s[entry.meta.id]} type="audio/mpeg" />
-                                                                                            )}
-                                                                                            {`${entry.meta.id}` in wavs && (
-                                                                                                <source src={wavs[entry.meta.id]} type="audio/wav" />
-                                                                                            )}
-                                                                                            Your browser does not support the audio element!
-                                                                                        </audio>
-                                                                                    </>
-                                                                                )}
-                                                                            </div>
-                                                                        )}
-                                                                        <Typography>
+                                                                        <Typography className={classes.heading}>
                                                                             <strong>
-                                                                                [
-                                                                                {type.replace(type[0], type[0].toUpperCase())}
-                                                                                ]
-                                                                                {(entry.hwi && entry.hwi.hw) && (
-                                                                                    <span className="text-muted">
+                                                                                (
+                                                                                {entry.shortdef.length}
+                                                                                )
+                                                                                <span className="rIOrange">
+                                                                                    &nbsp;-
+                                                                                </span>
+                                                                                <span className="text-muted">
+                                                                                    &nbsp;
+                                                                                    {'{'}
+                                                                                    &nbsp;
+                                                                                    {entry.meta.id}
+                                                                                    &nbsp;
+                                                                                    {'}'}
+                                                                                </span>
+                                                                                {(entry.meta.offensive === true) && (
+                                                                                    <i className="mgSmFont">
                                                                                         <span className="rIOrange">
-                                                                                            &nbsp;&ensp;|&ensp;
+                                                                                            &nbsp;:&nbsp;
                                                                                         </span>
-                                                                                        "
-                                                                                        {entry.hwi.hw}
-                                                                                        "&ensp;
-                                                                                    </span>
+                                                                                        <span className="text-danger">
+                                                                                            Offensive?
+                                                                                        </span>
+                                                                                    </i>
                                                                                 )}
-                                                                                {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].mw) && (
-                                                                                    <>
+                                                                                {(entry.meta.offensive === false) && (
+                                                                                    <i className="mgSmFont">
                                                                                         <span className="rIOrange">
-                                                                                            |
+                                                                                            &nbsp;:&nbsp;
                                                                                         </span>
-                                                                                        <i>
-                                                                                            <span className="text-info">
-                                                                                                &ensp;\&nbsp;
-                                                                                                {entry.hwi.prs[0].mw}
-                                                                                                &nbsp;\
-                                                                                            </span>
-                                                                                        </i>
-                                                                                    </>
+                                                                                        <span className="text-success">
+                                                                                            Inoffensive!
+                                                                                        </span>
+                                                                                    </i>
                                                                                 )}
                                                                             </strong>
                                                                         </Typography>
-                                                                        <br />
-                                                                        {entry.shortdef.length > 0 && (
-                                                                            entry.shortdef.map((def, index3) => (
-                                                                                <div key={index3}>
-                                                                                    <Typography>
-                                                                                        <strong>
-                                                                                            {index3 + 1}
-                                                                                            :
-                                                                                        </strong>
-                                                                                        &nbsp;
-                                                                                        {def}
-                                                                                    </Typography>
-                                                                                    <br />
-                                                                                </div>
-                                                                            ))
-                                                                        )}
-                                                                        {(entry.date || entry.et) && (
-                                                                            <>
-                                                                                <hr />
-                                                                                <Typography>
-                                                                                    <strong>
-                                                                                        Origin:&nbsp;
-                                                                                    </strong>
-                                                                                    {entry.date && (
-                                                                                        <>
-                                                                                            <i>
-                                                                                                {entry.date.replace(/{.*}/g, '')}
-                                                                                                <strong>
-                                                                                                    &nbsp;;
-                                                                                                </strong>
-                                                                                            </i>
-                                                                                        </>
-                                                                                    )}
-                                                                                    {(entry.et && entry.et[0][1]) && (
-                                                                                        <>
-                                                                                            <br />
-                                                                                            &emsp;
-                                                                                            {entry.et[0][1]}
-                                                                                        </>
-                                                                                    )}
-                                                                                    {(entry.et && entry.et[1] && entry.et[1][1] && entry.et[1][1][0] && entry.et[1][1][0][1]) && (
-                                                                                        <>
-                                                                                            <br />
-                                                                                            <br />
-                                                                                            <i>
-                                                                                                <strong>
-                                                                                                    <span className="rIOrange">
-                                                                                                        &emsp;&ensp;*
-                                                                                                    </span>
-                                                                                                    <span className="rIPurple">
-                                                                                                        Note:&nbsp;
-                                                                                                    </span>
-                                                                                                </strong>
-                                                                                                {entry.et[1][1][0][1]}
-                                                                                            </i>
-                                                                                        </>
-                                                                                    )}
-                                                                                </Typography>
-                                                                            </>
-                                                                        )}
-                                                                    </div>
-                                                                </AccordionDetails>
-                                                            </Accordion>
-                                                        ))
-                                                    )}
-                                                </div>
-                                            </AccordionDetails>
-                                        </Accordion>
-                                    ))
-                                )}
-                                {entries.length === 0 && (
-                                    <Typography className="text-danger">
-                                        <strong>
-                                            <i>
-                                                &emsp;
-                                                {error}
-                                            </i>
-                                        </strong>
-                                    </Typography>
-                                )}
-                            </>
+                                                                    </Grid>
+                                                                    <Grid
+                                                                        item
+                                                                        xs={3}
+                                                                        className="mgTxtRight"
+                                                                    >
+                                                                        <Typography className={classes.heading}>
+                                                                            {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].sound) && (
+                                                                                <strong className="mgSmFont">
+                                                                                    <i>
+                                                                                        <span className="rIOrange">
+                                                                                            +
+                                                                                        </span>
+                                                                                        <span className="rIPurple">
+                                                                                            &nbsp;Audio!
+                                                                                        </span>
+                                                                                    </i>
+                                                                                </strong>
+                                                                            )}
+                                                                        </Typography>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </AccordionSummary>
+                                                            <AccordionDetails>
+                                                                <div className={classes.root}>
+                                                                    {(audioLoaded && (mp3s || wavs)) && (
+                                                                        <div className="resHeading" style={{ overflow: 'hidden' }}>
+                                                                            {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].sound) && (
+                                                                                <>
+                                                                                    <audio controls className="rIAudioSm">
+                                                                                        {`${entry.meta.id}` in mp3s && (
+                                                                                            <source src={mp3s[entry.meta.id]} type="audio/mpeg" />
+                                                                                        )}
+                                                                                        {`${entry.meta.id}` in wavs && (
+                                                                                            <source src={wavs[entry.meta.id]} type="audio/wav" />
+                                                                                        )}
+                                                                                        Your browser does not support the audio element!
+                                                                                    </audio>
+                                                                                </>
+                                                                            )}
+                                                                        </div>
+                                                                    )}
+                                                                    <Typography>
+                                                                        <strong>
+                                                                            [
+                                                                            {type.replace(type[0], type[0].toUpperCase())}
+                                                                            ]
+                                                                            {(entry.hwi && entry.hwi.hw) && (
+                                                                                <span className="text-muted">
+                                                                                    <span className="rIOrange">
+                                                                                        &nbsp;&ensp;|&ensp;
+                                                                                    </span>
+                                                                                    "
+                                                                                    {entry.hwi.hw}
+                                                                                    "&ensp;
+                                                                                </span>
+                                                                            )}
+                                                                            {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].mw) && (
+                                                                                <>
+                                                                                    <span className="rIOrange">
+                                                                                        |
+                                                                                    </span>
+                                                                                    <i>
+                                                                                        <span className="text-info">
+                                                                                            &ensp;\&nbsp;
+                                                                                            {entry.hwi.prs[0].mw}
+                                                                                            &nbsp;\
+                                                                                        </span>
+                                                                                    </i>
+                                                                                </>
+                                                                            )}
+                                                                        </strong>
+                                                                    </Typography>
+                                                                    <br />
+                                                                    {entry.shortdef.length > 0 && (
+                                                                        entry.shortdef.map((def, index3) => (
+                                                                            <Typography key={index3}>
+                                                                                <strong>
+                                                                                    {index3 + 1}
+                                                                                    :
+                                                                                </strong>
+                                                                                &nbsp;
+                                                                                {def}
+                                                                                <br />
+                                                                                <br />
+                                                                            </Typography>
+                                                                        ))
+                                                                    )}
+                                                                    {(entry.date || entry.et) && (
+                                                                        <>
+                                                                            <hr />
+                                                                            <Typography>
+                                                                                <strong>
+                                                                                    Origin:&nbsp;
+                                                                                </strong>
+                                                                                {entry.date && (
+                                                                                    <i className="rIPurple">
+                                                                                        {entry.date.replace(/{.*}/g, '')}
+                                                                                        &nbsp;;
+                                                                                    </i>
+                                                                                )}
+                                                                                <br />
+                                                                                <br />
+                                                                                {(entry.et && entry.et[0][1]) && (
+                                                                                    <>
+                                                                                        &emsp;
+                                                                                        {entry.et[0][1]}
+                                                                                        ;
+                                                                                    </>
+                                                                                )}
+                                                                                {(entry.et && entry.et[1] && entry.et[1][1] && entry.et[1][1][0] && entry.et[1][1][0][1]) && (
+                                                                                    <>
+                                                                                        <br />
+                                                                                        <br />
+                                                                                        <i>
+                                                                                            <strong>
+                                                                                                <span className="rIOrange">
+                                                                                                    &emsp;&ensp;*
+                                                                                                </span>
+                                                                                                <span className="rIPurple">
+                                                                                                    Note:&nbsp;
+                                                                                                </span>
+                                                                                            </strong>
+                                                                                            {entry.et[1][1][0][1]}
+                                                                                            ;
+                                                                                        </i>
+                                                                                    </>
+                                                                                )}
+                                                                            </Typography>
+                                                                        </>
+                                                                    )}
+                                                                </div>
+                                                            </AccordionDetails>
+                                                        </Accordion>
+                                                    ))
+                                                )}
+                                            </div>
+                                        </AccordionDetails>
+                                    </Accordion>
+                                ))
+                            )}
+                            {entries.length === 0 && (
+                                <Typography className="text-danger">
+                                    <strong>
+                                        <i>
+                                            &emsp;
+                                            {error}
+                                        </i>
+                                    </strong>
+                                </Typography>
+                            )}
                         </div>
                     )}
                 </AccordionDetails>

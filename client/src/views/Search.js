@@ -7,6 +7,7 @@ import MWDictRes from '../components/MWDictRes';
 import MWThesRes from '../components/MWThesRes';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
+import UrbanDict from '../components/UrbanDict';
 import WordsApiRhymes from '../components/WordsApiRhymes';
 import WordsApiFreq from '../components/WordsApiFreq';
 import WordAssocRes from '../components/WordAssocRes';
@@ -219,7 +220,7 @@ const Search = props => {
                                         <i>
                                             {query.replace(query[0], query[0].toUpperCase())}
                                         </i>
-                                        &nbsp;" is not considered offensive by any sources!
+                                        &nbsp;" is not considered offensive by any official sources!
                                     </strong>
                                 </h6>
                             )}
@@ -230,7 +231,7 @@ const Search = props => {
                                         <i>
                                             {query.replace(query[0], query[0].toUpperCase())}
                                         </i>
-                                        &nbsp;" is considered offensive by some sources...
+                                        &nbsp;" is considered offensive by some official sources...
                                     </strong>
                                 </h6>
                             )}
@@ -241,7 +242,7 @@ const Search = props => {
                                         <i>
                                             {query.replace(query[0], query[0].toUpperCase())}
                                         </i>
-                                        &nbsp;" is considered offensive by most sources!
+                                        &nbsp;" is considered offensive by most official sources!
                                     </strong>
                                 </h6>
                             )}
@@ -261,6 +262,7 @@ const Search = props => {
                             setHeadWords={setHeadWords}
                         />
                         <MWThesRes query={query} />
+                        <UrbanDict query={query} />
                         <WordsApiRhymes query={query} />
                         <LinguaConj query={query} />
                         <WordsApiFreq query={query} />

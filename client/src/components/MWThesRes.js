@@ -62,8 +62,6 @@ const MWThesRes = props => {
                 const entryTypes = {};
                 // local offensive counters to manipulate and push their sums to overall offensive score
                 for (const entry of resEntries) {
-                    // local variable to store working entry for processing
-                    const newEntry = entry;
                     // removes format bracket pairs and leftover references to other entries from example sentence data if present
                     if (entry.def && entry.def[0] && entry.def[0].sseq[resEntries.indexOf(entry)] && entry.def[0].sseq[resEntries.indexOf(entry)][0] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1][1] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1][1][0] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1][1][0].t) {
                         for (let sense of entry.def[0].sseq) {
@@ -73,11 +71,11 @@ const MWThesRes = props => {
                         }
                     }
                     // checks if the type of entry exists in the object and adds it to the appropriate array if so, and creates a new one if not
-                    if (`${newEntry.fl}` in entryTypes) {
-                        entryTypes[`${newEntry.fl}`].push(newEntry);
+                    if (`${entry.fl}` in entryTypes) {
+                        entryTypes[`${entry.fl}`].push(entry);
                         continue;
                     } else {
-                        entryTypes[`${newEntry.fl}`] = [newEntry];
+                        entryTypes[`${entry.fl}`] = [entry];
                     }
                 }
 
@@ -162,14 +160,14 @@ const MWThesRes = props => {
                                                                 >
                                                                     <Typography className={classes.heading}>
                                                                         <strong>
-                                                                            <span className="rIOrange">
-                                                                                :&nbsp;
-                                                                            </span>
                                                                             (
                                                                             {entry.shortdef.length}
                                                                             )
+                                                                            <span className="rIOrange">
+                                                                                &nbsp;-
+                                                                            </span>
                                                                             <span className="text-muted">
-                                                                                &emsp;
+                                                                                &nbsp;
                                                                                 {'{'}
                                                                                 &nbsp;
                                                                                 {entry.meta.id}
@@ -230,6 +228,7 @@ const MWThesRes = props => {
                                                                                         </strong>
                                                                                         &nbsp;
                                                                                         {def}
+                                                                                        ;
                                                                                     </Typography>
                                                                                     {(entry.def && entry.def[0] && entry.def[0].sseq[index3] && entry.def[0].sseq[index3][0] && entry.def[0].sseq[index3][0][1] && entry.def[0].sseq[index3][0][1].dt && entry.def[0].sseq[index3][0][1].dt[1] && entry.def[0].sseq[index3][0][1].dt[1][1] && entry.def[0].sseq[index3][0][1].dt[1][1][0] && entry.def[0].sseq[index3][0][1].dt[1][1][0].t && entry.def[0].sseq[index3][0][1].dt[1][1][0].t) && (
                                                                                         <>
@@ -280,11 +279,6 @@ const MWThesRes = props => {
                                                                                                                 ,
                                                                                                             </>
                                                                                                         )}
-                                                                                                        {!(entry.meta.syns[index3].indexOf(syn) !== (entry.meta.syns[index3].length - 1)) && (
-                                                                                                            <>
-                                                                                                                ;
-                                                                                                            </>
-                                                                                                        )}
                                                                                                     </Typography>
                                                                                                 </li>
                                                                                             ))
@@ -294,7 +288,7 @@ const MWThesRes = props => {
                                                                                                 <Typography>
                                                                                                     <span className="rIPurple">
                                                                                                         <i>
-                                                                                                            (N/A);
+                                                                                                            (N/A)
                                                                                                         </i>
                                                                                                     </span>
                                                                                                 </Typography>
@@ -326,11 +320,6 @@ const MWThesRes = props => {
                                                                                                                 ,
                                                                                                             </>
                                                                                                         )}
-                                                                                                        {!(entry.meta.ants[index3].indexOf(ant) !== (entry.meta.ants[index3].length - 1)) && (
-                                                                                                            <>
-                                                                                                                ;
-                                                                                                            </>
-                                                                                                        )}
                                                                                                     </Typography>
                                                                                                 </li>
                                                                                             ))
@@ -340,12 +329,14 @@ const MWThesRes = props => {
                                                                                                 <Typography>
                                                                                                     <span className="rIPurple">
                                                                                                         <i>
-                                                                                                            (N/A);
+                                                                                                            (N/A)
                                                                                                         </i>
                                                                                                     </span>
                                                                                                 </Typography>
                                                                                             </li>
                                                                                         )}
+                                                                                        <br />
+                                                                                        <br />
                                                                                     </ul>
                                                                                     <hr />
                                                                                     <br />
