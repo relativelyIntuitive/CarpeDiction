@@ -62,19 +62,20 @@ const WordsApiFreq = props => {
         // makes the request
         Axios.request(options)
             .then(res => {
-                console.log(res);
                 const resEntry = res.data;
-
                 // updates all pertinent state variables
-                if (!resEntry.frequency)
+                if (!resEntry.frequency) {
                     setError(`No results for frequency data of "${query.toLowerCase()}" from Words API...`);
-                setEntry(resEntry);
+                    setEntry(null);
+                } else {
+                    setEntry(resEntry);
+                }
                 setLoaded(true);
             })
             .catch(err => {
                 console.log(err);
                 setError(`No results for frequency data of "${query.toLowerCase()}" from Words API...`);
-                setEntry(null)
+                setEntry(null);
                 // setError(`No results for frequency data of "${query.replace(query[0], query[0].toUpperCase())}" from Words API...`);
             });
     }, [query]);
@@ -151,9 +152,7 @@ const WordsApiFreq = props => {
                                                     &emsp;
                                                     Frequency data for:
                                                     "
-                                                    <span className="rIPurple">
-                                                        {entry.word.toLowerCase()}
-                                                    </span>
+                                                    {entry.word.toLowerCase()}
                                                     "
                                                 </strong>
                                             </Typography>
@@ -243,7 +242,7 @@ const WordsApiFreq = props => {
                                     )}
                                 </>
                             )}
-                            {/* {(error.length > 0 && !entry.frequency) && (
+                            {(error.length > 0 && entry === null) && (
                                 <Typography className="text-danger">
                                     <strong>
                                         <i>
@@ -252,7 +251,7 @@ const WordsApiFreq = props => {
                                         </i>
                                     </strong>
                                 </Typography>
-                            )} */}
+                            )}
                         </div>
                     )}
                 </AccordionDetails>

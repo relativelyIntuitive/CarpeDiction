@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Axios from '../../../server/node_modules/axios';
 
+import LinguaConj from '../components/LinguaConj';
 import MWDictRes from '../components/MWDictRes';
 import MWThesRes from '../components/MWThesRes';
 import NavBar from '../components/NavBar';
@@ -261,6 +262,7 @@ const Search = props => {
                         />
                         <MWThesRes query={query} />
                         <WordsApiRhymes query={query} />
+                        <LinguaConj query={query} />
                         <WordsApiFreq query={query} />
                         <WordAssocRes query={query} />
                         <br />
