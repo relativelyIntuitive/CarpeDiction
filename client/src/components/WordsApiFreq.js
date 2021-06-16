@@ -66,12 +66,17 @@ const WordsApiFreq = props => {
                 const resEntry = res.data;
 
                 // updates all pertinent state variables
-                if (!(res.data && res.data.frequency))
-                    setError(`No results for frequency data of "${query.replace(query[0], query[0].toUpperCase())}" from Words API...`);
+                if (!resEntry.frequency)
+                    setError(`No results for frequency data of "${query.toLowerCase()}" from Words API...`);
                 setEntry(resEntry);
                 setLoaded(true);
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+                setError(`No results for frequency data of "${query.toLowerCase()}" from Words API...`);
+                setEntry(null)
+                // setError(`No results for frequency data of "${query.replace(query[0], query[0].toUpperCase())}" from Words API...`);
+            });
     }, [query]);
 
 
@@ -145,7 +150,9 @@ const WordsApiFreq = props => {
                                                     &emsp;
                                                     Frequency data for:
                                                     "
-                                                    {entry.word}
+                                                    <span className="rIPurple">
+                                                        {entry.word.toLowerCase()}
+                                                    </span>
                                                     "
                                                 </strong>
                                             </Typography>
@@ -235,13 +242,12 @@ const WordsApiFreq = props => {
                                     )}
                                 </>
                             )}
-                            {entry.frequency.length && (
+                            {error.length > 0 && (
                                 <Typography className="text-danger">
                                     <strong>
                                         <i>
                                             &emsp;
                                             {error}
-                                            dick
                                         </i>
                                     </strong>
                                 </Typography>

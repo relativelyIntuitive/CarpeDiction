@@ -20,10 +20,6 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         minHeight: '100vh',
     },
-    main: {
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(8),
-    },
 }));
 
 
@@ -33,7 +29,8 @@ const Register = props => {
     // retrieves the logged state variables from props
     const { logged,
         setLogged,
-        setAudioLoaded } = props;
+        setAudioLoaded,
+        setSyllables } = props;
 
     // generates CSS rulesets
     const classes = useStyles();
@@ -87,11 +84,11 @@ const Register = props => {
                 logged={logged}
                 setLogged={setLogged}
                 setAudioLoaded={setAudioLoaded}
+                setSyllables={setSyllables}
             />
             <Container
                 component="main"
-                className={classes.main}
-                maxWidth="sm"
+                className="chocolate"
             >
                 <UserForm
                     submitCallback={createUser}

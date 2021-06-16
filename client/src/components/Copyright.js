@@ -6,13 +6,9 @@ import Typography from '@material-ui/core/Typography';
 
 // Copyright generates an ever-contemporary copyright statement 
 const Copyright = () => {
-
     return (
-        <Typography
-            variant="body2"
-            color="textSecondary"
-        >
-            <span className="rIPurple">
+        <Typography variant="body2">
+            <span className="rIGreen">
                 <strong>
                     {'Copyright © '}
                     Zachery A. Bielicki

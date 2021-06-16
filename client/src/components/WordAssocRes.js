@@ -73,7 +73,7 @@ const WordAssocRes = props => {
 
                 // updates all pertinent state variables
                 if (resEntry.result_code === "462")
-                    setError(`No results for words related to "${query.replace(query[0], query[0].toUpperCase())}" from Word Associations API...`);
+                    setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
                 setEntry(resEntry);
                 setWords(resWords);
                 setLoaded(true);
@@ -144,7 +144,7 @@ const WordAssocRes = props => {
                                         <strong>
                                             &emsp;Related words / similarity score for&nbsp;
                                             "
-                                            {query}
+                                            {query.toLowerCase()}
                                             ":
                                         </strong>
                                     </li>

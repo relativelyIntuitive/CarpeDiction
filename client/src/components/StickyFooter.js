@@ -1,37 +1,21 @@
 import React from 'react';
 
-import gh_icon from '../static/images/github_icon_square_purple.png';
-import li_icon from '../static/images/linkedin_icon_square_purple.png';
+import gh_icon from '../images/github_icon_square_orange.png';
+import ig_icon from '../images/ig_icon_square_orange.png';
+import li_icon from '../images/linkedin_icon_square_orange.png';
 
 import Copyright from '../components/Copyright'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
 
-
-
-// CSS rulesets
-const useStyles = makeStyles((theme) => ({
-    footer: {
-        padding: theme.spacing(2.1, 2),
-        marginTop: 'auto',
-        backgroundColor:
-            theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
-    },
-}));
 
 
 // StickyFooter sticks to the bottom of the page and contains the copyright statement and social media links
 const StickyFooter = () => {
-
-    // generates CSS rulesets
-    const classes = useStyles();
-
-
     return (
-        <footer className={classes.footer}>
+        <footer className="sFooter">
             <CssBaseline />
             <Grid container
                 justify="space-between"
@@ -73,6 +57,18 @@ const StickyFooter = () => {
                             height="35"
                             className="d-inline-block align-top socialIcon"
                             alt="GitHub!"
+                        />
+                    </Link>
+                    <Link
+                        href="https://www.instagram.com/zeebo_rowte/"
+                        target="_blank"
+                    >
+                        <img
+                            src={ig_icon}
+                            width="35"
+                            height="35"
+                            className="d-inline-block align-top socialIcon"
+                            alt="InstaGram!"
                         />
                     </Link>
                 </Grid>

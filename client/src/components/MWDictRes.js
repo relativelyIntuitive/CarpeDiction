@@ -132,7 +132,7 @@ const MWDictRes = props => {
                 }
                 // updates all pertinent state variables
                 if (resEntries.length === 0)
-                    setError(`No results for "${query.replace(query[0], query[0].toUpperCase())}" from the Merriam-Webster Collegiate Dictionary...`);
+                    setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Collegiate Dictionary...`);
                 setIsOffensive(isOffensive);
                 setNotOffensive(notOffensive);
                 setPronunciations(newPronunciations);
@@ -359,7 +359,7 @@ const MWDictRes = props => {
                                                                             <div className="resHeading" style={{ overflow: 'hidden' }}>
                                                                                 {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].sound) && (
                                                                                     <>
-                                                                                        <audio controls className="rIAudio">
+                                                                                        <audio controls className="rIAudioSm">
                                                                                             {`${entry.meta.id}` in mp3s && (
                                                                                                 <source src={mp3s[entry.meta.id]} type="audio/mpeg" />
                                                                                             )}

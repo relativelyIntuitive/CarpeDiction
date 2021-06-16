@@ -10,7 +10,6 @@ import WordsApiRhymes from '../components/WordsApiRhymes';
 import WordsApiFreq from '../components/WordsApiFreq';
 import WordAssocRes from '../components/WordAssocRes';
 
-import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,15 +23,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
-        maxWidth: '100vw',
-    },
-    main: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(5),
-        maxWidth: '69vw',
     },
     paper: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(5),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -78,14 +71,18 @@ const Search = props => {
             .then(res => {
                 let entry = res.data;
                 let resSyllables = "";
-                for (let i = 0; i < entry.syllables.list.length; i++) {
-                    if (i !== entry.syllables.list.length - 1) {
-                        resSyllables += (res.data.syllables.list[i] + '*');
-                    } else {
-                        resSyllables += res.data.syllables.list[i];
+                if (entry.syllables && entry.syllables.list) {
+                    for (let i = 0; i < entry.syllables.list.length; i++) {
+                        if (i !== entry.syllables.list.length - 1 && res.data.syllables.list[i+1] !== "") {
+                            resSyllables += (res.data.syllables.list[i] + '*');
+                        } else {
+                            resSyllables += res.data.syllables.list[i];
+                        }
                     }
+                    setSyllables(resSyllables);
+                } else {
+                    setSyllables("");
                 }
-                setSyllables(resSyllables);
                 setLoaded(true);
             })
             .catch(err => console.log(err));
@@ -99,88 +96,40 @@ const Search = props => {
                 logged={logged}
                 setLogged={setLogged}
                 setAudioLoaded={setAudioLoaded}
+                setSyllables={setSyllables}
             />
-            <Container
+            <div
                 component="main"
-                className={classes.main}
-                maxWidth="sm"
+                className="chocolate"
             >
-                <div className={classes.paper}>
-                    <div className="resHeading">
-                        <h4>
-                            Query results for:
-                        </h4>
-                        <h1>
-                            <strong>
-                                "
-                                <span className="rIPurple resHeading">
-                                    {query.replace(query[0], query[0].toUpperCase())}
-                                </span>
-                                "
-                            </strong>
-                        </h1>
-                        {(loaded && syllables.length > 0) && (
-                            <>
-                                <h3 className="rIOrange">
-                                    <strong>
-                                        "
-                                        {syllables}
-                                        "
-                                    </strong>
-                                </h3>
-                                <br />
-                            </>
-                        )}
-                        {pronunciations.length > 0 && (
-                            <ul className="inlineList topList">
-                                {pronunciations.map((variant, index) => (
-                                    <li
-                                        key={index}
-                                        className="mgInlineBlock"
-                                    >
-                                        <h5 className="text-info">
-                                            <strong>
-                                                <i>
-                                                    \&nbsp;
-                                                    {variant}
-                                                    &nbsp;
-                                                    {(pronunciations.indexOf(variant) === (pronunciations.length - 1)) && (
-                                                        <>
-                                                            \
-                                                        </>
-                                                    )}
-                                                </i>
-                                            </strong>
-                                        </h5>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                        {(audioLoaded && ((mp3s && Object.keys(mp3s).length > 0) || (wavs && Object.keys(wavs).length > 0))) && (
-                            <audio controls className="rIAudio">
-                                {(mp3s && Object.keys(mp3s).length > 0) && (
-                                    <source src={mp3s[Object.keys(mp3s)[0]]} type="audio/mpeg" />
-                                )}
-                                {(wavs && Object.keys(wavs).length > 0) && (
-                                    <source src={[Object.keys(wavs)[0]]} type="audio/wav" />
-                                )}
-                                Your browser does not support the audio element!
-                            </audio>
-                        )}
-                        {headWords.length > 0 && (
-                            <>
-                                <h6 className="text-muted">
-                                    Definitions retrieved for:
-                                </h6>
-                                <ul className="inlineList topList">
-                                    {headWords.map((headWord, index) => (
-                                        <li
-                                            key={index}
-                                            className="mgInlineBlock"
-                                        >   
-                                            <Link href={`/search/${headWord}`} style={{textDecoration: 'none'}}>
-                                                <h5 className="text-muted flatLink">
-                                                    <strong>
+                <div className="filling">
+                    <div className={classes.paper}>
+                        <div className="resHeading">
+                            <h4>
+                                You queried:
+                            </h4>
+                            <h1>
+                                <strong>
+                                    "
+                                    <span className="rIPurple resHeading">
+                                        {query.replace(query[0], query[0].toUpperCase())}
+                                    </span>
+                                    "
+                                </strong>
+                            </h1>
+                            {headWords.length > 0 && (
+                                <>
+                                    <h5 className="text-muted">
+                                        Definitions retrieved for:
+                                    </h5>
+                                    <ul className="inlineList topList">
+                                        {headWords.map((headWord, index) => (
+                                            <li
+                                                key={index}
+                                                className="mgInlineBlock"
+                                            >
+                                                <Link href={`/search/${headWord}`} style={{ textDecoration: 'none' }}>
+                                                    <strong className="flatLinkMuted">
                                                         <i>
                                                             &nbsp;"
                                                             {headWord}
@@ -197,76 +146,130 @@ const Search = props => {
                                                             )}
                                                         </i>
                                                     </strong>
-                                                </h5>
-                                            </Link>
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </>
+                            )}
+                            {pronunciations.length > 0 && (
+                                <ul className="inlineList topList">
+                                    {pronunciations.map((variant, index) => (
+                                        <li
+                                            key={index}
+                                            className="mgInlineBlock"
+                                        >
+                                            <h3 className="text-info">
+                                                <strong>
+                                                    <i>
+                                                        \&nbsp;
+                                                        {variant}
+                                                        &nbsp;
+                                                        {(pronunciations.indexOf(variant) === (pronunciations.length - 1)) && (
+                                                            <>
+                                                                \
+                                                            </>
+                                                        )}
+                                                    </i>
+                                                </strong>
+                                            </h3>
                                         </li>
                                     ))}
                                 </ul>
-                            </>
-                        )}
-                        {isOffensive === 0 && (
-                            <h6 className="text-success">
-                                <strong>
-                                    "
-                                    {query.replace(query[0], query[0].toUpperCase())}
-                                    "
-                                    is not considered offensive by any sources!
-                                </strong>
-                            </h6>
-                        )}
-                        {(isOffensive > 0 && isOffensive <= notOffensive) && (
-                            <h6 className="text-warning">
-                                <strong>
-                                    "
-                                    {query.replace(query[0], query[0].toUpperCase())}
-                                    "
-                                    is considered offensive by some sources...
-                                </strong>
-                            </h6>
-                        )}
-                        {(isOffensive > notOffensive) && (
-                            <h6 className="text-danger">
-                                <strong>
-                                    "
-                                    {query.replace(query[0], query[0].toUpperCase())}
-                                    "
-                                    is considered offensive by most sources!
-                                </strong>
-                            </h6>
-                        )}
-                        <hr />
+                            )}
+                            {(loaded && syllables.length > 0) && (
+                                <>
+                                    <h2 className="rIOrange syllables">
+                                        <strong>
+                                            "
+                                            {syllables}
+                                            "
+                                        </strong>
+                                    </h2>
+                                    <br />
+                                </>
+                            )}
+                            {(audioLoaded && ((mp3s && Object.keys(mp3s).length > 0) || (wavs && Object.keys(wavs).length > 0))) && (
+                                <audio controls className="rIAudio">
+                                    {(mp3s && Object.keys(mp3s).length > 0) && (
+                                        <source src={mp3s[Object.keys(mp3s)[0]]} type="audio/mpeg" />
+                                    )}
+                                    {(wavs && Object.keys(wavs).length > 0) && (
+                                        <source src={[Object.keys(wavs)[0]]} type="audio/wav" />
+                                    )}
+                                    Your browser does not support the audio element!
+                                </audio>
+                            )}
+                            {isOffensive === 0 && (
+                                <h6 className="text-success isOffensive">
+                                    <strong>
+                                        "
+                                        <i>
+                                            {query.replace(query[0], query[0].toUpperCase())}
+                                        </i>
+                                        "
+                                        is not considered offensive by any sources!
+                                    </strong>
+                                </h6>
+                            )}
+                            {(isOffensive > 0 && isOffensive <= notOffensive) && (
+                                <h6 className="text-warning isOffensive">
+                                    <strong>
+                                        "
+                                        <i>
+                                            {query.replace(query[0], query[0].toUpperCase())}
+                                        </i>
+                                        "
+                                        is considered offensive by some sources...
+                                    </strong>
+                                </h6>
+                            )}
+                            {(isOffensive > notOffensive) && (
+                                <h6 className="text-danger isOffensive">
+                                    <strong>
+                                        "
+                                        <i>
+                                            {query.replace(query[0], query[0].toUpperCase())}
+                                        </i>
+                                        "
+                                        is considered offensive by most sources!
+                                    </strong>
+                                </h6>
+                            )}
+                            <hr />
+                        </div>
+                        <MWDictRes
+                            query={query}
+                            setIsOffensive={setIsOffensive}
+                            setNotOffensive={setNotOffensive}
+                            setPronunciations={setPronunciations}
+                            mp3s={mp3s}
+                            setMp3s={setMp3s}
+                            wavs={wavs}
+                            setWavs={setWavs}
+                            audioLoaded={audioLoaded}
+                            setAudioLoaded={setAudioLoaded}
+                            setHeadWords={setHeadWords}
+                        />
+                        <MWThesRes query={query} />
+                        <WordsApiRhymes query={query} />
+                        <WordsApiFreq query={query} />
+                        <WordAssocRes query={query} />
+                        <br />
+                        <Link
+                            href={"http://www.google.com/search?q=" + query}
+                            target="_blank"
+                            style={{ textDecoration: "none" }}
+                        >
+                            <strong className="flatLinkPurple">
+                                Search Google for "
+                                {query.replace(query[0], query[0].toUpperCase())}
+                                "
+                            </strong>
+                        </Link>
                     </div>
-                    <MWDictRes
-                        query={query}
-                        setIsOffensive={setIsOffensive}
-                        setNotOffensive={setNotOffensive}
-                        setPronunciations={setPronunciations}
-                        mp3s={mp3s}
-                        setMp3s={setMp3s}
-                        wavs={wavs}
-                        setWavs={setWavs}
-                        audioLoaded={audioLoaded}
-                        setAudioLoaded={setAudioLoaded}
-                        setHeadWords={setHeadWords}
-                    />
-                    <MWThesRes query={query} />
-                    <WordsApiRhymes query={query} />
-                    <WordsApiFreq query={query} />
-                    <WordAssocRes query={query} />
-                    <br />
-                    <Link
-                        href={"http://www.google.com/search?q=" + query}
-                        target="_blank"
-                        style={{ textDecoration: "none" }}
-                    >
-                        <strong className="flatLinkPurple">
-                            Search Google for "
-                            {query.replace(query[0], query[0].toUpperCase())}
-                            "
-                        </strong>
-                    </Link>
                 </div>
-            </Container>
+            </div>
             <StickyFooter />
         </div>
     );

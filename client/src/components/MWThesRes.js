@@ -86,7 +86,7 @@ const MWThesRes = props => {
 
                 // updates all pertinent state variables
                 if (resEntries.length === 0)
-                    setError(`No results for "${query.replace(query[0], query[0].toUpperCase())}" from the Merriam-Webster Collegiate Thesaurus...`);
+                    setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Collegiate Thesaurus...`);
                 setEntries(resEntries);
                 setEntriesByType(entryTypes);
                 setLoaded(true);

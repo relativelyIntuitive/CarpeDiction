@@ -74,7 +74,7 @@ const WordsApiRhymes = props => {
 
                 // updates all pertinent state variables
                 if (Object.keys(res.data.rhymes).length === 0)
-                    setError(`No results for rhymes of "${query.replace(query[0], query[0].toUpperCase())}" from Words API...`);
+                    setError(`No results for rhymes of "${query.toLowerCase()}" from Words API...`);
                 setEntry(resEntry);
                 setWords(resWords);
                 setLoaded(true);
@@ -145,7 +145,7 @@ const WordsApiRhymes = props => {
                                         <strong>
                                             &emsp;Words that rhyme with
                                             "
-                                            {query.toLowerCase()}
+                                            {entry.word.toLowerCase()}
                                             " ~ (A-Z):
                                         </strong>
                                     </li>
