@@ -63,6 +63,7 @@ const MWDictRes = props => {
     useEffect(() => {
         Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query + '?key=' + Sensitive.MW_DICT_KEY)
             .then(res => {
+                console.log(res.data)
                 // generates an array of the entries found by the search
                 const resEntries = [];
                 for (const entryKey of Object.keys(res.data)) {
@@ -97,7 +98,7 @@ const MWDictRes = props => {
                     // removes format bracket pairs and leftover references to other entries
                     if (newEntry.et && newEntry.et[0][1]) {
                         newEntry.et[0][1] = newEntry.et[0][1].replace(/\{.*?\}/g, '');
-                        if (newEntry.et[0][1].split(" ").length <= 3)
+                        if (newEntry.et[0][1].split(" ").length <= 4)
                             newEntry.et[0][1] = undefined;
                     }
                     // checks if the type of entry exists in the object and adds it to the appropriate array if so, and creates a new one if not
@@ -438,7 +439,15 @@ const MWDictRes = props => {
                                                                                     {(entry.et && entry.et[0][1]) && (
                                                                                         <>
                                                                                             <br />
-                                                                                            &emsp;{entry.et[0][1]}
+                                                                                            &emsp;
+                                                                                            {entry.et[0][1]}
+                                                                                        </>
+                                                                                    )}
+                                                                                    {(entry.et && entry.et[1] && entry.et[1][1]) && (
+                                                                                        <>
+                                                                                            <br />
+                                                                                            &emsp;*Note:
+                                                                                            {entry.et[1][1]}
                                                                                         </>
                                                                                     )}
                                                                                 </Typography>
