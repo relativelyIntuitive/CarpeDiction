@@ -18,7 +18,7 @@ import Typography from '@material-ui/core/Typography';
 // CSS rulesets
 const useStyles = makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(5),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
