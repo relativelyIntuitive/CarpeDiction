@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        minHeight: '100vh',
     },
 }));
 
@@ -93,9 +94,9 @@ const Detail = props => {
                     <br />
                     <Link
                         to={"/user/account/edit"}
-                        className="flatLink"
+                        className="flatLinkPurple"
                     >
-                        <span className="rIPurple">
+                        <span>
                             <strong>
                                 Edit
                             </strong>
@@ -104,9 +105,9 @@ const Detail = props => {
                     <br />
                     <Link
                         to='/'
-                        className="flatLink"
+                        className="flatLinkPurple"
                     >
-                        <span className="rIPurple">
+                        <span>
                             <strong>
                                 Go Back
                             </strong>

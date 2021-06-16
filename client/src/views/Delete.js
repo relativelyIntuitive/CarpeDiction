@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        minHeight: '100vh',
     },
 }));
 
@@ -76,6 +77,7 @@ const Delete = props => {
                     <Typography
                         component="h1"
                         variant="h5"
+                        className="text-danger"
                     >
                         This&nbsp;
                         <u>
@@ -85,16 +87,18 @@ const Delete = props => {
                     <br />
                     <br />
                     <br />
-                    <Button
-                        onClick={() => navigate("/user/account/edit")}
-                        size="lg"
-                        variant="light"
-                        className="formButt"
-                    >
-                        <strong>
-                            Please, no!
-                        </strong>
-                    </Button>
+                    <Container maxWidth="sm">
+                        <Button
+                            onClick={() => navigate("/user/account/edit")}
+                            size="lg"
+                            variant="light"
+                            className="formButt"
+                        >
+                            <strong>
+                                Please, no!
+                            </strong>
+                        </Button>
+                    </Container>
                     <br />
                     <br />
                     <DeleteButton

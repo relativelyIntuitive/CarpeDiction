@@ -126,7 +126,7 @@ const UserForm = props => {
                                             </strong>
                                         </Typography>
                                     )
-                                ))}
+                                    ))}
                             </Grid>
                         </Grid>
                         <Grid
@@ -145,16 +145,18 @@ const UserForm = props => {
                                 autoComplete="username"
                                 onChange={handleInputChange}
                             />
-                                <Typography
-                                    className="rIPurple"
-                                    variant="body2"
-                                >
-                                    <Container>
-                                        <strong className="mgSmFont">
+                            <Typography
+                                className="rIPurple mgSmFont"
+                                variant="body2"
+                            >
+                                <Container>
+                                    <strong>
+                                        <i>
                                             &ensp;*Username will display on all comments
-                                        </strong>
-                                    </Container>
-                                </Typography>
+                                        </i>
+                                    </strong>
+                                </Container>
+                            </Typography>
                         </Grid>
                         <Grid
                             item
@@ -178,7 +180,9 @@ const UserForm = props => {
                             >
                                 <Container>
                                     <strong>
-                                        &ensp;*Email is for sign-in purposes only
+                                        <i>
+                                            &ensp;*Email is for sign-in purposes only
+                                        </i>
                                     </strong>
                                 </Container>
                             </Typography>
@@ -205,7 +209,9 @@ const UserForm = props => {
                             >
                                 <Container>
                                     <strong>
-                                        &ensp;*Password must contain 8 or more characters with no spaces
+                                        <i>
+                                            &ensp;*Password must contain 8 or more characters with no spaces
+                                        </i>
                                     </strong>
                                 </Container>
                             </Typography>
@@ -232,7 +238,9 @@ const UserForm = props => {
                             >
                                 <Container>
                                     <strong>
-                                        &ensp;*Password can NOT be recovered!
+                                        <i>
+                                            &ensp;*Password can NOT be recovered!
+                                        </i>
                                     </strong>
                                 </Container>
                             </Typography>
@@ -247,12 +255,12 @@ const UserForm = props => {
                         <strong>
                             {formFunc === "Register" && (
                                 <>
-                                    Register
+                                    Register!
                                 </>
                             )}
                             {formFunc === "Update" && (
                                 <>
-                                    Update
+                                    Update!
                                 </>
                             )}
                         </strong>

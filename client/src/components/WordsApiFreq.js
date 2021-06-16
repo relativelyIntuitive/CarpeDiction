@@ -103,7 +103,7 @@ const WordsApiFreq = props => {
                                     (
                                     {(entry && entry.frequency) && (
                                         Object.keys(entry.frequency).length
-                                        )}
+                                    )}
                                     {!(entry && entry.frequency) && (
                                         0
                                     )}

@@ -53,7 +53,7 @@ const NavBar = props => {
     // function to handle logouts
     const handleLogout = () => {
         Axios.get('http://localhost:8000/api/logout', { withCredentials: true })
-        .then(res => {
+            .then(res => {
                 setLogged(null);
                 navigate('/');
             })
@@ -103,7 +103,7 @@ const NavBar = props => {
                         className="sButt"
                         variant="warning"
                         type="submit"
-                        >
+                    >
                         <strong>
                             Search!
                         </strong>
@@ -119,7 +119,7 @@ const NavBar = props => {
                             </i>
                             <Link
                                 to={"/user/account"}
-                                className="flatLink"
+                                className="flatLinkOrange"
                             >
                                 <span className="rIOrange">
                                     <strong>
@@ -158,7 +158,6 @@ const NavBar = props => {
                                         </strong>
                                     </span>
                                 </Link>
-
                                 or&ensp;
                                 <Link
                                     to={"/login"}
@@ -166,7 +165,7 @@ const NavBar = props => {
                                 >
                                     <span className="flatLinkOrange">
                                         <strong>
-                                            Login&nbsp;
+                                            Sign In&nbsp;
                                         </strong>
                                     </span>
                                 </Link>

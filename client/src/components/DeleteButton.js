@@ -17,7 +17,7 @@ const DeleteButton = props => {
     // function to handle logouts
     const handleLogout = () => {
         Axios.get('http://localhost:8000/api/logout', { withCredentials: true })
-        .then(res => {
+            .then(res => {
                 setLogged(null);
                 navigate('/');
             })

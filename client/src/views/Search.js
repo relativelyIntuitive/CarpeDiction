@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
         maxWidth: '100',
+        minHeight: '100vh',
     },
 }));
 

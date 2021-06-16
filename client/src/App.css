@@ -44,10 +44,6 @@ code {
     margin: auto;
 }
 
-.flatLink:hover {
-    text-decoration: none;
-}
-
 .flatLinkMuted {
     color: #6c757d;
     font-size: x-large;
@@ -117,10 +113,25 @@ code {
 
 .mgFormControl {
     background-color: #ffe1a39e;
-    border: 1px solid black;
+}
+
+.mgFormControl:hover {
+    background-color: #ffe1a39e;
+}
+
+.mgFormControl:focus {
+    background-color: #ffe1a39e;
 }
 
 .mgSearchControl {
+    background-color: #ffe1a3;
+}
+
+.mgSearchControl:hover {
+    background-color: #ffe1a3;
+}
+
+.mgSearchControl:focus {
     background-color: #ffe1a3;
 }
 

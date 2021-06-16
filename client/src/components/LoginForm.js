@@ -113,7 +113,7 @@ const LoginForm = props => {
                                         </strong>
                                     </Typography>
                                 )
-                            ))}
+                                ))}
                         </Grid>
                     </Grid>
                     <TextField
@@ -150,7 +150,7 @@ const LoginForm = props => {
                         className="formButt"
                     >
                         <strong>
-                            Sign in
+                            Sign in!
                         </strong>
                     </Button>
                     <br />
