@@ -117,7 +117,7 @@ const LoginForm = props => {
                         </Grid>
                     </Grid>
                     <TextField
-                        className="rIFormControl"
+                        className="mgFormControl"
                         variant="outlined"
                         margin="normal"
                         required
@@ -130,7 +130,7 @@ const LoginForm = props => {
                         onChange={handleInputChange}
                     />
                     <TextField
-                        className="rIFormControl"
+                        className="mgFormControl"
                         variant="outlined"
                         margin="normal"
                         required

@@ -218,8 +218,7 @@ const Search = props => {
                                         <i>
                                             {query.replace(query[0], query[0].toUpperCase())}
                                         </i>
-                                        "
-                                        is not considered offensive by any sources!
+                                        &nbsp;" is not considered offensive by any sources!
                                     </strong>
                                 </h6>
                             )}
@@ -230,8 +229,7 @@ const Search = props => {
                                         <i>
                                             {query.replace(query[0], query[0].toUpperCase())}
                                         </i>
-                                        "
-                                        is considered offensive by some sources...
+                                        &nbsp;" is considered offensive by some sources...
                                     </strong>
                                 </h6>
                             )}
@@ -242,8 +240,7 @@ const Search = props => {
                                         <i>
                                             {query.replace(query[0], query[0].toUpperCase())}
                                         </i>
-                                        "
-                                        is considered offensive by most sources!
+                                        &nbsp;" is considered offensive by most sources!
                                     </strong>
                                 </h6>
                             )}

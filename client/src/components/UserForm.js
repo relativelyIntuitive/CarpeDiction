@@ -134,7 +134,7 @@ const UserForm = props => {
                             xs={12}
                         >
                             <TextField
-                                className="rIFormControl"
+                                className="mgFormControl"
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -161,7 +161,7 @@ const UserForm = props => {
                             xs={12}
                         >
                             <TextField
-                                className="rIFormControl"
+                                className="mgFormControl"
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -173,11 +173,11 @@ const UserForm = props => {
                                 onChange={handleInputChange}
                             />
                             <Typography
-                                className="rIPurple"
+                                className="rIPurple mgSmFont"
                                 variant="body2"
                             >
                                 <Container>
-                                    <strong className="mgSmFont">
+                                    <strong>
                                         &ensp;*Email is for sign-in purposes only
                                     </strong>
                                 </Container>
@@ -188,7 +188,7 @@ const UserForm = props => {
                             xs={12}
                         >
                             <TextField
-                                className="rIFormControl"
+                                className="mgFormControl"
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -200,11 +200,11 @@ const UserForm = props => {
                                 onChange={handleInputChange}
                             />
                             <Typography
-                                className="rIPurple"
+                                className="rIPurple mgSmFont"
                                 variant="body2"
                             >
                                 <Container>
-                                    <strong className="mgSmFont">
+                                    <strong>
                                         &ensp;*Password must contain 8 or more characters with no spaces
                                     </strong>
                                 </Container>
@@ -215,7 +215,7 @@ const UserForm = props => {
                             xs={12}
                         >
                             <TextField
-                                className="rIFormControl"
+                                className="mgFormControl"
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -227,11 +227,11 @@ const UserForm = props => {
                                 onChange={handleInputChange}
                             />
                             <Typography
-                                className="rIOrange"
+                                className="rIOrange mgSmFont text-danger"
                                 variant="body2"
                             >
                                 <Container>
-                                    <strong className="mgSmFont">
+                                    <strong>
                                         &ensp;*Password can NOT be recovered!
                                     </strong>
                                 </Container>

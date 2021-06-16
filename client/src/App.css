@@ -115,6 +115,15 @@ code {
     float: right;
 }
 
+.mgFormControl {
+    background-color: #ffe1a39e;
+    border: 1px solid black;
+}
+
+.mgSearchControl {
+    background-color: #ffe1a3;
+}
+
 .mgInlineBlock {
     display: inline-block;
 }

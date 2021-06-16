@@ -96,7 +96,7 @@ const NavBar = props => {
                     <FormControl
                         type="text"
                         placeholder="Search..."
-                        className="mr-sm-2 sBox"
+                        className="mr-sm-2 sBox mgSearchControl"
                         onChange={handleInputChange}
                     />
                     <Button
