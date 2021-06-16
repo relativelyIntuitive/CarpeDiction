@@ -57,6 +57,8 @@ const Search = props => {
     const [syllables, setSyllables] = useState("");
     const [loaded, setLoaded] = useState(true);
 
+
+    // retrieves the query syllables results and processes them
     useEffect(() => {
         const options = {
             method: 'GET',
@@ -71,6 +73,7 @@ const Search = props => {
             .then(res => {
                 let entry = res.data;
                 let resSyllables = "";
+                // retrieve syllable data
                 if (entry.syllables && entry.syllables.list) {
                     for (let i = 0; i < entry.syllables.list.length; i++) {
                         if (i !== entry.syllables.list.length - 1 && res.data.syllables.list[i+1] !== "") {
@@ -79,9 +82,15 @@ const Search = props => {
                             resSyllables += res.data.syllables.list[i];
                         }
                     }
+                    //update pertinent state variables and reset audio to fix back/forward issue
                     setSyllables(resSyllables);
+                    setAudioLoaded(false);
+                    setAudioLoaded(true);
                 } else {
+                    //update pertinent state variables and reset audio to fix back/forward issue
                     setSyllables("");
+                    setAudioLoaded(false);
+                    setAudioLoaded(true);
                 }
                 setLoaded(true);
             })

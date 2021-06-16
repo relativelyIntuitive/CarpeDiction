@@ -52,6 +52,7 @@ const MWThesRes = props => {
     useEffect(() => {
         Axios.get('https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query + '?key=' + Sensitive.MW_THES_KEY)
             .then(res => {
+                console.log(res)
                 // generates an array of the entries found by the search
                 const resEntries = [];
                 for (const entryKey of Object.keys(res.data)) {
@@ -163,61 +164,46 @@ const MWThesRes = props => {
                                                                     aria-controls="panel1a-content"
                                                                     id="panel1a-header"
                                                                 >
-                                                                    <Grid
-                                                                        container
-                                                                        justify="space-evenly"
-                                                                        alignItems="center"
-                                                                    >
-                                                                        <Grid
-                                                                            item
-                                                                            xs={10}
-                                                                        >
-                                                                            <Typography className={classes.heading}>
-                                                                                <strong>
-                                                                                    <span className="rIOrange">
-                                                                                        :&nbsp;
-                                                                                    </span>
-                                                                                    (
-                                                                                    {entry.shortdef.length}
-                                                                                    )
-                                                                                    <span className="text-muted">
-                                                                                        &emsp;
-                                                                                        {'{'}
-                                                                                        &nbsp;
-                                                                                        {entry.meta.id}
-                                                                                        &nbsp;
-                                                                                        {'}'}
-                                                                                    </span>                                                                                </strong>
-                                                                            </Typography>
-                                                                        </Grid>
-                                                                        <Grid
-                                                                            item
-                                                                            xs={2}
-                                                                        >
+                                                                    <Typography className={classes.heading}>
+                                                                        <strong>
+                                                                            <span className="rIOrange">
+                                                                                :&nbsp;
+                                                                            </span>
+                                                                            (
+                                                                            {entry.shortdef.length}
+                                                                            )
+                                                                            <span className="text-muted">
+                                                                                &emsp;
+                                                                                {'{'}
+                                                                                &nbsp;
+                                                                                {entry.meta.id}
+                                                                                &nbsp;
+                                                                                {'}'}
+                                                                            </span>
                                                                             {(entry.meta.offensive === true) && (
-                                                                                <Typography className={classes.heading}>
-                                                                                    <span className="text-danger isOffensive">
-                                                                                        <strong>
-                                                                                            <i>
-                                                                                                Vulgar?
-                                                                                            </i>
-                                                                                        </strong>
+                                                                                <>
+                                                                                    <span className="rIOrange">
+                                                                                        &nbsp;:&nbsp;
                                                                                     </span>
-                                                                                </Typography>
+                                                                                    <span className="text-danger">
+                                                                                        Offensive?
+                                                                                    </span>
+                                                                                </>
                                                                             )}
                                                                             {(entry.meta.offensive === false) && (
-                                                                                <Typography className={classes.heading}>
-                                                                                    <span className="text-success isOffensive">
-                                                                                        <strong>
-                                                                                            <i>
-                                                                                                Clean!
-                                                                                            </i>
-                                                                                        </strong>
+                                                                                <>
+                                                                                    <span className="rIOrange">
+                                                                                        &nbsp;:&nbsp;
                                                                                     </span>
-                                                                                </Typography>
+                                                                                    <span className="text-success">
+                                                                                        <i>
+                                                                                            Inoffensive!
+                                                                                        </i>
+                                                                                    </span>
+                                                                                </>
                                                                             )}
-                                                                        </Grid>
-                                                                    </Grid>
+                                                                        </strong>
+                                                                    </Typography>
                                                                 </AccordionSummary>
                                                                 <AccordionDetails>
                                                                     <div className={classes.root}>

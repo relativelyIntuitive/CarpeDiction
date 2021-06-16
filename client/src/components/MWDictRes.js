@@ -313,7 +313,7 @@ const MWDictRes = props => {
                                                                                                 &nbsp;:&nbsp;
                                                                                             </span>
                                                                                             <span className="text-danger">
-                                                                                                Vulgar?
+                                                                                                Offensive?
                                                                                             </span>
                                                                                         </>
                                                                                     )}
@@ -324,7 +324,7 @@ const MWDictRes = props => {
                                                                                             </span>
                                                                                             <span className="text-success">
                                                                                                 <i>
-                                                                                                    Clean!
+                                                                                                    Inoffensive!
                                                                                                 </i>
                                                                                             </span>
                                                                                         </>

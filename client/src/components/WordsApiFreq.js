@@ -159,7 +159,7 @@ const WordsApiFreq = props => {
                                             <br />
                                         </>
                                     )}
-                                    {entry.frequency.zipf && (
+                                    {entry.frequency.zipf >= 0 && (
                                         <>
                                             <Typography>
                                                 <i>
@@ -186,7 +186,7 @@ const WordsApiFreq = props => {
                                             <br />
                                         </>
                                     )}
-                                    {entry.frequency.perMillion && (
+                                    {entry.frequency.perMillion >= 0 && (
                                         <>
                                             <Typography>
                                                 <i>
@@ -213,7 +213,7 @@ const WordsApiFreq = props => {
                                             <br />
                                         </>
                                     )}
-                                    {entry.frequency.diversity && (
+                                    {entry.frequency.diversity >= 0 && (
                                         <>
                                             <Typography>
                                                 <i>
@@ -242,7 +242,7 @@ const WordsApiFreq = props => {
                                     )}
                                 </>
                             )}
-                            {error.length > 0 && (
+                            {/* {(error.length > 0 && !entry.frequency) && (
                                 <Typography className="text-danger">
                                     <strong>
                                         <i>
@@ -251,7 +251,7 @@ const WordsApiFreq = props => {
                                         </i>
                                     </strong>
                                 </Typography>
-                            )}
+                            )} */}
                         </div>
                     )}
                 </AccordionDetails>
