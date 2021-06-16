@@ -308,26 +308,24 @@ const MWDictRes = props => {
                                                                                         {'}'}
                                                                                     </span>
                                                                                     {(entry.meta.offensive === true) && (
-                                                                                        <>
+                                                                                        <i className="mgSmFont">
                                                                                             <span className="rIOrange">
                                                                                                 &nbsp;:&nbsp;
                                                                                             </span>
                                                                                             <span className="text-danger">
                                                                                                 Offensive?
                                                                                             </span>
-                                                                                        </>
+                                                                                        </i>
                                                                                     )}
                                                                                     {(entry.meta.offensive === false) && (
-                                                                                        <>
+                                                                                        <i className="mgSmFont">
                                                                                             <span className="rIOrange">
                                                                                                 &nbsp;:&nbsp;
                                                                                             </span>
                                                                                             <span className="text-success">
-                                                                                                <i>
-                                                                                                    Inoffensive!
-                                                                                                </i>
+                                                                                                Inoffensive!
                                                                                             </span>
-                                                                                        </>
+                                                                                        </i>
                                                                                     )}
                                                                                 </strong>
                                                                             </Typography>
