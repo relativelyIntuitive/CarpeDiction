@@ -116,7 +116,9 @@ const Search = props => {
                     <div className={classes.paper}>
                         <div className="resHeading">
                             <h4>
-                                You queried:
+                                <i>
+                                    You queried:
+                                </i>
                             </h4>
                             <h1>
                                 <strong className="qQuotes">
