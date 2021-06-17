@@ -115,7 +115,7 @@ const LinguaCons = props => {
                                     </span>
                                     <i>
                                         <u>
-                                            Verb Conjugations
+                                            Conjugations
                                         </u>
                                     </i>
                                 </strong>
