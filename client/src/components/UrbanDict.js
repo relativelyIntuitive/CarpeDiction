@@ -127,7 +127,12 @@ const UrbanDict = props => {
                             <Typography className={classes.heading}>
                                 <strong>
                                     (
-                                    {entries.length}
+                                    {entries && (
+                                        entries.length
+                                    )}
+                                    {!entries && (
+                                        0
+                                    )}
                                     )
                                     <span className="rIOrange">
                                         &nbsp;-&nbsp;
@@ -210,8 +215,8 @@ const UrbanDict = props => {
                                                     xs={3}
                                                     className="mgTxtRight"
                                                 >
-                                                    <Typography className="mgSmFont">
-                                                        <strong>
+                                                    <Typography>
+                                                        <strong className="mgSmFont">
                                                             <span className="rIOrange">
                                                             </span>
                                                             <span className="text-success">
