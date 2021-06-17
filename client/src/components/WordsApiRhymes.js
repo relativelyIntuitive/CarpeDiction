@@ -86,7 +86,12 @@ const WordsApiRhymes = props => {
                 setPhrases(resPhrases);
                 setLoaded(true);
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+                setError(`No results for rhymes of "${query.toLowerCase()}" from Words API...`);
+                setEntry(null);
+                setLoaded(true);
+            });
     }, [query]);
 
 

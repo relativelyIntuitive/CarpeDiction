@@ -78,7 +78,13 @@ const WordAssocRes = props => {
                 setWords(resWords);
                 setLoaded(true);
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+                setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
+                setEntry(null);
+                setWords(null);
+                setLoaded(true);
+            });
     }, [query]);
 
 

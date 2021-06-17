@@ -77,6 +77,7 @@ const LinguaCons = props => {
                 console.log(err);
                 setError(`No results for conjugations of "${query.toLowerCase()}" from Linguatools Conjugations API...`);
                 setEntry(null);
+                setLoaded(true);
             });
     }, [query]);
 
@@ -114,7 +115,7 @@ const LinguaCons = props => {
                                     </span>
                                     <i>
                                         <u>
-                                            Conjugations
+                                            Verb Conjugations
                                         </u>
                                     </i>
                                 </strong>

@@ -153,7 +153,12 @@ const MWDictRes = props => {
                 setAudioLoaded(true);
                 setLoaded(true);
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+                setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Collegiate Dictionary...`);
+                setEntriesByType(null);
+                setLoaded(true);
+            });
     }, [query, setIsOffensive, setNotOffensive, setPronunciations, setHeadWords, setMp3s, setWavs, setAudioLoaded, setAudioEntries]);
 
 

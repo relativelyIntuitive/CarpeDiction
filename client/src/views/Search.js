@@ -193,9 +193,9 @@ const Search = props => {
                                     <h2>
                                         <strong className="text-muted">
                                             (&nbsp;
-                                            <span className="rIOrange syllables">
+                                            <i className="rIOrange syllables">
                                                 {syllables}
-                                            </span>
+                                            </i>
                                             &nbsp;)
                                         </strong>
                                     </h2>

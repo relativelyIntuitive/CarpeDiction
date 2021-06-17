@@ -86,7 +86,13 @@ const MWThesRes = props => {
                 setEntriesByType(entryTypes);
                 setLoaded(true);
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+                setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Collegiate Thesaurus...`);
+                setEntries(null);
+                setEntriesByType(null);
+                setLoaded(true);
+            });
     }, [query]);
 
 

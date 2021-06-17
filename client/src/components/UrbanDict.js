@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import Axios from '../../../server/node_modules/axios';
-import { Link } from '@reach/router';
 
 import Sensitive from './Sensitive';
 
@@ -63,7 +62,6 @@ const UrbanDict = props => {
         // makes the request
         Axios.request(options)
             .then(res => {
-                console.log(res.data)
                 // generates an array of the entries found by the search
                 const resEntries = [];
                 let definitions = [];
@@ -99,7 +97,12 @@ const UrbanDict = props => {
                 setEntries(resEntries);
                 setLoaded(true);
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err);
+                setError(`No results for "${query.toLowerCase()}" from Urban Dictionary API...`);
+                setEntries(null);
+                setLoaded(true);
+            });
     }, [query]);
 
 
@@ -207,7 +210,7 @@ const UrbanDict = props => {
                                                     xs={3}
                                                     className="mgTxtRight"
                                                 >
-                                                    <Typography>
+                                                    <Typography className="mgSmFont">
                                                         <strong>
                                                             <span className="rIOrange">
                                                             </span>
