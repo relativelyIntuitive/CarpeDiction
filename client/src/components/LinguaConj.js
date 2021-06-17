@@ -63,6 +63,7 @@ const LinguaCons = props => {
         // makes the request
         Axios.request(options)
             .then(res => {
+                console.log(res.data)
                 const resEntry = res.data;
                 // updates all pertinent state variables
                 if (resEntry.result !== 'OK') {

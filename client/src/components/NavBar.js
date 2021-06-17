@@ -74,7 +74,7 @@ const NavBar = props => {
                 className="mr-auto"
                 inline
             >
-                <Navbar.Brand href="/">
+                <Navbar.Brand  className="cdNav" href="/">
                     <img
                         src={cd_icon}
                         width="35"
@@ -92,7 +92,7 @@ const NavBar = props => {
                         </span>
                     </Typography>
                 </Navbar.Brand>
-                <div className="sForm">
+                <div className="sForm cdNav">
                     <FormControl
                         type="text"
                         placeholder="Query..."
@@ -111,7 +111,7 @@ const NavBar = props => {
                 </div>
             </Form>
             <Nav>
-                <Navbar.Text>
+                <Navbar.Text className="cdNav">
                     {logged !== null &&
                         <>
                             <i>

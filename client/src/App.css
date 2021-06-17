@@ -228,7 +228,6 @@ code {
     border-color: #800080;
     box-shadow: 0px 1px 1px #800080 inset, 0px 0px 8px #800080;
     width: auto;
-    /* margin-right: 1rem; */
 }
 
 .sBox:focus {
@@ -240,6 +239,7 @@ code {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    text-align: center;
 }
 
 .sFooter {
@@ -278,7 +278,14 @@ code {
 
 
 /* || Media Queries */
+@media (max-width: 519px) {
+    .cdNav {
+        margin: auto;
+    }
+}
+
 @media (max-width: 576px) {
+
     .chocolate {
         background-image: url('./images/paper_1_portrait.jpg');
     }
