@@ -18,6 +18,7 @@ const useStyles = makeStyles({
         width: '69w',
         margin: 'auto',
         backgroundColor: '#adff2f',
+        border: '2px dashed #800080'
     },
     bullet: {
         display: 'inline-block',
