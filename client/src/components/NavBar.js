@@ -86,12 +86,12 @@ const NavBar = props => {
                             alt="CarpeDiction!"
                         />
                     </Link>
+                    <Typography className="d-inline rIOrange">
+                        <i>
+                            by&nbsp;
+                        </i>
+                    </Typography>
                     <Link href="http://github.com/relativelyIntuitive" target="_blank">
-                        <Typography className="d-inline rIOrange">
-                            <i>
-                                by&nbsp;
-                            </i>
-                        </Typography>
                         <img
                             src={ri_icon}
                             width="30"
