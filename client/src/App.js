@@ -33,7 +33,6 @@ function App() {
         sessionStorage.setItem('logged', JSON.stringify(logged));
     }, [logged]);
 
-
     // returns the app with routes
     return (
         <div className="App">

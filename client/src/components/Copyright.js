@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 const Copyright = () => {
     return (
         <Typography variant="body2">
-            <span className="rIGreen">
+            <span className="rIGreen mgSmFont">
                 <strong>
                     {'Copyright © '}
                     Zachery A. Bielicki

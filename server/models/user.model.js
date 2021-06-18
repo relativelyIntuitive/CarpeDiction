@@ -58,6 +58,7 @@ UserSchema.pre('validate', function (next) {
 // pre hook checks if the password is new, if so it hashes it before saving User data
 // do NOT rewrite this one as arrow either!
 UserSchema.pre('save', function (next) {
+    console.log(this);
     this.emailLower = this.email.toLowerCase();
     this.userNameLower = this.userName.toLowerCase();
     if (!(/^\$2[ayb]\$.{56}$/gm.test(this.password))) {
@@ -74,6 +75,5 @@ UserSchema.pre('save', function (next) {
 
 // generates a mongoose model to export for UserSchema
 const User = mongoose.model("User", UserSchema);
-
 
 module.exports = User;

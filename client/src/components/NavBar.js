@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 import Axios from '../../../server/node_modules/axios';
-import { Link, navigate } from '@reach/router';
+import { navigate } from '@reach/router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import cd_icon from '../images/cd_icon.png';
+import ri_icon from '../images/ri_icon.png';
+import carpe_diction from '../images/carpe_diction.png';
 
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
@@ -14,6 +15,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 
 
 
@@ -74,23 +76,30 @@ const NavBar = props => {
                 className="mr-auto"
                 inline
             >
-                <Navbar.Brand  className="cdNav" href="/">
-                    <img
-                        src={cd_icon}
-                        width="35"
-                        height="35"
-                        className="d-inline-block mr-sm-1 cdNavLogo"
-                        alt="CarpeDiction!"
-                    />
-                    <Typography className="d-inline-block">
-                        <span className="rIGreen">
-                            <strong>
-                                <i>
-                                    CarpeDiction
-                                </i>
-                            </strong>
-                        </span>
-                    </Typography>
+                <Navbar.Brand className="cdNav">
+                    <Link href="/">
+                        <img
+                            src={carpe_diction}
+                            width=""
+                            height="35"
+                            className="d-inline-block mr-sm-1"
+                            alt="CarpeDiction!"
+                        />
+                    </Link>
+                    <Link href="http://github.com/relativelyIntuitive" target="_blank">
+                        <Typography className="d-inline rIOrange">
+                            <i>
+                                by&nbsp;
+                            </i>
+                        </Typography>
+                        <img
+                            src={ri_icon}
+                            width="30"
+                            height="30"
+                            className="d-inline-block mr-sm-1"
+                            alt="rI : "
+                        />
+                    </Link>
                 </Navbar.Brand>
                 <div className="sForm cdNav">
                     <FormControl
@@ -118,8 +127,9 @@ const NavBar = props => {
                                 Signed in as:&nbsp;
                             </i>
                             <Link
-                                to={"/user/account"}
+                                href="/user/account"
                                 className="flatLinkOrange"
+                                style={{ textDecoration: "none" }}
                             >
                                 <span className="rIOrange">
                                     <strong>
@@ -149,8 +159,9 @@ const NavBar = props => {
                             <i>
                                 You are browsing as a guest.&nbsp;
                                 <Link
-                                    to={"/register"}
+                                    href="/register"
                                     className="flatLinkOrange"
+                                    style={{ textDecoration: "none" }}
                                 >
                                     <span className="flatLinkOrange">
                                         <strong>
@@ -160,8 +171,9 @@ const NavBar = props => {
                                 </Link>
                                 or&ensp;
                                 <Link
-                                    to={"/login"}
+                                    href="/login"
                                     className="flatLinkOrange"
+                                    style={{ textDecoration: "none" }}
                                 >
                                     <span className="flatLinkOrange">
                                         <strong>
