@@ -245,9 +245,11 @@ const MWThesRes = props => {
                                                                                                         <span className="rIOrange">
                                                                                                             &emsp;&ensp;*
                                                                                                         </span>
-                                                                                                        <span className="rIPurple">
-                                                                                                            e.g.,&nbsp;
-                                                                                                        </span>
+                                                                                                    </strong>
+                                                                                                    <span className="rIPurple">
+                                                                                                        e.g.,&nbsp;
+                                                                                                    </span>
+                                                                                                    <strong>
                                                                                                         <span className="text-muted">
                                                                                                             "&nbsp;...&nbsp;
                                                                                                             {entry.def[0].sseq[index3][0][1].dt[1][1][0].t}

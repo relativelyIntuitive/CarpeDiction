@@ -97,7 +97,7 @@ const MWDictRes = props => {
                         newHeadWords.push(newEntry.hwi.hw.replace(/(\*+)/g, ''))
                     // removes format bracket pairs and leftover references to other entries from etymology data and it's supplemental note, if present
                     if (newEntry.et && newEntry.et[0][1]) {
-                        newEntry.et[0][1] = newEntry.et[0][1].replace(/et_link\|/g, '');
+                        newEntry.et[0][1] = newEntry.et[0][1].replace(/et_link\|/g, 'see: |');
                         newEntry.et[0][1] = newEntry.et[0][1].replace(/\{....\}/g, '');
                         newEntry.et[0][1] = newEntry.et[0][1].replace(/\{...\}/g, '');
                         newEntry.et[0][1] = newEntry.et[0][1].replace(/\{..\}/g, '');

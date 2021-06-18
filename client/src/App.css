@@ -51,6 +51,10 @@ code {
     font-size: xx-large;
 }
 
+.cdTitle {
+    margin-right: 0.5rem;
+}
+
 .dButt {
     background-color: #343a40;
 }

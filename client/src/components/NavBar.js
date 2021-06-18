@@ -82,11 +82,11 @@ const NavBar = props => {
                             src={carpe_diction}
                             width=""
                             height="40"
-                            className="d-inline-block mr-sm-1"
+                            className="d-inline-block mr-sm-1 cdTitle"
                             alt="CarpeDiction!"
                         />
                     </Link>
-                    <Typography className="d-inline rIOrange">
+                    <Typography className="d-inline rIOrange ml-sm-1">
                         <i>
                             by&nbsp;
                         </i>

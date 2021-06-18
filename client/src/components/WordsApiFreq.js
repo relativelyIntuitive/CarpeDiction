@@ -178,7 +178,10 @@ const WordsApiFreq = props => {
                                                     <br />
                                                     <Container>
                                                         <span className="mgSmFont">
-                                                            &emsp;&emsp;A score indicating how common the word is in the English language, with a range of 1 - 7;
+                                                            <span className="rIOrange">
+                                                                &emsp;&emsp;*&nbsp;
+                                                            </span>
+                                                            A score indicating how common the word is in the English language, with a range of 1 - 7;
                                                         </span>
                                                     </Container>
                                                 </i>
@@ -205,7 +208,10 @@ const WordsApiFreq = props => {
                                                     <br />
                                                     <Container>
                                                         <span className="mgSmFont">
-                                                            &emsp;&emsp;The number of times the word is likely to appear in a corpus of one million English words;
+                                                            <span className="rIOrange">
+                                                                &emsp;&emsp;*&nbsp;
+                                                            </span>
+                                                            The number of times the word is likely to appear in a corpus of one million English words;
                                                         </span>
                                                     </Container>
                                                 </i>
@@ -232,7 +238,10 @@ const WordsApiFreq = props => {
                                                     <br />
                                                     <Container>
                                                         <span className="mgSmFont">
-                                                            &emsp;&emsp;0 - 1 scale the shows the likelyhood of the word appearing in an English document that is part of a corpus;
+                                                            <span className="rIOrange">
+                                                                &emsp;&emsp;*&nbsp;
+                                                            </span>
+                                                            0 - 1 scale the shows the likelyhood of the word appearing in an English document that is part of a corpus;
                                                         </span>
                                                     </Container>
                                                 </i>
