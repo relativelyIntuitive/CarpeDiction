@@ -123,7 +123,7 @@ const Search = props => {
                                 <strong className="qQuotes">
                                     "&nbsp;
                                     <span className="rIPurple resHeading">
-                                        {query.replace(query[0], query[0].toUpperCase())}
+                                        {query.toLowerCase()}
                                     </span>
                                     &nbsp;"
                                 </strong>
@@ -218,7 +218,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i>
-                                            {query.replace(query[0], query[0].toUpperCase())}
+                                            {query.toLowerCase()}
                                         </i>
                                         &nbsp;" is not considered offensive by any official sources!
                                     </strong>
@@ -229,7 +229,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i>
-                                            {query.replace(query[0], query[0].toUpperCase())}
+                                            {query.toLowerCase()}
                                         </i>
                                         &nbsp;" is considered offensive by some official sources...
                                     </strong>
@@ -240,7 +240,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i>
-                                            {query.replace(query[0], query[0].toUpperCase())}
+                                            {query.toLowerCase()}
                                         </i>
                                         &nbsp;" is considered offensive by most official sources!
                                     </strong>
@@ -269,13 +269,25 @@ const Search = props => {
                         <WordAssocRes query={query} />
                         <br />
                         <Link
+                            href={"http://www.wikipedia.com/wiki/" + query}
+                            target="_blank"
+                            style={{ textDecoration: "none" }}
+                        >
+                            <strong className="flatLinkPurple">
+                                Search Wikipedia for "
+                                {query.toLowerCase()}
+                                "
+                            </strong>
+                        </Link>
+                        <br />
+                        <Link
                             href={"http://www.google.com/search?q=" + query}
                             target="_blank"
                             style={{ textDecoration: "none" }}
                         >
                             <strong className="flatLinkPurple">
                                 Search Google for "
-                                {query.replace(query[0], query[0].toUpperCase())}
+                                {query.toLowerCase()}
                                 "
                             </strong>
                         </Link>

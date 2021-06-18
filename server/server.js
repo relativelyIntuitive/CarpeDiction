@@ -48,5 +48,6 @@ setInterval(
     },
     // repeat every 24 hours (expressed in ms)
     86400000
+    // 5 second repeat to uncomment for initial archive population (expressed in ms)
     // 5000
 )
