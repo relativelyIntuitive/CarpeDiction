@@ -88,20 +88,22 @@ const WOTDArchive = props => {
                                                     </i>
                                                 </Link>
                                                 {(words.indexOf(word) !== (words.length - 1)) && (
-                                                    <span className="rIOrange">
-                                                        &ensp;|&nbsp;
-                                                    </span>
+                                                    <strong>
+                                                        <span className="rIOrange">
+                                                            &ensp;|&nbsp;
+                                                        </span>
+                                                    </strong>
                                                 )}
                                             </Typography>
                                         </li>
-                                    ))}
+                            ))}
                                 </ul>
-                            )}
+                    )}
                         </div>
                     )}
                 </AccordionDetails>
             </Accordion>
-        </div>
+        </div >
     );
 }
 

@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        minHeight: '100vh',
     },
 }));
 
@@ -62,8 +61,6 @@ const Main = props => {
                                 // className="d-inline-block mr-sm-1 cdNavLogo"
                                 alt="CarpeDiction!"
                             />
-                            <br />
-                            <br />
                             <p className="cdTagLine">
                                 <strong>
                                     <i>
@@ -71,8 +68,8 @@ const Main = props => {
                                     </i>
                                 </strong>
                             </p>
-                            <br />
                             <WOTDCard />
+                            <hr />
                             <br />
                             <h3 className="rIPurple">
                                 <strong>
@@ -80,7 +77,9 @@ const Main = props => {
                                         <span className="qQuotes">
                                             *&nbsp;
                                         </span>
-                                        A note from the founder
+                                        <u>
+                                            A note from the founder
+                                        </u>
                                         <span className="qQuotes">
                                             &nbsp;*
                                         </span>

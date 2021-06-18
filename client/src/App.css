@@ -36,6 +36,7 @@ code {
 
 .cdAbout {
     background-color: #ffa500;
+    border: 2px solid #800080;
     border-radius: 7px;
     margin-top: 1rem;
     margin-bottom: 3rem;
@@ -46,6 +47,7 @@ code {
 .cdTagLine {
     color: #800080;
     text-shadow: -2px 0 #adff2f, 0 2px #adff2f, 2px 0 #ffa500, 0 -2px #ffa500;
+    margin: 1rem;
     font-size: xx-large;
 }
 
@@ -148,15 +150,15 @@ code {
 }
 
 .mgSearchControl {
-    background-color: #ffe1a3;
+    background-color: #FFE1AF;
 }
 
 .mgSearchControl:hover {
-    background-color: #ffe1a3;
+    background-color: #FFE1AF;
 }
 
 .mgSearchControl:focus {
-    background-color: #ffe1a3;
+    background-color: #FFE1AF;
 }
 
 .mgTxtRight {
@@ -186,6 +188,7 @@ code {
     border: 2px solid #800080;
     margin-top: 0.16rem;
     margin-bottom: 0.16rem;
+    background-color: #ffe2afa1!important;
 }
 
 .rIAccordion:hover {
@@ -197,7 +200,7 @@ code {
 .rIWOTDAccordion {
     border: 2px solid #800080;
     margin-top: 0.16rem;
-    background-color: #ffa500;
+    background-color: #ffe2af!important;
 }
 
 .rIWOTDAccordion:hover {

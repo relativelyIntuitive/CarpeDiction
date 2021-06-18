@@ -15,8 +15,11 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
     root: {
-        width: '69w',
-        margin: 'auto',
+        width: '75%',
+        marginTop: '3rem',
+        marginBottom: '3rem',
+        marginLeft: 'auto',
+        marginRight: 'auto',
         backgroundColor: '#adff2f',
         border: '2px dashed #800080'
     },

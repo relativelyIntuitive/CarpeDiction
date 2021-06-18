@@ -63,6 +63,7 @@ const MWDictRes = props => {
     useEffect(() => {
         Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query + '?key=' + Sensitive.MW_DICT_KEY)
             .then(res => {
+                console.log(res.data)
                 // generates an array of the entries found by the search
                 const resEntries = [];
                 for (const entryKey of Object.keys(res.data)) {

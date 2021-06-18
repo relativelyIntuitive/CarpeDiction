@@ -81,7 +81,7 @@ const NavBar = props => {
                         <img
                             src={carpe_diction}
                             width=""
-                            height="35"
+                            height="40"
                             className="d-inline-block mr-sm-1"
                             alt="CarpeDiction!"
                         />
@@ -94,8 +94,8 @@ const NavBar = props => {
                     <Link href="http://github.com/relativelyIntuitive" target="_blank">
                         <img
                             src={ri_icon}
-                            width="30"
-                            height="30"
+                            width="25"
+                            height="25"
                             className="d-inline-block mr-sm-1"
                             alt="rI : "
                         />
