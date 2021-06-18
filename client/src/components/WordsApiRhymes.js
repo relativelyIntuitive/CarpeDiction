@@ -176,9 +176,11 @@ const WordsApiRhymes = props => {
                                                     </i>
                                                 </Link>
                                                 {(words.indexOf(word) !== (words.length - 1)) && (
+                                                    <strong>
                                                     <span className="rIOrange">
-                                                        &ensp;|&nbsp;
+                                                        &nbsp;|&nbsp;
                                                     </span>
+                                                </strong>
                                                 )}
                                             </Typography>
                                         </li>
@@ -209,9 +211,11 @@ const WordsApiRhymes = props => {
                                                     </i>
                                                 </Link>
                                                 {(phrases.indexOf(phrase) !== (phrases.length - 1)) && (
-                                                    <span className="rIOrange">
-                                                        &ensp;|&nbsp;
-                                                    </span>
+                                                    <strong>
+                                                        <span className="rIOrange">
+                                                            &nbsp;|&nbsp;
+                                                        </span>
+                                                    </strong>
                                                 )}
                                             </Typography>
                                         </li>

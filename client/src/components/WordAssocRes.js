@@ -169,9 +169,11 @@ const WordAssocRes = props => {
                                                     </i>
                                                 </Link>
                                                 {(words.indexOf(word) !== (words.length - 1)) && (
-                                                    <span className="rIOrange">
-                                                        &nbsp;|&nbsp;
-                                                    </span>
+                                                    <strong>
+                                                        <span className="rIOrange">
+                                                            &nbsp;|&nbsp;
+                                                        </span>
+                                                    </strong>
                                                 )}
                                             </Typography>
                                         </li>
