@@ -45,7 +45,8 @@ const MWDictRes = props => {
         setWavs,
         audioLoaded,
         setAudioLoaded,
-        setHeadWords } = props;
+        setHeadWords,
+        setSpellings } = props;
 
     // generates CSS rulesets
     const classes = useStyles();
@@ -64,27 +65,33 @@ const MWDictRes = props => {
         Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query + '?key=' + Sensitive.MW_DICT_KEY)
             .then(res => {
                 console.log(res.data)
-                // generates an array of the entries found by the search
+                // generates an array of the entries found by the search or an array of spellcheck suggestion if no entries found
                 const resEntries = [];
+                const newSpellings = [];
                 for (const entryKey of Object.keys(res.data)) {
-                    if (res.data[entryKey].fl !== undefined)
+                    if (res.data[entryKey].fl !== undefined) {
                         resEntries.push(res.data[entryKey]);
+                    } else {
+                        newSpellings.push(res.data[entryKey]);
+                    }
                 }
                 setEntries(resEntries);
+                setSpellings(newSpellings);
 
                 // generates an object with key for each type of entry found and values containing arrays of entries matching the type
                 const entryTypes = {}
                 // local offensive counters to manipulate and push their sums to overall offensive score
                 let isOffensive = 0;
                 let notOffensive = 0;
-                let newPronunciations = [];
                 let newHeadWords = [];
+                let newPronunciations = [];
                 let newAudioEntries = [];
                 let newMp3s = {};
                 let newWavs = {};
 
                 // processes each entry retrieved
                 for (const entry of resEntries) {
+                    console.log(entry)
                     // variables to hold entry data
                     const newEntry = entry;
                     // tallies offensive entries
@@ -94,7 +101,7 @@ const MWDictRes = props => {
                         newPronunciations.push(newEntry.hwi.prs[0].mw);
                     // gathers headwords if present
                     if (newEntry.hwi && newEntry.hwi.hw && !newHeadWords.includes(newEntry.hwi.hw))
-                        newHeadWords.push(newEntry.hwi.hw.replace(/(\*+)/g, ''))
+                        newHeadWords.push(newEntry.hwi.hw.replace(/(\*+)/g, ''));
                     // removes format bracket pairs and leftover references to other entries from etymology data and it's supplemental note, if present
                     if (newEntry.et && newEntry.et[0][1]) {
                         newEntry.et[0][1] = newEntry.et[0][1].replace(/et_link\|/g, 'see: |');

@@ -57,6 +57,7 @@ const Search = props => {
     const [mp3s, setMp3s] = useState({});
     const [wavs, setWavs] = useState({});
     const [headWords, setHeadWords] = useState([]);
+    const [spellings, setSpellings] = useState([]);
     const [syllables, setSyllables] = useState("");
     const [loaded, setLoaded] = useState(true);
 
@@ -151,6 +152,41 @@ const Search = props => {
                                                                 </>
                                                             )}
                                                             {!(headWords.indexOf(headWord) !== (headWords.length - 1)) && (
+                                                                <>
+                                                                    ;
+                                                                </>
+                                                            )}
+                                                        </i>
+                                                    </strong>
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </>
+                            )}
+                            {spellings.length > 0 && (
+                                <>
+                                    <h5 className="text-muted">
+                                        Did you mean...
+                                    </h5>
+                                    <ul className="inlineList topList">
+                                        {spellings.map((spelling, index) => (
+                                            <li
+                                                key={index}
+                                                className="mgInlineBlock"
+                                            >
+                                                <Link href={`/search/${spelling}`} style={{ textDecoration: 'none' }}>
+                                                    <strong className="flatLinkMuted">
+                                                        <i>
+                                                            &nbsp;"
+                                                            {spelling}
+                                                            "
+                                                            {(spellings.indexOf(spelling) !== (spellings.length - 1)) && (
+                                                                <>
+                                                                    ,
+                                                                </>
+                                                            )}
+                                                            {!(spellings.indexOf(spelling) !== (spellings.length - 1)) && (
                                                                 <>
                                                                     ;
                                                                 </>
@@ -260,6 +296,7 @@ const Search = props => {
                             audioLoaded={audioLoaded}
                             setAudioLoaded={setAudioLoaded}
                             setHeadWords={setHeadWords}
+                            setSpellings={setSpellings}
                         />
                         <MWThesRes query={query} />
                         <UrbanDict query={query} />
