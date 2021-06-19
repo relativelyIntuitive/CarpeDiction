@@ -19,6 +19,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         margin: 'auto',
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 // Comments displays all comments for the query and allows the user to post if they are logged in
 const Comments = props => {
 
-    // retrieves search variables from props
+    // retrieves search and logged variables from props
     const { query,
         logged } = props;
 
@@ -150,6 +151,7 @@ const Comments = props => {
         // refresh page
         navigate('/search/' + query);
     }
+
 
     // returns a list of comments if found and an input field if the user is logged in
     return (
@@ -514,5 +516,6 @@ const Comments = props => {
         </>
     );
 }
+
 
 export default Comments;

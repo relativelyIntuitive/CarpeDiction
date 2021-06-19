@@ -14,7 +14,6 @@ body {
 }
 
 
-
 /* || .CLASS Selectors */
 
 .chocolate {
@@ -27,7 +26,6 @@ body {
     padding-top: 1rem;
     padding-bottom: 3rem;
 }
-
 
 .cdAbout {
     background-color: #ffa500;
@@ -87,7 +85,6 @@ body {
 .dButt {
     background-color: #343a40;
 }
-
 
 .filling {
     margin: auto;
@@ -409,8 +406,6 @@ body {
     font-size: large;
     word-break: break-all;
 }
-
-/* || #ID Selectors */
 
 
 /* || Media Queries */

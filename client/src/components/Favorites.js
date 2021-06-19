@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -38,7 +39,7 @@ const Favorites = props => {
     const classes = useStyles();
 
 
-    // returns a material UI accordion component displaying the rWOTD archive
+    // returns a material UI accordion component displaying the user's favorites list
     return (
         <div className={classes.root}>
             <Accordion className="rIWOTDAccordion">
@@ -90,5 +91,6 @@ const Favorites = props => {
         </div >
     );
 }
+
 
 export default Favorites;

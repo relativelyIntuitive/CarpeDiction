@@ -13,7 +13,7 @@ const CommentSchema = new mongoose.Schema({
         minlength: [50, "*Your comment is too short, write something insightful!"],
         maxlength: [601, "*Comments must no longer than 600 characters!"],
         validate: {
-            validator: val => (val.replace(/\s/g, '').length > 50 && val.split(" ").length >  8),
+            validator: val => (val.replace(/\s/g, '').length > 50 && val.split(" ").length > 8),
             message: "*Your comment is too short! Write something that will contribute to the discussion!"
         }
     },

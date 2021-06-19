@@ -7,6 +7,8 @@ import fav_icon_gray from '../images/fav_icon_gray.png';
 import fav_icon_orange from '../images/fav_icon_orange.png';
 
 import Comments from '../components/Comments';
+// disabled for now due to 429 error...retry in a month or so maybe a bad useEffect ran up the limit...
+// import DeepTrans from '../components/DeepTrans';
 import LinguaConj from '../components/LinguaConj';
 import MWDictRes from '../components/MWDictRes';
 import MWThesRes from '../components/MWThesRes';
@@ -24,10 +26,11 @@ import { Divider } from "@material-ui/core";
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Sensitive from '../components/Sensitive';
+import Typography from '@material-ui/core/Typography';
 
 
 
-// CSS rulesets
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -48,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-// Main view is the homepage
+// Search view returns search results
 const Search = props => {
 
     // retrieves the logged state variables from props
@@ -75,6 +78,7 @@ const Search = props => {
 
     // retrieves the query syllables results and processes them
     useEffect(() => {
+        // sets the options for the request through Rapid API
         const options = {
             method: 'GET',
             url: `https://wordsapiv1.p.rapidapi.com/words/${query}/syllables`,
@@ -84,6 +88,7 @@ const Search = props => {
             }
         };
 
+        // makes the request
         Axios.request(options)
             .then(res => {
                 let entry = res.data;
@@ -125,6 +130,7 @@ const Search = props => {
             });
     };
 
+    // toggles favorite status on query
     const handleFavs = () => {
         if (!logged.favs.includes(query.toLowerCase())) {
             logged.favs.push(query.toLowerCase());
@@ -363,6 +369,11 @@ const Search = props => {
                                     </strong>
                                 </h6>
                             )}
+                            <Typography className="text-muted">
+                                <i>
+                                    ( some results may take a moment to update )
+                                </i>
+                            </Typography>
                             <Divider
                                 variant="fullWidth"
                                 className={classes.divider}
@@ -386,6 +397,7 @@ const Search = props => {
                         <UrbanDict query={query} />
                         <WordsApiRhymes query={query} />
                         <LinguaConj query={query} />
+                        {/* <DeepTrans query={query} /> */}
                         <WordsApiFreq query={query} />
                         <WordAssocRes query={query} />
                         <br />
@@ -423,5 +435,6 @@ const Search = props => {
         </div>
     );
 };
+
 
 export default Search;

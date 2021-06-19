@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-// MWDictRes retrieves and displays query results from the Merriam-Webster Collegiate Dictionary API
+// WordAssocRes retrieves and displays a list of related words from Word Associations API 
 const WordAssocRes = props => {
 
     // retrieves search variables from props
@@ -65,7 +66,7 @@ const WordAssocRes = props => {
         Axios.request(options)
             .then(res => {
                 const resEntry = res.data;
-                // generates an array of the entries found by the search
+                // generates an array of the word found by the search
                 const resWords = [];
                 for (const resWord in res.data.associations_scored) {
                     resWords.push(`${resWord} : ${res.data.associations_scored[resWord].toString().split(".")[0]}%`)
@@ -88,7 +89,7 @@ const WordAssocRes = props => {
     }, [query]);
 
 
-    // returns a material UI accordion component displaying the results from the MW dictionary API
+    // returns a material UI accordion component displaying the results from Word Associations API
     return (
         <div className={classes.root}>
             <Accordion className="rIAccordion">
@@ -201,5 +202,6 @@ const WordAssocRes = props => {
         </div>
     );
 }
+
 
 export default WordAssocRes;

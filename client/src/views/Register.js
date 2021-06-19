@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 
-// CSS rulesets
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -51,7 +51,6 @@ const Register = props => {
         if (logged !== null)
             navigate('/');
     });
-
 
     // API post function; to be passed down to the RegForm
     const createUser = user => {

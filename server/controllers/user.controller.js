@@ -223,5 +223,3 @@ module.exports.login = (req, res) => {
         })
         .catch(err => res.status(401).json(err));
 };
-
-module.exports.like

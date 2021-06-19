@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 
-// CSS rulesets
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -51,7 +51,6 @@ const Update = props => {
             navigate('/login');
     });
 
-
     // retrieves the User and updates the state variables with its info
     useEffect(() => {
         Axios.get('http://localhost:8000/api/users/' + localUser._id, { withCredentials: true })
@@ -64,7 +63,6 @@ const Update = props => {
                     navigate('/login');
             });
     }, [localUser, setUser, setLoaded]);
-
 
     // updates the User's data with the new data
     const updateUser = user => {
@@ -118,5 +116,6 @@ const Update = props => {
         </div>
     );
 };
+
 
 export default Update;

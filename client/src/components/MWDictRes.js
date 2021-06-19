@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -58,7 +59,6 @@ const MWDictRes = props => {
     const [audioEntries, setAudioEntries] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [error, setError] = useState("");
-
 
 
     // retrieves the query results and saves them
@@ -509,5 +509,6 @@ const MWDictRes = props => {
         </div>
     );
 }
+
 
 export default MWDictRes;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Axios from '../../../server/node_modules/axios';
 import { navigate } from '@reach/router';
@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         margin: 'auto',
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 // ImportExportFavs displays all comments for the query and allows the user to post if they are logged in
 const ImportExportFavs = props => {
 
-    // retrieves user data from props
+    // retrieves user data and setLogged function from props
     const { user,
         setLogged } = props;
 
@@ -47,7 +48,6 @@ const ImportExportFavs = props => {
 
     // state variables to handle comments
     const [imports, setImports] = useState([]);
-    const [errors, setErrors] = useState([]);
     const [exportErrors, setExportErrors] = useState([]);
     const [importErrors, setImportErrors] = useState([]);
 
@@ -132,10 +132,6 @@ const ImportExportFavs = props => {
                         </i>
                     </strong>
                 </h2>
-                {/* <Divider
-                    variant="fullWidth"
-                    className={classes.divider}
-                /> */}
                 <form
                     className={classes.root}
                     noValidate
@@ -235,5 +231,6 @@ const ImportExportFavs = props => {
         </>
     );
 }
+
 
 export default ImportExportFavs;

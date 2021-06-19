@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles({
     root: {
         width: '75%',
@@ -31,6 +32,7 @@ const useStyles = makeStyles({
 });
 
 
+// WOTDCard retrieves and displays WOTD and archive accordion
 const WOTDCard = () => {
 
     // generates CSS rulesets
@@ -40,6 +42,7 @@ const WOTDCard = () => {
     const [word, setWord] = useState("");
     const [def, setDef] = useState("");
     const [loaded, setLoaded] = useState(false);
+
 
     // retrieves the WOTD data
     useEffect(() => {
@@ -55,6 +58,8 @@ const WOTDCard = () => {
             .catch(err => console.log(err));
     }, [setDef, setWord])
 
+
+    // returns WOTD card with archive accordion
     return (
         <Card className={classes.root}>
             <CardContent>
@@ -112,5 +117,6 @@ const WOTDCard = () => {
         </Card>
     );
 }
+
 
 export default WOTDCard;

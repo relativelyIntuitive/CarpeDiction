@@ -17,10 +17,7 @@ module.exports.post = (req, res) => {
                 },
             });
         })
-        .catch(err => {
-            console.log(err)
-            res.status(400).json(err)
-        });
+        .catch(err => res.status(401).json(err));
 };
 
 
@@ -70,6 +67,7 @@ module.exports.updateComment = (req, res) => {
         })
         .catch(err => res.status(401).json(err));
 };
+
 
 // deletes the comment via it's ID
 module.exports.deleteComment = (req, res) => {

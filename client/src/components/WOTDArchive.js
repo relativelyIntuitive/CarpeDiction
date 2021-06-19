@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -52,7 +53,7 @@ const WOTDArchive = props => {
     }, [setWords, setLoaded]);
 
 
-    // returns a material UI accordion component displaying the rWOTD archive
+    // returns a material UI accordion component displaying the WOTD archive
     return (
         <div className={classes.root}>
             <Accordion className="rIWOTDAccordion">
@@ -106,5 +107,6 @@ const WOTDArchive = props => {
         </div >
     );
 }
+
 
 export default WOTDArchive;

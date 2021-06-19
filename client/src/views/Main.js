@@ -16,7 +16,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
-// CSS rulesets
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -47,6 +47,7 @@ const Main = props => {
     // generates CSS rulesets
     const classes = useStyles();
 
+
     // returns the homepage
     return (
         <div className={classes.root}>
@@ -65,7 +66,6 @@ const Main = props => {
                                 src={carpe_diction}
                                 width="100%"
                                 height=""
-                                // className="d-inline-block mr-sm-1 cdNavLogo"
                                 alt="CarpeDiction!"
                             />
                             <p className="cdTagLine">
@@ -121,7 +121,7 @@ const Main = props => {
                                         target="_blank"
                                         href="http://bitcoinfaq.io"
                                         className="flatLinkPurple"
-                                        style={{ textDecoration: "none"}}
+                                        style={{ textDecoration: "none" }}
                                     >
                                         &gt; Learn about Cryptocurrecy here! &lt;
                                     </Link>
@@ -184,5 +184,6 @@ const Main = props => {
         </div>
     );
 };
+
 
 export default Main;

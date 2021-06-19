@@ -9,7 +9,7 @@ module.exports = {
   // and webpack starts bundling
   output: {
     // options related to how webpack emits results
-    path:path.resolve(__dirname, "dist"), // string (default)
+    path: path.resolve(__dirname, "dist"), // string (default)
     // the target directory for all output files
     // must be an absolute path (use the Node.js path module)
     filename: "[name].js", // string (default)
@@ -63,10 +63,10 @@ module.exports = {
         // which are an array of conditions.
         issuer: /\.css$/,
         issuer: path.resolve(__dirname, "app"),
-        issuer: { and: [ /\.css$/, path.resolve(__dirname, "app") ] },
-        issuer: { or: [ /\.css$/, path.resolve(__dirname, "app") ] },
-        issuer: { not: [ /\.css$/ ] },
-        issuer: [ /\.css$/, path.resolve(__dirname, "app") ], // like "or"
+        issuer: { and: [/\.css$/, path.resolve(__dirname, "app")] },
+        issuer: { or: [/\.css$/, path.resolve(__dirname, "app")] },
+        issuer: { not: [/\.css$/] },
+        issuer: [/\.css$/, path.resolve(__dirname, "app")], // like "or"
         // conditions for the issuer (the origin of the import)
         /* Advanced conditions (click to show) */
 
@@ -110,7 +110,7 @@ module.exports = {
   resolve: {
     // options for resolving module requests
     // (does not apply to resolving of loaders)
-    modules: ["node_modules",path.resolve(__dirname, "app")],
+    modules: ["node_modules", path.resolve(__dirname, "app")],
     // directories where to look for modules (in order)
     extensions: [".js", ".json", ".jsx", ".css"],
     // extensions that are used
@@ -136,7 +136,7 @@ module.exports = {
     hints: "warning", // enum
     maxAssetSize: 200000, // int (in bytes),
     maxEntrypointSize: 400000, // int (in bytes)
-    assetFilter: function(assetFilename) {
+    assetFilter: function (assetFilename) {
       // Function predicate that provides asset filenames
       return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
     }

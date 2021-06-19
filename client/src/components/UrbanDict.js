@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -255,12 +256,12 @@ const UrbanDict = props => {
                                                             <br />
                                                             {(entry.example && entry.example[index2]) && (
                                                                 <i>
-                                                                        <span className="rIOrange">
-                                                                            &emsp;&ensp;*
-                                                                        </span>
-                                                                        <span className="rIPurple">
-                                                                            e.g.,&nbsp;
-                                                                        </span>
+                                                                    <span className="rIOrange">
+                                                                        &emsp;&ensp;*
+                                                                    </span>
+                                                                    <span className="rIPurple">
+                                                                        e.g.,&nbsp;
+                                                                    </span>
                                                                     <strong>
                                                                         <span className="text-muted">
                                                                             "&nbsp;...&nbsp;
@@ -297,5 +298,6 @@ const UrbanDict = props => {
         </div>
     );
 }
+
 
 export default UrbanDict;

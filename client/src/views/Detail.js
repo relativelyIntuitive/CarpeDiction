@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
-// CSS rulesets
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -60,7 +60,6 @@ const Detail = props => {
             navigate('/login');
     });
 
-
     // retrieves the User data
     useEffect(() => {
         Axios.get("http://localhost:8000/api/users/" + localUser._id, { withCredentials: true })
@@ -75,7 +74,7 @@ const Detail = props => {
     }, [localUser, setUser, setLoaded]);
 
 
-    // returns the User account details screen
+    // returns the User account screen
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -144,7 +143,7 @@ const Detail = props => {
                                     <br />
                                     <Favorites user={user} />
                                     <ImportExportFavs
-                                        user={user} 
+                                        user={user}
                                         setLogged={setLogged}
                                     />
                                 </>
@@ -157,5 +156,6 @@ const Detail = props => {
         </div>
     );
 };
+
 
 export default Detail;

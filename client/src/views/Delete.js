@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
-// CSS rulesets
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -112,5 +112,6 @@ const Delete = props => {
         </div>
     );
 };
+
 
 export default Delete;

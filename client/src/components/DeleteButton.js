@@ -29,7 +29,7 @@ const DeleteButton = props => {
     };
 
 
-    // deletes the User and executes function to remove them from DOM
+    // deletes the User
     const deleteUser = e => {
         Axios.delete('http://localhost:8000/api/users/' + logged._id, { withCredentials: true })
             .then(res => {
@@ -42,6 +42,7 @@ const DeleteButton = props => {
             });
     };
 
+    // deletes the Comment
     const deleteComment = e => {
         Axios.delete('http://localhost:8000/api/comments/delete/' + comment._id, { withCredentials: true })
             .then(res => {
@@ -84,5 +85,6 @@ const DeleteButton = props => {
         </>
     );
 };
+
 
 export default DeleteButton;

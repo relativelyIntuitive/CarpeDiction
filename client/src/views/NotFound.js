@@ -4,13 +4,15 @@ import { navigate } from '@reach/router';
 
 
 
-const Main = props => {
+// redirects to home page for all unhandled URLs
+const NotFound = props => {
 
     // redirects to home
     useEffect(() => {
         navigate('/');
     });
 
+    // returns null element
     return (
         <>
         </>
@@ -18,4 +20,4 @@ const Main = props => {
 };
 
 
-export default Main;
+export default NotFound;

@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -177,10 +178,10 @@ const WordsApiRhymes = props => {
                                                 </Link>
                                                 {(words.indexOf(word) !== (words.length - 1)) && (
                                                     <strong>
-                                                    <span className="rIOrange">
-                                                        &nbsp;|&nbsp;
-                                                    </span>
-                                                </strong>
+                                                        <span className="rIOrange">
+                                                            &nbsp;|&nbsp;
+                                                        </span>
+                                                    </strong>
                                                 )}
                                             </Typography>
                                         </li>
@@ -239,5 +240,6 @@ const WordsApiRhymes = props => {
         </div>
     );
 }
+
 
 export default WordsApiRhymes;

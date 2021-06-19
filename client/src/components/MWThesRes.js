@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-// MWDictRes retrieves and displays query results from the Merriam-Webster Collegiate Dictionary API
+// MWThesRes retrieves and displays query results from the Merriam-Webster Collegiate Thesaurus API
 const MWThesRes = props => {
 
     // retrieves search variables from props
@@ -97,7 +98,7 @@ const MWThesRes = props => {
     }, [query]);
 
 
-    // returns a material UI accordion component displaying the results from the MW dictionary API
+    // returns a material UI accordion component displaying the results from the MW Thesaurus API
     return (
         <div className={classes.root}>
             <Accordion className="rIAccordion">
@@ -380,5 +381,6 @@ const MWThesRes = props => {
         </div>
     );
 }
+
 
 export default MWThesRes;

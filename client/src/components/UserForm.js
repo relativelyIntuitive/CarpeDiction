@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
-// CSS rulesets
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(5),
@@ -336,5 +336,6 @@ const UserForm = props => {
         </Container>
     );
 };
+
 
 export default UserForm;

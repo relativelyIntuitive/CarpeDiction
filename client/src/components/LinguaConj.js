@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 
+// defines style rulesets for Material UI components
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -210,5 +211,6 @@ const LinguaCons = props => {
         </div>
     );
 }
+
 
 export default LinguaCons;
