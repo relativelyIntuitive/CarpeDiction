@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import Axios from '../../../server/node_modules/axios';
+import { navigate } from '@reach/router';
+
+import like_icon_purple from '../images/like_icon_purple.png';
+import like_icon_orange from '../images/like_icon_orange.png';
 
 import DeleteButton from '../components/DeleteButton';
 
@@ -69,6 +73,8 @@ const Comments = props => {
                 setErrors([]);
             })
             .catch(err => {
+                if (err.response.status === 401)
+                    navigate('/login');
                 const errorResponse = err.response.data.errors;
                 const errorArr = [];
                 for (const key of Object.keys(errorResponse)) {
@@ -78,11 +84,22 @@ const Comments = props => {
             });
     }
 
+    const updateComment = comment => {
+        Axios.put('http://localhost:8000/api/comments/update/', comment, { withCredentials: true })
+            .then(res => {
+            })
+            .catch(err => {
+                if (err.response.status === 401)
+                    navigate('/login');
+            });
+    }
+
     // handler to update comment on input change
     const handleInputChange = e => {
         setNewComment({
             query: query,
             user: logged._id,
+            creator: logged.userName,
             [e.target.name]: e.target.value,
         });
     };
@@ -97,6 +114,18 @@ const Comments = props => {
         postComment(newComment);
     };
 
+    const handleLikes = (comment) => {
+        if (!comment.likers.includes(logged._id)) {
+            comment.likers.push(logged._id);
+        } else {
+            const index = comment.likers.indexOf(logged._id);
+            comment.likers.splice(index, index + 1);
+        }
+        // favorite the word
+        updateComment(comment);
+        // refresh page
+        navigate('/search/' + query);
+    }
 
     // returns a list of comments if found and an input field if the user is logged in
     return (
@@ -172,7 +201,7 @@ const Comments = props => {
                                             &ensp;@
                                         </span>
                                         <i className="rIPurple">
-                                            {comment.user.userName}
+                                            {comment.creator}
                                         </i>
                                     </h5>
                                     <p className="cdParagraph">
@@ -187,25 +216,78 @@ const Comments = props => {
                                         >
                                             <Grid
                                                 item
-                                                xs={9}
+                                                xs={6}
                                             >
                                                 <i className="text-muted">
                                                     ~
                                                     {comment.createdAt.split("T")[0]}
                                                 </i>
                                             </Grid>
-                                            {(comment.user !== null) && (logged !== null) && (comment.user._id === logged._id) && (
-                                                <Grid
-                                                    item
-                                                    xs={3}
-                                                    className="mgTxtRight"
-                                                >
+                                            <Grid
+                                                item
+                                                xs={6}
+                                                className="mgTxtRight"
+                                            >
+                                                <Typography className="rIPurple">
+                                                    <strong>
+                                                        <i>
+                                                            {comment.likers.length}
+                                                            &nbsp;Likes
+                                                        </i>
+                                                    </strong>
+                                                </Typography>
+                                                {(logged !== null) && (comment.creator === logged.userName) && (
                                                     <DeleteButton
                                                         buttFunc={'comment'}
                                                         comment={comment}
                                                     />
-                                                </Grid>
-                                            )}
+                                                )}
+                                                {(logged !== null) && (comment.creator !== logged.userName) && (!comment.likers.includes(logged._id)) && (
+                                                    <Button
+                                                        variant="outline-warning"
+                                                        className="cdLikeIcon"
+                                                        onClick={() => handleLikes(comment)}
+                                                    >
+                                                        <img
+                                                            src={like_icon_purple}
+                                                            width=""
+                                                            height="25"
+                                                            className="d-inline-block mr-sm-1 cdTitle"
+                                                            alt="Like!"
+                                                        />
+                                                    </Button>
+                                                )}
+                                                {(logged !== null) && (comment.creator !== logged.userName) && (comment.likers.includes(logged._id)) && (
+                                                    <Button
+                                                        variant="outline-warning"
+                                                        className="cdLikeIcon"
+                                                        onClick={() => handleLikes(comment)}
+                                                    >
+                                                        <img
+                                                            src={like_icon_orange}
+                                                            width=""
+                                                            height="25"
+                                                            className="d-inline-block mr-sm-1 cdTitle"
+                                                            alt="Unlike!"
+                                                        />
+                                                    </Button>
+                                                )}
+                                                {logged === null && (
+                                                    <Button
+                                                        variant="outline-warning"
+                                                        className="cdLikeIcon"
+                                                        onClick={() => navigate("/login")}
+                                                    >
+                                                        <img
+                                                            src={like_icon_purple}
+                                                            width=""
+                                                            height="25"
+                                                            className="d-inline-block mr-sm-1 cdTitle"
+                                                            alt="Like!!"
+                                                        />
+                                                    </Button>
+                                                )}
+                                            </Grid>
                                         </Grid>
                                     </p>
                                     <Divider

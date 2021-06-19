@@ -103,7 +103,6 @@ module.exports.updateUser = (req, res) => {
                             // retrieves and updates the queried User after verifying uniqueness of submitted data
                             User.findById(req.body._id)
                                 .then(userToUpdate => {
-                                    console.log(req.body)
                                     if (req.body.userName.replace(/\s/g, '').length)
                                         userToUpdate.userName = req.body.userName;
                                     if (req.body.email.replace(/\s/g, '').length)

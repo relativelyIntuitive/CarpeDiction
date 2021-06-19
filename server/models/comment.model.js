@@ -23,16 +23,11 @@ const CommentSchema = new mongoose.Schema({
     },
     creator: {
         type: String,
-    }
+    },
+    likers: {
+        type: [String],
+    },
 }, { timestamps: true });
-
-
-// pre hook saves extra field for username copy, so the name remains available even if the user deletes their account
-// do NOT rewrite this one as arrow either!
-CommentSchema.pre('save', function (next) {
-    this.creator = this.user.userName
-    next();
-});
 
 
 // generates a mongoose model to export for UserSchema

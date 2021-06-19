@@ -68,7 +68,7 @@ const Update = props => {
 
     // updates the User's data with the new data
     const updateUser = user => {
-        Axios.put('http://localhost:8000/api/users/' + logged._id, user, { withCredentials: true })
+        Axios.put('http://localhost:8000/api/users/', user, { withCredentials: true })
             .then(res => {
                 setLogged(res.data.user);
                 navigate("/user/account");

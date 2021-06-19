@@ -7,5 +7,6 @@ const CommentController = require('../controllers/comment.controller'),
 module.exports = function (app) {
     app.get('/api/comments/retrieve/:query', CommentController.retrieve);
     app.post('/api/comments/post', authenticate, CommentController.post);
+    app.put('/api/comments/update/', authenticate, CommentController.updateComment);
     app.delete('/api/comments/delete/:id', authenticate, CommentController.deleteComment);
 };

@@ -13,11 +13,12 @@ module.exports.post = (req, res) => {
                     query: comment.query,
                     content: comment.content,
                     user: comment.user,
+                    creator: comment.creator,
                 },
             });
         })
         .catch(err => {
-            console.log(err.errors)
+            console.log(err)
             res.status(400).json(err)
         });
 };
@@ -31,6 +32,32 @@ module.exports.retrieve = (req, res) => {
             comments: comments,
         }))
         .catch(err => res.status(400).json(err));
+};
+
+
+// updates one comment via their ID
+module.exports.updateComment = (req, res) => {
+    Comment.findById(req.body._id)
+        .then(commentToUpdate => {
+            if (req.body.likers)
+                commentToUpdate.likers = req.body.likers;
+            // saves the changes to the updated comment
+            commentToUpdate.save()
+                .then(updatedComment => {
+                    res.json({
+                        msg: "Comment updated successfully!",
+                        user: {
+                            _id: updatedComment._id,
+                            query: updatedComment.query,
+                            creator: updatedComment.creator,
+                            content: updatedComment.content,
+                            likers: updatedComment.likers,
+                        }
+                    })
+                })
+                .catch(err => res.status(400).json(err));
+        })
+        .catch(err => res.status(401).json(err));
 };
 
 // deletes the comment via it's ID

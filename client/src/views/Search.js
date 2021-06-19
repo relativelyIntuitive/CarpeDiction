@@ -121,18 +121,15 @@ const Search = props => {
             });
     };
 
-    const favHandler = () => {
+    const handleFavs = () => {
         if (!logged.favs.includes(query)) {
             logged.favs.push(query);
         } else {
             const index = logged.favs.indexOf(query);
             logged.favs.splice(index, index + 1);
         }
-        console.log(logged)
         // favorite the word
         updateUser(logged);
-        // refresh page
-        navigate('/search/' + query);
     }
 
     // returns the homepage
@@ -166,7 +163,7 @@ const Search = props => {
                             {logged === null && (
                                 <Button
                                     variant="outline-warning"
-                                    className="rIOrange"
+                                    className="cdFavIcon"
                                     onClick={() => navigate("/login")}
                                 >
                                     <img
@@ -181,9 +178,9 @@ const Search = props => {
                             {(logged !== null) && (logged.favs !== undefined) && !(logged.favs.includes(query)) && (
                                 <Button
                                     variant="outline-warning"
-                                    className="rIOrange cdFavIcon"
+                                    className="cdFavIcon"
                                     type="submit"
-                                    onClick={() => favHandler()}
+                                    onClick={() => handleFavs()}
                                 >
                                     <img
                                         src={fav_icon_gray}
@@ -197,8 +194,8 @@ const Search = props => {
                             {(logged !== null) && (logged.favs !== undefined) && (logged.favs.includes(query)) && (
                                 <Button
                                     variant="outline-dark"
-                                    className="rIGray cdFavIcon"
-                                    onClick={() => favHandler()}
+                                    className="cdFavIcon"
+                                    onClick={() => handleFavs()}
                                 >
                                     <img
                                         src={fav_icon_orange}

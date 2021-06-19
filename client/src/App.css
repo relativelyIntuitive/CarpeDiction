@@ -62,6 +62,11 @@ body {
     border-radius: 15px;
 }
 
+.cdLikeIcon {
+    border: 3px solid #800080;
+    box-shadow: 0px 0px 1px #adff2f inset, 0px 0px 8px #adff2f;
+}
+
 .cdTagLine {
     color: #800080;
     text-shadow: -2px 0 #adff2f, 0 2px #adff2f, 2px 0 #ffa500, 0 -2px #ffa500;
