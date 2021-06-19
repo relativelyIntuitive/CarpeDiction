@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Axios from '../../../server/node_modules/axios';
-import { navigate } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ri_icon from '../images/ri_icon.png';
@@ -15,7 +15,6 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 
 
 
@@ -45,7 +44,7 @@ const NavBar = props => {
         if (softQuery !== query) {
             setAudioLoaded(false);
             setSyllables("");
-            setQuery(softQuery);
+            setQuery(softQuery.toLowerCase());
             // if query is present, redirect to search view, passing along the query
             if (softQuery !== undefined && softQuery.replace(/\s/g, '').length)
                 navigate('/search/' + softQuery);
@@ -77,7 +76,7 @@ const NavBar = props => {
                 inline
             >
                 <Navbar.Brand className="cdNav">
-                    <Link href="/">
+                    <Link to="/">
                         <img
                             src={carpe_diction}
                             width=""
@@ -85,13 +84,11 @@ const NavBar = props => {
                             className="d-inline-block mr-sm-1 cdTitle"
                             alt="CarpeDiction!"
                         />
-                    </Link>
-                    <Typography className="d-inline rIOrange ml-sm-1">
-                        <i>
-                            by&nbsp;
-                        </i>
-                    </Typography>
-                    <Link href="http://github.com/relativelyIntuitive" target="_blank">
+                        <Typography className="d-inline rIOrange ml-sm-1">
+                            <i>
+                                by&nbsp;
+                            </i>
+                        </Typography>
                         <img
                             src={ri_icon}
                             width="25"
@@ -127,7 +124,7 @@ const NavBar = props => {
                                 Signed in as:&nbsp;
                             </i>
                             <Link
-                                href="/user/account"
+                                to="/user/account"
                                 className="flatLinkOrange"
                                 style={{ textDecoration: "none" }}
                             >
@@ -159,7 +156,7 @@ const NavBar = props => {
                             <i>
                                 You are browsing as a guest.&nbsp;
                                 <Link
-                                    href="/register"
+                                    to="/register"
                                     className="flatLinkOrange"
                                     style={{ textDecoration: "none" }}
                                 >
@@ -171,7 +168,7 @@ const NavBar = props => {
                                 </Link>
                                 or&ensp;
                                 <Link
-                                    href="/login"
+                                    to="/login"
                                     className="flatLinkOrange"
                                     style={{ textDecoration: "none" }}
                                 >

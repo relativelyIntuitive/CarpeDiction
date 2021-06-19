@@ -6,7 +6,7 @@ const WOTD = require("../models/wotd.model");
 module.exports.add = (req, res) => {
     WOTD.findOne({ word: req.body.word })
         .then(word => {
-            if (word == null) {
+            if (word === null) {
                 WOTD.create(req.body)
                     .then(wotdNew => {
                         res.json({

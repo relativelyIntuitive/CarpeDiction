@@ -72,7 +72,7 @@ const WOTDCard = () => {
                     <>
                         <Typography
                             className="rIPurple"
-                            variant="h4"
+                            variant="h5"
                             component="h2"
                         >
                             <strong className="qQuotes">
@@ -84,8 +84,7 @@ const WOTDCard = () => {
                             </strong>
                         </Typography>
                         <Typography
-                            variant="body2"
-                            variant="h5"
+                            variant="h6"
                             component="h3"
                             className="rIGrey"
                         >

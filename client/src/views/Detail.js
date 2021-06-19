@@ -66,7 +66,7 @@ const Detail = props => {
                 if (err.response.status === 401)
                     navigate('/login');
             });
-    }, [localUser]);
+    }, [localUser, setUser, setLoaded]);
 
 
     // returns the User account details screen
@@ -85,6 +85,7 @@ const Detail = props => {
                         <>
                             <p>Username: {user.userName}</p>
                             <p>Email: {user.email}</p>
+                            <p>Favs: {user.favs}</p>
                         </>
                     )}
                     <br />

@@ -64,14 +64,13 @@ const MWDictRes = props => {
     useEffect(() => {
         Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query + '?key=' + Sensitive.MW_DICT_KEY)
             .then(res => {
-                console.log(res.data)
                 // generates an array of the entries found by the search or an array of spellcheck suggestion if no entries found
                 const resEntries = [];
                 const newSpellings = [];
                 for (const entryKey of Object.keys(res.data)) {
                     if (res.data[entryKey].fl !== undefined) {
                         resEntries.push(res.data[entryKey]);
-                    } else {
+                    } else if (!res.data[entryKey].hwi) {
                         newSpellings.push(res.data[entryKey]);
                     }
                 }
@@ -91,7 +90,6 @@ const MWDictRes = props => {
 
                 // processes each entry retrieved
                 for (const entry of resEntries) {
-                    console.log(entry)
                     // variables to hold entry data
                     const newEntry = entry;
                     // tallies offensive entries
@@ -167,7 +165,7 @@ const MWDictRes = props => {
                 setEntriesByType(null);
                 setLoaded(true);
             });
-    }, [query, setIsOffensive, setNotOffensive, setPronunciations, setHeadWords, setMp3s, setWavs, setAudioLoaded, setAudioEntries]);
+    }, [query, setIsOffensive, setNotOffensive, setPronunciations, setHeadWords, setMp3s, setWavs, setAudioLoaded, setAudioEntries, setSpellings]);
 
 
     // returns a material UI accordion component displaying the results from the MW dictionary API

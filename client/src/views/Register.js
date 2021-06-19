@@ -42,7 +42,7 @@ const Register = props => {
         userName: "",
         email: "",
         password: "",
-        passwordConf: ""
+        passwordConf: "",
     };
 
 

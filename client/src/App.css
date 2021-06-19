@@ -7,18 +7,12 @@
 
 /* || <TAG> Selectors */
 
-/* body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+body {
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
 
 
 /* || .CLASS Selectors */
@@ -34,14 +28,38 @@ code {
     padding-bottom: 3rem;
 }
 
+
 .cdAbout {
     background-color: #ffa500;
     border: 2px solid #800080;
     border-radius: 7px;
-    margin-top: 1rem;
-    margin-bottom: 3rem;
-    padding: 0.7rem;
+    width: 95%;
+    padding: 1rem;
+    word-break: normal;
     text-align: start;
+    margin-top: 0.3rem;
+    margin-bottom: 0.7em;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.cdParagraph {
+    background-color: #ffe2af;
+    border: 2px solid #800080;
+    border-radius: 7px;
+    width: 100%;
+    padding: 1rem;
+    word-break: normal;
+    text-align: start;
+    margin-top: 0.3rem;
+    margin-bottom: 0.7em;
+}
+
+.cdFavIcon {
+    border: 3px solid #800080;
+    box-shadow: 0px 0px 1px #adff2f inset, 0px 0px 8px #adff2f;
+    margin-bottom: 1rem;
+    border-radius: 15px;
 }
 
 .cdTagLine {
@@ -55,9 +73,16 @@ code {
     margin-right: 0.5rem;
 }
 
+.commentBox {
+    width: 100%;
+    background-color: #ffe2af!important;
+    margin-bottom: 0.5rem!important;
+}
+
 .dButt {
     background-color: #343a40;
 }
+
 
 .filling {
     margin: auto;
@@ -95,9 +120,22 @@ code {
     text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
 }
 
+.flatLinkRedirect {
+    color: #800080;
+    text-decoration: none;
+    font-size: larger;
+}
+
+.flatLinkRedirect:hover {
+    text-decoration: none;
+    color: #adff2f;
+    text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
+}
+
 .flatLinkWOTD {
     color: #800080;
     text-decoration: none;
+    font-size: larger;
 }
 
 .flatLinkWOTD:hover {
@@ -112,6 +150,7 @@ code {
     border: 3px solid #800080;
     border-radius: 7px;
     width: 100%;
+    margin: auto;
 }
 
 .formButt:focus {
@@ -202,13 +241,13 @@ code {
 }
 
 .rIWOTDAccordion {
-    border: 2px solid #800080;
+    border: 2px solid #800080!important;
     margin-top: 0.16rem;
     background-color: #ffe2af!important;
 }
 
 .rIWOTDAccordion:hover {
-    border: 2px solid #ffa500;
+    border: 2px solid #ffa500!important;
     margin-top: 0.3rem;
 }
 

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 
-// defines the model for Users
+// defines the model for WOTDs
 const WOTDSchema = new mongoose.Schema({
     word: {
         type: String,
@@ -15,7 +15,7 @@ const WOTDSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-// generates a mongoose model to export for UserSchema
+// generates a mongoose model to export for WOTDSchema
 const WOTD = mongoose.model("WOTD", WOTDSchema);
 
 module.exports = WOTD;

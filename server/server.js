@@ -26,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 // imports routes to express app
 require('./routes/user.routes')(app);
 require('./routes/wotd.routes')(app);
+require('./routes/comment.routes')(app);
 
 
 // scrapes a random WOTD every 24 hours and saves it to the db

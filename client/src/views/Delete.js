@@ -102,6 +102,7 @@ const Delete = props => {
                         successCallback={() => navigate("/")}
                         logged={logged}
                         setLogged={setLogged}
+                        buttFunc={'user'}
                     />
                 </ div>
             </div>

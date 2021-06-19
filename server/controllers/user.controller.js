@@ -32,6 +32,7 @@ module.exports.register = (req, res) => {
                                                     _id: userNew._id,
                                                     userName: userNew.userName,
                                                     email: userNew.email,
+                                                    favs: userNew.favs,
                                                 }
                                             });
                                     })
@@ -82,6 +83,7 @@ module.exports.getUser = (req, res) => {
                 _id: user._id,
                 userName: user.userName,
                 email: user.email,
+                favs: user.favs,
             }
         }))
         .catch(err => res.status(401).json(err));
@@ -101,6 +103,7 @@ module.exports.updateUser = (req, res) => {
                             // retrieves and updates the queried User after verifying uniqueness of submitted data
                             User.findById(req.body._id)
                                 .then(userToUpdate => {
+                                    console.log(req.body)
                                     if (req.body.userName.replace(/\s/g, '').length)
                                         userToUpdate.userName = req.body.userName;
                                     if (req.body.email.replace(/\s/g, '').length)
@@ -109,6 +112,8 @@ module.exports.updateUser = (req, res) => {
                                         userToUpdate.password = req.body.password;
                                     if (req.body.passwordConf && req.body.passwordConf.replace(/\s/g, '').length)
                                         userToUpdate.passwordConf = req.body.passwordConf;
+                                    if (req.body.favs)
+                                        userToUpdate.favs = req.body.favs;
                                     // saves the changes to the updated User
                                     userToUpdate.save()
                                         .then(updatedUser => {
@@ -118,6 +123,7 @@ module.exports.updateUser = (req, res) => {
                                                     _id: updatedUser._id,
                                                     userName: updatedUser.userName,
                                                     email: updatedUser.email,
+                                                    favs: updatedUser.favs,
                                                 }
                                             })
                                         })
@@ -199,6 +205,7 @@ module.exports.login = (req, res) => {
                                         _id: user._id,
                                         userName: user.userName,
                                         email: user.email,
+                                        favs: user.favs,
                                     }
                                 });
                         } else {
@@ -217,3 +224,5 @@ module.exports.login = (req, res) => {
         })
         .catch(err => res.status(401).json(err));
 };
+
+module.exports.like

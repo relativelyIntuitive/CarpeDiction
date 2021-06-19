@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 import Axios from '../../../server/node_modules/axios';
+import { navigate } from '@reach/router';
 
+import fav_icon_gray from '../images/fav_icon_gray.png';
+import fav_icon_orange from '../images/fav_icon_orange.png';
+
+import Comments from '../components/Comments';
 import LinguaConj from '../components/LinguaConj';
 import MWDictRes from '../components/MWDictRes';
 import MWThesRes from '../components/MWThesRes';
@@ -11,6 +16,8 @@ import UrbanDict from '../components/UrbanDict';
 import WordsApiRhymes from '../components/WordsApiRhymes';
 import WordsApiFreq from '../components/WordsApiFreq';
 import WordAssocRes from '../components/WordAssocRes';
+
+import { Button } from 'react-bootstrap';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
@@ -99,7 +106,34 @@ const Search = props => {
                 setLoaded(true);
             })
             .catch(err => console.log(err));
-    }, [query, setAudioLoaded])
+    }, [query, setAudioLoaded, logged])
+
+    // updates the User's data with the new data
+    const updateUser = newUser => {
+        Axios.put('http://localhost:8000/api/users/' + logged._id, newUser, { withCredentials: true })
+            .then(res => {
+                setLogged(res.data.user);
+            })
+            .catch(err => {
+                console.log(err)
+                if (err.response.status === 401)
+                    navigate('/login');
+            });
+    };
+
+    const favHandler = () => {
+        if (!logged.favs.includes(query)) {
+            logged.favs.push(query);
+        } else {
+            const index = logged.favs.indexOf(query);
+            logged.favs.splice(index, index + 1);
+        }
+        console.log(logged)
+        // favorite the word
+        updateUser(logged);
+        // refresh page
+        navigate('/search/' + query);
+    }
 
     // returns the homepage
     return (
@@ -124,11 +158,57 @@ const Search = props => {
                                 <strong className="qQuotes">
                                     "&nbsp;
                                     <span className="rIPurple resHeading">
-                                        {query.toLowerCase()}
+                                        {query}
                                     </span>
                                     &nbsp;"
                                 </strong>
                             </h1>
+                            {logged === null && (
+                                <Button
+                                    variant="outline-warning"
+                                    className="rIOrange"
+                                    onClick={() => navigate("/login")}
+                                >
+                                    <img
+                                        src={fav_icon_gray}
+                                        width="35"
+                                        height="35"
+                                        className="d-inline-block"
+                                        alt="Favorite?"
+                                    />
+                                </Button>
+                            )}
+                            {(logged !== null) && (logged.favs !== undefined) && !(logged.favs.includes(query)) && (
+                                <Button
+                                    variant="outline-warning"
+                                    className="rIOrange cdFavIcon"
+                                    type="submit"
+                                    onClick={() => favHandler()}
+                                >
+                                    <img
+                                        src={fav_icon_gray}
+                                        width="35"
+                                        height="35"
+                                        className="d-inline-block"
+                                        alt="Favorite?"
+                                    />
+                                </Button>
+                            )}
+                            {(logged !== null) && (logged.favs !== undefined) && (logged.favs.includes(query)) && (
+                                <Button
+                                    variant="outline-dark"
+                                    className="rIGray cdFavIcon"
+                                    onClick={() => favHandler()}
+                                >
+                                    <img
+                                        src={fav_icon_orange}
+                                        width="35"
+                                        height="35"
+                                        className="d-inline-block"
+                                        alt="Favorited!"
+                                    />
+                                </Button>
+                            )}
                             {headWords.length > 0 && (
                                 <>
                                     <h5 className="text-muted">
@@ -188,7 +268,7 @@ const Search = props => {
                                                             )}
                                                             {!(spellings.indexOf(spelling) !== (spellings.length - 1)) && (
                                                                 <>
-                                                                    ;
+                                                                    ...?
                                                                 </>
                                                             )}
                                                         </i>
@@ -254,7 +334,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i>
-                                            {query.toLowerCase()}
+                                            {query}
                                         </i>
                                         &nbsp;" is not considered offensive by any official sources!
                                     </strong>
@@ -265,7 +345,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i>
-                                            {query.toLowerCase()}
+                                            {query}
                                         </i>
                                         &nbsp;" is considered offensive by some official sources...
                                     </strong>
@@ -276,7 +356,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i>
-                                            {query.toLowerCase()}
+                                            {query}
                                         </i>
                                         &nbsp;" is considered offensive by most official sources!
                                     </strong>
@@ -310,9 +390,9 @@ const Search = props => {
                             target="_blank"
                             style={{ textDecoration: "none" }}
                         >
-                            <strong className="flatLinkPurple">
+                            <strong className="flatLinkRedirect">
                                 Search Wikipedia for "
-                                {query.toLowerCase()}
+                                {query}
                                 "
                             </strong>
                         </Link>
@@ -321,13 +401,18 @@ const Search = props => {
                             href={"http://www.google.com/search?q=" + query}
                             target="_blank"
                             style={{ textDecoration: "none" }}
+                            className="mb-sm-3"
                         >
-                            <strong className="flatLinkPurple">
+                            <strong className="flatLinkRedirect">
                                 Search Google for "
-                                {query.toLowerCase()}
+                                {query}
                                 "
                             </strong>
                         </Link>
+                        <Comments
+                            query={query}
+                            logged={logged}
+                        />
                     </div>
                 </div>
             </div>

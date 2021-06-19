@@ -63,7 +63,7 @@ const Update = props => {
                 if (err.response.status === 401)
                     navigate('/login');
             });
-    }, [localUser]);
+    }, [localUser, setUser, setLoaded]);
 
 
     // updates the User's data with the new data

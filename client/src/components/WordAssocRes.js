@@ -109,7 +109,12 @@ const WordAssocRes = props => {
                             <Typography className={classes.heading}>
                                 <strong>
                                     (
-                                    {words.length}
+                                    {(words && words.length) && (
+                                        words.length
+                                    )}
+                                    {!(words && words.length) && (
+                                        0
+                                    )}
                                     )
                                     <span className="rIOrange">
                                         &nbsp;-&nbsp;
@@ -145,7 +150,7 @@ const WordAssocRes = props => {
                 <AccordionDetails>
                     {loaded && (
                         <div className={classes.root}>
-                            {(words.length > 0 && entry.associations_scored) && (
+                            {(words !== null && words.length > 0 && entry.associations_scored) && (
                                 <ul className="inlineList">
                                     <li className="mgInlineBlock text-muted">
                                         <Typography>
