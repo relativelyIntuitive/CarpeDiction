@@ -154,7 +154,9 @@ const WordAssocRes = props => {
                                             <strong>
                                                 &emsp;Related words / similarity score for&nbsp;
                                                 "
-                                                {query.toLowerCase()}
+                                                <span className="mgWordBreak">
+                                                    {query.toLowerCase()}
+                                                </span>
                                                 ":
                                             </strong>
                                         </Typography>
@@ -183,7 +185,7 @@ const WordAssocRes = props => {
                                 </ul>
                             )}
                             {words.length === 0 && (
-                                <Typography className="text-danger">
+                                <Typography className="text-danger mgWordBreak">
                                     <strong>
                                         <i>
                                             &emsp;

@@ -252,7 +252,7 @@ const WordsApiFreq = props => {
                                 </>
                             )}
                             {(error.length > 0 && entry === null) && (
-                                <Typography className="text-danger">
+                                <Typography className="text-danger mgWordBreak">
                                     <strong>
                                         <i>
                                             &emsp;

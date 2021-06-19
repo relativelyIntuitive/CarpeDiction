@@ -35,6 +35,17 @@ module.exports.retrieve = (req, res) => {
 };
 
 
+// retrieves the top 3 comments for the query
+module.exports.getTops = (req, res) => {
+    Comment.find({ query: req.params.query }).sort({ likers: -1 }).limit(3).sort({ _id: -1 }).populate('user')
+        .then(comments => res.json({
+            msg: "Top comments retrieved successfully!",
+            comments: comments,
+        }))
+        .catch(err => res.status(400).json(err));
+};
+
+
 // updates one comment via their ID
 module.exports.updateComment = (req, res) => {
     Comment.findById(req.body._id)

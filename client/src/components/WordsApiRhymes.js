@@ -223,7 +223,7 @@ const WordsApiRhymes = props => {
                                 </ul>
                             )}
                             {words.length === 0 && (
-                                <Typography className="text-danger">
+                                <Typography className="text-danger mgWordBreak">
                                     <strong>
                                         <i>
                                             &emsp;

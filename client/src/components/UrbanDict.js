@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
+        wordBreak: 'break-all',
     },
     paper: {
         marginTop: theme.spacing(8),
@@ -122,7 +123,7 @@ const UrbanDict = props => {
                     >
                         <Grid
                             item
-                            xs={6}
+                            xs={7}
                         >
                             <Typography className={classes.heading}>
                                 <strong>
@@ -147,7 +148,7 @@ const UrbanDict = props => {
                         </Grid>
                         <Grid
                             item
-                            xs={6}
+                            xs={5}
                             className="mgTxtRight"
                         >
                             <Typography className={classes.heading}>
@@ -157,7 +158,7 @@ const UrbanDict = props => {
                                             ...&nbsp;
                                         </span>
                                         <span className="text-danger">
-                                            results may be offensive!
+                                            may be offensive!
                                         </span>
                                     </i>
                                 </strong>
@@ -172,7 +173,7 @@ const UrbanDict = props => {
                                 entries.map((entry, index) => (
                                     <Accordion
                                         key={index}
-                                        className="rIAccordion"
+                                        className="rIInnerAccordion"
                                     >
                                         <AccordionSummary
                                             expandIcon={<ExpandMoreIcon />}
@@ -254,13 +255,13 @@ const UrbanDict = props => {
                                                             <br />
                                                             {(entry.example && entry.example[index2]) && (
                                                                 <i>
-                                                                    <strong>
                                                                         <span className="rIOrange">
                                                                             &emsp;&ensp;*
                                                                         </span>
                                                                         <span className="rIPurple">
                                                                             e.g.,&nbsp;
                                                                         </span>
+                                                                    <strong>
                                                                         <span className="text-muted">
                                                                             "&nbsp;...&nbsp;
                                                                             {entry.example[index2]}
@@ -280,7 +281,7 @@ const UrbanDict = props => {
                                 ))
                             )}
                             {(error.length > 1 && entries.length < 1) && (
-                                <Typography className="text-danger">
+                                <Typography className="text-danger mgWordBreak">
                                     <strong>
                                         <i>
                                             &emsp;

@@ -96,9 +96,9 @@ const WOTDArchive = props => {
                                                 )}
                                             </Typography>
                                         </li>
-                            ))}
+                                    ))}
                                 </ul>
-                    )}
+                            )}
                         </div>
                     )}
                 </AccordionDetails>

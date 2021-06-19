@@ -78,7 +78,9 @@ const Delete = props => {
                     >
                         This&nbsp;
                         <u>
-                            cannot
+                            <i>
+                                cannot
+                            </i>
                         </u>
                         &nbsp;be undone!</Typography>
                     <br />

@@ -101,6 +101,15 @@ const UserForm = props => {
                         </strong>
                     </span>
                 </Typography>
+                <br />
+                <Link
+                    to='/'
+                    className="flatLinkPurple"
+                >
+                    <i>
+                        ( Nevermind... )
+                    </i>
+                </Link>
                 <form
                     onSubmit={handleSubmit}
                     className={classes.form}

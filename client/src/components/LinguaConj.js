@@ -153,7 +153,9 @@ const LinguaCons = props => {
                                                     &emsp;
                                                     Conjugations of:
                                                     "
-                                                    {query.toLowerCase()}
+                                                    <span className="mgWordBreak">
+                                                        {query.toLowerCase()}
+                                                    </span>
                                                     "
                                                 </strong>
                                             </Typography>
@@ -192,7 +194,7 @@ const LinguaCons = props => {
                                 </>
                             )}
                             {(error.length > 0 && entry === null) && (
-                                <Typography className="text-danger">
+                                <Typography className="text-danger mgWordBreak">
                                     <strong>
                                         <i>
                                             &emsp;

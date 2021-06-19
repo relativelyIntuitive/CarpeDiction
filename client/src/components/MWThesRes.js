@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
+        wordBreak: 'break-all',
     },
     paper: {
         marginTop: theme.spacing(8),
@@ -81,14 +82,14 @@ const MWThesRes = props => {
 
                 // updates all pertinent state variables
                 if (resEntries.length === 0)
-                    setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Collegiate Thesaurus...`);
+                    setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Thesaurus...`);
                 setEntries(resEntries);
                 setEntriesByType(entryTypes);
                 setLoaded(true);
             })
             .catch(err => {
                 console.log(err);
-                setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Collegiate Thesaurus...`);
+                setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Thesaurus...`);
                 setEntries(null);
                 setEntriesByType(null);
                 setLoaded(true);
@@ -115,7 +116,7 @@ const MWThesRes = props => {
                             </span>
                             <i>
                                 <u>
-                                    Merriam-Webster Collegiate Thesaurus
+                                    Merriam-Webster Thesaurus
                                 </u>
                             </i>
                         </strong>
@@ -157,7 +158,7 @@ const MWThesRes = props => {
                                                         entriesByType[type].map((entry, index2) => (
                                                             <Accordion
                                                                 key={index2}
-                                                                className="rIAccordion"
+                                                                className="rIInnerAccordion"
                                                             >
                                                                 <AccordionSummary
                                                                     expandIcon={<ExpandMoreIcon />}
@@ -362,7 +363,7 @@ const MWThesRes = props => {
                                     ))
                                 )}
                                 {entries.length === 0 && (
-                                    <Typography className="text-danger">
+                                    <Typography className="text-danger mgWordBreak">
                                         <strong>
                                             <i>
                                                 &emsp;

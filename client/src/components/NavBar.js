@@ -53,10 +53,10 @@ const NavBar = props => {
 
     // function to handle logouts
     const handleLogout = () => {
+        navigate('/');
         Axios.get('http://localhost:8000/api/logout', { withCredentials: true })
             .then(res => {
                 setLogged(null);
-                navigate('/');
             })
             .catch(err => console.log(err));
     };

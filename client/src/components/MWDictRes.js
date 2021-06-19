@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
+        wordBreak: 'break-all',
     },
     paper: {
         marginTop: theme.spacing(8),
@@ -147,7 +148,7 @@ const MWDictRes = props => {
                 }
                 // updates all pertinent state variables
                 if (resEntries.length === 0)
-                    setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Collegiate Dictionary...`);
+                    setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Dictionary...`);
                 setIsOffensive(isOffensive);
                 setNotOffensive(notOffensive);
                 setPronunciations(newPronunciations);
@@ -161,7 +162,7 @@ const MWDictRes = props => {
             })
             .catch(err => {
                 console.log(err);
-                setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Collegiate Dictionary...`);
+                setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Dictionary...`);
                 setEntriesByType(null);
                 setLoaded(true);
             });
@@ -184,7 +185,7 @@ const MWDictRes = props => {
                     >
                         <Grid
                             item
-                            xs={9}
+                            xs={10}
                         >
                             <Typography className={classes.heading}>
                                 <strong>
@@ -196,7 +197,7 @@ const MWDictRes = props => {
                                     </span>
                                     <i>
                                         <u>
-                                            Merriam-Webster Collegiate Dictionary
+                                            Merriam-Webster Dictionary
                                         </u>
                                     </i>
                                 </strong>
@@ -205,7 +206,7 @@ const MWDictRes = props => {
                         {audioEntries.length > 0 && (
                             <Grid
                                 item
-                                xs={3}
+                                xs={2}
                                 className="mgTxtRight"
                             >
                                 <Typography className={classes.heading}>
@@ -215,7 +216,7 @@ const MWDictRes = props => {
                                                 +
                                             </span>
                                             <span className="rIPurple">
-                                                &nbsp;Audio
+                                                &nbsp;♪
                                                 (
                                                 {audioEntries.length}
                                                 )
@@ -278,7 +279,7 @@ const MWDictRes = props => {
                                                                         +
                                                                     </span>
                                                                     <span className="rIPurple">
-                                                                        &nbsp;Audio
+                                                                        &nbsp;♪
                                                                         (
                                                                         {entriesByType[type].hasAudio}
                                                                         )
@@ -296,7 +297,7 @@ const MWDictRes = props => {
                                                     entriesByType[type].entries.map((entry, index2) => (
                                                         <Accordion
                                                             key={index2}
-                                                            className="rIAccordion"
+                                                            className="rIInnerAccordion"
                                                         >
                                                             <AccordionSummary
                                                                 expandIcon={<ExpandMoreIcon />}
@@ -364,7 +365,7 @@ const MWDictRes = props => {
                                                                                             +
                                                                                         </span>
                                                                                         <span className="rIPurple">
-                                                                                            &nbsp;Audio!
+                                                                                            &nbsp;♪
                                                                                         </span>
                                                                                     </i>
                                                                                 </strong>
@@ -492,7 +493,7 @@ const MWDictRes = props => {
                                 ))
                             )}
                             {entries.length === 0 && (
-                                <Typography className="text-danger">
+                                <Typography className="text-danger mgWordBreak">
                                     <strong>
                                         <i>
                                             &emsp;

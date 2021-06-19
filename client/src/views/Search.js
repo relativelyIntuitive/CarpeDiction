@@ -20,6 +20,7 @@ import WordAssocRes from '../components/WordAssocRes';
 import { Button } from 'react-bootstrap';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { Divider } from "@material-ui/core";
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Sensitive from '../components/Sensitive';
@@ -40,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         maxWidth: '100',
         minHeight: '100vh',
+    },
+    divider: {
+        margin: "30px 0",
     },
 }));
 
@@ -122,10 +126,10 @@ const Search = props => {
     };
 
     const handleFavs = () => {
-        if (!logged.favs.includes(query)) {
-            logged.favs.push(query);
+        if (!logged.favs.includes(query.toLowerCase())) {
+            logged.favs.push(query.toLowerCase());
         } else {
-            const index = logged.favs.indexOf(query);
+            const index = logged.favs.indexOf(query.toLowerCase());
             logged.favs.splice(index, index + 1);
         }
         // favorite the word
@@ -151,7 +155,7 @@ const Search = props => {
                                     You queried:
                                 </i>
                             </h4>
-                            <h1>
+                            <h1 className="mgWordBreak">
                                 <strong className="qQuotes">
                                     "&nbsp;
                                     <span className="rIPurple resHeading">
@@ -330,7 +334,7 @@ const Search = props => {
                                 <h6 className="text-success isOffensive">
                                     <strong>
                                         "
-                                        <i>
+                                        <i className="mgWordBreak">
                                             {query}
                                         </i>
                                         &nbsp;" is not considered offensive by any official sources!
@@ -359,7 +363,10 @@ const Search = props => {
                                     </strong>
                                 </h6>
                             )}
-                            <hr />
+                            <Divider
+                                variant="fullWidth"
+                                className={classes.divider}
+                            />
                         </div>
                         <MWDictRes
                             query={query}
@@ -387,7 +394,7 @@ const Search = props => {
                             target="_blank"
                             style={{ textDecoration: "none" }}
                         >
-                            <strong className="flatLinkRedirect">
+                            <strong className="flatLinkRedirect mgWordBreak">
                                 Search Wikipedia for "
                                 {query}
                                 "
@@ -398,9 +405,8 @@ const Search = props => {
                             href={"http://www.google.com/search?q=" + query}
                             target="_blank"
                             style={{ textDecoration: "none" }}
-                            className="mb-sm-3"
                         >
-                            <strong className="flatLinkRedirect">
+                            <strong className="flatLinkRedirect mgWordBreak">
                                 Search Google for "
                                 {query}
                                 "

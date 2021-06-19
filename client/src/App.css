@@ -37,7 +37,7 @@ body {
     padding: 1rem;
     word-break: normal;
     text-align: start;
-    margin-top: 0.3rem;
+    margin-top: 1rem;
     margin-bottom: 0.7em;
     margin-right: auto;
     margin-left: auto;
@@ -115,13 +115,13 @@ body {
 }
 
 .flatLinkPurple {
-    color: #800080;
+    color: #800080!important;
     text-decoration: none;
 }
 
 .flatLinkPurple:hover {
     text-decoration: none;
-    color: #adff2f;
+    color: #adff2f!important;
     text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
 }
 
@@ -162,14 +162,14 @@ body {
     color: #800080;
     background-color: #ffa500;
     border: 3px solid #800080;
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
 }
 
 .formButt:hover {
     color: #800080;
     background-color: #ffa500;
     border: 3px solid #ffa500;
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
 }
 
 .inlineList {
@@ -179,6 +179,10 @@ body {
 .isOffensive {
     font-size: x-large;
     text-shadow: -1px 0 #343A40, 0 1px #343A40, 1px 0 #343A40, 0 -1px #343A40;
+}
+
+.mgWordBreak {
+    word-break: break-all;
 }
 
 .mgFormControl {
@@ -251,13 +255,32 @@ body {
     background-color: #ffe2af!important;
 }
 
+.rIInnerAccordion {
+    border: 2px solid #ffa500;
+    margin-top: 0.16rem;
+    margin-bottom: 0.16rem;
+    background-color: #ffffffab!important;
+}
+
+.rIInnerAccordion:hover {
+    border: 2px solid #800080;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.rIWOTDAccordion {
+    border: 2px solid #800080!important;
+    margin-top: 0.16rem;
+    background-color: #ffe2af!important;
+}
+
 .rIWOTDAccordion:hover {
-    border: 2px solid #ffa500!important;
+    border: 3px solid #ffa500!important;
     margin-top: 0.3rem;
 }
 
 .rIAudio {
-    box-shadow: 0px 1px 1px #800080 inset, 0px 0px 8px #800080;
+    box-shadow: 0px 0px 1px #800080 inset, 0px 0px 8px #800080;
     border: 3px solid #800080;
     border-radius: 30px;
     margin-top: 0.11rem;
@@ -266,7 +289,7 @@ body {
 }
 
 .rIAudioSm {
-    box-shadow: 0px 1px 1px #800080 inset, 0px 0px 8px #800080;
+    box-shadow: 0px 0px 1px #800080 inset, 0px 0px 8px #800080;
     border: 3px solid #800080;
     border-radius: 30px;
     margin-top: 0.7rem;
@@ -274,7 +297,7 @@ body {
 }
 
 .rIAudio:hover {
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
 }
 
 .rIOrange {
@@ -293,6 +316,23 @@ body {
     color: #adff2f;
 }
 
+.rITipJar {
+    border: 3px solid #800080!important;
+    border-radius: 31px;
+    box-shadow: 0px 0px 8px #ffa500 inset, 0px 0px 8px #ffa500;
+}
+
+.rITipJarChars {
+    word-break: break-all;
+    margin-bottom: 0.5rem!important;
+}
+
+.rITipJars {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
 .sButt {
     color: #800080;
     background-color: #ffa500;
@@ -306,25 +346,25 @@ body {
     color: #800080;
     background-color: #ffa500;
     border: 3px solid #800080;
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
 }
 
 .sButt:hover {
     color: #800080;
     background-color: #ffa500;
     border: 3px solid #ffa500;
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
 }
 
 .sBox {
     border-color: #800080;
-    box-shadow: 0px 1px 1px #800080 inset, 0px 0px 8px #800080;
+    box-shadow: 0px 0px 1px #800080 inset, 0px 0px 5px #800080;
     width: auto;
 }
 
 .sBox:focus {
     border-color: #ffa500;
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 5px #ffa500;
 }
 
 .sForm {
@@ -343,12 +383,12 @@ body {
 .socialIcon {
     border: 2px solid #800080;
     border-radius: 11px;
-    box-shadow: 0px 1px 1px #adff2f inset, 0px 0px 8px #adff2f;
+    box-shadow: 0px 0px 1px #adff2f inset, 0px 0px 8px #adff2f;
     margin: 0 0.45rem;
 }
 
 .socialIcon:hover {
-    box-shadow: 0px 1px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
 }
 
 .syllables {
@@ -365,6 +405,10 @@ body {
     text-align: center;
 }
 
+.userDetails {
+    font-size: large;
+    word-break: break-all;
+}
 
 /* || #ID Selectors */
 

@@ -3,11 +3,14 @@ import React, { useEffect, useState } from 'react';
 import Axios from '../../../server/node_modules/axios';
 import { Link, navigate } from '@reach/router';
 
+import Favorites from '../components/Favorites';
+import ImportExportFavs from '../components/ImportExportFavs';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 
 
@@ -19,11 +22,14 @@ const useStyles = makeStyles((theme) => ({
         minHeight: '100vh',
     },
     paper: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(3),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         minHeight: '100vh',
+    },
+    divider: {
+        margin: "30px 0",
     },
 }));
 
@@ -80,36 +86,71 @@ const Detail = props => {
                 setSyllables={setSyllables}
             />
             <div className="chocolate">
-                <div className={classes.paper}>
-                    {loaded && (
-                        <>
-                            <p>Username: {user.userName}</p>
-                            <p>Email: {user.email}</p>
-                            <p>Favs: {user.favs}</p>
-                        </>
-                    )}
-                    <br />
-                    <Link
-                        to={"/user/account/edit"}
-                        className="flatLinkPurple"
-                    >
-                        <span>
-                            <strong>
-                                Edit
-                            </strong>
-                        </span>
-                    </Link>
-                    <br />
-                    <Link
-                        to='/'
-                        className="flatLinkPurple"
-                    >
-                        <span>
-                            <strong>
-                                Go Back
-                            </strong>
-                        </span>
-                    </Link>
+                <div className="filling">
+                    <div className={classes.paper}>
+                        <div className="resHeading">
+                            {loaded && (
+                                <>
+                                    <h2 className="qQuotes">
+                                        <strong>
+                                            Username:
+                                        </strong>
+                                    </h2>
+                                    <Typography className="rIPurple">
+                                        <strong>
+                                            <i className="userDetails">
+                                                {user.userName}
+                                            </i>
+                                        </strong>
+                                    </Typography>
+                                    <h2 className="qQuotes">
+                                        <strong>
+                                            Email:
+                                        </strong>
+                                    </h2>
+                                    <Typography className="rIPurple">
+                                        <strong>
+                                            <i className="userDetails">
+                                                {user.email}
+                                            </i>
+                                        </strong>
+                                    </Typography>
+                                    <br />
+                                    <Typography>
+                                        <strong>
+                                            <span className="rIOrange">
+                                                (&ensp;
+                                            </span>
+                                            <Link
+                                                to={"/user/account/edit"}
+                                                className="flatLinkPurple"
+                                            >
+                                                Edit Account
+                                            </Link>
+                                            <span className="rIOrange">
+                                                &ensp;|&ensp;
+                                            </span>
+                                            <Link
+                                                to='/'
+                                                className="flatLinkPurple"
+                                            >
+                                                Nevermind...
+                                            </Link>
+                                            <span className="rIOrange">
+                                                &ensp;)
+                                            </span>
+                                        </strong>
+                                    </Typography>
+                                    <br />
+                                    <Favorites user={user} />
+                                    <ImportExportFavs
+                                        user={user} 
+                                        setLogged={setLogged}
+                                    />
+                                </>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
             <StickyFooter />
