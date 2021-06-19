@@ -112,9 +112,6 @@ const WordAssocRes = props => {
                                     {(words && words.length) && (
                                         words.length
                                     )}
-                                    {!(words && words.length) && (
-                                        0
-                                    )}
                                     )
                                     <span className="rIOrange">
                                         &nbsp;-&nbsp;
