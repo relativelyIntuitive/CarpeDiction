@@ -207,7 +207,6 @@ module.exports.login = (req, res) => {
                                         favs: user.favs,
                                     }
                                 });
-                                console.log(res);
                         } else {
                             res.cookie();
                             res.status(401).json({

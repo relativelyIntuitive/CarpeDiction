@@ -52,10 +52,9 @@ const Login = props => {
 
     // API post function; to be passed down to the LoginForm
     const loginUser = user => {
-        Axios.post(`${process.env.REACT_APP_API_ROOT}/api/login/`, user, { withCredentials: true })
+        Axios.post(`${process.env.REACT_APP_API_ROOT}/api/login/`, user)
             .then(res => {
                 if (res.data.user) {
-                    console.log(res)
                     setLogged(res.data.user);
                     navigate("/");
                 } else {

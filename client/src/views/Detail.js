@@ -56,14 +56,14 @@ const Detail = props => {
 
 
     // redirects to home if no User logged in. Otherwise copies logged data to localUser
-    useEffect(() => {
-        if (logged === null)
-            navigate('/login');
-    });
+    // useEffect(() => {
+    //     if (logged === null)
+    //         navigate('/login');
+    // });
 
     // retrieves the User data
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
+        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`)
             .then(res => {
                 setUser(res.data.user);
                 setLoaded(true);
