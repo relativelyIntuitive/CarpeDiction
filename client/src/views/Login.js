@@ -55,6 +55,7 @@ const Login = props => {
         Axios.post(`${process.env.REACT_APP_API_ROOT}/api/login/`, user, { withCredentials: true })
             .then(res => {
                 if (res.data.user) {
+                    console.log(res)
                     setLogged(res.data.user);
                     navigate("/");
                 } else {
