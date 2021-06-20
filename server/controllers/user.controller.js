@@ -23,7 +23,9 @@ module.exports.register = (req, res) => {
                                                 "usertoken",
                                                 jwt.sign({ _id: userNew._id }, process.env.JWT_KEY),
                                                 {
-                                                    httpOnly: true,
+                                                    secure: true,
+                                                    sameSite: "none",
+                                                    httpOnly: false,
                                                 }
                                             )
                                             .json({
@@ -195,7 +197,9 @@ module.exports.login = (req, res) => {
                                     "usertoken",
                                     jwt.sign({ _id: user._id }, process.env.JWT_KEY),
                                     {
-                                        httpOnly: true,
+                                        secure: true,
+                                        sameSite: "none",
+                                        httpOnly: false,
                                     }
                                 )
                                 .json({
