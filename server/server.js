@@ -18,7 +18,7 @@ const express = require('express'),
 
 // configuers and registers middleware
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({ credentials: true, origin: 'https://confident-wilson-cff6c3.netlify.app' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
