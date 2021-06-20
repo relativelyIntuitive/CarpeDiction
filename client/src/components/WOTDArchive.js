@@ -43,7 +43,7 @@ const WOTDArchive = props => {
 
     // retrieves the WOTD archive
     useEffect(() => {
-        Axios.get('http://localhost:8000/api/wotd/archive')
+        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/wotd/archive`)
             .then(res => {
                 const newWords = res.data.Archive;
                 setWords(newWords);

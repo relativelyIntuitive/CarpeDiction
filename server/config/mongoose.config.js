@@ -1,5 +1,5 @@
 const mongoose = require('mongoose'),
-    uri = `mongodb://localhost/${process.env.DB_NAME}`;
+    uri = `${process.env.CD_DB_URL}`;
 
 
 

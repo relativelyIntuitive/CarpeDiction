@@ -53,7 +53,7 @@ const Update = props => {
 
     // retrieves the User and updates the state variables with its info
     useEffect(() => {
-        Axios.get('http://localhost:8000/api/users/' + localUser._id, { withCredentials: true })
+        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
             .then(res => {
                 setUser(res.data.user);
                 setLoaded(true);
@@ -66,7 +66,7 @@ const Update = props => {
 
     // updates the User's data with the new data
     const updateUser = user => {
-        Axios.put('http://localhost:8000/api/users/', user, { withCredentials: true })
+        Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/`, user, { withCredentials: true })
             .then(res => {
                 setLogged(res.data.user);
                 navigate("/user/account");

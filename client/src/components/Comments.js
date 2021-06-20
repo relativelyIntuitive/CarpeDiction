@@ -62,7 +62,7 @@ const Comments = props => {
 
     // retrieves all comments
     useEffect(() => {
-        Axios.get('http://localhost:8000/api/comments/retrieve/' + query)
+        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/retrieve/${query}`)
             .then(res => {
                 const resComments = res.data.comments;
                 setComments(resComments);
@@ -72,7 +72,7 @@ const Comments = props => {
 
     // retrieves the top comments
     useEffect(() => {
-        Axios.get('http://localhost:8000/api/comments/tops/' + query)
+        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/tops/${query}`)
             .then(res => {
                 const resTopComments = res.data.comments;
                 setTopComments(resTopComments);
@@ -82,7 +82,7 @@ const Comments = props => {
 
     // posts a comment
     const postComment = comment => {
-        Axios.post('http://localhost:8000/api/comments/post/', comment, { withCredentials: true })
+        Axios.post(`${process.env.REACT_APP_API_ROOT}/api/comments/post/`, comment, { withCredentials: true })
             .then(res => {
                 setErrors([]);
             })
@@ -100,7 +100,7 @@ const Comments = props => {
 
     // updates comments when liked
     const updateComment = comment => {
-        Axios.put('http://localhost:8000/api/comments/update/', comment, { withCredentials: true })
+        Axios.put(`${process.env.REACT_APP_API_ROOT}/api/comments/update/`, comment, { withCredentials: true })
             .then(res => {
             })
             .catch(err => {

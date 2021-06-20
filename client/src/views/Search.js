@@ -117,7 +117,7 @@ const Search = props => {
 
     // updates the User's data with the new data
     const updateUser = newUser => {
-        Axios.put('http://localhost:8000/api/users/' + logged._id, newUser, { withCredentials: true })
+        Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, newUser, { withCredentials: true })
             .then(res => {
                 setLogged(res.data.user);
             })

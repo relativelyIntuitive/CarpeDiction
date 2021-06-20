@@ -20,7 +20,7 @@ const DeleteButton = props => {
 
     // function to handle logouts
     const handleLogout = () => {
-        Axios.get('http://localhost:8000/api/logout', { withCredentials: true })
+        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
             .then(res => {
                 setLogged(null);
                 navigate('/');
@@ -30,7 +30,7 @@ const DeleteButton = props => {
 
     // deletes the User
     const deleteUser = e => {
-        Axios.delete('http://localhost:8000/api/users/' + logged._id, { withCredentials: true })
+        Axios.delete(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, { withCredentials: true })
             .then(res => {
                 handleLogout();
                 successCallback();
@@ -43,7 +43,7 @@ const DeleteButton = props => {
 
     // deletes the Comment
     const deleteComment = e => {
-        Axios.delete('http://localhost:8000/api/comments/delete/' + comment._id, { withCredentials: true })
+        Axios.delete(`${process.env.REACT_APP_API_ROOT}/api/comments/delete/${comment._id}`, { withCredentials: true })
             .then(res => {
             })
             .catch(err => {

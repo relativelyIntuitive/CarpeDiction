@@ -63,7 +63,7 @@ const Detail = props => {
 
     // retrieves the User data
     useEffect(() => {
-        Axios.get("http://localhost:8000/api/users/" + localUser._id, { withCredentials: true })
+        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
             .then(res => {
                 setUser(res.data.user);
                 setLoaded(true);

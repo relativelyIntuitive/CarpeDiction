@@ -54,7 +54,7 @@ const Register = props => {
 
     // API post function; to be passed down to the RegForm
     const createUser = user => {
-        Axios.post('http://localhost:8000/api/register/', user, { withCredentials: true })
+        Axios.post(`${process.env.REACT_APP_API_ROOT}/api/register/`, user, { withCredentials: true })
             .then(res => {
                 if (res.data.user) {
                     setLogged(res.data.user);
