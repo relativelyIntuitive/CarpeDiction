@@ -57,8 +57,7 @@ const NavBar = props => {
         Axios.get('http://localhost:8000/api/logout', { withCredentials: true })
             .then(res => {
                 setLogged(null);
-            })
-            .catch(err => console.log(err));
+            });
     };
 
 
@@ -72,16 +71,16 @@ const NavBar = props => {
             <CssBaseline />
             <Form
                 onSubmit={handleSubmit}
-                className="mr-auto"
+                className="mr-auto cdNav"
                 inline
             >
-                <Navbar.Brand className="cdNav">
+                <Navbar.Brand className="cdNav mr-sm-2">
                     <Link to="/">
                         <img
                             src={carpe_diction}
                             width=""
                             height="40"
-                            className="d-inline-block mr-sm-1 cdTitle"
+                            className="d-inline-block mr-sm-1"
                             alt="CarpeDiction!"
                         />
                         <Typography className="d-inline rIOrange ml-sm-1">
@@ -102,7 +101,7 @@ const NavBar = props => {
                     <FormControl
                         type="text"
                         placeholder="Query..."
-                        className="sBox mgSearchControl"
+                        className="sBox"
                         onChange={handleInputChange}
                     />
                     <Button
@@ -116,8 +115,8 @@ const NavBar = props => {
                     </Button>
                 </div>
             </Form>
-            <Nav>
-                <Navbar.Text className="cdNav">
+            <Nav className="cdNav">
+                <Navbar.Text>
                     {logged !== null &&
                         <>
                             <i>

@@ -74,7 +74,6 @@ const WordsApiFreq = props => {
                 setLoaded(true);
             })
             .catch(err => {
-                console.log(err);
                 setError(`No results for frequency data of "${query.toLowerCase()}" from Words API...`);
                 setEntry(null);
                 setLoaded(true);
@@ -151,7 +150,7 @@ const WordsApiFreq = props => {
                                             <Typography className="text-muted">
                                                 <strong>
                                                     &emsp;
-                                                    Frequency data for:
+                                                    Frequency data for :&ensp;
                                                     "
                                                     {entry.word.toLowerCase()}
                                                     "
@@ -166,10 +165,10 @@ const WordsApiFreq = props => {
                                                 <i>
                                                     <strong>
                                                         <span className="rIOrange">
-                                                            &emsp;&emsp;-
+                                                            &emsp;&emsp;~
                                                         </span>
                                                         <span className="text-muted">
-                                                            &nbsp;Zipf Rating:
+                                                            &nbsp;Zipf Rating :
                                                         </span>
                                                         <span className="rIPurple">
                                                             &nbsp;
@@ -177,16 +176,20 @@ const WordsApiFreq = props => {
                                                         </span>
                                                     </strong>
                                                     <br />
-                                                    <Container>
+                                                </i>
+                                            </Typography>
+                                            <Container>
+                                                <Typography>
+                                                    <i>
                                                         <span className="mgSmFont">
                                                             <span className="rIOrange">
                                                                 &emsp;&emsp;*&nbsp;
                                                             </span>
                                                             A score indicating how common the word is in the English language, with a range of 1 - 7;
                                                         </span>
-                                                    </Container>
-                                                </i>
-                                            </Typography>
+                                                    </i>
+                                                </Typography>
+                                            </Container>
                                             <br />
                                         </>
                                     )}
@@ -196,10 +199,10 @@ const WordsApiFreq = props => {
                                                 <i>
                                                     <strong>
                                                         <span className="rIOrange">
-                                                            &emsp;&emsp;-
+                                                            &emsp;&emsp;~
                                                         </span>
                                                         <span className="text-muted">
-                                                            &nbsp;Per - Million Rating:
+                                                            &nbsp;Per - Million Rating :
                                                         </span>
                                                         <span className="rIPurple">
                                                             &nbsp;
@@ -207,16 +210,20 @@ const WordsApiFreq = props => {
                                                         </span>
                                                     </strong>
                                                     <br />
-                                                    <Container>
+                                                </i>
+                                            </Typography>
+                                            <Container>
+                                                <Typography>
+                                                    <i>
                                                         <span className="mgSmFont">
                                                             <span className="rIOrange">
                                                                 &emsp;&emsp;*&nbsp;
                                                             </span>
                                                             The number of times the word is likely to appear in a corpus of one million English words;
                                                         </span>
-                                                    </Container>
-                                                </i>
-                                            </Typography>
+                                                    </i>
+                                                </Typography>
+                                            </Container>
                                             <br />
                                         </>
                                     )}
@@ -226,10 +233,10 @@ const WordsApiFreq = props => {
                                                 <i>
                                                     <strong>
                                                         <span className="rIOrange">
-                                                            &emsp;&emsp;-
+                                                            &emsp;&emsp;~
                                                         </span>
                                                         <span className="text-muted">
-                                                            &nbsp;Diversity Rating:
+                                                            &nbsp;Diversity Rating :
                                                         </span>
                                                         <span className="rIPurple">
                                                             &nbsp;
@@ -237,16 +244,20 @@ const WordsApiFreq = props => {
                                                         </span>
                                                     </strong>
                                                     <br />
-                                                    <Container>
+                                                </i>
+                                            </Typography>
+                                            <Container>
+                                                <Typography>
+                                                    <i>
                                                         <span className="mgSmFont">
                                                             <span className="rIOrange">
                                                                 &emsp;&emsp;*&nbsp;
                                                             </span>
                                                             0 - 1 scale the shows the likelyhood of the word appearing in an English document that is part of a corpus;
                                                         </span>
-                                                    </Container>
-                                                </i>
-                                            </Typography>
+                                                    </i>
+                                                </Typography>
+                                            </Container>
                                             <br />
                                         </>
                                     )}

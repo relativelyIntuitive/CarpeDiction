@@ -100,12 +100,11 @@ const UrbanDict = props => {
                 setLoaded(true);
             })
             .catch(err => {
-                console.log(err);
                 setError(`No results for "${query.toLowerCase()}" from Urban Dictionary API...`);
                 setEntries(null);
                 setLoaded(true);
             });
-    }, [query]);
+    }, [query, setEntries, setError, setLoaded]);
 
 
     // returns a material UI accordion component displaying the results from the Urban Dictionary API
@@ -250,23 +249,23 @@ const UrbanDict = props => {
                                                                 {index2 + 1}
                                                                 :
                                                             </strong>
-                                                            &nbsp;
+                                                            &emsp;
                                                             {def}
                                                             <br />
                                                             <br />
                                                             {(entry.example && entry.example[index2]) && (
                                                                 <i>
                                                                     <span className="rIOrange">
-                                                                        &emsp;&ensp;*
+                                                                        &emsp;&emsp;*&ensp;
                                                                     </span>
                                                                     <span className="rIPurple">
                                                                         e.g.,&nbsp;
                                                                     </span>
                                                                     <strong>
                                                                         <span className="text-muted">
-                                                                            "&nbsp;...&nbsp;
+                                                                            &nbsp;...&ensp;
                                                                             {entry.example[index2]}
-                                                                            &nbsp;"
+                                                                            &nbsp;
                                                                         </span>
                                                                         <br />
                                                                         <br />

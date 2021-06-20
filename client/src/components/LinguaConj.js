@@ -75,7 +75,6 @@ const LinguaCons = props => {
                 setLoaded(true);
             })
             .catch(err => {
-                console.log(err);
                 setError(`No results for conjugations of "${query.toLowerCase()}" from Linguatools Conjugations API...`);
                 setEntry(null);
                 setLoaded(true);
@@ -152,7 +151,7 @@ const LinguaCons = props => {
                                             <Typography className="text-muted">
                                                 <strong>
                                                     &emsp;
-                                                    Conjugations of:
+                                                    Conjugations of :&ensp;
                                                     "
                                                     <span className="mgWordBreak">
                                                         {query.toLowerCase()}
@@ -168,23 +167,22 @@ const LinguaCons = props => {
                                             <i>
                                                 <strong>
                                                     <span className="rIOrange">
-                                                        &emsp;&emsp;-
+                                                        &emsp;&emsp;~
                                                     </span>
                                                     <span className="text-muted">
                                                         &nbsp;
-                                                        {form[0]}
-                                                        :&nbsp;
+                                                        {form[0]} :&nbsp;
                                                     </span>
                                                     <span className="rIPurple">
                                                         &nbsp;
                                                         "&nbsp;
                                                         <Link to={`/search/` + form[1]}>
                                                             <span className="rIPurple">
-                                                                ...&nbsp;
+                                                                ...&ensp;
                                                                 {form[1]}
                                                             </span>
                                                         </Link>
-                                                        &nbsp;"
+                                                        &ensp;"
                                                     </span>
                                                 </strong>
                                                 <br />

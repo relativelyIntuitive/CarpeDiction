@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         minHeight: '100vh',
     },
     paper: {
-        marginTop: theme.spacing(5),
+        marginTop: theme.spacing(3),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -113,8 +113,7 @@ const Search = props => {
                     setAudioLoaded(true);
                 }
                 setLoaded(true);
-            })
-            .catch(err => console.log(err));
+            });
     }, [query, setAudioLoaded, logged])
 
     // updates the User's data with the new data
@@ -124,7 +123,6 @@ const Search = props => {
                 setLogged(res.data.user);
             })
             .catch(err => {
-                console.log(err)
                 if (err.response.status === 401)
                     navigate('/login');
             });
@@ -156,12 +154,12 @@ const Search = props => {
                 <div className="filling">
                     <div className={classes.paper}>
                         <div className="resHeading">
-                            <h4>
+                            <h4 className="mb-sm-3 cdTagLine">
                                 <i>
                                     You queried:
                                 </i>
                             </h4>
-                            <h1 className="mgWordBreak">
+                            <h1 className="mgWordBreak mb-sm-3">
                                 <strong className="qQuotes">
                                     "&nbsp;
                                     <span className="rIPurple resHeading">
@@ -218,10 +216,10 @@ const Search = props => {
                             )}
                             {headWords.length > 0 && (
                                 <>
-                                    <h5 className="text-muted">
+                                    <h5 className="text-muted mt-sm-2">
                                         Definitions retrieved for:
                                     </h5>
-                                    <ul className="inlineList topList">
+                                    <ul className="inlineList topList mb-sm-5 mt-sm-3">
                                         {headWords.map((headWord, index) => (
                                             <li
                                                 key={index}

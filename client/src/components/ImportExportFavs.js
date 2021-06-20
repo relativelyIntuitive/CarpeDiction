@@ -59,7 +59,6 @@ const ImportExportFavs = props => {
                 setLogged(res.data.user);
             })
             .catch(err => {
-                console.log(err)
                 if (err.response.status === 401)
                     navigate('/login');
             });
@@ -101,7 +100,6 @@ const ImportExportFavs = props => {
             let prettyFavs = user.favs;
             prettyFavs = prettyFavs.toString().replace(/,/g, ', ');
             prettyFavs = (`@${user.userName} ~ (${user.favs.length}): `).concat(prettyFavs);
-            console.log(prettyFavs)
             // prettyFavs = prettyFavs.replace(',', ':');
             function download(filename, text) {
                 var element = document.createElement('a');

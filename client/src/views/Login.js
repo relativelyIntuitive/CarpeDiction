@@ -62,7 +62,6 @@ const Login = props => {
                 }
             })
             .catch(err => {
-                console.log(err);
                 const errorResponse = err.response.data.errors;
                 const errorArr = [];
                 for (const key of Object.keys(errorResponse)) {

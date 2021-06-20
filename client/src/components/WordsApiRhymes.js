@@ -88,7 +88,6 @@ const WordsApiRhymes = props => {
                 setLoaded(true);
             })
             .catch(err => {
-                console.log(err);
                 setError(`No results for rhymes of "${query.toLowerCase()}" from Words API...`);
                 setEntry(null);
                 setLoaded(true);
@@ -161,14 +160,14 @@ const WordsApiRhymes = props => {
                                                 &emsp;Words that rhyme with
                                                 "
                                                 {entry.word.toLowerCase()}
-                                                " ~ (A-Z):
+                                                " ~ (A-Z) :&nbsp;
                                             </strong>
                                         </Typography>
                                     </li>
                                     {words.map((word, index) => (
                                         <li key={index} className="mgInlineBlock">
                                             <Typography>
-                                                &nbsp;
+                                            &ensp;
                                                 <Link to={`/search/${entry.rhymes.all[index]}`}>
                                                     <i>
                                                         <span className="rIPurple">
@@ -179,7 +178,7 @@ const WordsApiRhymes = props => {
                                                 {(words.indexOf(word) !== (words.length - 1)) && (
                                                     <strong>
                                                         <span className="rIOrange">
-                                                            &nbsp;|&nbsp;
+                                                            &ensp;|
                                                         </span>
                                                     </strong>
                                                 )}
@@ -196,7 +195,7 @@ const WordsApiRhymes = props => {
                                                 &emsp;Phrases that rhyme with
                                                 "
                                                 {entry.word.toLowerCase()}
-                                                " ~ (A-Z):
+                                                " ~ (A-Z) :&nbsp;
                                             </strong>
                                         </Typography>
                                     </li>

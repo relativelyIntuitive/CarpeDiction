@@ -2,13 +2,7 @@
  * {
     margin: 0;
     padding: 0;
-}
-
-
-/* || <TAG> Selectors */
-
-body {
-    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important; */
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -70,10 +64,6 @@ body {
     text-shadow: -2px 0 #adff2f, 0 2px #adff2f, 2px 0 #ffa500, 0 -2px #ffa500;
     margin: 1rem;
     font-size: xx-large;
-}
-
-.cdTitle {
-    margin-right: 0.5rem;
 }
 
 .commentBox {
@@ -196,10 +186,6 @@ body {
 
 .mgMargAuto {
     margin: auto;
-}
-
-.mgSearchControl {
-    background-color: #FFE1AF;
 }
 
 .mgSearchControl:hover {
@@ -357,6 +343,7 @@ body {
     border-color: #800080;
     box-shadow: 0px 0px 1px #800080 inset, 0px 0px 5px #800080;
     width: auto;
+    background-color: #FFE1AF;
 }
 
 .sBox:focus {
@@ -364,17 +351,17 @@ body {
     box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 5px #ffa500;
 }
 
-.sForm {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-}
-
 .sFooter {
     background-color: #343A40;
     padding: 1rem;
     margin-top: auto;
+}
+
+.sForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
 }
 
 .socialIcon {
@@ -408,15 +395,7 @@ body {
 }
 
 
-/* || Media Queries */
-@media (max-width: 519px) {
-    .cdNav {
-        margin: auto;
-    }
-}
-
 @media (max-width: 576px) {
-
     .chocolate {
         background-image: url('./images/paper_1_portrait.jpg');
     }
@@ -455,6 +434,13 @@ body {
 
     .rIAudioSm {
         width: 75%;
+    }
+}
+
+@media (max-width: 992px) {
+    .cdNav {
+        margin: auto;
+        text-align: center;
     }
 }
 

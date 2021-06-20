@@ -48,8 +48,7 @@ const WOTDArchive = props => {
                 const newWords = res.data.Archive;
                 setWords(newWords);
                 setLoaded(true);
-            })
-            .catch(err => console.log(err));
+            });
     }, [setWords, setLoaded]);
 
 

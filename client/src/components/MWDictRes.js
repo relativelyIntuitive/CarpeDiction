@@ -161,7 +161,6 @@ const MWDictRes = props => {
                 setLoaded(true);
             })
             .catch(err => {
-                console.log(err);
                 setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Dictionary...`);
                 setEntriesByType(null);
                 setLoaded(true);
@@ -216,7 +215,7 @@ const MWDictRes = props => {
                                                 +
                                             </span>
                                             <span className="rIPurple">
-                                                &nbsp;♪
+                                                &ensp;♪
                                                 (
                                                 {audioEntries.length}
                                                 )
@@ -279,7 +278,7 @@ const MWDictRes = props => {
                                                                         +
                                                                     </span>
                                                                     <span className="rIPurple">
-                                                                        &nbsp;♪
+                                                                        &ensp;♪
                                                                         (
                                                                         {entriesByType[type].hasAudio}
                                                                         )
@@ -332,7 +331,7 @@ const MWDictRes = props => {
                                                                                 {(entry.meta.offensive === true) && (
                                                                                     <i className="mgSmFont">
                                                                                         <span className="rIOrange">
-                                                                                            &nbsp;:&nbsp;
+                                                                                            &ensp;:&ensp;
                                                                                         </span>
                                                                                         <span className="text-danger">
                                                                                             Offensive?
@@ -342,7 +341,7 @@ const MWDictRes = props => {
                                                                                 {(entry.meta.offensive === false) && (
                                                                                     <i className="mgSmFont">
                                                                                         <span className="rIOrange">
-                                                                                            &nbsp;:&nbsp;
+                                                                                            &ensp;:&ensp;
                                                                                         </span>
                                                                                         <span className="text-success">
                                                                                             Inoffensive!
@@ -365,7 +364,7 @@ const MWDictRes = props => {
                                                                                             +
                                                                                         </span>
                                                                                         <span className="rIPurple">
-                                                                                            &nbsp;♪
+                                                                                            &ensp;♪
                                                                                         </span>
                                                                                     </i>
                                                                                 </strong>
@@ -401,11 +400,11 @@ const MWDictRes = props => {
                                                                             {(entry.hwi && entry.hwi.hw) && (
                                                                                 <span className="text-muted">
                                                                                     <span className="rIOrange">
-                                                                                        &nbsp;&ensp;|&ensp;
+                                                                                        &ensp;&ensp;|&nbsp;
                                                                                     </span>
                                                                                     "
                                                                                     {entry.hwi.hw}
-                                                                                    "&ensp;
+                                                                                    "&nbsp;
                                                                                 </span>
                                                                             )}
                                                                             {(entry.hwi && entry.hwi.prs && entry.hwi.prs[0] && entry.hwi.prs[0].mw) && (
@@ -415,7 +414,7 @@ const MWDictRes = props => {
                                                                                     </span>
                                                                                     <i>
                                                                                         <span className="text-info">
-                                                                                            &ensp;\&nbsp;
+                                                                                            &nbsp;\&nbsp;
                                                                                             {entry.hwi.prs[0].mw}
                                                                                             &nbsp;\
                                                                                         </span>
@@ -432,7 +431,7 @@ const MWDictRes = props => {
                                                                                     {index3 + 1}
                                                                                     :
                                                                                 </strong>
-                                                                                &nbsp;
+                                                                                &emsp;
                                                                                 {def}
                                                                                 <br />
                                                                                 <br />
@@ -444,7 +443,7 @@ const MWDictRes = props => {
                                                                             <hr />
                                                                             <Typography>
                                                                                 <strong>
-                                                                                    Origin:&nbsp;
+                                                                                    Origin :&nbsp;
                                                                                 </strong>
                                                                                 {entry.date && (
                                                                                     <i className="rIPurple">
@@ -468,10 +467,10 @@ const MWDictRes = props => {
                                                                                         <i>
                                                                                             <strong>
                                                                                                 <span className="rIOrange">
-                                                                                                    &emsp;&ensp;*
+                                                                                                    &emsp;&ensp;*&ensp;
                                                                                                 </span>
                                                                                                 <span className="rIPurple">
-                                                                                                    Note:&nbsp;
+                                                                                                    Note :&nbsp;
                                                                                                 </span>
                                                                                             </strong>
                                                                                             {entry.et[1][1][0][1]}

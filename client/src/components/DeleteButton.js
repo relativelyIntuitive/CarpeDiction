@@ -24,8 +24,7 @@ const DeleteButton = props => {
             .then(res => {
                 setLogged(null);
                 navigate('/');
-            })
-            .catch(err => console.log(err));
+            });
     };
 
 

@@ -48,14 +48,12 @@ const WOTDCard = () => {
     useEffect(() => {
         Axios.get('http://localhost:8000/api/wotd/latest')
             .then(res => {
-                console.log(res.data);
                 const newWord = res.data.WOTD.word;
                 const newDef = res.data.WOTD.def;
                 setWord(newWord);
                 setDef(newDef);
                 setLoaded(true);
-            })
-            .catch(err => console.log(err));
+            });
     }, [setDef, setWord])
 
 

@@ -89,7 +89,6 @@ const MWThesRes = props => {
                 setLoaded(true);
             })
             .catch(err => {
-                console.log(err);
                 setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Thesaurus...`);
                 setEntries(null);
                 setEntriesByType(null);
@@ -185,7 +184,7 @@ const MWThesRes = props => {
                                                                             {(entry.meta.offensive === true) && (
                                                                                 <i className="mgSmFont">
                                                                                     <span className="rIOrange">
-                                                                                        &nbsp;:&nbsp;
+                                                                                        &ensp;:&ensp;
                                                                                     </span>
                                                                                     <span className="text-danger">
                                                                                         Offensive?
@@ -195,7 +194,7 @@ const MWThesRes = props => {
                                                                             {(entry.meta.offensive === false) && (
                                                                                 <i className="mgSmFont">
                                                                                     <span className="rIOrange">
-                                                                                        &nbsp;:&nbsp;
+                                                                                        &ensp;:&ensp;
                                                                                     </span>
                                                                                     <span className="text-success">
                                                                                         Inoffensive!
@@ -217,11 +216,11 @@ const MWThesRes = props => {
                                                                                 <span className="text-muted">
                                                                                     <strong>
                                                                                         <span className="rIOrange">
-                                                                                            &nbsp;&ensp;|&ensp;
+                                                                                            &ensp;&ensp;|&nbsp;
                                                                                         </span>
                                                                                         "
                                                                                         {entry.hwi.hw}
-                                                                                        "&ensp;
+                                                                                        "&nbsp;
                                                                                     </strong>
                                                                                 </span>
                                                                             )}
@@ -234,7 +233,7 @@ const MWThesRes = props => {
                                                                                         <strong>
                                                                                             {index3 + 1}:
                                                                                         </strong>
-                                                                                        &nbsp;
+                                                                                        &emsp;
                                                                                         {def}
                                                                                         ;
                                                                                     </Typography>
@@ -245,7 +244,7 @@ const MWThesRes = props => {
                                                                                                 <i>
                                                                                                     <strong>
                                                                                                         <span className="rIOrange">
-                                                                                                            &emsp;&ensp;*
+                                                                                                            &emsp;&emsp;*&ensp;
                                                                                                         </span>
                                                                                                     </strong>
                                                                                                     <span className="rIPurple">
@@ -253,7 +252,7 @@ const MWThesRes = props => {
                                                                                                     </span>
                                                                                                     <strong>
                                                                                                         <span className="text-muted">
-                                                                                                            "&nbsp;...&nbsp;
+                                                                                                            "&nbsp;...&ensp;
                                                                                                             {entry.def[0].sseq[index3][0][1].dt[1][1][0].t}
                                                                                                             &nbsp;"
                                                                                                         </span>
@@ -268,7 +267,7 @@ const MWThesRes = props => {
                                                                                         <li className="mgInlineBlock text-muted">
                                                                                             <Typography>
                                                                                                 <strong>
-                                                                                                    &ensp;Synonyms:&nbsp;
+                                                                                                    &ensp;Synonyms :&nbsp;
                                                                                                 </strong>
                                                                                             </Typography>
                                                                                         </li>
@@ -309,7 +308,7 @@ const MWThesRes = props => {
                                                                                         <li className="mgInlineBlock text-muted">
                                                                                             <Typography>
                                                                                                 <strong>
-                                                                                                    &ensp;Antonyms:&nbsp;
+                                                                                                    &ensp;Antonyms :&nbsp;
                                                                                                 </strong>
                                                                                             </Typography>
                                                                                         </li>

@@ -67,9 +67,8 @@ const Comments = props => {
                 const resComments = res.data.comments;
                 setComments(resComments);
                 setLoaded(true);
-            })
-            .catch(err => console.log(err));
-    }, [query, setTopComments, topComments]);
+            });
+    }, [query, setComments, comments]);
 
     // retrieves the top comments
     useEffect(() => {
@@ -78,9 +77,8 @@ const Comments = props => {
                 const resTopComments = res.data.comments;
                 setTopComments(resTopComments);
                 setLoaded(true);
-            })
-            .catch(err => console.log(err));
-    }, [query, setComments, comments]);
+            });
+    }, [query, setTopComments, comments]);
 
     // posts a comment
     const postComment = comment => {

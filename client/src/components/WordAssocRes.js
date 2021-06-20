@@ -80,7 +80,6 @@ const WordAssocRes = props => {
                 setLoaded(true);
             })
             .catch(err => {
-                console.log(err);
                 setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
                 setEntry(null);
                 setWords(null);
@@ -153,19 +152,18 @@ const WordAssocRes = props => {
                                     <li className="mgInlineBlock text-muted">
                                         <Typography>
                                             <strong>
-                                                &emsp;Related words / similarity score for&nbsp;
-                                                "
+                                                &emsp;Related words / similarity score for "
                                                 <span className="mgWordBreak">
                                                     {query.toLowerCase()}
                                                 </span>
-                                                ":
+                                                " :&nbsp;
                                             </strong>
                                         </Typography>
                                     </li>
                                     {words.map((word, index) => (
                                         <li key={index} className="mgInlineBlock">
                                             <Typography>
-                                                &nbsp;
+                                                &ensp;
                                                 <Link to={`/search/${Object.keys(entry.associations_scored)[index]}`}>
                                                     <i>
                                                         <span className="rIPurple">
@@ -176,7 +174,7 @@ const WordAssocRes = props => {
                                                 {(words.indexOf(word) !== (words.length - 1)) && (
                                                     <strong>
                                                         <span className="rIOrange">
-                                                            &nbsp;|&nbsp;
+                                                            &ensp;|
                                                         </span>
                                                     </strong>
                                                 )}
