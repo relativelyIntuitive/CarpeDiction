@@ -22,7 +22,6 @@ app.use(cors({ credentials: true, origin: 'https://confident-wilson-cff6c3.netli
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.enable('trust proxy');
-// app.set('trust proxy', 1);
 app.use((req, res, next) => {
     if (req.secure) {
         next();
