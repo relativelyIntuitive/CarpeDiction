@@ -2,7 +2,8 @@
 const Axios = require('axios');
 const cheerio = require('cheerio');
 
-// configures and mongoose
+// configures dotenv and mongoose
+require('dotenv').config();
 require('./config/mongoose.config');
 
 

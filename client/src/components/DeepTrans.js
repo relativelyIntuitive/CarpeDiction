@@ -54,7 +54,7 @@ const DeepTrans = props => {
             url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
             headers: {
                 'content-type': 'application/json',
-                'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
+                'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
             data: { q: query, source: 'en', target: 'es' }
@@ -79,7 +79,7 @@ const DeepTrans = props => {
             url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
             headers: {
                 'content-type': 'application/json',
-                'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
+                'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
             data: { q: query, source: 'en', target: 'fr' }
@@ -103,7 +103,7 @@ const DeepTrans = props => {
             url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
             headers: {
                 'content-type': 'application/json',
-                'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
+                'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
             data: { q: query, source: 'en', target: 'la' }
@@ -127,7 +127,7 @@ const DeepTrans = props => {
             url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
             headers: {
                 'content-type': 'application/json',
-                'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
+                'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
             data: { q: query, source: 'en', target: 'it' }
@@ -151,7 +151,7 @@ const DeepTrans = props => {
             url: 'https://deep-translate1.p.rapidapi.com/language/translate/v2',
             headers: {
                 'content-type': 'application/json',
-                'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
+                'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
             data: { q: query, source: 'en', target: 'pt' }

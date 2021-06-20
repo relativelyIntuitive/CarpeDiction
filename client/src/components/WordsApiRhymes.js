@@ -55,7 +55,7 @@ const WordsApiRhymes = props => {
             method: 'GET',
             url: `https://wordsapiv1.p.rapidapi.com/words/${query}/rhymes`,
             headers: {
-                'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
+                'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com'
             }
         };

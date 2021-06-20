@@ -54,7 +54,7 @@ const UrbanDict = props => {
             url: 'https://mashape-community-urban-dictionary.p.rapidapi.com/define',
             params: { term: query },
             headers: {
-                'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
+                'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'mashape-community-urban-dictionary.p.rapidapi.com'
             }
         };

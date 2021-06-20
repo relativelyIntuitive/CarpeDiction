@@ -64,7 +64,7 @@ const DeleteButton = props => {
                     className="dButt"
                 >
                     <strong>
-                        Yes, I'm a fool!
+                        Yes, I am a fool!
                     </strong>
                 </Button>
             )}

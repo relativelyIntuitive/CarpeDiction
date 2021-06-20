@@ -61,7 +61,7 @@ const MWDictRes = props => {
 
     // retrieves the query results and saves them
     useEffect(() => {
-        Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query + '?key=' + process.env.MW_DICT_KEY)
+        Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query + '?key=' + process.env.REACT_APP_MW_DICT_KEY)
             .then(res => {
                 // generates an array of the entries found by the search or an array of spellcheck suggestion if no entries found
                 const resEntries = [];
