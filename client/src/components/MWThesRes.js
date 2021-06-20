@@ -51,7 +51,7 @@ const MWThesRes = props => {
 
     // retrieves the query results and saves them
     useEffect(() => {
-        Axios.get('https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query + '?key=' + Sensitive.MW_THES_KEY)
+        Axios.get('https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query + '?key=' + process.env.MW_THES_KEY)
             .then(res => {
                 // generates an array of the entries found by the search
                 const resEntries = [];

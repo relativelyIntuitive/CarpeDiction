@@ -12,7 +12,7 @@ const express = require('express'),
     app = express(),
     cors = require('cors'),
     cookieParser = require('cookie-parser'),
-    port = process.env.PORT,
+    port = process.env.CD_PORT,
     server = app.listen(port, () => console.log(`Listening on port ${port}`));
 
 

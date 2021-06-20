@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import Axios from '../../../server/node_modules/axios';
 
-import Sensitive from './Sensitive';
-
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -56,7 +54,7 @@ const UrbanDict = props => {
             url: 'https://mashape-community-urban-dictionary.p.rapidapi.com/define',
             params: { term: query },
             headers: {
-                'x-rapidapi-key': Sensitive.X_RAPIDAPI_KEY,
+                'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'mashape-community-urban-dictionary.p.rapidapi.com'
             }
         };

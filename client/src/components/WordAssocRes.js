@@ -57,7 +57,7 @@ const WordAssocRes = props => {
             url: 'https://twinword-word-associations-v1.p.rapidapi.com/associations/',
             params: { entry: `${query}` },
             headers: {
-                'x-rapidapi-key': Sensitive.X_RAPIDAPI_KEY,
+                'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'twinword-word-associations-v1.p.rapidapi.com'
             }
         };

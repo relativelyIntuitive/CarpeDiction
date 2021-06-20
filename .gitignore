@@ -1,6 +1,4 @@
 .vscode
 .vscode/
 node_modules/
-.env
 CD_workspace.code-workspace
-Sensitive.js
