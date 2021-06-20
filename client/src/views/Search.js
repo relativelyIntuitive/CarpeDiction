@@ -25,7 +25,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { Divider } from "@material-ui/core";
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
-import Sensitive from '../components/Sensitive';
 import Typography from '@material-ui/core/Typography';
 
 
@@ -83,7 +82,7 @@ const Search = props => {
             method: 'GET',
             url: `https://wordsapiv1.p.rapidapi.com/words/${query}/syllables`,
             headers: {
-                'x-rapidapi-key': Sensitive.X_RAPIDAPI_KEY,
+                'x-rapidapi-key': process.env.X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com'
             }
         };
