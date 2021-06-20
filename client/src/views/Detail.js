@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Axios from '../../../server/node_modules/axios';
+import Axios from '../../node_modules/axios';
 import { Link, navigate } from '@reach/router';
 
 import Favorites from '../components/Favorites';

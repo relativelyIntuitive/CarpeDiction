@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../../server/node_modules/axios';
+import Axios from '../../node_modules/axios';
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';

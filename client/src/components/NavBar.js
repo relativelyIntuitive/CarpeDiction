@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Axios from '../../../server/node_modules/axios';
+import Axios from '../../node_modules/axios';
 import { Link, navigate } from '@reach/router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';

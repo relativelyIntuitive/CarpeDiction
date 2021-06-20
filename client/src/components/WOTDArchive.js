@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../../server/node_modules/axios';
+import Axios from '../../node_modules/axios';
 import { Link } from '@reach/router';
 
 import Accordion from '@material-ui/core/Accordion';

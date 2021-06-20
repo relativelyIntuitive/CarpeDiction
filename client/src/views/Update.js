@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Axios from '../../../server/node_modules/axios';
+import Axios from '../../node_modules/axios';
 import { navigate } from '@reach/router';
 
 import NavBar from '../components/NavBar';
