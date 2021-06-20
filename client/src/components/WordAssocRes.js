@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Axios from '../../../server/node_modules/axios';
 import { Link } from '@reach/router';
 
-import Sensitive from './Sensitive';
-
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
