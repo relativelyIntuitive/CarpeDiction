@@ -104,7 +104,7 @@ const Main = props => {
                                         &emsp;&emsp;Welcome to CarpeDiction! Here, in this veritable verbal shangri-la, language and history are celebrated and censorship is spurned! Freedom of knowledge is essential to the evolution of our species, as well as the growth and development of our own souls. I created this site in an attempt to bring the obscurely dendritic patterns of the American-English lexicon into focus, and it is my sincerest hope that it will be able to foster new and exciting insights for all!
                                         <br />
                                         <br />
-                                        &emsp;&emsp;Any and all correspondence is both welcome and encouraged, so feel free to drop me a message at any of my linked profiles in the bottom right. I would love to hear about any issues, inspirations or ideas that you may encounter while browsing the site! Register to gain access to favorites and take part in the discussions! Enjoy!
+                                        &emsp;&emsp;Any and all correspondence is both welcome and encouraged, so feel free to drop me a message at any of my linked profiles in the bottom right. I would love to hear about any issues, inspirations or ideas that you may encounter while browsing the site! Register to gain access to favorites and take part in the discussions! Query a word or phrase to get started, but be warned, results are uncurated and may be offensive! Enjoy!
                                         <br />
                                         <br />
                                         &emsp;&ensp;- Zack
@@ -115,18 +115,6 @@ const Main = props => {
                                 variant="fullWidth"
                                 className={classes.divider}
                             />
-                            <h5>
-                                <i>
-                                    <Link
-                                        target="_blank"
-                                        href="http://bitcoinfaq.io"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; Learn about Cryptocurrecy here! &lt;
-                                    </Link>
-                                </i>
-                            </h5>
                             <div className="rITipJars">
                                 <div>
                                     <h3 className="qQuotes">
@@ -176,6 +164,36 @@ const Main = props => {
                                     />
                                 </div>
                             </div>
+                            <Divider
+                                variant="fullWidth"
+                                className={classes.divider}
+                            />
+                            <h3 className="qQuotes">
+                                Other beguiling sites:
+                            </h3>
+                            <br />
+                            <h5>
+                                <i>
+                                    <Link
+                                        target="_blank"
+                                        href="http://bitcoinfaq.io"
+                                        className="flatLinkPurple"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        &gt; Bitcoin FAQ &lt;
+                                    </Link>
+                                    <br />
+                                    <br />
+                                    <Link
+                                        target="_blank"
+                                        href="http://libraryofbabel.info"
+                                        className="flatLinkPurple"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        &gt; The Library of Babel &lt;
+                                    </Link>
+                                </i>
+                            </h5>
                         </div>
                     </div>
                 </div>

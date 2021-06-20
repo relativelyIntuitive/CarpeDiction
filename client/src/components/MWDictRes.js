@@ -5,6 +5,7 @@ import Axios from '../../node_modules/axios';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
+import { Divider } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+    },
+    divider: {
+        margin: "30px 0",
     },
 }));
 
@@ -432,13 +436,18 @@ const MWDictRes = props => {
                                                                                 &emsp;
                                                                                 {def}
                                                                                 <br />
-                                                                                <br />
+                                                                                {(entry.shortdef.indexOf(def) < (entry.shortdef.length - 1)) && (
+                                                                                    <br />
+                                                                                )}
                                                                             </Typography>
                                                                         ))
                                                                     )}
                                                                     {(entry.date || entry.et) && (
                                                                         <>
-                                                                            <hr />
+                                                                            <Divider
+                                                                                variant="fullWidth"
+                                                                                className={classes.divider}
+                                                                            />
                                                                             <Typography>
                                                                                 <strong>
                                                                                     Origin :&nbsp;

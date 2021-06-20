@@ -265,7 +265,9 @@ const MWThesRes = props => {
                                                                                         <li className="mgInlineBlock text-muted">
                                                                                             <Typography>
                                                                                                 <strong>
-                                                                                                    &ensp;Synonyms :&nbsp;
+                                                                                                    <i>
+                                                                                                        &emsp;Synonyms :&nbsp;
+                                                                                                    </i>
                                                                                                 </strong>
                                                                                             </Typography>
                                                                                         </li>
@@ -306,7 +308,9 @@ const MWThesRes = props => {
                                                                                         <li className="mgInlineBlock text-muted">
                                                                                             <Typography>
                                                                                                 <strong>
-                                                                                                    &ensp;Antonyms :&nbsp;
+                                                                                                    <i>
+                                                                                                        &emsp;Antonyms :&nbsp;
+                                                                                                    </i>
                                                                                                 </strong>
                                                                                             </Typography>
                                                                                         </li>

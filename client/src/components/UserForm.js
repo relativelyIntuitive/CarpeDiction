@@ -102,14 +102,16 @@ const UserForm = props => {
                     </span>
                 </Typography>
                 <br />
-                <Link
-                    to='/'
-                    className="flatLinkPurple"
-                >
-                    <i>
-                        ( Nevermind... )
-                    </i>
-                </Link>
+                {formFunc === "Update" && (
+                    <Link
+                        to='/'
+                        className="flatLinkPurple"
+                    >
+                        <i>
+                            ( Nevermind... )
+                        </i>
+                    </Link>
+                )}
                 <form
                     onSubmit={handleSubmit}
                     className={classes.form}
@@ -161,7 +163,7 @@ const UserForm = props => {
                                 <Container>
                                     <strong>
                                         <i>
-                                            &ensp;*Username will display on all comments
+                                            &ensp;* Username will display on all comments
                                         </i>
                                     </strong>
                                 </Container>
@@ -190,7 +192,7 @@ const UserForm = props => {
                                 <Container>
                                     <strong>
                                         <i>
-                                            &ensp;*Email is for sign-in purposes only
+                                            &ensp;* Email is for sign-in purposes only
                                         </i>
                                     </strong>
                                 </Container>
@@ -219,7 +221,7 @@ const UserForm = props => {
                                 <Container>
                                     <strong>
                                         <i>
-                                            &ensp;*Password must contain 8 or more characters with no spaces
+                                            &ensp;* Password must contain 8 or more characters with no spaces
                                         </i>
                                     </strong>
                                 </Container>
@@ -248,7 +250,7 @@ const UserForm = props => {
                                 <Container>
                                     <strong>
                                         <i>
-                                            &ensp;*Password can NOT be recovered!
+                                            &ensp;* Password can NOT be recovered!
                                         </i>
                                     </strong>
                                 </Container>
@@ -288,7 +290,7 @@ const UserForm = props => {
                                 >
                                     <span className="flatLinkPurple">
                                         <strong>
-                                            Already have an account? Sign in here!*&emsp;
+                                            Already have an account? Sign in here! *&emsp;
                                         </strong>
                                     </span>
                                 </Link>
@@ -304,7 +306,7 @@ const UserForm = props => {
                                 >
                                     <span className="flatLinkPurple">
                                         <strong>
-                                            Nevermind...&emsp;
+                                            Nevermind . . .&emsp;
                                         </strong>
                                     </span>
                                 </Link>

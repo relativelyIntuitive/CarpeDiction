@@ -139,7 +139,7 @@ const ImportExportFavs = props => {
                     <Typography className="rIPurple resHeading mb-sm-3">
                         <strong>
                             <i>
-                                (Enter a list of queries to import, seperated by commas)
+                                - Enter a list of queries to import, seperated by commas -
                             </i>
                         </strong>
                     </Typography>
@@ -196,7 +196,7 @@ const ImportExportFavs = props => {
                     <Typography className="rIPurple resHeading mb-sm-3">
                         <strong>
                             <i>
-                                (Downloads a text file containing your list of favorite queries)
+                                - Downloads a text file containing your list of favorite queries -
                             </i>
                         </strong>
                     </Typography>

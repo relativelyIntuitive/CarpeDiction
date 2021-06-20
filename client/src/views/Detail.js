@@ -9,6 +9,7 @@ import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { Divider } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
@@ -102,6 +103,7 @@ const Detail = props => {
                                             </i>
                                         </strong>
                                     </Typography>
+                                    <br />
                                     <h2 className="qQuotes">
                                         <strong>
                                             Email:
@@ -114,6 +116,7 @@ const Detail = props => {
                                             </i>
                                         </strong>
                                     </Typography>
+                                    <br />
                                     <br />
                                     <Typography>
                                         <strong>
@@ -140,8 +143,15 @@ const Detail = props => {
                                             </span>
                                         </strong>
                                     </Typography>
-                                    <br />
+                                    <Divider
+                                variant="fullWidth"
+                                className={classes.divider}
+                            />
                                     <Favorites user={user} />
+                                    <Divider
+                                        variant="fullWidth"
+                                        className={classes.divider}
+                                    />
                                     <ImportExportFavs
                                         user={user}
                                         setLogged={setLogged}

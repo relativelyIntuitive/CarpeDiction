@@ -87,7 +87,7 @@ const LoginForm = props => {
                 >
                     <span className="rIPurple">
                         <strong>
-                            Welcome back!
+                            - Welcome back! -
                         </strong>
                     </span>
                 </Typography>
@@ -165,7 +165,7 @@ const LoginForm = props => {
                         >
                             <span className="flatLinkPurple">
                                 <strong>
-                                    Don't have an account? Sign up here!*&emsp;
+                                    Don't have an account? Sign up here! *&emsp;
                                 </strong>
                             </span>
                         </Link>
@@ -181,7 +181,7 @@ const LoginForm = props => {
                         >
                             <span className="flatLinkPurple">
                                 <strong>
-                                    Nevermind...&emsp;
+                                    Nevermind . . .&emsp;
                                 </strong>
                             </span>
                         </Link>

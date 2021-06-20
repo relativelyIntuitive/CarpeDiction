@@ -5,6 +5,7 @@ import Axios from '../../node_modules/axios';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
+import { Divider } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid/';
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+    },
+    divider: {
+        margin: "30px 0",
     },
 }));
 
@@ -242,35 +246,56 @@ const UrbanDict = props => {
                                             <div className={classes.root}>
                                                 {entry.definition && (
                                                     entry.definition.map((def, index2) => (
-                                                        <Typography key={index2}>
-                                                            <strong>
-                                                                {index2 + 1}
-                                                                :
-                                                            </strong>
-                                                            &emsp;
-                                                            {def}
-                                                            <br />
-                                                            <br />
-                                                            {(entry.example && entry.example[index2]) && (
-                                                                <i>
-                                                                    <span className="rIOrange">
-                                                                        &emsp;&emsp;*&ensp;
-                                                                    </span>
-                                                                    <span className="rIPurple">
-                                                                        e.g.,&nbsp;
-                                                                    </span>
-                                                                    <strong>
-                                                                        <span className="text-muted">
-                                                                            &nbsp;...&ensp;
-                                                                            {entry.example[index2]}
-                                                                            &nbsp;
+                                                        <>
+                                                            <Typography key={index2}>
+                                                                <span className="rIOrange">
+                                                                    &emsp;[&ensp;
+                                                                </span>
+                                                                <span className="text-muted">
+                                                                    "
+                                                                    {entry.word}
+                                                                    "
+                                                                </span>
+                                                                <span className="rIOrange">
+                                                                    &ensp;]
+                                                                </span>
+                                                                <br />
+                                                                <br />
+                                                                <strong>
+                                                                    {index2 + 1}
+                                                                    :
+                                                                </strong>
+                                                                &emsp;
+                                                                {def}
+                                                                <br />
+                                                                <br />
+                                                                {(entry.example && entry.example[index2]) && (
+                                                                    <i>
+                                                                        <span className="rIOrange">
+                                                                            &emsp;&emsp;*&ensp;
                                                                         </span>
-                                                                        <br />
-                                                                        <br />
-                                                                    </strong>
-                                                                </i>
+                                                                        <span className="rIPurple">
+                                                                            e.g.,&nbsp;
+                                                                        </span>
+                                                                        <strong>
+                                                                            <span className="text-muted">
+                                                                                &nbsp;...&ensp;
+                                                                                {entry.example[index2]}
+                                                                                &nbsp;
+                                                                            </span>
+                                                                            <br />
+                                                                            <br />
+                                                                        </strong>
+                                                                    </i>
+                                                                )}
+                                                            </Typography>
+                                                            {(entry.definition.indexOf(def) < (entry.definition.length - 1)) && (
+                                                                <Divider
+                                                                    variant="fullWidth"
+                                                                    className={classes.divider}
+                                                                />
                                                             )}
-                                                        </Typography>
+                                                        </>
                                                     ))
                                                 )}
                                             </div>

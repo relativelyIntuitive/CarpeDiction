@@ -399,6 +399,18 @@ const Search = props => {
                         <WordAssocRes query={query} />
                         <br />
                         <Link
+                            href={"https://libraryofbabel.info/search.html"}
+                            target="_blank"
+                            style={{ textDecoration: "none" }}
+                        >
+                            <strong className="flatLinkRedirect mgWordBreak">
+                                Search The Library of Babel for "
+                                {query}
+                                "
+                            </strong>
+                        </Link>
+                        <br />
+                        <Link
                             href={"http://www.wikipedia.com/wiki/" + query}
                             target="_blank"
                             style={{ textDecoration: "none" }}
