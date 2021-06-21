@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Router, Switch } from '@reach/router';
+import { Router } from '@reach/router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -39,63 +39,58 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <Switch>
-                    <NotFound default />
-                    <Main
-                        path="/"
-                        logged={logged}
-                        setLogged={setLogged}
-                        setAudioLoaded={setAudioLoaded}
-                        setSyllables={setSyllables}
-                    />
-                    <Search
-                        path="/search/:query"
-                        logged={logged}
-                        setLogged={setLogged}
-                        audioLoaded={audioLoaded}
-                        setAudioLoaded={setAudioLoaded}
-                        syllables={syllables}
-                        setSyllables={setSyllables}
-                    />
-                    <Register
-                        path="register/"
-                        logged={logged}
-                        setLogged={setLogged}
-                        setAudioLoaded={setAudioLoaded}
-                        setSyllables={setSyllables}
-                    />
-                    <Login
-                        path="login/"
-                        logged={logged}
-                        setLogged={setLogged}
-                        setAudioLoaded={setAudioLoaded}
-                        setSyllables={setSyllables}
-                    />
-                    <Detail
-                        path="user/account"
-                        logged={logged}
-                        setLogged={setLogged}
-                        setAudioLoaded={setAudioLoaded}
-                        setSyllables={setSyllables}
-                    />
-                    <Update
-                        path="user/account/edit"
-                        logged={logged}
-                        setLogged={setLogged}
-                        setAudioLoaded={setAudioLoaded}
-                        setSyllables={setSyllables}
-                    />
-                    <Delete
-                        path="user/account/delete"
-                        logged={logged}
-                        setLogged={setLogged}
-                        setAudioLoaded={setAudioLoaded}
-                        setSyllables={setSyllables}
-                    />
-                    <Route path="*">
-                        <NotFound />
-                    </Route>
-                </Switch>
+                <NotFound default />
+                <Main
+                    path="/"
+                    logged={logged}
+                    setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
+                    setSyllables={setSyllables}
+                />
+                <Search
+                    path="/search/:query"
+                    logged={logged}
+                    setLogged={setLogged}
+                    audioLoaded={audioLoaded}
+                    setAudioLoaded={setAudioLoaded}
+                    syllables={syllables}
+                    setSyllables={setSyllables}
+                />
+                <Register
+                    path="register/"
+                    logged={logged}
+                    setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
+                    setSyllables={setSyllables}
+                />
+                <Login
+                    path="login/"
+                    logged={logged}
+                    setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
+                    setSyllables={setSyllables}
+                />
+                <Detail
+                    path="user/account"
+                    logged={logged}
+                    setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
+                    setSyllables={setSyllables}
+                />
+                <Update
+                    path="user/account/edit"
+                    logged={logged}
+                    setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
+                    setSyllables={setSyllables}
+                />
+                <Delete
+                    path="user/account/delete"
+                    logged={logged}
+                    setLogged={setLogged}
+                    setAudioLoaded={setAudioLoaded}
+                    setSyllables={setSyllables}
+                />
             </Router>
         </div>
     );
