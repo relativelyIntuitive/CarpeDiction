@@ -1,16 +1,16 @@
  /* || Fonts for mobile support  */
  @font-face {
     font-family: 'lsans';
-    src: url('./fonts/LSANS.TTF')  format('truetype'), /* Safari, Android, iOS */
-        url('./fonts/LSANSI.TTF')  format('truetype'), /* Safari, Android, iOS */
-        url('./fonts/LSANSD.TTF')  format('truetype'), /* Safari, Android, iOS */
-        url('./fonts/LSANSDI.TTF')  format('truetype'), /* Safari, Android, iOS */
+    src: local('LSANS'), url('./fonts/LSANS.TTF')  format('truetype'), /* Safari, Android, iOS */
+        local('LSANSI'), url('./fonts/LSANSI.TTF')  format('truetype'), /* Safari, Android, iOS */
+        local('LSANSD'), url('./fonts/LSANSD.TTF')  format('truetype'), /* Safari, Android, iOS */
+        local('LSANSDI'), url('./fonts/LSANSDI.TTF')  format('truetype'), /* Safari, Android, iOS */
 }
 
 @font-face {
     font-family: 'lucida_sansregular';
-    src: url('./fonts/lsans-webfont.woff2') format('woff2'),
-         url('./fonts/lsans-webfont.woff') format('woff');
+    src: local('lsans-webfont'), url('./fonts/lsans-webfont.woff2') format('woff2'),
+         local('lsans-webfont'), url('./fonts/lsans-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -18,8 +18,8 @@
 
 @font-face {
     font-family: 'lucida_sansdemibold_roman';
-    src: url('./fonts/lsansd-webfont.woff2') format('woff2'),
-         url('./fonts/lsansd-webfont.woff') format('woff');
+    src: local('lsand-webfont'), url('./fonts/lsansd-webfont.woff2') format('woff2'),
+         local('lsand-webfont'), url('./fonts/lsansd-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -27,8 +27,8 @@
 
 @font-face {
     font-family: 'lucida_sansdemibold_italic';
-    src: url('./fonts/lsansdi-webfont.woff2') format('woff2'),
-         url('./fonts/lsansdi-webfont.woff') format('woff');
+    src: local('lsansdi-webfont'), url('./fonts/lsansdi-webfont.woff2') format('woff2'),
+         local('lsansdi-webfont'), url('./fonts/lsansdi-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
