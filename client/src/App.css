@@ -1,45 +1,11 @@
  /* || Fonts for mobile support  */
- @font-face {
-    font-family: 'lsans';
-    src: local('LSANS'), url('./fonts/LSANS.TTF')  format('truetype'), /* Safari, Android, iOS */
-        local('LSANSI'), url('./fonts/LSANSI.TTF')  format('truetype'), /* Safari, Android, iOS */
-        local('LSANSD'), url('./fonts/LSANSD.TTF')  format('truetype'), /* Safari, Android, iOS */
-        local('LSANSDI'), url('./fonts/LSANSDI.TTF')  format('truetype'), /* Safari, Android, iOS */
-}
-
-@font-face {
-    font-family: 'lucida_sansregular';
-    src: local('lsans-webfont'), url('./fonts/lsans-webfont.woff2') format('woff2'),
-         local('lsans-webfont'), url('./fonts/lsans-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'lucida_sansdemibold_roman';
-    src: local('lsand-webfont'), url('./fonts/lsansd-webfont.woff2') format('woff2'),
-         local('lsand-webfont'), url('./fonts/lsansd-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'lucida_sansdemibold_italic';
-    src: local('lsansdi-webfont'), url('./fonts/lsansdi-webfont.woff2') format('woff2'),
-         local('lsansdi-webfont'), url('./fonts/lsansdi-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
 
 
 /* || Global Resets */
  * {
     margin: 0;
     padding: 0;
-    font-family:'lsans', 'Lucida Sans', 'Lucida Sans Regular', 'lucida_sansregular', 'lucida_sansdemibold_italic', 'lucida_sansdemibold_roman', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
