@@ -9,8 +9,8 @@
 
 @font-face {
     font-family: 'lucida_sansregular';
-    src: url('lsans-webfont.woff2') format('woff2'),
-         url('lsans-webfont.woff') format('woff');
+    src: url('./fonts/lsans-webfont.woff2') format('woff2'),
+         url('./fonts/lsans-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -18,8 +18,8 @@
 
 @font-face {
     font-family: 'lucida_sansdemibold_roman';
-    src: url('lsansd-webfont.woff2') format('woff2'),
-         url('lsansd-webfont.woff') format('woff');
+    src: url('./fonts/lsansd-webfont.woff2') format('woff2'),
+         url('./fonts/lsansd-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -27,8 +27,8 @@
 
 @font-face {
     font-family: 'lucida_sansdemibold_italic';
-    src: url('lsansdi-webfont.woff2') format('woff2'),
-         url('lsansdi-webfont.woff') format('woff');
+    src: url('./fonts/lsansdi-webfont.woff2') format('woff2'),
+         url('./fonts/lsansdi-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
