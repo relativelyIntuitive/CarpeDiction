@@ -275,7 +275,7 @@ const Search = props => {
                                         <i className="mgWordBreak">
                                             {query}
                                         </i>
-                                        &nbsp;" is not considered offensive by any official sources!
+                                        " is not considered offensive by any official sources!
                                     </strong>
                                 </h6>
                             )}
@@ -286,7 +286,7 @@ const Search = props => {
                                         <i>
                                             {query}
                                         </i>
-                                        &nbsp;" is considered offensive by some official sources...
+                                        " is considered offensive by some official sources...
                                     </strong>
                                 </h6>
                             )}
@@ -297,7 +297,7 @@ const Search = props => {
                                         <i>
                                             {query}
                                         </i>
-                                        &nbsp;" is considered offensive by most official sources!
+                                        " is considered offensive by most official sources!
                                     </strong>
                                 </h6>
                             )}

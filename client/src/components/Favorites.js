@@ -76,7 +76,7 @@ const Favorites = props => {
                                             {(user.favs.indexOf(word) !== (user.favs.length - 1)) && (
                                                 <strong>
                                                     <span className="rIOrange">
-                                                        &ensp;|&nbsp;
+                                                        &nbsp;|&nbsp;
                                                     </span>
                                                 </strong>
                                             )}
