@@ -36,7 +36,7 @@ const StickyFooter = () => {
                     xs={6}
                 >
                     <Link
-                        href="https://www.linkedin.com/in/relativelyIntuitive"
+                        href="http://www.linkedin.com/in/relativelyIntuitive"
                         target="_blank"
                     >
                         <img
@@ -48,7 +48,7 @@ const StickyFooter = () => {
                         />
                     </Link>
                     <Link
-                        href="https://github.com/relativelyIntuitive"
+                        href="http://github.com/relativelyIntuitive"
                         target="_blank"
                     >
                         <img
@@ -60,7 +60,7 @@ const StickyFooter = () => {
                         />
                     </Link>
                     <Link
-                        href="https://www.instagram.com/zeebo_rowte/"
+                        href="http://www.instagram.com/zeebo_rowte/"
                         target="_blank"
                     >
                         <img

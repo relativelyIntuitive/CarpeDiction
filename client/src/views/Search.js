@@ -224,7 +224,7 @@ const Search = props => {
                                                 key={index}
                                                 className="mgInlineBlock"
                                             >
-                                                <Link href={`/search/${headWord}`} style={{ textDecoration: 'none' }}>
+                                                <Link href={`http://www.carpediction.com/search/${headWord}`} style={{ textDecoration: 'none' }}>
                                                     <strong className="flatLinkMuted">
                                                         <i>
                                                             &nbsp;"
@@ -259,7 +259,7 @@ const Search = props => {
                                                 key={index}
                                                 className="mgInlineBlock"
                                             >
-                                                <Link href={`/search/${spelling}`} style={{ textDecoration: 'none' }}>
+                                                <Link href={`http://www.carpediction.com/search/${spelling}`} style={{ textDecoration: 'none' }}>
                                                     <strong className="flatLinkMuted">
                                                         <i>
                                                             &nbsp;"
@@ -399,7 +399,7 @@ const Search = props => {
                         <WordAssocRes query={query} />
                         <br />
                         <Link
-                            href={"https://libraryofbabel.info/search.html"}
+                            href={"http://libraryofbabel.info/search.html"}
                             target="_blank"
                             style={{ textDecoration: "none" }}
                         >
