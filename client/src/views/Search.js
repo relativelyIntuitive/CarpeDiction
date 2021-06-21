@@ -9,6 +9,7 @@ import fav_icon_orange from '../images/fav_icon_orange.png';
 import Comments from '../components/Comments';
 // disabled for now due to 429 error...retry in a month or so maybe a bad useEffect ran up the limit...
 // import DeepTrans from '../components/DeepTrans';
+import HeadWords from '../components/HeadWords';
 import LinguaConj from '../components/LinguaConj';
 import MWDictRes from '../components/MWDictRes';
 import MWThesRes from '../components/MWThesRes';
@@ -213,76 +214,10 @@ const Search = props => {
                                     />
                                 </Button>
                             )}
-                            {headWords.length > 0 && (
-                                <>
-                                    <h5 className="text-muted mt-sm-2">
-                                        Definitions retrieved for:
-                                    </h5>
-                                    <ul className="inlineList topList mb-sm-5 mt-sm-3">
-                                        {headWords.map((headWord, index) => (
-                                            <li
-                                                key={index}
-                                                className="mgInlineBlock"
-                                            >
-                                                <Link href={`http://www.carpediction.com/search/${headWord}`} style={{ textDecoration: 'none' }}>
-                                                    <strong className="flatLinkMuted">
-                                                        <i>
-                                                            &nbsp;"
-                                                            {headWord}
-                                                            "
-                                                            {(headWords.indexOf(headWord) !== (headWords.length - 1)) && (
-                                                                <>
-                                                                    ,
-                                                                </>
-                                                            )}
-                                                            {!(headWords.indexOf(headWord) !== (headWords.length - 1)) && (
-                                                                <>
-                                                                    ;
-                                                                </>
-                                                            )}
-                                                        </i>
-                                                    </strong>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </>
-                            )}
-                            {spellings.length > 0 && (
-                                <>
-                                    <h5 className="text-muted">
-                                        Did you mean...
-                                    </h5>
-                                    <ul className="inlineList topList">
-                                        {spellings.map((spelling, index) => (
-                                            <li
-                                                key={index}
-                                                className="mgInlineBlock"
-                                            >
-                                                <Link href={`https://confident-wilson-cff6c3.netlify.app/search/${spelling}`} style={{ textDecoration: 'none' }}>
-                                                    <strong className="flatLinkMuted">
-                                                        <i>
-                                                            &nbsp;"
-                                                            {spelling}
-                                                            "
-                                                            {(spellings.indexOf(spelling) !== (spellings.length - 1)) && (
-                                                                <>
-                                                                    ,
-                                                                </>
-                                                            )}
-                                                            {!(spellings.indexOf(spelling) !== (spellings.length - 1)) && (
-                                                                <>
-                                                                    ...?
-                                                                </>
-                                                            )}
-                                                        </i>
-                                                    </strong>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </>
-                            )}
+                            <HeadWords
+                                headWords={headWords}
+                                spellings={spellings}
+                            />
                             {pronunciations.length > 0 && (
                                 <ul className="inlineList topList">
                                     {pronunciations.map((variant, index) => (
