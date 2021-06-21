@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(cors({ credentials: true, origin: 'https://www.carpediction.com' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// allows Express to set browser cookies
+// allows Ecpress to set browser cookies
 app.enable('trust proxy');
 app.use((req, res, next) => {
     if (req.secure) {
@@ -31,8 +31,8 @@ app.use((req, res, next) => {
     }
 });
 // Express redirect to handle manual refreshes and typed URLs
-app.get('/', function(req, res) {
-    res.sendFile(path.join('https://www.carpediction.com'), function(err) {
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'path/to/your/index.html'), function(err) {
       if (err) {
         res.status(500).send(err)
       }
