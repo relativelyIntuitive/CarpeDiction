@@ -259,7 +259,7 @@ const Search = props => {
                                                 key={index}
                                                 className="mgInlineBlock"
                                             >
-                                                <Link href={`http://www.carpediction.com/search/${spelling}`} style={{ textDecoration: 'none' }}>
+                                                <Link href={`https://confident-wilson-cff6c3.netlify.app/search/${spelling}`} style={{ textDecoration: 'none' }}>
                                                     <strong className="flatLinkMuted">
                                                         <i>
                                                             &nbsp;"
