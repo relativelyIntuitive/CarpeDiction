@@ -30,6 +30,14 @@ app.use((req, res, next) => {
         res.redirect('https://' + req.headers.host + req.url);
     }
 });
+// Express redirect to handle manual refreshes and typed URLs
+app.get('/', function(req, res) {
+    res.sendFile(path.join('https://www.carpediction.com'), function(err) {
+      if (err) {
+        res.status(500).send(err)
+      }
+    })
+  })
 
 
 // imports routes to express app
