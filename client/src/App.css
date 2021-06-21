@@ -1,17 +1,45 @@
  /* || Fonts for mobile support  */
  @font-face {
-    font-family: 'Safe Lucida';
+    font-family: 'lsans';
     src: url('./fonts/LSANS.TTF')  format('truetype'), /* Safari, Android, iOS */
         url('./fonts/LSANSI.TTF')  format('truetype'), /* Safari, Android, iOS */
         url('./fonts/LSANSD.TTF')  format('truetype'), /* Safari, Android, iOS */
         url('./fonts/LSANSDI.TTF')  format('truetype'), /* Safari, Android, iOS */
 }
 
+@font-face {
+    font-family: 'lucida_sansregular';
+    src: url('lsans-webfont.woff2') format('woff2'),
+         url('lsans-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'lucida_sansdemibold_roman';
+    src: url('lsansd-webfont.woff2') format('woff2'),
+         url('lsansd-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'lucida_sansdemibold_italic';
+    src: url('lsansdi-webfont.woff2') format('woff2'),
+         url('lsansdi-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 /* || Global Resets */
  * {
     margin: 0;
     padding: 0;
-    font-family:'Safe Lucida', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
+    font-family:'lsans', 'Lucida Sans', 'Lucida Sans Regular', 'lucida_sansregular', 'lucida_sansdemibold_italic', 'lucida_sansdemibold_roman', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
