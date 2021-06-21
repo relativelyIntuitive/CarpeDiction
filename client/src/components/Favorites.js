@@ -62,7 +62,7 @@ const Favorites = props => {
                     <div className={classes.root}>
                         {user.favs.length > 0 && (
                             <ul className="inlineList">
-                                {user.favs.map((word, index) => (
+                                {user.favs.sort().map((word, index) => (
                                     <li key={index} className="mgInlineBlock">
                                         <Typography>
                                             &nbsp;
