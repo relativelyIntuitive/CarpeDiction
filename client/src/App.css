@@ -1,6 +1,6 @@
  /* || Fonts for mobile support  */
  @font-face {
-    font-family: 'Lucida Sans';
+    font-family: 'Safe Lucida';
     src: url('./fonts/LSANS.TTF')  format('truetype'), /* Safari, Android, iOS */
         url('./fonts/LSANSI.TTF')  format('truetype'), /* Safari, Android, iOS */
         url('./fonts/LSANSD.TTF')  format('truetype'), /* Safari, Android, iOS */
@@ -11,7 +11,7 @@
  * {
     margin: 0;
     padding: 0;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
+    font-family:'Safe Lucida', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
