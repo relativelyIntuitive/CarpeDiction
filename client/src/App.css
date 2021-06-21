@@ -306,6 +306,7 @@
 }
 
 .rITipJarChars {
+    font-size: smaller;
     word-break: break-all;
     margin-bottom: 0.5rem!important;
 }

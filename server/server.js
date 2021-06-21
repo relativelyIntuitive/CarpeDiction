@@ -18,7 +18,7 @@ const express = require('express'),
 
 // configuers and registers middleware
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: 'https://confident-wilson-cff6c3.netlify.app' }));
+app.use(cors({ credentials: true, origin: 'https://www.carpediction.com' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.enable('trust proxy');
