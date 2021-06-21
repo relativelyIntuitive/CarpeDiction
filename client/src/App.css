@@ -1,4 +1,13 @@
- /* || Global Resets */
+ /* || Fonts for mobile support  */
+ @font-face {
+    font-family: 'Lucida Sans';
+    src: url('./fonts/LSANS.TTF')  format('truetype'), /* Safari, Android, iOS */
+        url('./fonts/LSANSI.TTF')  format('truetype'), /* Safari, Android, iOS */
+        url('./fonts/LSANSD.TTF')  format('truetype'), /* Safari, Android, iOS */
+        url('./fonts/LSANSDI.TTF')  format('truetype'), /* Safari, Android, iOS */
+}
+
+/* || Global Resets */
  * {
     margin: 0;
     padding: 0;
