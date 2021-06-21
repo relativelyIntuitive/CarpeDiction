@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Router } from '@reach/router';
+import { Router, browserHistory } from '@reach/router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -38,7 +38,7 @@ function App() {
     // returns the app with routes
     return (
         <div className="App">
-            <Router>
+            <Router history={browserHistory}>
                 <NotFound default />
                 <Main
                     path="/"

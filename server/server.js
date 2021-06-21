@@ -21,6 +21,7 @@ app.use(cookieParser());
 app.use(cors({ credentials: true, origin: 'https://www.carpediction.com' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// allows Express to set browser cookies
 app.enable('trust proxy');
 app.use((req, res, next) => {
     if (req.secure) {
