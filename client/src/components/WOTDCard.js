@@ -79,7 +79,6 @@ const WOTDCard = () => {
                             variant="h4"
                             component="h2"
                         >
-                            <br />
                             <strong className="qQuotes">
                                 "&nbsp;
                                 <span className="rIPurple">
