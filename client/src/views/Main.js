@@ -81,9 +81,9 @@ const Main = props => {
                                         *NOTICE*
                                     </i>
                                     <br />
-                                    -Safari browsers are currently experiencing issues with this site!
-                                    <br />
                                     -Manual refreshes or URL entry will currently result in a 404 error!
+                                    <br />
+                                    -Safari browsers are also currently experiencing issues with the site!
                                 </strong>
                             </p>
                             <WOTDCard />
