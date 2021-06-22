@@ -76,7 +76,7 @@ const WOTDCard = () => {
                     <>
                         <Typography
                             className="rIPurple"
-                            variant="h5"
+                            variant="h4"
                             component="h2"
                         >
                             <strong className="qQuotes">
@@ -87,7 +87,7 @@ const WOTDCard = () => {
                                 &nbsp;"
                             </strong>
                         </Typography>
-                        <Typography
+                        {/* <Typography
                             variant="h6"
                             component="h3"
                             className="rIGrey"
@@ -99,7 +99,7 @@ const WOTDCard = () => {
                                     {def}
                                 </strong>
                             </i>
-                        </Typography>
+                        </Typography> */}
                     </>
                 )}
             </CardContent>
