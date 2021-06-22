@@ -75,6 +75,15 @@ const Main = props => {
                                     </i>
                                 </strong>
                             </p>
+                            <p className="text-danger">
+                                <strong>
+                                    <i>
+                                        *NOTICE*
+                                    </i>
+                                    <br />
+                                    Safari browsers are not currently supported here!
+                                </strong>
+                            </p>
                             <WOTDCard />
                             <Divider
                                 variant="fullWidth"
