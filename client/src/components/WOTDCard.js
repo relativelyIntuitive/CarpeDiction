@@ -80,11 +80,11 @@ const WOTDCard = () => {
                             component="h2"
                         >
                             <strong className="qQuotes">
-                                "&nbsp;
+                                "&ensp;
                                 <span className="rIPurple">
                                     {word}
                                 </span>
-                                &nbsp;"
+                                &ensp;"
                             </strong>
                         </Typography>
                         {/* <Typography
