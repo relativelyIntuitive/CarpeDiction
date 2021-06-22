@@ -71,10 +71,10 @@ const WOTDCard = () => {
                     <strong>
                         Word of the Day:
                     </strong>
-                    <br />
                 </Typography>
                 {loaded && (
                     <>
+                        <br />
                         <Typography
                             className="rIPurple"
                             variant="h4"
