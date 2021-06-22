@@ -34,12 +34,15 @@ setInterval(
     function getWOTD() {
         const WOTD = {};
 
-        Axios.get('http://randomword.com/')
+        // Axios.get('http://randomword.com/')
+        Axios.get('https://www.merriam-webster.com/word-of-the-day')
             .then(res => {
                 const html = res.data;
                 const $ = cheerio.load(html);
-                WOTD.word = $('#random_word').text().trim();
-                WOTD.def = $('#random_word_definition').text().trim();
+                // WOTD.word = $('#random_word').text().trim();
+                // WOTD.def = $('#random_word_definition').text().trim();
+                WOTD.word = $("h1:first").text().trim();
+                WOTD.def = "";
                 console.log(WOTD);
                 Axios.post(`${process.env.API_ROOT}/api/wotd/add`, WOTD)
                     .then(res => console.log(res.data))
@@ -49,5 +52,6 @@ setInterval(
     },
     // repeat every 24 hours (expressed in ms)
     // 86400000
-    3600000
+    // 3600000
+    5000
 )
