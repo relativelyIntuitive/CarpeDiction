@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Axios from '../../node_modules/axios';
 import { Link, navigate } from '@reach/router';
 
-import Favorites from '../components/Favorites';
+import FavoritesAZ from '../components/FavoritesAZ';
+import FavoritesNew from '../components/FavoritesNew';
 import ImportExportFavs from '../components/ImportExportFavs';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
@@ -147,7 +148,8 @@ const Detail = props => {
                                 variant="fullWidth"
                                 className={classes.divider}
                             />
-                                    <Favorites user={user} />
+                                    <FavoritesNew user={user} />
+                                    <FavoritesAZ user={user} />
                                     <Divider
                                         variant="fullWidth"
                                         className={classes.divider}

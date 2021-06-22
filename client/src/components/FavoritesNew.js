@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-// Favorites retrieves a list of the user's favorite words
-const Favorites = props => {
+// FavoritesAZ retrieves a list of the user's favorite words sorted alphabetically
+const FavoritesNew = props => {
 
     // retrieves user data from props
     const { user } = props;
@@ -52,7 +52,7 @@ const Favorites = props => {
                         <strong>
                             <i>
                                 <u>
-                                    Favorite Queries
+                                    Favorite Queries (Recent)
                                 </u>
                             </i>
                         </strong>
@@ -62,7 +62,7 @@ const Favorites = props => {
                     <div className={classes.root}>
                         {user.favs.length > 0 && (
                             <ul className="inlineList">
-                                {user.favs.sort().map((word, index) => (
+                                {user.favs.map((word, index) => (
                                     <li key={index} className="mgInlineBlock">
                                         <Typography>
                                             &nbsp;
@@ -93,4 +93,4 @@ const Favorites = props => {
 }
 
 
-export default Favorites;
+export default FavoritesNew;
