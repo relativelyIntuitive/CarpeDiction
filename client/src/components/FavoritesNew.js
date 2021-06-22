@@ -38,6 +38,8 @@ const FavoritesNew = props => {
     // generates CSS rulesets
     const classes = useStyles();
 
+    // local list to hold favs for sorting so as not to mutate original
+    const favsSorted = user.favs.slice().reverse();
 
     // returns a material UI accordion component displaying the user's favorites list
     return (
@@ -60,9 +62,9 @@ const FavoritesNew = props => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <div className={classes.root}>
-                        {user.favs.length > 0 && (
+                        {favsSorted.length > 0 && (
                             <ul className="inlineList">
-                                {user.favs.map((word, index) => (
+                                {favsSorted.map((word, index) => (
                                     <li key={index} className="mgInlineBlock">
                                         <Typography>
                                             &nbsp;
@@ -73,7 +75,7 @@ const FavoritesNew = props => {
                                                     </span>
                                                 </i>
                                             </Link>
-                                            {(user.favs.indexOf(word) !== (user.favs.length - 1)) && (
+                                            {(favsSorted.indexOf(word) !== (favsSorted.length - 1)) && (
                                                 <strong>
                                                     <span className="rIOrange">
                                                         &nbsp;|&nbsp;

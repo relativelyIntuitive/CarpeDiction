@@ -39,7 +39,7 @@ const FavoritesAZ = props => {
     const classes = useStyles();
 
     // local list to hold favs for sorting so as not to mutate original
-    const favsToSort = user.favs;
+    const favsSorted = user.favs.sort();
 
     // returns a material UI accordion component displaying the user's favorites list
     return (
@@ -62,9 +62,9 @@ const FavoritesAZ = props => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <div className={classes.root}>
-                        {favsToSort.length > 0 && (
+                        {favsSorted.length > 0 && (
                             <ul className="inlineList">
-                                {favsToSort.sort().map((word, index) => (
+                                {favsSorted.map((word, index) => (
                                     <li key={index} className="mgInlineBlock">
                                         <Typography>
                                             &nbsp;
@@ -75,7 +75,7 @@ const FavoritesAZ = props => {
                                                     </span>
                                                 </i>
                                             </Link>
-                                            {(favsToSort.indexOf(word) !== (favsToSort.length - 1)) && (
+                                            {(favsSorted.indexOf(word) !== (favsSorted.length - 1)) && (
                                                 <strong>
                                                     <span className="rIOrange">
                                                         &nbsp;|&nbsp;
