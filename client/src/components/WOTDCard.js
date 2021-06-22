@@ -74,12 +74,12 @@ const WOTDCard = () => {
                 </Typography>
                 {loaded && (
                     <>
-                        <br />
                         <Typography
                             className="rIPurple"
                             variant="h4"
                             component="h2"
                         >
+                            <br />
                             <strong className="qQuotes">
                                 "&nbsp;
                                 <span className="rIPurple">
