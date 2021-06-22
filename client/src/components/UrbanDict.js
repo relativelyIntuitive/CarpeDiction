@@ -56,7 +56,7 @@ const UrbanDict = props => {
         const options = {
             method: 'GET',
             url: 'https://mashape-community-urban-dictionary.p.rapidapi.com/define',
-            params: { term: query },
+            params: { term: query.toLowerCase()},
             headers: {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'mashape-community-urban-dictionary.p.rapidapi.com'

@@ -62,7 +62,7 @@ const Comments = props => {
 
     // retrieves all comments
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/retrieve/${query}`)
+        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/retrieve/${query.toLowerCase()}`)
             .then(res => {
                 const resComments = res.data.comments;
                 setComments(resComments);
@@ -72,7 +72,7 @@ const Comments = props => {
 
     // retrieves the top comments
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/tops/${query}`)
+        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/tops/${query.toLowerCase()}`)
             .then(res => {
                 const resTopComments = res.data.comments;
                 setTopComments(resTopComments);
@@ -179,7 +179,7 @@ const Comments = props => {
                                     <u>
                                         Post a comment for "
                                         <span className="mgWordBreak">
-                                            {query}
+                                            {query.toLowerCase()}
                                         </span>
                                         "
                                     </u>
@@ -237,7 +237,7 @@ const Comments = props => {
                             <u>
                                 Top comments for "
                                 <span className="mgWordBreak">
-                                    {query}
+                                    {query.toLowerCase()}
                                 </span>
                                 "
                             </u>
@@ -254,7 +254,7 @@ const Comments = props => {
                                         <i>
                                             There are not yet any comments for "
                                             <span className="mgWordBreak">
-                                                {query}
+                                                {query.toLowerCase()}
                                             </span>
                                             ," be the first!
                                         </i>
@@ -299,6 +299,8 @@ const Comments = props => {
                                                                     <i className="text-muted">
                                                                         ~
                                                                         {topComment.createdAt.split("T")[0]}
+                                                                        &ensp;-&ensp;
+                                                                        {topComment._id}
                                                                     </i>
                                                                 </Grid>
                                                                 <Grid
@@ -390,7 +392,7 @@ const Comments = props => {
                                             <u>
                                                 Latest comments for "
                                                 <span className="mgWordBreak">
-                                                    {query}
+                                                    {query.toLowerCase()}
                                                 </span>
                                                 "
                                             </u>
@@ -427,6 +429,8 @@ const Comments = props => {
                                                             <i className="text-muted">
                                                                 ~
                                                                 {comment.createdAt.split("T")[0]}
+                                                                &ensp;-&ensp;
+                                                                {comment._id}
                                                             </i>
                                                         )}
                                                     </Grid>

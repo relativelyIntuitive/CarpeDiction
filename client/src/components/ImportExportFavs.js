@@ -146,7 +146,7 @@ const ImportExportFavs = props => {
                     <br />
                     <TextField
                         id="outlined-basic"
-                        label="Queries..."
+                        label="i.e. Query1, query2, etc..."
                         name="newImports"
                         variant="outlined"
                         multiline
@@ -200,22 +200,20 @@ const ImportExportFavs = props => {
                             </i>
                         </strong>
                     </Typography>
+                    <br />
                     {exportErrors.length > 0 && (
-                        <>
-                            <br />
-                            {exportErrors.map((err, index) => (
-                                <Typography
-                                    className="text-danger resHeading"
-                                    key={index}
-                                >
-                                    <strong>
-                                        <i>
-                                            {err}
-                                        </i>
-                                    </strong>
-                                </Typography>
-                            ))}
-                        </>
+                        exportErrors.map((err, index) => (
+                            <Typography
+                                className="text-danger resHeading"
+                                key={index}
+                            >
+                                <strong>
+                                    <i>
+                                        {err}
+                                    </i>
+                                </strong>
+                            </Typography>
+                        ))
                     )}
                     <Button
                         type="submit"

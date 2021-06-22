@@ -46,7 +46,7 @@ const DeepTrans = props => {
 
     // retrieves the query results for various languages and saves them
     useEffect(() => {
-        let newResults = {'query': query};
+        let newResults = {'query': query.toLowerCase()};
         // results['query'] = query;
         // set the options for the Spanish translation request through rapidAPI
         const optionsEs = {
@@ -57,7 +57,7 @@ const DeepTrans = props => {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
-            data: { q: query, source: 'en', target: 'es' }
+            data: { q: query.toLowerCase(), source: 'en', target: 'es' }
         };
         // makes the request
         Axios.request(optionsEs)
@@ -82,7 +82,7 @@ const DeepTrans = props => {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
-            data: { q: query, source: 'en', target: 'fr' }
+            data: { q: query.toLowerCase(), source: 'en', target: 'fr' }
         };
         // makes the request
         Axios.request(optionsFr)
@@ -106,7 +106,7 @@ const DeepTrans = props => {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
-            data: { q: query, source: 'en', target: 'la' }
+            data: { q: query.toLowerCase(), source: 'en', target: 'la' }
         };
         // makes the request
         Axios.request(optionsLa)
@@ -130,7 +130,7 @@ const DeepTrans = props => {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
-            data: { q: query, source: 'en', target: 'it' }
+            data: { q: query.toLowerCase(), source: 'en', target: 'it' }
         };
         // makes the request
         Axios.request(optionsIt)
@@ -154,7 +154,7 @@ const DeepTrans = props => {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
-            data: { q: query, source: 'en', target: 'pt' }
+            data: { q: query.toLowerCase(), source: 'en', target: 'pt' }
         };
         // makes the request
         Axios.request(optionsPt)

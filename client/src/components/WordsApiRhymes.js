@@ -53,7 +53,7 @@ const WordsApiRhymes = props => {
         // set the options for the query request through rapidAPI
         const options = {
             method: 'GET',
-            url: `https://wordsapiv1.p.rapidapi.com/words/${query}/rhymes`,
+            url: `https://wordsapiv1.p.rapidapi.com/words/${query.toLowerCase()}/rhymes`,
             headers: {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com'

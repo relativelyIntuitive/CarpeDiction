@@ -81,7 +81,7 @@ const Search = props => {
         // sets the options for the request through Rapid API
         const options = {
             method: 'GET',
-            url: `https://wordsapiv1.p.rapidapi.com/words/${query}/syllables`,
+            url: `https://wordsapiv1.p.rapidapi.com/words/${query.toLowerCase()}/syllables`,
             headers: {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com'
@@ -163,7 +163,7 @@ const Search = props => {
                                 <strong className="qQuotes">
                                     "&nbsp;
                                     <span className="rIPurple resHeading">
-                                        {query}
+                                        {query.toLowerCase()}
                                     </span>
                                     &nbsp;"
                                 </strong>
@@ -183,7 +183,7 @@ const Search = props => {
                                     />
                                 </Button>
                             )}
-                            {(logged !== null) && (logged.favs !== undefined) && !(logged.favs.includes(query)) && (
+                            {(logged !== null) && (logged.favs !== undefined) && !(logged.favs.includes(query.toLowerCase())) && (
                                 <Button
                                     variant="outline-warning"
                                     className="cdFavIcon"
@@ -199,7 +199,7 @@ const Search = props => {
                                     />
                                 </Button>
                             )}
-                            {(logged !== null) && (logged.favs !== undefined) && (logged.favs.includes(query)) && (
+                            {(logged !== null) && (logged.favs !== undefined) && (logged.favs.includes(query.toLowerCase())) && (
                                 <Button
                                     variant="outline-dark"
                                     className="cdFavIcon"
@@ -273,7 +273,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i className="mgWordBreak">
-                                            {query}
+                                            {query.toLowerCase()}
                                         </i>
                                         " is not considered offensive by any official sources!
                                     </strong>
@@ -284,7 +284,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i>
-                                            {query}
+                                            {query.toLowerCase()}
                                         </i>
                                         " is considered offensive by some official sources...
                                     </strong>
@@ -295,7 +295,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i>
-                                            {query}
+                                            {query.toLowerCase()}
                                         </i>
                                         " is considered offensive by most official sources!
                                     </strong>
@@ -340,31 +340,31 @@ const Search = props => {
                         >
                             <strong className="flatLinkRedirect mgWordBreak">
                                 Search The Library of Babel for "
-                                {query}
+                                {query.toLowerCase()}
                                 "
                             </strong>
                         </Link>
                         <br />
                         <Link
-                            href={"http://www.wikipedia.com/wiki/" + query}
+                            href={"http://www.wikipedia.com/wiki/" + query.toLowerCase()}
                             target="_blank"
                             style={{ textDecoration: "none" }}
                         >
                             <strong className="flatLinkRedirect mgWordBreak">
                                 Search Wikipedia for "
-                                {query}
+                                {query.toLowerCase()}
                                 "
                             </strong>
                         </Link>
                         <br />
                         <Link
-                            href={"http://www.google.com/search?q=" + query}
+                            href={"http://www.google.com/search?q=" + query.toLowerCase()}
                             target="_blank"
                             style={{ textDecoration: "none" }}
                         >
                             <strong className="flatLinkRedirect mgWordBreak">
                                 Search Google for "
-                                {query}
+                                {query.toLowerCase()}
                                 "
                             </strong>
                         </Link>

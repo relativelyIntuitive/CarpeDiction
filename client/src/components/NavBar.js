@@ -33,7 +33,7 @@ const NavBar = props => {
 
     // handler to update query state on input change
     const handleInputChange = e => {
-        setSoftQuery(e.target.value);
+        setSoftQuery(e.target.value.toLowerCase());
     };
 
     // handler when the search form is submitted
@@ -41,13 +41,13 @@ const NavBar = props => {
         // prevent default behavior of the submit
         e.preventDefault();
         // reset audioLoaded to force rerender of player on Search.js
-        if (softQuery !== query) {
+        if (softQuery.toLowerCase() !== query.toLowerCase()) {
             setAudioLoaded(false);
             setSyllables("");
             setQuery(softQuery.toLowerCase());
             // if query is present, redirect to search view, passing along the query
             if (softQuery !== undefined && softQuery.replace(/\s/g, '').length)
-                navigate('/search/' + softQuery);
+                navigate('/search/' + softQuery.toLowerCase());
         }
     };
 
