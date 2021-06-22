@@ -299,8 +299,6 @@ const Comments = props => {
                                                                     <i className="text-muted">
                                                                         ~
                                                                         {topComment.createdAt.split("T")[0]}
-                                                                        &ensp;-&ensp;
-                                                                        {topComment._id}
                                                                     </i>
                                                                 </Grid>
                                                                 <Grid
@@ -429,8 +427,6 @@ const Comments = props => {
                                                             <i className="text-muted">
                                                                 ~
                                                                 {comment.createdAt.split("T")[0]}
-                                                                &ensp;-&ensp;
-                                                                {comment._id}
                                                             </i>
                                                         )}
                                                     </Grid>
