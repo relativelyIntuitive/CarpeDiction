@@ -81,7 +81,7 @@ const Main = props => {
                                         *NOTICE*
                                     </i>
                                     <br />
-                                    Safari browsers are not currently supported here!
+                                    Safari browsers are currently experiencing issues with this site!
                                 </strong>
                             </p>
                             <WOTDCard />
