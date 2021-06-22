@@ -52,6 +52,6 @@ setInterval(
     },
     // repeat every 24 hours (expressed in ms)
     // 86400000
-    // 3600000
-    5000
+    // repeat every hour for MW (expressed in ms)
+    3600000
 )
