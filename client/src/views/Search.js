@@ -311,7 +311,7 @@ const Search = props => {
                                 className={classes.divider}
                             />
                         </div>
-                        <MWDictRes
+                        {/* <MWDictRes
                             query={query}
                             setIsOffensive={setIsOffensive}
                             setNotOffensive={setNotOffensive}
@@ -324,7 +324,7 @@ const Search = props => {
                             setAudioLoaded={setAudioLoaded}
                             setHeadWords={setHeadWords}
                             setSpellings={setSpellings}
-                        />
+                        /> */}
                         <MWThesRes query={query} />
                         <UrbanDict query={query} />
                         <WordsApiRhymes query={query} />
