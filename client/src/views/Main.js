@@ -84,6 +84,8 @@ const Main = props => {
                                     -Manual refreshes or URL entry will currently result in a 404 error!
                                     <br />
                                     -Safari browsers are currently experiencing issues with the site!
+                                    <br />
+                                    -MW results are currently offline while undergoing maintenance
                                 </strong>
                             </p>
                             <WOTDCard />
