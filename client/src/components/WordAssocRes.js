@@ -85,7 +85,6 @@ const WordAssocRes = props => {
                 }
                 setEntry(null);
                 setWords(null);
-                setLoaded(true);
             });
     }, [query]);
 
@@ -111,8 +110,11 @@ const WordAssocRes = props => {
                             <Typography className={classes.heading}>
                                 <strong>
                                     (
-                                    {(words && words.length) && (
+                                    {(words !== null && words.length) && (
                                         words.length
+                                    )}
+                                    {(words === null) && (
+                                        0
                                     )}
                                     )
                                     <span className="rIOrange">
