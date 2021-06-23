@@ -78,8 +78,11 @@ const WordAssocRes = props => {
                 setLoaded(true);
             })
             .catch(err => {
-                console.log(err)
-                setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
+                if (err.response.status === 503) {
+                    setError(`Word Associations API is temporarily unavailable...`)
+                } else {
+                    setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
+                }
                 setEntry(null);
                 setWords(null);
                 setLoaded(true);
@@ -182,17 +185,17 @@ const WordAssocRes = props => {
                                     ))}
                                 </ul>
                             )}
-                            {(words.length === 0 || words.length === null) && (
-                                <Typography className="text-danger mgWordBreak">
-                                    <strong>
-                                        <i>
-                                            &emsp;
-                                            {error}
-                                        </i>
-                                    </strong>
-                                </Typography>
-                            )}
                         </div>
+                    )}
+                    {(error.length > 0) && (
+                        <Typography className="text-danger mgWordBreak">
+                            <strong>
+                                <i>
+                                    &emsp;
+                                    {error}
+                                </i>
+                            </strong>
+                        </Typography>
                     )}
                 </AccordionDetails>
             </Accordion>
