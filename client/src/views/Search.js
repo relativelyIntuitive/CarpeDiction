@@ -275,7 +275,7 @@ const Search = props => {
                                         <i className="mgWordBreak">
                                             {query.toLowerCase()}
                                         </i>
-                                        " is not considered offensive by any official sources!
+                                        " is not considered offensive by any official sources.
                                     </strong>
                                 </h6>
                             )}
@@ -297,7 +297,7 @@ const Search = props => {
                                         <i>
                                             {query.toLowerCase()}
                                         </i>
-                                        " is considered offensive by most official sources!
+                                        " is considered offensive by most official sources.
                                     </strong>
                                 </h6>
                             )}
