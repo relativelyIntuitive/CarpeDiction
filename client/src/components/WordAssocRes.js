@@ -78,6 +78,7 @@ const WordAssocRes = props => {
                 setLoaded(true);
             })
             .catch(err => {
+                console.log(err)
                 setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
                 setEntry(null);
                 setWords(null);
@@ -145,7 +146,7 @@ const WordAssocRes = props => {
                 <AccordionDetails>
                     {loaded && (
                         <div className={classes.root}>
-                            {(words !== null && words.length > 0 && entry.associations_scored) && (
+                            {(words.length && words.length > 0 && entry.associations_scored) && (
                                 <ul className="inlineList">
                                     <li className="mgInlineBlock text-muted">
                                         <Typography>
@@ -181,7 +182,7 @@ const WordAssocRes = props => {
                                     ))}
                                 </ul>
                             )}
-                            {words.length === 0 && (
+                            {(words.length === 0 || words.length === null) && (
                                 <Typography className="text-danger mgWordBreak">
                                     <strong>
                                         <i>
