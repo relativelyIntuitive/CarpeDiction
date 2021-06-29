@@ -53,38 +53,72 @@ const Update = props => {
 
     // retrieves the User and updates the state variables with its info
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
-            .then(res => {
-                setUser(res.data.user);
-                setLoaded(true);
-            })
-            .catch(err => {
-                if (err.response.status === 401)
-                    navigate('/login');
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
+                .then(res => {
+                    setUser(res.data.user);
+                    setLoaded(true);
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        } else {
+            Axios.get(`http://localhost:8000/api/users/${localUser._id}`, { withCredentials: true })
+                .then(res => {
+                    setUser(res.data.user);
+                    setLoaded(true);
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        }
     }, [localUser, setUser, setLoaded]);
 
     // updates the User's data with the new data
     const updateUser = user => {
-        Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/`, user, { withCredentials: true })
-            .then(res => {
-                setLogged(res.data.user);
-                navigate("/user/account");
-            })
-            .catch(err => {
-                if (err.response.status === 401)
-                    navigate('/login');
-                if (err.response.data.errors) {
-                    const errorResponse = err.response.data.errors;
-                    const errorArr = [];
-                    for (const key of Object.keys(errorResponse)) {
-                        errorArr.push(errorResponse[key].message)
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/`, user, { withCredentials: true })
+                .then(res => {
+                    setLogged(res.data.user);
+                    navigate("/user/account");
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                    if (err.response.data.errors) {
+                        const errorResponse = err.response.data.errors;
+                        const errorArr = [];
+                        for (const key of Object.keys(errorResponse)) {
+                            errorArr.push(errorResponse[key].message)
+                        }
+                        setErrors(errorArr);
+                    } else {
+                        setErrors([`${err.response.status}: ${err.response.statusText}`]);
                     }
-                    setErrors(errorArr);
-                } else {
-                    setErrors([`${err.response.status}: ${err.response.statusText}`]);
-                }
-            });
+                });
+        } else {
+            Axios.put(`http://localhost:8000/api/users/`, user, { withCredentials: true })
+                .then(res => {
+                    setLogged(res.data.user);
+                    navigate("/user/account");
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                    if (err.response.data.errors) {
+                        const errorResponse = err.response.data.errors;
+                        const errorArr = [];
+                        for (const key of Object.keys(errorResponse)) {
+                            errorArr.push(errorResponse[key].message)
+                        }
+                        setErrors(errorArr);
+                    } else {
+                        setErrors([`${err.response.status}: ${err.response.statusText}`]);
+                    }
+                });
+        }
     };
 
 

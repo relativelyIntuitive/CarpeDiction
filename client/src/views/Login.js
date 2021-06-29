@@ -52,23 +52,43 @@ const Login = props => {
 
     // API post function; to be passed down to the LoginForm
     const loginUser = user => {
-        Axios.post(`${process.env.REACT_APP_API_ROOT}/api/login/`, user, { withCredentials: true })
-            .then(res => {
-                if (res.data.user) {
-                    setLogged(res.data.user);
-                    navigate("/");
-                } else {
-                    setErrors(res.data);
-                }
-            })
-            .catch(err => {
-                const errorResponse = err.response.data.errors;
-                const errorArr = [];
-                for (const key of Object.keys(errorResponse)) {
-                    errorArr.push(errorResponse[key].message)
-                }
-                setErrors(errorArr);
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.post(`${process.env.REACT_APP_API_ROOT}/api/login/`, user, { withCredentials: true })
+                .then(res => {
+                    if (res.data.user) {
+                        setLogged(res.data.user);
+                        navigate("/");
+                    } else {
+                        setErrors(res.data);
+                    }
+                })
+                .catch(err => {
+                    const errorResponse = err.response.data.errors;
+                    const errorArr = [];
+                    for (const key of Object.keys(errorResponse)) {
+                        errorArr.push(errorResponse[key].message)
+                    }
+                    setErrors(errorArr);
+                });
+        } else {
+            Axios.post(`http://localhost:8000/api/login/`, user, { withCredentials: true })
+                .then(res => {
+                    if (res.data.user) {
+                        setLogged(res.data.user);
+                        navigate("/");
+                    } else {
+                        setErrors(res.data);
+                    }
+                })
+                .catch(err => {
+                    const errorResponse = err.response.data.errors;
+                    const errorArr = [];
+                    for (const key of Object.keys(errorResponse)) {
+                        errorArr.push(errorResponse[key].message)
+                    }
+                    setErrors(errorArr);
+                });
+        }
     };
 
 

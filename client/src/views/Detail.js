@@ -64,15 +64,27 @@ const Detail = props => {
 
     // retrieves the User data
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
-            .then(res => {
-                setUser(res.data.user);
-                setLoaded(true);
-            })
-            .catch(err => {
-                if (err.response.status === 401)
-                    navigate('/login');
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
+                .then(res => {
+                    setUser(res.data.user);
+                    setLoaded(true);
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        } else {
+            Axios.get(`http://localhost:8000/api/users/${localUser._id}`, { withCredentials: true })
+                .then(res => {
+                    setUser(res.data.user);
+                    setLoaded(true);
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        }
     }, [localUser, setUser, setLoaded]);
 
 
@@ -145,9 +157,9 @@ const Detail = props => {
                                         </strong>
                                     </Typography>
                                     <Divider
-                                variant="fullWidth"
-                                className={classes.divider}
-                            />
+                                        variant="fullWidth"
+                                        className={classes.divider}
+                                    />
                                     <FavoritesNew user={user} />
                                     <FavoritesAZ user={user} />
                                     <Divider

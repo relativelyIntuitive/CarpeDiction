@@ -62,51 +62,96 @@ const Comments = props => {
 
     // retrieves all comments
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/retrieve/${query.toLowerCase()}`)
-            .then(res => {
-                const resComments = res.data.comments;
-                setComments(resComments);
-                setLoaded(true);
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/retrieve/${query.toLowerCase()}`)
+                .then(res => {
+                    const resComments = res.data.comments;
+                    setComments(resComments);
+                    setLoaded(true);
+                });
+        } else {
+            Axios.get(`http://localhost:8000/api/comments/retrieve/${query.toLowerCase()}`)
+                .then(res => {
+                    const resComments = res.data.comments;
+                    setComments(resComments);
+                    setLoaded(true);
+                });
+        }
     }, [query, setComments, comments]);
 
     // retrieves the top comments
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/tops/${query.toLowerCase()}`)
-            .then(res => {
-                const resTopComments = res.data.comments;
-                setTopComments(resTopComments);
-                setLoaded(true);
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/tops/${query.toLowerCase()}`)
+                .then(res => {
+                    const resTopComments = res.data.comments;
+                    setTopComments(resTopComments);
+                    setLoaded(true);
+                });
+        } else {
+            Axios.get(`http://localhost:8000/api/comments/tops/${query.toLowerCase()}`)
+                .then(res => {
+                    const resTopComments = res.data.comments;
+                    setTopComments(resTopComments);
+                    setLoaded(true);
+                });
+        }
     }, [query, setTopComments, comments]);
 
     // posts a comment
     const postComment = comment => {
-        Axios.post(`${process.env.REACT_APP_API_ROOT}/api/comments/post/`, comment, { withCredentials: true })
-            .then(res => {
-                setErrors([]);
-            })
-            .catch(err => {
-                if (err.response.status === 401)
-                    navigate('/login');
-                const errorResponse = err.response.data.errors;
-                const errorArr = [];
-                for (const key of Object.keys(errorResponse)) {
-                    errorArr.push(errorResponse[key].message)
-                }
-                setErrors(errorArr);
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.post(`${process.env.REACT_APP_API_ROOT}/api/comments/post/`, comment, { withCredentials: true })
+                .then(res => {
+                    setErrors([]);
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                    const errorResponse = err.response.data.errors;
+                    const errorArr = [];
+                    for (const key of Object.keys(errorResponse)) {
+                        errorArr.push(errorResponse[key].message)
+                    }
+                    setErrors(errorArr);
+                });
+        } else {
+            Axios.post(`http://localhost:8000/api/comments/post/`, comment, { withCredentials: true })
+                .then(res => {
+                    setErrors([]);
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                    const errorResponse = err.response.data.errors;
+                    const errorArr = [];
+                    for (const key of Object.keys(errorResponse)) {
+                        errorArr.push(errorResponse[key].message)
+                    }
+                    setErrors(errorArr);
+                });
+        }
     }
 
     // updates comments when liked
     const updateComment = comment => {
-        Axios.put(`${process.env.REACT_APP_API_ROOT}/api/comments/update/`, comment, { withCredentials: true })
-            .then(res => {
-            })
-            .catch(err => {
-                if (err.response.status === 401)
-                    navigate('/login');
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.put(`${process.env.REACT_APP_API_ROOT}/api/comments/update/`, comment, { withCredentials: true })
+                .then(res => {
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        } else {
+            Axios.put(`http://localhost:8000/api/comments/update/`, comment, { withCredentials: true })
+                .then(res => {
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        }
     }
 
     // handler to update comment on input change

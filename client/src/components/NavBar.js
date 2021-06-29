@@ -54,10 +54,17 @@ const NavBar = props => {
     // function to handle logouts
     const handleLogout = () => {
         navigate('/');
-        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
-            .then(res => {
-                setLogged(null);
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
+                .then(res => {
+                    setLogged(null);
+                });
+        } else {
+            Axios.get(`http://localhost:8000/api/logout`, { withCredentials: true })
+                .then(res => {
+                    setLogged(null);
+                });
+        }
     };
 
 

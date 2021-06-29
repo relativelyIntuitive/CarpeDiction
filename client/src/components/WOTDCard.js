@@ -46,15 +46,27 @@ const WOTDCard = () => {
 
     // retrieves the WOTD data
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/wotd/latest`)
-            .then(res => {
-                console.log(res)
-                const newWord = res.data.WOTD.word;
-                const newDef = res.data.WOTD.def;
-                setWord(newWord);
-                setDef(newDef);
-                setLoaded(true);
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/wotd/latest`)
+                .then(res => {
+                    console.log(res)
+                    const newWord = res.data.WOTD.word;
+                    const newDef = res.data.WOTD.def;
+                    setWord(newWord);
+                    setDef(newDef);
+                    setLoaded(true);
+                });
+        } else {
+            Axios.get(`http://localhost:8000/api/wotd/latest`)
+                .then(res => {
+                    console.log(res)
+                    const newWord = res.data.WOTD.word;
+                    const newDef = res.data.WOTD.def;
+                    setWord(newWord);
+                    setDef(newDef);
+                    setLoaded(true);
+                });
+        }
     }, [setDef, setWord])
 
 

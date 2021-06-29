@@ -118,14 +118,25 @@ const Search = props => {
 
     // updates the User's data with the new data
     const updateUser = newUser => {
-        Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, newUser, { withCredentials: true })
-            .then(res => {
-                setLogged(res.data.user);
-            })
-            .catch(err => {
-                if (err.response.status === 401)
-                    navigate('/login');
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, newUser, { withCredentials: true })
+                .then(res => {
+                    setLogged(res.data.user);
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        } else {
+            Axios.put(`http://localhost:8000/api/users/${logged._id}`, newUser, { withCredentials: true })
+                .then(res => {
+                    setLogged(res.data.user);
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        }
     };
 
     // toggles favorite status on query

@@ -20,36 +20,66 @@ const DeleteButton = props => {
 
     // function to handle logouts
     const handleLogout = () => {
-        Axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
-            .then(res => {
-                setLogged(null);
-                navigate('/');
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
+                .then(res => {
+                    setLogged(null);
+                    navigate('/');
+                });
+        } else {
+            Axios.get(`http://localhost:8000/api/logout`, { withCredentials: true })
+                .then(res => {
+                    setLogged(null);
+                    navigate('/');
+                });
+        }
     };
 
 
     // deletes the User
     const deleteUser = e => {
-        Axios.delete(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, { withCredentials: true })
-            .then(res => {
-                handleLogout();
-                successCallback();
-            })
-            .catch(err => {
-                if (err.response.status === 401)
-                    navigate('/login');
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.delete(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, { withCredentials: true })
+                .then(res => {
+                    handleLogout();
+                    successCallback();
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        } else {
+            Axios.delete(`http://localhost:8000/api/users/${logged._id}`, { withCredentials: true })
+                .then(res => {
+                    handleLogout();
+                    successCallback();
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        }
     };
 
     // deletes the Comment
     const deleteComment = e => {
-        Axios.delete(`${process.env.REACT_APP_API_ROOT}/api/comments/delete/${comment._id}`, { withCredentials: true })
-            .then(res => {
-            })
-            .catch(err => {
-                if (err.response.status === 401)
-                    navigate('/login');
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.delete(`${process.env.REACT_APP_API_ROOT}/api/comments/delete/${comment._id}`, { withCredentials: true })
+                .then(res => {
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        } else {
+            Axios.delete(`http://localhost:8000/api/comments/delete/${comment._id}`, { withCredentials: true })
+                .then(res => {
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        }
     }
 
 

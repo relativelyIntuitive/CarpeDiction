@@ -54,14 +54,25 @@ const ImportExportFavs = props => {
 
     // update the user with the new favorites
     const updateUser = newUser => {
-        Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/${user._id}`, newUser, { withCredentials: true })
-            .then(res => {
-                setLogged(res.data.user);
-            })
-            .catch(err => {
-                if (err.response.status === 401)
-                    navigate('/login');
-            });
+        if (process.env.REACT_APP_NODE_ENV === 'production') {
+            Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/${user._id}`, newUser, { withCredentials: true })
+                .then(res => {
+                    setLogged(res.data.user);
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        } else {
+            Axios.put(`http://localhost:8000/api/users/${user._id}`, newUser, { withCredentials: true })
+                .then(res => {
+                    setLogged(res.data.user);
+                })
+                .catch(err => {
+                    if (err.response.status === 401)
+                        navigate('/login');
+                });
+        }
     };
 
     // handler to update imports list on input change
