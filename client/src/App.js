@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Router } from '@reach/router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 import Delete from './views/Delete';
 import Detail from './views/Detail';
