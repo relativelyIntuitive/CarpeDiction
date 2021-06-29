@@ -192,7 +192,7 @@ const UserForm = props => {
                                 <Container>
                                     <strong>
                                         <i>
-                                            &ensp;* Email is for sign-in purposes only
+                                            &ensp;* Email is for verification purposes only
                                         </i>
                                     </strong>
                                 </Container>

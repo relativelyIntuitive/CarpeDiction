@@ -112,7 +112,7 @@ const MWDictRes = props => {
                         newEntry.et[0][1] = newEntry.et[0][1].replace(newEntry.et[0][1][0], newEntry.et[0][1][0].toUpperCase())
                     }
                     if (newEntry.et && newEntry.et[1] && newEntry.et[1][1] && newEntry.et[1][1][0] && newEntry.et[1][1][0][1]) {
-                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/et_link\|/g, '');
+                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/et_link\|/g, 'see: |');
                         newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{....\}/g, '');
                         newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{...\}/g, '');
                         newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{..\}/g, '');
