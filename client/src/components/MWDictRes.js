@@ -67,6 +67,7 @@ const MWDictRes = props => {
     useEffect(() => {
         Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query.toLowerCase() + '?key=' + process.env.REACT_APP_MW_DICT_KEY)
             .then(res => {
+                console.log(res.data);
                 // generates an array of the entries found by the search or an array of spellcheck suggestion if no entries found
                 const resEntries = [];
                 const newSpellings = [];

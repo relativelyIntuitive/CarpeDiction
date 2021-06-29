@@ -246,8 +246,8 @@ const UrbanDict = props => {
                                             <div className={classes.root}>
                                                 {entry.definition && (
                                                     entry.definition.map((def, index2) => (
-                                                        <>
-                                                            <Typography key={index2}>
+                                                        <div key={index2}>
+                                                            <Typography>
                                                                 <span className="rIOrange">
                                                                     &emsp;[&ensp;
                                                                 </span>
@@ -295,7 +295,7 @@ const UrbanDict = props => {
                                                                     className={classes.divider}
                                                                 />
                                                             )}
-                                                        </>
+                                                        </div>
                                                     ))
                                                 )}
                                             </div>

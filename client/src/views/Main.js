@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import carpe_diction from '../images/carpe_diction.png';
 import btc_qr from '../images/btc_qr.png';
@@ -47,6 +47,10 @@ const Main = props => {
     // generates CSS rulesets
     const classes = useStyles();
 
+    // alert user of current site issues
+    useEffect(() => {
+        alert('* NOTICE: *\n- Manual refreshes or URL entry will currently result in a 404 error, in-site navigation MUST be used for now...\n- Safari browsers are currently experiencing issues with the site...');
+    }, [])
 
     // returns the homepage
     return (
@@ -73,19 +77,6 @@ const Main = props => {
                                     <i>
                                         Language is art!
                                     </i>
-                                </strong>
-                            </p>
-                            <p className="text-danger">
-                                <strong>
-                                    <i>
-                                        *NOTICE*
-                                    </i>
-                                    <br />
-                                    -Manual refreshes or URL entry will currently result in a 404 error!
-                                    <br />
-                                    -Safari browsers are currently experiencing issues with the site!
-                                    <br />
-                                    -MW results are currently offline while undergoing maintenance
                                 </strong>
                             </p>
                             <WOTDCard />
