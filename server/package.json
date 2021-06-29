@@ -20,7 +20,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.14",
     "node-pre-gyp": "^0.17.0",
-    "nodejs": "0.0.0"
+    "nodejs": "0.0.0",
+    "nodemon": "^2.0.8"
   },
   "engines": {
     "npm": "6.x",
