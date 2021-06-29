@@ -84,6 +84,36 @@ const WOTDCard = () => {
                         Word of the Day:
                     </strong>
                 </Typography>
+                {!loaded && (
+                    <>
+                        <Typography
+                            className="rIPurple"
+                            variant="h4"
+                            component="h2"
+                        >
+                            <strong className="qQuotes">
+                                <i>
+                                    <span className="rIPurple">
+                                        Loading...
+                                    </span>
+                                </i>
+                            </strong>
+                        </Typography>
+                        {/* <Typography
+                        variant="h6"
+                        component="h3"
+                        className="rIGrey"
+                    >
+                        <i>
+                            <strong>
+                                <br />
+                                ...&nbsp;
+                                {def}
+                            </strong>
+                        </i>
+                    </Typography> */}
+                    </>
+                )}
                 {loaded && (
                     <>
                         <Typography
