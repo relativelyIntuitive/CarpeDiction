@@ -67,7 +67,6 @@ const MWDictRes = props => {
     useEffect(() => {
         Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query.toLowerCase() + '?key=' + process.env.REACT_APP_MW_DICT_KEY)
             .then(res => {
-                console.log(res.data);
                 // generates an array of the entries found by the search or an array of spellcheck suggestion if no entries found
                 const resEntries = [];
                 const newSpellings = [];
@@ -113,7 +112,8 @@ const MWDictRes = props => {
                         newEntry.et[0][1] = newEntry.et[0][1].replace(newEntry.et[0][1][0], newEntry.et[0][1][0].toUpperCase())
                     }
                     if (newEntry.et && newEntry.et[1] && newEntry.et[1][1] && newEntry.et[1][1][0] && newEntry.et[1][1][0][1]) {
-                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/et_link\|/g, 'see: |');
+                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/et_link\|/g, '');
+                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/see/g, 'see:');
                         newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{....\}/g, '');
                         newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{...\}/g, '');
                         newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{..\}/g, '');
