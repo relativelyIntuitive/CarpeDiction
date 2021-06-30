@@ -138,26 +138,26 @@
 }
 
 .formButt {
-    color: #800080;
-    background-color: #ffa500;
-    border: 3px solid #800080;
-    border-radius: 7px;
-    width: 100%;
-    margin: auto;
+    color: #800080!important;
+    background-color: #ffa500!important;
+    border: 3px solid #800080!important;
+    border-radius: 7px!important;
+    width: 100%!important;
+    margin: auto!important;
 }
 
 .formButt:focus {
-    color: #800080;
-    background-color: #ffa500;
-    border: 3px solid #800080;
-    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    color: #800080!important;
+    background-color: #ffa500!important;
+    border: 3px solid #800080!important;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500!important;
 }
 
 .formButt:hover {
-    color: #800080;
-    background-color: #ffa500;
-    border: 3px solid #ffa500;
-    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    color: #800080!important;
+    background-color: #ffa500!important;
+    border: 3px solid #ffa500!important;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500!important;
 }
 
 .inlineList {
@@ -319,39 +319,39 @@
 }
 
 .sButt {
-    color: #800080;
-    background-color: #ffa500;
-    border: 3px solid #800080;
-    border-radius: 11px;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    color: #800080!important;
+    background-color: #ffa500!important;
+    border: 3px solid #800080!important;
+    border-radius: 11px!important;
+    margin-left: 0.5rem!important;
+    margin-right: 0.5rem!important;
 }
 
 .sButt:focus {
-    color: #800080;
-    background-color: #ffa500;
-    border: 3px solid #800080;
-    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    color: #800080!important;
+    background-color: #ffa500!important;
+    border: 3px solid #800080!important;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500!important;
 }
 
 .sButt:hover {
-    color: #800080;
-    background-color: #ffa500;
-    border: 3px solid #ffa500;
-    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    color: #800080!important;
+    background-color: #ffa500!important;
+    border: 3px solid #ffa500!important;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500!important;
 }
 
 .sBox {
-    border-color: #800080;
-    box-shadow: 0px 0px 1px #800080 inset, 0px 0px 5px #800080;
-    width: auto;
-    background-color: #FFE1AF;
+    border-color: #800080!important;
+    box-shadow: 0px 0px 1px #800080 inset, 0px 0px 5px #800080!important;
+    width: auto!important;
+    background-color: #FFE1AF!important;
 }
 
 .sBox:focus {
-    border-color: #ffa500;
-    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 5px #ffa500;
-    background-color: #FFE1AF;
+    border-color: #ffa500!important;
+    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 5px #ffa500!important;
+    background-color: #FFE1AF!important;
 }
 
 .sFooter {
@@ -361,10 +361,10 @@
 }
 
 .sForm {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
+    display: flex!important;
+    justify-content: space-between!important;
+    align-items: center!important;
+    margin: auto!important;
 }
 
 .socialIcon {

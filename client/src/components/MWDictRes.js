@@ -451,7 +451,7 @@ const MWDictRes = props => {
                                                                             />
                                                                             <Typography>
                                                                                 <strong>
-                                                                                    Origin :&nbsp;
+                                                                                    Origin:&nbsp;
                                                                                 </strong>
                                                                                 {entry.date && (
                                                                                     <i className="rIPurple">

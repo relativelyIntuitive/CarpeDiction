@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: "40px 20px",
         backgroundColor: '#acff2f88',
-        borderRadius: '23px',
+        borderRadius: '18px',
         border: '2px solid black',
         marginTop: '1.5rem',
     },

@@ -49,7 +49,7 @@ const Main = props => {
 
     // alert user of current site issues
     useEffect(() => {
-        alert('* NOTICE: *\n- Manual refreshes or URL entry will currently result in a 404 error, in-site navigation MUST be used for now...\n- Safari browsers are currently experiencing issues with the site...');
+        alert('* NOTICE:\n- Manual refreshes or URL entry will currently result in a 404 error, in-site navigation MUST be used for now...\n- Safari browsers are currently experiencing issues with the site...\n- Enjoy!');
     }, [])
 
     // returns the homepage
@@ -173,7 +173,7 @@ const Main = props => {
                                 className={classes.divider}
                             />
                             <h3 className="qQuotes">
-                                Other Beguiling Sites:
+                                Other Educational & Beguiling Sites:
                             </h3>
                             <br />
                             <h5>
@@ -190,11 +190,71 @@ const Main = props => {
                                     <br />
                                     <Link
                                         target="_blank"
+                                        href="http://ww.ZeeboVO.com"
+                                        className="flatLinkPurple"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        &gt; Zeebo Voiceover &lt;
+                                    </Link>
+                                    <br />
+                                    <br />
+                                    <Link
+                                        target="_blank"
                                         href="http://libraryofbabel.info"
                                         className="flatLinkPurple"
                                         style={{ textDecoration: "none" }}
                                     >
                                         &gt; The Library of Babel &lt;
+                                    </Link>
+                                    <br />
+                                    <br />
+                                    <Link
+                                        target="_blank"
+                                        href="https://www.dictionaryofobscuresorrows.com/"
+                                        className="flatLinkPurple"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        &gt; The Dictionary of Obscure Sorrows &lt;
+                                    </Link>
+                                    <br />
+                                    <br />
+                                    <Link
+                                        target="_blank"
+                                        href="http://www.youtube.com/user/vsauce"
+                                        className="flatLinkPurple"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        &gt; Vsauce (Science/Philosophy) &lt;
+                                    </Link>
+                                    <br />
+                                    <br />
+                                    <Link
+                                        target="_blank"
+                                        href="https://www.duolingo.com/"
+                                        className="flatLinkPurple"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        &gt; Duolingo (Free Language Learning) &lt;
+                                    </Link>
+                                    <br />
+                                    <br />
+                                    <Link
+                                        target="_blank"
+                                        href="https://ocw.mit.edu/"
+                                        className="flatLinkPurple"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        &gt; MIT OCW (Free College Courses) &lt;
+                                    </Link>
+                                    <br />
+                                    <br />
+                                    <Link
+                                        target="_blank"
+                                        href="https://www.freecodecamp.org/learn/"
+                                        className="flatLinkPurple"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        &gt; FreeCodeCamp (Free Coding Bootcamp) &lt;
                                     </Link>
                                 </i>
                             </h5>
