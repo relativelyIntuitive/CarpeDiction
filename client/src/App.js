@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Router } from '@reach/router';
 
@@ -21,7 +21,7 @@ function App() {
 
     // state variable to hold logged in User
     const [logged, setLogged] = useState(
-        JSON.parse(sessionStorage.getItem('logged'))
+        JSON.parse(localStorage.getItem('logged'))
     );
 
     // state variables to be passed by each view to the NavBar to force rerender of audio player and syllables when redirecting to Search.js
@@ -30,8 +30,8 @@ function App() {
 
 
     // hook to update logged User in sessionStorage when the state changes
-    React.useEffect(() => {
-        sessionStorage.setItem('logged', JSON.stringify(logged));
+    useEffect(() => {
+        localStorage.setItem('logged', JSON.stringify(logged));
     }, [logged]);
 
 
