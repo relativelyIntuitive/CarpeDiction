@@ -165,7 +165,7 @@ const WordAssocRes = props => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <div className={classes.root}>
-                        {/* {loaded && (
+                        {loaded && (
                             <>
                                 {(words && words.length > 0 && entry && entry.associations_scored) && (
                                     <ul className="inlineList">
@@ -204,7 +204,7 @@ const WordAssocRes = props => {
                                     </ul>
                                 )}
                             </>
-                        )} */}
+                        )}
                         {!loaded && (
                             <Typography className="text-danger mgWordBreak">
                                 <strong>
