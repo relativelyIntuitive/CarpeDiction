@@ -78,17 +78,21 @@ const MWThesRes = props => {
                 }
 
                 // updates all pertinent state variables
-                if (resEntries.length === 0)
+                if (resEntries.length === 0) {
                     setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Thesaurus...`);
-                setEntries(resEntries);
-                setEntriesByType(entryTypes);
-                setLoaded(true);
+                    setEntries(null);
+                    setLoaded(false);
+                } else {
+                    setError(null);
+                    setEntries(resEntries);
+                    setEntriesByType(entryTypes);
+                    setLoaded(true);
+                }
             })
             .catch(err => {
                 setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Thesaurus...`);
                 setEntries(null);
-                setEntriesByType(null);
-                setLoaded(true);
+                setLoaded(false);
             });
     }, [query]);
 
@@ -105,7 +109,14 @@ const MWThesRes = props => {
                     <Typography className={classes.heading}>
                         <strong>
                             (
-                            {entries.length}
+                            {entries !== null && (
+                                <>
+                                    {entries.length}
+                                </>
+                            )}
+                            {entries === null && (
+                                0
+                            )}
                             )
                             <span className="rIOrange">
                                 &nbsp;-&nbsp;
@@ -119,8 +130,8 @@ const MWThesRes = props => {
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {loaded && (
-                        <div className={classes.root}>
+                    <div className={classes.root}>
+                        {loaded && (
                             <>
                                 {Object.keys(entriesByType).length > 0 && (
                                     Object.keys(entriesByType).map((type, index) => (
@@ -362,19 +373,19 @@ const MWThesRes = props => {
                                         </Accordion>
                                     ))
                                 )}
-                                {entries.length === 0 && (
-                                    <Typography className="text-danger mgWordBreak">
-                                        <strong>
-                                            <i>
-                                                &emsp;
-                                                {error}
-                                            </i>
-                                        </strong>
-                                    </Typography>
-                                )}
                             </>
-                        </div>
-                    )}
+                        )}
+                        {!loaded && (
+                            <Typography className="text-danger mgWordBreak">
+                                <strong>
+                                    <i>
+                                        &emsp;
+                                        {error}
+                                    </i>
+                                </strong>
+                            </Typography>
+                        )}
+                    </div>
                 </AccordionDetails>
             </Accordion>
         </div>

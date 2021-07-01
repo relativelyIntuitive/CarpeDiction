@@ -58,7 +58,7 @@ const WOTDArchive = props => {
                     setLoaded(true);
                 });
         }
-    }, [setWords, setLoaded]);
+    }, []);
 
 
     // returns a material UI accordion component displaying the WOTD archive
@@ -81,35 +81,37 @@ const WOTDArchive = props => {
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {loaded && (
-                        <div className={classes.root}>
-                            {words.length > 0 && (
-                                <ul className="inlineList">
-                                    {words.map((word, index) => (
-                                        <li key={index} className="mgInlineBlock">
-                                            <Typography>
-                                                &nbsp;
-                                                <Link to={"/search/" + words[index].word}>
-                                                    <i>
-                                                        <span className="rIPurple">
-                                                            {word.word}
-                                                        </span>
-                                                    </i>
-                                                </Link>
-                                                {(words.indexOf(word) !== (words.length - 1)) && (
-                                                    <strong>
-                                                        <span className="rIOrange">
-                                                            &ensp;|&nbsp;
-                                                        </span>
-                                                    </strong>
-                                                )}
-                                            </Typography>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
-                    )}
+                    <div className={classes.root}>
+                        {loaded && (
+                            <>
+                                {words.length > 0 && (
+                                    <ul className="inlineList">
+                                        {words.map((word, index) => (
+                                            <li key={index} className="mgInlineBlock">
+                                                <Typography>
+                                                    &nbsp;
+                                                    <Link to={"/search/" + words[index].word}>
+                                                        <i>
+                                                            <span className="rIPurple">
+                                                                {word.word}
+                                                            </span>
+                                                        </i>
+                                                    </Link>
+                                                    {(words.indexOf(word) !== (words.length - 1)) && (
+                                                        <strong>
+                                                            <span className="rIOrange">
+                                                                &ensp;|&nbsp;
+                                                            </span>
+                                                        </strong>
+                                                    )}
+                                                </Typography>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </>
+                        )}
+                    </div>
                 </AccordionDetails>
             </Accordion>
         </div >

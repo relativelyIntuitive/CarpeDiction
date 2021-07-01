@@ -67,15 +67,17 @@ const LinguaCons = props => {
                 if (resEntry.result !== 'OK') {
                     setError(`No results for conjugations of "${query.toLowerCase()}" from Linguatools Conjugations API...`);
                     setEntry(null);
+                    setLoaded(false);
                 } else {
+                    setError(null);
                     setEntry(resEntry);
+                    setLoaded(true);
                 }
-                setLoaded(true);
             })
             .catch(err => {
                 setError(`No results for conjugations of "${query.toLowerCase()}" from Linguatools Conjugations API...`);
                 setEntry(null);
-                setLoaded(true);
+                setLoaded(false);
             });
     }, [query]);
 
@@ -140,68 +142,70 @@ const LinguaCons = props => {
                     </Grid>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {loaded && (
-                        <div className={classes.root}>
-                            {(entry && entry.conjugated_forms) && (
-                                <>
-                                    {query && (
-                                        <>
-                                            <Typography className="text-muted">
-                                                <strong>
-                                                    &emsp;
-                                                    Conjugations of :&ensp;
-                                                    "
-                                                    <span className="mgWordBreak">
-                                                        {query.toLowerCase()}
-                                                    </span>
-                                                    "
-                                                </strong>
-                                            </Typography>
-                                            <br />
-                                        </>
-                                    )}
-                                    {entry.conjugated_forms.map((form, index) => (
-                                        <Typography key={index}>
-                                            <i>
-                                                <strong>
-                                                    <span className="rIOrange">
-                                                        &emsp;&emsp;~
-                                                    </span>
-                                                    <span className="text-muted">
-                                                        &nbsp;
-                                                        {form[0]} :&nbsp;
-                                                    </span>
-                                                    <span className="rIPurple">
-                                                        &nbsp;
-                                                        "&nbsp;
-                                                        <Link to={`/search/` + form[1]}>
-                                                            <span className="rIPurple">
-                                                                ...&ensp;
-                                                                {form[1]}
-                                                            </span>
-                                                        </Link>
-                                                        &ensp;"
-                                                    </span>
-                                                </strong>
+                    <div className={classes.root}>
+                        {loaded && (
+                            <>
+                                {(entry && entry.conjugated_forms) && (
+                                    <>
+                                        {query && (
+                                            <>
+                                                <Typography className="text-muted">
+                                                    <strong>
+                                                        &emsp;
+                                                        Conjugations of :&ensp;
+                                                        "
+                                                        <span className="mgWordBreak">
+                                                            {query.toLowerCase()}
+                                                        </span>
+                                                        "
+                                                    </strong>
+                                                </Typography>
                                                 <br />
-                                            </i>
-                                        </Typography>
-                                    ))}
-                                    <br />
-                                </>
-                            )}
-                            {(error.length > 0 && entry === null) && (
-                                <Typography className="text-danger mgWordBreak">
-                                    <strong>
-                                        <i>
-                                            &emsp;
-                                            {error}
-                                        </i>
-                                    </strong>
-                                </Typography>
-                            )}
-                        </div>
-                    )}
+                                            </>
+                                        )}
+                                        {entry.conjugated_forms.map((form, index) => (
+                                            <Typography key={index}>
+                                                <i>
+                                                    <strong>
+                                                        <span className="rIOrange">
+                                                            &emsp;&emsp;~
+                                                        </span>
+                                                        <span className="text-muted">
+                                                            &nbsp;
+                                                            {form[0]} :&nbsp;
+                                                        </span>
+                                                        <span className="rIPurple">
+                                                            &nbsp;
+                                                            "&nbsp;
+                                                            <Link to={`/search/` + form[1]}>
+                                                                <span className="rIPurple">
+                                                                    ...&ensp;
+                                                                    {form[1]}
+                                                                </span>
+                                                            </Link>
+                                                            &ensp;"
+                                                        </span>
+                                                    </strong>
+                                                    <br />
+                                                </i>
+                                            </Typography>
+                                        ))}
+                                        <br />
+                                    </>
+                                )}
+                            </>
+                        )}
+                        {!loaded && (
+                            <Typography className="text-danger mgWordBreak">
+                                <strong>
+                                    <i>
+                                        &emsp;
+                                        {error}
+                                    </i>
+                                </strong>
+                            </Typography>
+                        )}
+                    </div>
                 </AccordionDetails>
             </Accordion>
         </div>

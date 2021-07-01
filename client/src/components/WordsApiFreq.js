@@ -66,15 +66,17 @@ const WordsApiFreq = props => {
                 if (!resEntry.frequency) {
                     setError(`No results for frequency data of "${query.toLowerCase()}" from Words API...`);
                     setEntry(null);
+                    setLoaded(false);
                 } else {
+                    setError(null);
                     setEntry(resEntry);
+                    setLoaded(true);
                 }
-                setLoaded(true);
             })
             .catch(err => {
                 setError(`No results for frequency data of "${query.toLowerCase()}" from Words API...`);
                 setEntry(null);
-                setLoaded(true);
+                setLoaded(false);
             });
     }, [query]);
 
@@ -139,140 +141,142 @@ const WordsApiFreq = props => {
                     </Grid>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {loaded && (
-                        <div className={classes.root}>
-                            {(entry && entry.frequency) && (
-                                <>
-                                    {entry.word && (
-                                        <>
-                                            <Typography className="text-muted">
-                                                <strong>
-                                                    &emsp;
-                                                    Frequency data for :&ensp;
-                                                    "
-                                                    {entry.word.toLowerCase()}
-                                                    "
-                                                </strong>
-                                            </Typography>
-                                            <br />
-                                        </>
-                                    )}
-                                    {entry.frequency.zipf >= 0 && (
-                                        <>
-                                            <Typography>
-                                                <i>
+                    <div className={classes.root}>
+                        {loaded && (
+                            <>
+                                {(entry && entry.frequency) && (
+                                    <>
+                                        {entry.word && (
+                                            <>
+                                                <Typography className="text-muted">
                                                     <strong>
-                                                        <span className="rIOrange">
-                                                            &emsp;&emsp;~
-                                                        </span>
-                                                        <span className="text-muted">
-                                                            &nbsp;Zipf Rating :
-                                                        </span>
-                                                        <span className="rIPurple">
-                                                            &nbsp;
-                                                            {entry.frequency.zipf}
-                                                        </span>
+                                                        &emsp;
+                                                        Frequency data for :&ensp;
+                                                        "
+                                                        {entry.word.toLowerCase()}
+                                                        "
                                                     </strong>
-                                                    <br />
-                                                </i>
-                                            </Typography>
-                                            <Container>
+                                                </Typography>
+                                                <br />
+                                            </>
+                                        )}
+                                        {entry.frequency.zipf >= 0 && (
+                                            <>
                                                 <Typography>
                                                     <i>
-                                                        <span className="mgSmFont">
+                                                        <strong>
                                                             <span className="rIOrange">
-                                                                &emsp;&emsp;*&nbsp;
+                                                                &emsp;&emsp;~
                                                             </span>
-                                                            A score indicating how common the word is in the English language, with a range of 1 - 7;
-                                                        </span>
+                                                            <span className="text-muted">
+                                                                &nbsp;Zipf Rating :
+                                                            </span>
+                                                            <span className="rIPurple">
+                                                                &nbsp;
+                                                                {entry.frequency.zipf}
+                                                            </span>
+                                                        </strong>
+                                                        <br />
                                                     </i>
                                                 </Typography>
-                                            </Container>
-                                            <br />
-                                        </>
-                                    )}
-                                    {entry.frequency.perMillion >= 0 && (
-                                        <>
-                                            <Typography>
-                                                <i>
-                                                    <strong>
-                                                        <span className="rIOrange">
-                                                            &emsp;&emsp;~
-                                                        </span>
-                                                        <span className="text-muted">
-                                                            &nbsp;Per - Million Rating :
-                                                        </span>
-                                                        <span className="rIPurple">
-                                                            &nbsp;
-                                                            {entry.frequency.perMillion}
-                                                        </span>
-                                                    </strong>
-                                                    <br />
-                                                </i>
-                                            </Typography>
-                                            <Container>
+                                                <Container>
+                                                    <Typography>
+                                                        <i>
+                                                            <span className="mgSmFont">
+                                                                <span className="rIOrange">
+                                                                    &emsp;&emsp;*&nbsp;
+                                                                </span>
+                                                                A score indicating how common the word is in the English language, with a range of 1 - 7;
+                                                            </span>
+                                                        </i>
+                                                    </Typography>
+                                                </Container>
+                                                <br />
+                                            </>
+                                        )}
+                                        {entry.frequency.perMillion >= 0 && (
+                                            <>
                                                 <Typography>
                                                     <i>
-                                                        <span className="mgSmFont">
+                                                        <strong>
                                                             <span className="rIOrange">
-                                                                &emsp;&emsp;*&nbsp;
+                                                                &emsp;&emsp;~
                                                             </span>
-                                                            The number of times the word is likely to appear in a corpus of one million English words;
-                                                        </span>
+                                                            <span className="text-muted">
+                                                                &nbsp;Per - Million Rating :
+                                                            </span>
+                                                            <span className="rIPurple">
+                                                                &nbsp;
+                                                                {entry.frequency.perMillion}
+                                                            </span>
+                                                        </strong>
+                                                        <br />
                                                     </i>
                                                 </Typography>
-                                            </Container>
-                                            <br />
-                                        </>
-                                    )}
-                                    {entry.frequency.diversity >= 0 && (
-                                        <>
-                                            <Typography>
-                                                <i>
-                                                    <strong>
-                                                        <span className="rIOrange">
-                                                            &emsp;&emsp;~
-                                                        </span>
-                                                        <span className="text-muted">
-                                                            &nbsp;Diversity Rating :
-                                                        </span>
-                                                        <span className="rIPurple">
-                                                            &nbsp;
-                                                            {entry.frequency.diversity}
-                                                        </span>
-                                                    </strong>
-                                                    <br />
-                                                </i>
-                                            </Typography>
-                                            <Container>
+                                                <Container>
+                                                    <Typography>
+                                                        <i>
+                                                            <span className="mgSmFont">
+                                                                <span className="rIOrange">
+                                                                    &emsp;&emsp;*&nbsp;
+                                                                </span>
+                                                                The number of times the word is likely to appear in a corpus of one million English words;
+                                                            </span>
+                                                        </i>
+                                                    </Typography>
+                                                </Container>
+                                                <br />
+                                            </>
+                                        )}
+                                        {entry.frequency.diversity >= 0 && (
+                                            <>
                                                 <Typography>
                                                     <i>
-                                                        <span className="mgSmFont">
+                                                        <strong>
                                                             <span className="rIOrange">
-                                                                &emsp;&emsp;*&nbsp;
+                                                                &emsp;&emsp;~
                                                             </span>
-                                                            0 - 1 scale the shows the likelyhood of the word appearing in an English document that is part of a corpus;
-                                                        </span>
+                                                            <span className="text-muted">
+                                                                &nbsp;Diversity Rating :
+                                                            </span>
+                                                            <span className="rIPurple">
+                                                                &nbsp;
+                                                                {entry.frequency.diversity}
+                                                            </span>
+                                                        </strong>
+                                                        <br />
                                                     </i>
                                                 </Typography>
-                                            </Container>
-                                            <br />
-                                        </>
-                                    )}
-                                </>
-                            )}
-                            {(error.length > 0 && entry === null) && (
-                                <Typography className="text-danger mgWordBreak">
-                                    <strong>
-                                        <i>
-                                            &emsp;
-                                            {error}
-                                        </i>
-                                    </strong>
-                                </Typography>
-                            )}
-                        </div>
-                    )}
+                                                <Container>
+                                                    <Typography>
+                                                        <i>
+                                                            <span className="mgSmFont">
+                                                                <span className="rIOrange">
+                                                                    &emsp;&emsp;*&nbsp;
+                                                                </span>
+                                                                0 - 1 scale the shows the likelyhood of the word appearing in an English document that is part of a corpus;
+                                                            </span>
+                                                        </i>
+                                                    </Typography>
+                                                </Container>
+                                                <br />
+                                            </>
+                                        )}
+                                    </>
+                                )}
+                            </>
+                        )}
+                        {!loaded && (
+                            <Typography className="text-danger mgWordBreak">
+                                <strong>
+                                    <i>
+                                        &emsp;
+                                        {error}
+                                    </i>
+                                </strong>
+                            </Typography>
+                        )}
+                    </div>
                 </AccordionDetails>
             </Accordion>
         </div>

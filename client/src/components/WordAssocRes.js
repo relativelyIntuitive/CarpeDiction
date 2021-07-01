@@ -71,20 +71,35 @@ const WordAssocRes = props => {
                 }
 
                 // updates all pertinent state variables
-                if (resEntry.result_code === "462")
+                if (resEntry.result_code === "462") {
                     setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
-                setEntry(resEntry);
-                setWords(resWords);
-                setLoaded(true);
+                    setEntry(null);
+                    setWords(null);
+                    setLoaded(false);
+                } else if (resWords.length === 0) {
+                    setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
+                    setEntry(null);
+                    setWords(null);
+                    setLoaded(false);
+                } else {
+                    setError(null);
+                    setEntry(resEntry);
+                    setWords(resWords);
+                    setLoaded(true);
+                }
             })
             .catch(err => {
-                if (err.response.status === 503) {
+                if (err && err.response && err.response.status === 503) {
                     setError(`Word Associations API is temporarily unavailable...`)
+                    setEntry(null);
+                    setWords(null);
+                    setLoaded(false);
                 } else {
                     setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
+                    setEntry(null);
+                    setWords(null);
+                    setLoaded(false);
                 }
-                setEntry(null);
-                setWords(null);
             });
     }, [query]);
 
@@ -149,56 +164,58 @@ const WordAssocRes = props => {
                     </Grid>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {loaded && (
-                        <div className={classes.root}>
-                            {(words.length && words.length > 0 && entry.associations_scored) && (
-                                <ul className="inlineList">
-                                    <li className="mgInlineBlock text-muted">
-                                        <Typography>
-                                            <strong>
-                                                &emsp;Related words / similarity score for "
-                                                <span className="mgWordBreak">
-                                                    {query.toLowerCase()}
-                                                </span>
-                                                " :&nbsp;
-                                            </strong>
-                                        </Typography>
-                                    </li>
-                                    {words.map((word, index) => (
-                                        <li key={index} className="mgInlineBlock">
+                    <div className={classes.root}>
+                        {loaded && (
+                            <>
+                                {(words && words.length > 0 && entry && entry.associations_scored) && (
+                                    <ul className="inlineList">
+                                        <li className="mgInlineBlock text-muted">
                                             <Typography>
-                                                &ensp;
-                                                <Link to={`/search/${Object.keys(entry.associations_scored)[index]}`}>
-                                                    <i>
-                                                        <span className="rIPurple">
-                                                            {word}
-                                                        </span>
-                                                    </i>
-                                                </Link>
-                                                {(words.indexOf(word) !== (words.length - 1)) && (
-                                                    <strong>
-                                                        <span className="rIOrange">
-                                                            &ensp;|
-                                                        </span>
-                                                    </strong>
-                                                )}
+                                                <strong>
+                                                    &emsp;Related words / similarity score for "
+                                                    <span className="mgWordBreak">
+                                                        {query.toLowerCase()}
+                                                    </span>
+                                                    " :&nbsp;
+                                                </strong>
                                             </Typography>
                                         </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
-                    )}
-                    {(error.length > 0) && (
-                        <Typography className="text-danger mgWordBreak">
-                            <strong>
-                                <i>
-                                    &emsp;
-                                    {error}
-                                </i>
-                            </strong>
-                        </Typography>
-                    )}
+                                        {words.map((word, index) => (
+                                            <li key={index} className="mgInlineBlock">
+                                                <Typography>
+                                                    &ensp;
+                                                    <Link to={`/search/${Object.keys(entry.associations_scored)[index]}`}>
+                                                        <i>
+                                                            <span className="rIPurple">
+                                                                {word}
+                                                            </span>
+                                                        </i>
+                                                    </Link>
+                                                    {(words.indexOf(word) !== (words.length - 1)) && (
+                                                        <strong>
+                                                            <span className="rIOrange">
+                                                                &ensp;|
+                                                            </span>
+                                                        </strong>
+                                                    )}
+                                                </Typography>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </>
+                        )}
+                        {!loaded && (
+                            <Typography className="text-danger mgWordBreak">
+                                <strong>
+                                    <i>
+                                        &emsp;
+                                        {error}
+                                    </i>
+                                </strong>
+                            </Typography>
+                        )}
+                    </div>
                 </AccordionDetails>
             </Accordion>
         </div>

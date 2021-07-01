@@ -57,7 +57,8 @@ const Comments = props => {
     const [comments, setComments] = useState([]);
     const [topComments, setTopComments] = useState([]);
     const [errors, setErrors] = useState([]);
-    const [loaded, setLoaded] = useState([]);
+    const [allLoaded, setAllLoaded] = useState(false);
+    const [topLoaded, setTopLoaded] = useState(false);
 
 
     // retrieves all comments
@@ -67,17 +68,17 @@ const Comments = props => {
                 .then(res => {
                     const resComments = res.data.comments;
                     setComments(resComments);
-                    setLoaded(true);
+                    setAllLoaded(true);
                 });
         } else {
             Axios.get(`http://localhost:8000/api/comments/retrieve/${query.toLowerCase()}`)
                 .then(res => {
                     const resComments = res.data.comments;
                     setComments(resComments);
-                    setLoaded(true);
+                    setAllLoaded(true);
                 });
         }
-    }, [query, setComments, comments]);
+    }, [query, comments]);
 
     // retrieves the top comments
     useEffect(() => {
@@ -86,17 +87,17 @@ const Comments = props => {
                 .then(res => {
                     const resTopComments = res.data.comments;
                     setTopComments(resTopComments);
-                    setLoaded(true);
+                    setTopLoaded(true);
                 });
         } else {
             Axios.get(`http://localhost:8000/api/comments/tops/${query.toLowerCase()}`)
                 .then(res => {
                     const resTopComments = res.data.comments;
                     setTopComments(resTopComments);
-                    setLoaded(true);
+                    setTopLoaded(true);
                 });
         }
-    }, [query, setTopComments, comments]);
+    }, [query]);
 
     // posts a comment
     const postComment = comment => {
@@ -290,9 +291,9 @@ const Comments = props => {
                     </strong>
                 </Typography>
                 <br />
-                {loaded && (
+                {(allLoaded && topLoaded) && (
                     <>
-                        {comments.length < 1 && (
+                        {comments.length === 0 && (
                             <>
                                 <Typography className="text-danger resHeading">
                                     <strong>
@@ -311,122 +312,126 @@ const Comments = props => {
                                 />
                             </>
                         )}
-                        {comments.length > 0 && (
+                    </>
+                )}
+                {topLoaded && (
+                    <>
+                        {topComments.length > 0 && (
                             <>
-                                {topComments.length > 0 && (
-                                    <>
-                                        {
-                                            topComments.map((topComment, index) => {
-                                                return (
-                                                    <div key={index}>
-                                                        <h5 className={classes.heading}>
-                                                            <span className="qQuotes">
-                                                                &ensp;@
-                                                            </span>
-                                                            <i className="rIPurple">
-                                                                {topComment.creator}
+                                {
+                                    topComments.map((topComment, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <h5 className={classes.heading}>
+                                                    <span className="qQuotes">
+                                                        &ensp;@
+                                                    </span>
+                                                    <i className="rIPurple">
+                                                        {topComment.creator}
+                                                    </i>
+                                                </h5>
+                                                <p className="cdParagraph">
+                                                    &emsp;&emsp;
+                                                    {topComment.content}
+                                                    <br />
+                                                    <br />
+                                                    <Grid
+                                                        container
+                                                        justify="space-between"
+                                                        alignItems="center"
+                                                    >
+                                                        <Grid
+                                                            item
+                                                            xs={6}
+                                                        >
+                                                            <i className="text-muted">
+                                                                ~
+                                                                {topComment.createdAt.split("T")[0]}
                                                             </i>
-                                                        </h5>
-                                                        <p className="cdParagraph">
-                                                            &emsp;&emsp;
-                                                            {topComment.content}
-                                                            <br />
-                                                            <br />
-                                                            <Grid
-                                                                container
-                                                                justify="space-between"
-                                                                alignItems="center"
-                                                            >
-                                                                <Grid
-                                                                    item
-                                                                    xs={6}
-                                                                >
-                                                                    <i className="text-muted">
-                                                                        ~
-                                                                        {topComment.createdAt.split("T")[0]}
+                                                        </Grid>
+                                                        <Grid
+                                                            item
+                                                            xs={6}
+                                                            className="mgTxtRight"
+                                                        >
+                                                            <Typography className="rIPurple">
+                                                                <strong>
+                                                                    <i>
+                                                                        {topComment.likers && (
+                                                                            topComment.likers.length
+                                                                        )}
+                                                                        &nbsp;Likes
                                                                     </i>
-                                                                </Grid>
-                                                                <Grid
-                                                                    item
-                                                                    xs={6}
-                                                                    className="mgTxtRight"
+                                                                </strong>
+                                                            </Typography>
+                                                            {(logged !== null) && (topComment.creator === logged.userName) && (
+                                                                <DeleteButton
+                                                                    buttFunc={'comment'}
+                                                                    comment={topComment}
+                                                                />
+                                                            )}
+                                                            {(logged !== null) && (topComment.creator !== logged.userName) && (!topComment.likers.includes(logged._id)) && (
+                                                                <Button
+                                                                    variant="outline-warning"
+                                                                    className="cdLikeIcon"
+                                                                    onClick={() => handleLikes(topComment)}
                                                                 >
-                                                                    <Typography className="rIPurple">
-                                                                        <strong>
-                                                                            <i>
-                                                                                {topComment.likers && (
-                                                                                    topComment.likers.length
-                                                                                )}
-                                                                                &nbsp;Likes
-                                                                            </i>
-                                                                        </strong>
-                                                                    </Typography>
-                                                                    {(logged !== null) && (topComment.creator === logged.userName) && (
-                                                                        <DeleteButton
-                                                                            buttFunc={'comment'}
-                                                                            comment={topComment}
-                                                                        />
-                                                                    )}
-                                                                    {(logged !== null) && (topComment.creator !== logged.userName) && (!topComment.likers.includes(logged._id)) && (
-                                                                        <Button
-                                                                            variant="outline-warning"
-                                                                            className="cdLikeIcon"
-                                                                            onClick={() => handleLikes(topComment)}
-                                                                        >
-                                                                            <img
-                                                                                src={like_icon_purple}
-                                                                                width=""
-                                                                                height="25"
-                                                                                className="d-inline-block mr-sm-1 cdTitle"
-                                                                                alt="Like!"
-                                                                            />
-                                                                        </Button>
-                                                                    )}
-                                                                    {(logged !== null) && (topComment.creator !== logged.userName) && (topComment.likers.includes(logged._id)) && (
-                                                                        <Button
-                                                                            variant="outline-warning"
-                                                                            className="cdLikeIcon"
-                                                                            onClick={() => handleLikes(topComment)}
-                                                                        >
-                                                                            <img
-                                                                                src={like_icon_orange}
-                                                                                width=""
-                                                                                height="25"
-                                                                                className="d-inline-block mr-sm-1 cdTitle"
-                                                                                alt="Unlike!"
-                                                                            />
-                                                                        </Button>
-                                                                    )}
-                                                                    {logged === null && (
-                                                                        <Button
-                                                                            variant="outline-warning"
-                                                                            className="cdLikeIcon"
-                                                                            onClick={() => navigate("/login")}
-                                                                        >
-                                                                            <img
-                                                                                src={like_icon_purple}
-                                                                                width=""
-                                                                                height="25"
-                                                                                className="d-inline-block mr-sm-1 cdTitle"
-                                                                                alt="Like!!"
-                                                                            />
-                                                                        </Button>
-                                                                    )}
-                                                                </Grid>
-                                                            </Grid>
-                                                        </p>
-                                                        <Divider
-                                                            variant="fullWidth"
-                                                            className={classes.divider}
-                                                        />
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </>
-                                )}
+                                                                    <img
+                                                                        src={like_icon_purple}
+                                                                        width=""
+                                                                        height="25"
+                                                                        className="d-inline-block mr-sm-1 cdTitle"
+                                                                        alt="Like!"
+                                                                    />
+                                                                </Button>
+                                                            )}
+                                                            {(logged !== null) && (topComment.creator !== logged.userName) && (topComment.likers.includes(logged._id)) && (
+                                                                <Button
+                                                                    variant="outline-warning"
+                                                                    className="cdLikeIcon"
+                                                                    onClick={() => handleLikes(topComment)}
+                                                                >
+                                                                    <img
+                                                                        src={like_icon_orange}
+                                                                        width=""
+                                                                        height="25"
+                                                                        className="d-inline-block mr-sm-1 cdTitle"
+                                                                        alt="Unlike!"
+                                                                    />
+                                                                </Button>
+                                                            )}
+                                                            {logged === null && (
+                                                                <Button
+                                                                    variant="outline-warning"
+                                                                    className="cdLikeIcon"
+                                                                    onClick={() => navigate("/login")}
+                                                                >
+                                                                    <img
+                                                                        src={like_icon_purple}
+                                                                        width=""
+                                                                        height="25"
+                                                                        className="d-inline-block mr-sm-1 cdTitle"
+                                                                        alt="Like!!"
+                                                                    />
+                                                                </Button>
+                                                            )}
+                                                        </Grid>
+                                                    </Grid>
+                                                </p>
+                                                <Divider
+                                                    variant="fullWidth"
+                                                    className={classes.divider}
+                                                />
+                                            </div>
+                                        )
+                                    })
+                                }
                             </>
                         )}
+                    </>
+                )}
+                {allLoaded && (
+                    <>
                         {comments.length > 0 && (
                             <>
                                 <Typography className="rIPurple resHeading">

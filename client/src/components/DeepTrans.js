@@ -46,7 +46,7 @@ const DeepTrans = props => {
 
     // retrieves the query results for various languages and saves them
     useEffect(() => {
-        let newResults = {'query': query.toLowerCase()};
+        let newResults = { 'query': query.toLowerCase() };
         // results['query'] = query;
         // set the options for the Spanish translation request through rapidAPI
         const optionsEs = {
@@ -170,7 +170,6 @@ const DeepTrans = props => {
             });
 
         // update loaded when all requests are complete
-        console.log(newResults)
         setResults(newResults);
         setLoaded(true);
     }, [query, setResults]);
@@ -236,100 +235,102 @@ const DeepTrans = props => {
                     </Grid>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {loaded && (
-                        <div className={classes.root}>
-                            {(results && results.fr) && (
-                                <>
-                                    <Typography className="text-muted">
-                                        <strong>
-                                            &emsp;
-                                            French:
-                                            <i className="rIPurple">
-                                                &ensp;"
-                                                {results.fr}
-                                                "
-                                            </i>
-                                        </strong>
-                                    </Typography>
-                                    <br />
-                                </>
-                            )}
-                            {(results && results.it) && (
-                                <>
-                                    <Typography className="text-muted">
-                                        <strong>
-                                            &emsp;
-                                            Italian:
-                                            <i className="rIPurple">
-                                                &ensp;"
-                                                {results.it}
-                                                "
-                                            </i>
-                                        </strong>
-                                    </Typography>
-                                    <br />
-                                </>
-                            )}
-                            {(results && results.la) && (
-                                <>
-                                    <Typography className="text-muted">
-                                        <strong>
-                                            &emsp;
-                                            Latin:
-                                            <i className="rIPurple">
-                                                &ensp;"
-                                                {results.la}
-                                                "
-                                            </i>
-                                        </strong>
-                                    </Typography>
-                                    <br />
-                                </>
-                            )}
-                            {(results && results.pt) && (
-                                <>
-                                    <Typography className="text-muted">
-                                        <strong>
-                                            &emsp;
-                                            Portuguese:
-                                            <i className="rIPurple">
-                                                &ensp;"
-                                                {results.pt}
-                                                "
-                                            </i>
-                                        </strong>
-                                    </Typography>
-                                    <br />
-                                </>
-                            )}
-                            {(results && results.es) && (
-                                <>
-                                    <Typography className="text-muted">
-                                        <strong>
-                                            &emsp;
-                                            Spanish:
-                                            <i className="rIPurple">
-                                                &ensp;"
-                                                {results.es}
-                                                "
-                                            </i>
-                                        </strong>
-                                    </Typography>
-                                    <br />
-                                </>
-                            )}
-                            {(error.length > 0 && results.length < 2) && (
-                                <Typography className="text-danger">
-                                    <strong>
-                                        <i>
-                                            &emsp;
-                                            {`No results for translations of "${query.toLowerCase()}" from Deep Translate API...`}
-                                        </i>
-                                    </strong>
-                                </Typography>
-                            )}
-                        </div>
-                    )}
+                    <div className={classes.root}>
+                        {loaded && (
+                            <>
+                                {(results && results.fr) && (
+                                    <>
+                                        <Typography className="text-muted">
+                                            <strong>
+                                                &emsp;
+                                                French:
+                                                <i className="rIPurple">
+                                                    &ensp;"
+                                                    {results.fr}
+                                                    "
+                                                </i>
+                                            </strong>
+                                        </Typography>
+                                        <br />
+                                    </>
+                                )}
+                                {(results && results.it) && (
+                                    <>
+                                        <Typography className="text-muted">
+                                            <strong>
+                                                &emsp;
+                                                Italian:
+                                                <i className="rIPurple">
+                                                    &ensp;"
+                                                    {results.it}
+                                                    "
+                                                </i>
+                                            </strong>
+                                        </Typography>
+                                        <br />
+                                    </>
+                                )}
+                                {(results && results.la) && (
+                                    <>
+                                        <Typography className="text-muted">
+                                            <strong>
+                                                &emsp;
+                                                Latin:
+                                                <i className="rIPurple">
+                                                    &ensp;"
+                                                    {results.la}
+                                                    "
+                                                </i>
+                                            </strong>
+                                        </Typography>
+                                        <br />
+                                    </>
+                                )}
+                                {(results && results.pt) && (
+                                    <>
+                                        <Typography className="text-muted">
+                                            <strong>
+                                                &emsp;
+                                                Portuguese:
+                                                <i className="rIPurple">
+                                                    &ensp;"
+                                                    {results.pt}
+                                                    "
+                                                </i>
+                                            </strong>
+                                        </Typography>
+                                        <br />
+                                    </>
+                                )}
+                                {(results && results.es) && (
+                                    <>
+                                        <Typography className="text-muted">
+                                            <strong>
+                                                &emsp;
+                                                Spanish:
+                                                <i className="rIPurple">
+                                                    &ensp;"
+                                                    {results.es}
+                                                    "
+                                                </i>
+                                            </strong>
+                                        </Typography>
+                                        <br />
+                                    </>
+                                )}
+                            </>
+                        )}
+                        {!loaded && (
+                            <Typography className="text-danger">
+                                <strong>
+                                    <i>
+                                        &emsp;
+                                        {`No results for translations of "${query.toLowerCase()}" from Deep Translate API...`}
+                                    </i>
+                                </strong>
+                            </Typography>
+                        )}
+                    </div>
                 </AccordionDetails>
             </Accordion>
         </div>

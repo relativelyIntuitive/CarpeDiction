@@ -67,8 +67,7 @@ const WOTDCard = () => {
                     setLoaded(true);
                 });
         }
-    }, [setWord])
-    // }, [setDef, setWord])
+    }, [])
 
 
     // returns WOTD card with archive accordion
@@ -85,13 +84,13 @@ const WOTDCard = () => {
                         Word of the Day:
                     </strong>
                 </Typography>
-                {!loaded && (
-                    <>
-                        <Typography
-                            className="rIPurple"
-                            variant="h4"
-                            component="h2"
-                        >
+                <Typography
+                    className="rIPurple"
+                    variant="h4"
+                    component="h2"
+                >
+                    {!loaded && (
+                        <>
                             <strong className="qQuotes">
                                 <i>
                                     <span className="rIPurple">
@@ -99,8 +98,7 @@ const WOTDCard = () => {
                                     </span>
                                 </i>
                             </strong>
-                        </Typography>
-                        {/* <Typography
+                            {/* <Typography
                         variant="h6"
                         component="h3"
                         className="rIGrey"
@@ -113,15 +111,10 @@ const WOTDCard = () => {
                             </strong>
                         </i>
                     </Typography> */}
-                    </>
-                )}
-                {loaded && (
-                    <>
-                        <Typography
-                            className="rIPurple"
-                            variant="h4"
-                            component="h2"
-                        >
+                        </>
+                    )}
+                    {loaded && (
+                        <>
                             <strong className="qQuotes">
                                 "&ensp;
                                 <span className="rIPurple">
@@ -129,8 +122,7 @@ const WOTDCard = () => {
                                 </span>
                                 &ensp;"
                             </strong>
-                        </Typography>
-                        {/* <Typography
+                            {/* <Typography
                             variant="h6"
                             component="h3"
                             className="rIGrey"
@@ -143,8 +135,10 @@ const WOTDCard = () => {
                                 </strong>
                             </i>
                         </Typography> */}
-                    </>
-                )}
+                        </>
+                    )}
+                </Typography>
+
             </CardContent>
             <CardActions>
                 <Link to={"/search/" + word} className="mgMargAuto flatLinkWOTD">

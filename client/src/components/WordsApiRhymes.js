@@ -78,17 +78,22 @@ const WordsApiRhymes = props => {
                 }
 
                 // updates all pertinent state variables
-                if (Object.keys(res.data.rhymes).length === 0)
+                if (Object.keys(res.data.rhymes).length === 0) {
                     setError(`No results for rhymes of "${query.toLowerCase()}" from Words API...`);
-                setEntry(resEntry);
-                setWords(resWords);
-                setPhrases(resPhrases);
-                setLoaded(true);
+                    setWords(null);
+                    setLoaded(false);
+                } else {
+                    setError(null);
+                    setEntry(resEntry);
+                    setWords(resWords);
+                    setPhrases(resPhrases);
+                    setLoaded(true);
+                }
             })
             .catch(err => {
                 setError(`No results for rhymes of "${query.toLowerCase()}" from Words API...`);
-                setEntry(null);
-                setLoaded(true);
+                setWords(null);
+                setLoaded(false);
             });
     }, [query]);
 
@@ -113,8 +118,13 @@ const WordsApiRhymes = props => {
                         >
                             <Typography className={classes.heading}>
                                 <strong>
-                                    (
-                                    {words.length}
+                                (
+                                    {words && (
+                                        words.length
+                                    )}
+                                    {!words && (
+                                        0
+                                    )}
                                     )
                                     <span className="rIOrange">
                                         &nbsp;-&nbsp;
@@ -148,90 +158,92 @@ const WordsApiRhymes = props => {
                     </Grid>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {loaded && (
-                        <div className={classes.root}>
-                            {(words.length > 0 && entry.rhymes && entry.rhymes.all) && (
-                                <ul className="inlineList">
-                                    <li className="mgInlineBlock text-muted">
-                                        <Typography>
-                                            <strong>
-                                                &emsp;Words that rhyme with
-                                                "
-                                                {entry.word.toLowerCase()}
-                                                " ~ (A-Z) :&nbsp;
-                                            </strong>
-                                        </Typography>
-                                    </li>
-                                    {words.map((word, index) => (
-                                        <li key={index} className="mgInlineBlock">
+                    <div className={classes.root}>
+                        {loaded && (
+                            <>
+                                {(words && entry.rhymes && entry.rhymes.all) && (
+                                    <ul className="inlineList">
+                                        <li className="mgInlineBlock text-muted">
                                             <Typography>
-                                            &ensp;
-                                                <Link to={`/search/${entry.rhymes.all[index]}`}>
-                                                    <i>
-                                                        <span className="rIPurple">
-                                                            {word}
-                                                        </span>
-                                                    </i>
-                                                </Link>
-                                                {(words.indexOf(word) !== (words.length - 1)) && (
-                                                    <strong>
-                                                        <span className="rIOrange">
-                                                            &ensp;|
-                                                        </span>
-                                                    </strong>
-                                                )}
+                                                <strong>
+                                                    &emsp;Words that rhyme with
+                                                    "
+                                                    {entry.word.toLowerCase()}
+                                                    " ~ (A-Z) :&nbsp;
+                                                </strong>
                                             </Typography>
                                         </li>
-                                    ))}
-                                </ul>
-                            )}
-                            {(phrases.length > 0 && entry.rhymes && entry.rhymes.all) && (
-                                <ul className="inlineList">
-                                    <li className="mgInlineBlock text-muted">
-                                        <Typography>
-                                            <strong>
-                                                &emsp;Phrases that rhyme with
-                                                "
-                                                {entry.word.toLowerCase()}
-                                                " ~ (A-Z) :&nbsp;
-                                            </strong>
-                                        </Typography>
-                                    </li>
-                                    {phrases.map((phrase, index) => (
-                                        <li key={index} className="mgInlineBlock">
+                                        {words.map((word, index) => (
+                                            <li key={index} className="mgInlineBlock">
+                                                <Typography>
+                                                    &ensp;
+                                                    <Link to={`/search/${entry.rhymes.all[index]}`}>
+                                                        <i>
+                                                            <span className="rIPurple">
+                                                                {word}
+                                                            </span>
+                                                        </i>
+                                                    </Link>
+                                                    {(words.indexOf(word) !== (words.length - 1)) && (
+                                                        <strong>
+                                                            <span className="rIOrange">
+                                                                &ensp;|
+                                                            </span>
+                                                        </strong>
+                                                    )}
+                                                </Typography>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                                {(phrases.length > 0 && entry.rhymes && entry.rhymes.all) && (
+                                    <ul className="inlineList">
+                                        <li className="mgInlineBlock text-muted">
                                             <Typography>
-                                                &nbsp;
-                                                <Link to={`/search/${phrases[index]}`}>
-                                                    <i>
-                                                        <span className="rIPurple">
-                                                            {phrase}
-                                                        </span>
-                                                    </i>
-                                                </Link>
-                                                {(phrases.indexOf(phrase) !== (phrases.length - 1)) && (
-                                                    <strong>
-                                                        <span className="rIOrange">
-                                                            &nbsp;|&nbsp;
-                                                        </span>
-                                                    </strong>
-                                                )}
+                                                <strong>
+                                                    &emsp;Phrases that rhyme with
+                                                    "
+                                                    {entry.word.toLowerCase()}
+                                                    " ~ (A-Z) :&nbsp;
+                                                </strong>
                                             </Typography>
                                         </li>
-                                    ))}
-                                </ul>
-                            )}
-                            {words.length === 0 && (
-                                <Typography className="text-danger mgWordBreak">
-                                    <strong>
-                                        <i>
-                                            &emsp;
-                                            {error}
-                                        </i>
-                                    </strong>
-                                </Typography>
-                            )}
-                        </div>
-                    )}
+                                        {phrases.map((phrase, index) => (
+                                            <li key={index} className="mgInlineBlock">
+                                                <Typography>
+                                                    &nbsp;
+                                                    <Link to={`/search/${phrases[index]}`}>
+                                                        <i>
+                                                            <span className="rIPurple">
+                                                                {phrase}
+                                                            </span>
+                                                        </i>
+                                                    </Link>
+                                                    {(phrases.indexOf(phrase) !== (phrases.length - 1)) && (
+                                                        <strong>
+                                                            <span className="rIOrange">
+                                                                &nbsp;|&nbsp;
+                                                            </span>
+                                                        </strong>
+                                                    )}
+                                                </Typography>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </>
+                        )}
+                        {!loaded && (
+                            <Typography className="text-danger mgWordBreak">
+                                <strong>
+                                    <i>
+                                        &emsp;
+                                        {error}
+                                    </i>
+                                </strong>
+                            </Typography>
+                        )}
+                    </div>
                 </AccordionDetails>
             </Accordion>
         </div>
