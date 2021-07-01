@@ -125,10 +125,10 @@ const WordAssocRes = props => {
                             <Typography className={classes.heading}>
                                 <strong>
                                     (
-                                    {(words !== null && words.length > 0) && (
+                                    {(words && words.length > 0) && (
                                         words.length
                                     )}
-                                    {(words === null) && (
+                                    {!words && (
                                         0
                                     )}
                                     )

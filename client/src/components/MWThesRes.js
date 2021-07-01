@@ -109,12 +109,10 @@ const MWThesRes = props => {
                     <Typography className={classes.heading}>
                         <strong>
                             (
-                            {(entries !== null && entries.length > 0) (
-                                <>
-                                    {entries.length}
-                                </>
+                            {entries && (
+                                    entries.length
                             )}
-                            {entries === null && (
+                            {!entries && (
                                 0
                             )}
                             )
