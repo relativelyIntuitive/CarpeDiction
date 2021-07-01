@@ -74,7 +74,7 @@ const Update = props => {
                         navigate('/login');
                 });
         }
-    }, [localUser, setUser, setLoaded]);
+    }, [localUser]);
 
     // updates the User's data with the new data
     const updateUser = user => {

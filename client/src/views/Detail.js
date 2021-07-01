@@ -85,7 +85,7 @@ const Detail = props => {
                         navigate('/login');
                 });
         }
-    }, [localUser, setUser, setLoaded]);
+    }, [localUser]);
 
 
     // returns the User account screen

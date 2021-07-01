@@ -172,7 +172,7 @@ const DeepTrans = props => {
         // update loaded when all requests are complete
         setResults(newResults);
         setLoaded(true);
-    }, [query, setResults]);
+    }, [query]);
 
 
     // returns a material UI accordion component displaying the translations

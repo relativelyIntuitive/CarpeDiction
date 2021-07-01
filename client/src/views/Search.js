@@ -114,7 +114,7 @@ const Search = props => {
                 }
                 setLoaded(true);
             });
-    }, [query, setAudioLoaded, logged])
+    }, [query, logged])
 
     // updates the User's data with the new data
     const updateUser = newUser => {
