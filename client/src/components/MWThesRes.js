@@ -63,12 +63,10 @@ const MWThesRes = props => {
                 // local offensive counters to manipulate and push their sums to overall offensive score
                 for (const entry of resEntries) {
                     // removes format bracket pairs and leftover references to other entries from example sentence data if present
-                    if (entry.def && entry.def[0] && entry.def[0].sseq[resEntries.indexOf(entry)] && entry.def[0].sseq[resEntries.indexOf(entry)][0] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1][1] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1][1][0] && entry.def[0].sseq[resEntries.indexOf(entry)][0][1].dt[1][1][0].t) {
-                        for (let sense of entry.def[0].sseq) {
-                            entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t = entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t.replace(/\{....\}/g, '');
-                            entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t = entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t.replace(/\{...\}/g, '');
-                            entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t = entry.def[0].sseq[entry.def[0].sseq.indexOf(sense)][0][1].dt[1][1][0].t.replace(/\{..\}/g, '');
-                        }
+                    if (entry.def && entry.def[0] && entry.def[0].sseq[0] && entry.def[0].sseq[0][0] && entry.def[0].sseq[0][0][1] && entry.def[0].sseq[0][0][1].dt && entry.def[0].sseq[0][0][1].dt[1] && entry.def[0].sseq[0][0][1].dt[1][1] && entry.def[0].sseq[0][0][1].dt[1][1][0] && entry.def[0].sseq[0][0][1].dt[1][1][0].t) {
+                        entry.def[0].sseq[0][0][1].dt[1][1][0].t = entry.def[0].sseq[0][0][1].dt[1][1][0].t.replace(/\{....\}/g, '');
+                        entry.def[0].sseq[0][0][1].dt[1][1][0].t = entry.def[0].sseq[0][0][1].dt[1][1][0].t.replace(/\{...\}/g, '');
+                        entry.def[0].sseq[0][0][1].dt[1][1][0].t = entry.def[0].sseq[0][0][1].dt[1][1][0].t.replace(/\{..\}/g, '');
                     }
                     // checks if the type of entry exists in the object and adds it to the appropriate array if so, and creates a new one if not
                     if (`${entry.fl}` in entryTypes) {

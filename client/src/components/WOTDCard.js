@@ -40,7 +40,7 @@ const WOTDCard = () => {
 
     // state variables for handling the WOTD data
     const [word, setWord] = useState("");
-    const [def, setDef] = useState("");
+    // const [def, setDef] = useState("");
     const [loaded, setLoaded] = useState(false);
 
 
@@ -51,9 +51,9 @@ const WOTDCard = () => {
                 .then(res => {
                     console.log(res)
                     const newWord = res.data.WOTD.word;
-                    const newDef = res.data.WOTD.def;
+                    // const newDef = res.data.WOTD.def;
                     setWord(newWord);
-                    setDef(newDef);
+                    // setDef(newDef);
                     setLoaded(true);
                 });
         } else {
@@ -61,13 +61,14 @@ const WOTDCard = () => {
                 .then(res => {
                     console.log(res)
                     const newWord = res.data.WOTD.word;
-                    const newDef = res.data.WOTD.def;
+                    // const newDef = res.data.WOTD.def;
                     setWord(newWord);
-                    setDef(newDef);
+                    // setDef(newDef);
                     setLoaded(true);
                 });
         }
-    }, [setDef, setWord])
+    }, [setWord])
+    // }, [setDef, setWord])
 
 
     // returns WOTD card with archive accordion
