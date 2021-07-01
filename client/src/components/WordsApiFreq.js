@@ -102,7 +102,7 @@ const WordsApiFreq = props => {
                             <Typography className={classes.heading}>
                                 <strong>
                                     (
-                                    {(entry && entry.frequency) && (
+                                    {(entry && Object.keys(entry.frequency).length > 0) && (
                                         Object.keys(entry.frequency).length
                                     )}
                                     {!(entry && entry.frequency) && (

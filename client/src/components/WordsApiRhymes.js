@@ -119,7 +119,7 @@ const WordsApiRhymes = props => {
                             <Typography className={classes.heading}>
                                 <strong>
                                 (
-                                    {words && (
+                                    {(words && words.length > 0) && (
                                         words.length
                                     )}
                                     {!words && (

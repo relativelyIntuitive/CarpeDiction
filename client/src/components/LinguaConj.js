@@ -103,7 +103,7 @@ const LinguaCons = props => {
                             <Typography className={classes.heading}>
                                 <strong>
                                     (
-                                    {(entry && entry.conjugated_forms) && (
+                                    {(entry && Object.keys(entry.conjugated_forms).length > 0) && (
                                         Object.keys(entry.conjugated_forms).length
                                     )}
                                     {!(entry && entry.conjugated_forms) && (

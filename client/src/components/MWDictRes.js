@@ -197,7 +197,7 @@ const MWDictRes = props => {
                             <Typography className={classes.heading}>
                                 <strong>
                                     (
-                                    {entries && (
+                                    {(entries && entries.length > 0) && (
                                         entries.length
                                     )}
                                     {!entries && (
