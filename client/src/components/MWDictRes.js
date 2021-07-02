@@ -173,7 +173,7 @@ const MWDictRes = props => {
                 setEntries(null);
                 setLoaded(false);
             });
-    }, [query]);
+    }, [query, setAudioLoaded, setHeadWords, setIsOffensive, setMp3s, setNotOffensive, setPronunciations, setSpellings, setWavs]);
 
 
     // returns a material UI accordion component displaying the results from the MW dictionary API
