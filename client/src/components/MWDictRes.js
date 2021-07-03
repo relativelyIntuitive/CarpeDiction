@@ -462,12 +462,11 @@ const MWDictRes = props => {
                                                                                 />
                                                                                 <Typography>
                                                                                     <strong>
-                                                                                        Origin:&nbsp;
+                                                                                        Origin:&ensp;
                                                                                     </strong>
                                                                                     {entry.date && (
                                                                                         <i className="rIPurple">
-                                                                                            {entry.date.replace(/{.*}/g, '')}
-                                                                                            &nbsp;;
+                                                                                            {entry.date.replace(/{.*}/g, '')} ;
                                                                                         </i>
                                                                                     )}
                                                                                     <br />
