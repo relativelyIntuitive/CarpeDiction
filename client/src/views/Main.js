@@ -190,7 +190,7 @@ const Main = props => {
                                     <br />
                                     <Link
                                         target="_blank"
-                                        href="http://ww.ZeeboVO.com"
+                                        href="http://www.ZeeboVO.com"
                                         className="flatLinkPurple"
                                         style={{ textDecoration: "none" }}
                                     >
@@ -224,7 +224,7 @@ const Main = props => {
                                         className="flatLinkPurple"
                                         style={{ textDecoration: "none" }}
                                     >
-                                        &gt; Vsauce (Science/Philosophy) &lt;
+                                        &gt; Vsauce (Science/Philosophy Videos) &lt;
                                     </Link>
                                     <br />
                                     <br />
@@ -234,7 +234,7 @@ const Main = props => {
                                         className="flatLinkPurple"
                                         style={{ textDecoration: "none" }}
                                     >
-                                        &gt; Duolingo (Free Language Learning) &lt;
+                                        &gt; Duolingo (Free Language Courses) &lt;
                                     </Link>
                                     <br />
                                     <br />
@@ -244,7 +244,7 @@ const Main = props => {
                                         className="flatLinkPurple"
                                         style={{ textDecoration: "none" }}
                                     >
-                                        &gt; MIT OCW (Free College Courses) &lt;
+                                        &gt; MIT OCW (Free College Courses from MIT) &lt;
                                     </Link>
                                     <br />
                                     <br />
@@ -254,7 +254,7 @@ const Main = props => {
                                         className="flatLinkPurple"
                                         style={{ textDecoration: "none" }}
                                     >
-                                        &gt; FreeCodeCamp (Free Coding Bootcamp) &lt;
+                                        &gt; FreeCodeCamp (Free Online Coding Bootcamp) &lt;
                                     </Link>
                                 </i>
                             </h5>
