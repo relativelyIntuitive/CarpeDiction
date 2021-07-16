@@ -49,7 +49,7 @@ const Main = props => {
 
     // alert user of current site issues
     useEffect(() => {
-        alert('* NOTICE:\n- Safari browsers are currently experiencing querying issues...\n- Enjoy!');
+        alert('* NOTICE:\n- Safari browsers are currently experiencing querying issues...\n- The "comments" system is currently down for maintenance\n- Enjoy!');
     }, [])
 
     // returns the homepage
