@@ -49,7 +49,7 @@ const Main = props => {
 
     // alert user of current site issues
     useEffect(() => {
-        alert('* NOTICE:\n- Manual refreshes or URL entry will currently result in a 404 error, in-site navigation MUST be used for now...\n- Safari browsers are currently experiencing issues with the site...\n- Enjoy!');
+        alert('* NOTICE:\n- Safari browsers are currently experiencing querying issues...\n- Enjoy!');
     }, [])
 
     // returns the homepage
