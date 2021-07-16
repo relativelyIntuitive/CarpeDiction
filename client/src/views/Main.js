@@ -173,7 +173,7 @@ const Main = props => {
                                 className={classes.divider}
                             />
                             <h3 className="qQuotes">
-                                Other Educational & Beguiling Sites:
+                                Educational & Beguiling Links:
                             </h3>
                             <br />
                             <h5>
