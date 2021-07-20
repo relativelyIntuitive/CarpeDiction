@@ -10,10 +10,24 @@ const UserSchema = new mongoose.Schema({
         required: [true, "*Username is required!"],
         minlength: [2, "*Username must be at least 2 characters long!"],
         maxlength: [16, "*Username must no more than 16 characters long!"],
-        validate: {
-            validator: val => !(/\s/g.test(val)),
-            message: '*Username must not contain spaces!'
-        }
+        validate: [
+            {
+                validator: val => !(/\s/g.test(val)),
+                message: '*Username must not contain spaces!'
+            },
+            {
+                validator: val => !(/DELETED/g.test(val)),
+                message: '*Username is prohibited!'
+            },
+            {
+                validator: val => !(/deleted/g.test(val)),
+                message: '*Username is prohibited!'
+            },
+            {
+                validator: val => !(/Deleted/g.test(val)),
+                message: '*Username is prohibited!'
+            }
+        ]
     },
     userNameLower: {
         type: String,
