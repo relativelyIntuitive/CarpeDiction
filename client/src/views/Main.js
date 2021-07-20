@@ -180,6 +180,16 @@ const Main = props => {
                                 <i>
                                     <Link
                                         target="_blank"
+                                        href="https://blockfi.com/?ref=cb8d5d22"
+                                        className="flatLinkPurple"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        &gt; Apply for the world's first BTC rewards credit card! &lt;
+                                    </Link>
+                                    <br />
+                                    <br />
+                                    <Link
+                                        target="_blank"
                                         href="http://bitcoinfaq.io"
                                         className="flatLinkPurple"
                                         style={{ textDecoration: "none" }}
@@ -194,7 +204,7 @@ const Main = props => {
                                         className="flatLinkPurple"
                                         style={{ textDecoration: "none" }}
                                     >
-                                        &gt; Zeebo Voiceover &lt;
+                                        &gt; Zeebo Voiceovers &lt;
                                     </Link>
                                     <br />
                                     <br />
