@@ -157,7 +157,7 @@ const ImportExportFavs = props => {
                     <br />
                     <TextField
                         id="outlined-basic"
-                        label="Query1, query2, etc..."
+                        label="Query 1, query 2, etc..."
                         name="newImports"
                         variant="outlined"
                         multiline

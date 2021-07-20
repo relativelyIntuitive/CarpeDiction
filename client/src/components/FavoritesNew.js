@@ -87,6 +87,15 @@ const FavoritesNew = props => {
                                 ))}
                             </ul>
                         )}
+                        {favsSorted.length === 0 && (
+                            <Typography className="text-danger mgWordBreak">
+                                <strong>
+                                    <i>
+                                        * You have not favorited any queries!
+                                    </i>
+                                </strong>
+                            </Typography>
+                        )}
                     </div>
                 </AccordionDetails>
             </Accordion>

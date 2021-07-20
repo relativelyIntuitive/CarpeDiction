@@ -1,4 +1,5 @@
 const User = require("../models/user.model"),
+    Comment = require("../models/comment.model"),
     bcrypt = require('bcrypt'),
     jwt = require('jsonwebtoken');
 
@@ -160,8 +161,23 @@ module.exports.updateUser = (req, res) => {
 
 // deletes one User via their ID
 module.exports.deleteUser = (req, res) => {
-    User.deleteOne({ _id: req.params.id })
-        .then(deleteConfirmation => res.json(deleteConfirmation))
+    User.findOne({ _id: req.params.id })
+        .then(user => {
+            // wipes the association between the User and their comments
+            Comment.find({ creator: `${user.userName} - ${user.email}` })
+                .then(comments => {
+                    comments.forEach(comment => {
+                        comment.user = null;
+                        comment.creator = comment.creator.concat(" - (DELETED)");
+                        comment.save();
+                    })
+                    // deletes the User
+                    User.deleteOne({ _id: req.params.id })
+                        .then(deleteConfirmation => res.json(deleteConfirmation))
+                        .catch(err => res.status(401).json(err));
+                })
+                .catch(err => res.status(400).json(err));
+        })
         .catch(err => res.status(401).json(err));
 };
 

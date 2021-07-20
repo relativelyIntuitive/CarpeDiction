@@ -119,7 +119,7 @@ const Search = props => {
     // updates the User's data with the new data
     const updateUser = newUser => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, newUser, { withCredentials: true })
+            axios.put(`${process.env.REACT_APP_API_ROOT}/api/users`, newUser, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                 })
@@ -128,7 +128,7 @@ const Search = props => {
                         navigate('/login');
                 });
         } else {
-            axios.put(`http://localhost:8000/api/users/${logged._id}`, newUser, { withCredentials: true })
+            axios.put(`http://localhost:8000/api/users`, newUser, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                 })

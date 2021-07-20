@@ -137,7 +137,7 @@ const Comments = props => {
     // updates comments when liked
     const likeComment = comment => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.put(`${process.env.REACT_APP_API_ROOT}/api/comments/update/`, comment, { withCredentials: true })
+            axios.put(`${process.env.REACT_APP_API_ROOT}/api/comments/like/`, comment, { withCredentials: true })
                 .then(res => {
                     setErrors([]);
                 })
@@ -146,7 +146,7 @@ const Comments = props => {
                         navigate('/login');
                 });
         } else {
-            axios.put(`http://localhost:8000/api/comments/update/`, comment, { withCredentials: true })
+            axios.put(`http://localhost:8000/api/comments/like/`, comment, { withCredentials: true })
                 .then(res => {
                     setErrors([]);
                 })
@@ -162,7 +162,7 @@ const Comments = props => {
         setNewComment({
             query: query,
             user: logged._id,
-            creator: logged.userName,
+            creator: `${logged.userName} - ${logged.email}`,
             [e.target.name]: e.target.value,
         });
     };
@@ -179,14 +179,14 @@ const Comments = props => {
         setNewComment({
             query: query,
             user: logged._id,
-            creator: logged.userName,
+            creator: `${logged.userName} - ${logged.email}`,
             content: "",
         });
     };
 
     // update a comment's likers
     const handleLikes = (comment) => {
-        if (!comment.likers.includes(logged._id)) {
+        if (comment.likers && !comment.likers.includes(logged._id)) {
             comment.likers.push(logged._id);
         } else {
             const index = comment.likers.indexOf(logged._id);
@@ -329,7 +329,14 @@ const Comments = props => {
                                                         &ensp;@
                                                     </span>
                                                     <i className="rIPurple">
-                                                        {topComment.creator}
+                                                        {topComment.user && (
+                                                            topComment.user.userName
+                                                        )}
+                                                        {!topComment.user && (
+                                                            <>
+                                                                [DELETED]
+                                                            </>
+                                                        )}
                                                     </i>
                                                 </h5>
                                                 <p className="cdParagraph">
@@ -366,13 +373,13 @@ const Comments = props => {
                                                                     </i>
                                                                 </strong>
                                                             </Typography>
-                                                            {(logged !== null) && (topComment.creator === logged.userName) && (
+                                                            {(logged !== null) && (topComment.user) && (topComment.user.userName === logged.userName) && (
                                                                 <DeleteButton
                                                                     buttFunc={'comment'}
                                                                     comment={topComment}
                                                                 />
                                                             )}
-                                                            {(logged !== null) && (topComment.creator !== logged.userName) && (!topComment.likers.includes(logged._id)) && (
+                                                            {(logged !== null) && (topComment.user) && (topComment.user.userName !== logged.userName) && (topComment.likers) && (!topComment.likers.includes(logged._id)) && (
                                                                 <Button
                                                                     variant="outline-warning"
                                                                     className="cdLikeIcon"
@@ -387,7 +394,7 @@ const Comments = props => {
                                                                     />
                                                                 </Button>
                                                             )}
-                                                            {(logged !== null) && (topComment.creator !== logged.userName) && (topComment.likers.includes(logged._id)) && (
+                                                            {(logged !== null) && (topComment.user) && (topComment.user.userName !== logged.userName) && (topComment.likers) && (topComment.likers.includes(logged._id)) && (
                                                                 <Button
                                                                     variant="outline-warning"
                                                                     className="cdLikeIcon"
@@ -458,7 +465,14 @@ const Comments = props => {
                                                     &ensp;@
                                                 </span>
                                                 <i className="rIPurple">
-                                                    {comment.creator}
+                                                    {comment.user && (
+                                                        comment.user.userName
+                                                    )}
+                                                    {!comment.user && (
+                                                        <>
+                                                            [DELETED]
+                                                        </>
+                                                    )}
                                                 </i>
                                             </h5>
                                             <p className="cdParagraph">
@@ -497,13 +511,13 @@ const Comments = props => {
                                                                 </i>
                                                             </strong>
                                                         </Typography>
-                                                        {(logged !== null) && (comment.creator === logged.userName) && (
+                                                        {(logged !== null) && (comment.user) && (comment.user.userName === logged.userName) && (
                                                             <DeleteButton
                                                                 buttFunc={'comment'}
                                                                 comment={comment}
                                                             />
                                                         )}
-                                                        {(logged !== null) && (comment.creator !== logged.userName) && (!comment.likers.includes(logged._id)) && (
+                                                        {(logged !== null) && (comment.user) && (comment.user.userName !== logged.userName) && (comment.likers) && (!comment.likers.includes(logged._id)) && (
                                                             <Button
                                                                 variant="outline-warning"
                                                                 className="cdLikeIcon"
@@ -518,7 +532,7 @@ const Comments = props => {
                                                                 />
                                                             </Button>
                                                         )}
-                                                        {(logged !== null) && (comment.creator !== logged.userName) && (comment.likers) && (comment.likers.includes(logged._id)) && (
+                                                        {(logged !== null) && (comment.user) && (comment.user.userName !== logged.userName) && (comment.likers) && (comment.likers.includes(logged._id)) && (
                                                             <Button
                                                                 variant="outline-warning"
                                                                 className="cdLikeIcon"

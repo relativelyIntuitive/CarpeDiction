@@ -1,5 +1,4 @@
-const Comment = require("../models/comment.model"),
-    User = require("../models/user.model");
+const Comment = require("../models/comment.model");
 
 
 
