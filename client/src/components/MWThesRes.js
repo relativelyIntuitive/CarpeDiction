@@ -65,11 +65,8 @@ const MWThesRes = props => {
                     // removes format bracket pairs and leftover references to other entries from example sentence data if present
                     if (entry.def && entry.def[0] && entry.def[0].sseq.length) {
                         for (const sseq of entry.def[0].sseq) {
-                            if (entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0].t) {
-                                entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0].t = entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0].t.replace(/\{....\}/g, '');
-                                entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0].t = entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0].t.replace(/\{...\}/g, '');
-                                entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0].t = entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0].t.replace(/\{..\}/g, '');
-                            }
+                            if (entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0] && entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0].t)
+                                entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0].t = entry.def[0].sseq[entry.def[0].sseq.indexOf(sseq)][0][1].dt[1][1][0].t.replace(/\{.{1,5}\}/g, '');
                         }
                     }
                     // checks if the type of entry exists in the object and adds it to the appropriate array if so, and creates a new one if not

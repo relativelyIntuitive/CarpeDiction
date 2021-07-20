@@ -103,26 +103,20 @@ const MWDictRes = props => {
                     // gathers headwords if present
                     if (newEntry.hwi && newEntry.hwi.hw && !newHeadWords.includes(newEntry.hwi.hw))
                         newHeadWords.push(newEntry.hwi.hw.replace(/(\*+)/g, ''));
-                    // removes format bracket pairs and leftover references to other entries from etymology data and it's supplemental note, if present
+                    // removes format bracket pairs and edits leftover references to other entries from origin data.\, if present
                     if (newEntry.et && newEntry.et[0][1]) {
+                        newEntry.et[0][1] = newEntry.et[0][1].replace(/see/g, 'see:');
                         newEntry.et[0][1] = newEntry.et[0][1].replace(/et_link\|/g, 'see: |');
-                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{.......\}/g, '');
-                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{......\}/g, '');
-                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{.....\}/g, '');
-                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{....\}/g, '');
-                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{...\}/g, '');
-                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{..\}/g, '');
+                        newEntry.et[0][1] = newEntry.et[0][1].replace(/dxt\|/g, '');
+                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\|\|\}/g, ' }');
+                        newEntry.et[0][1] = newEntry.et[0][1].replace(/\{.{1,8}\}/g, '');
                         newEntry.et[0][1] = newEntry.et[0][1].replace(newEntry.et[0][1][0], newEntry.et[0][1][0].toUpperCase())
                     }
+                    // removes format bracket pairs and edits leftover references to other entries from the origin data's note, if present
                     if (newEntry.et && newEntry.et[1] && newEntry.et[1][1] && newEntry.et[1][1][0] && newEntry.et[1][1][0][1]) {
-                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/et_link\|/g, '');
                         newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/see/g, 'see:');
-                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{.......\}/g, '');
-                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{......\}/g, '');
-                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{.....\}/g, '');
-                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{....\}/g, '');
-                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{...\}/g, '');
-                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{..\}/g, '');
+                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/et_link\|/g, '');
+                        newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(/\{.{1,8}\}/g, '');
                         newEntry.et[1][1][0][1] = newEntry.et[1][1][0][1].replace(newEntry.et[1][1][0][1][0], newEntry.et[1][1][0][1][0].toUpperCase())
                     }
                     // checks if the type of entry exists in the object and adds it to the appropriate array if so, and creates a new one if not
