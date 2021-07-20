@@ -108,7 +108,7 @@ const Main = props => {
                                         &emsp;&emsp;Welcome to CarpeDiction! Here, in this veritable verbal shangri-la, language and history are celebrated and censorship is spurned! Freedom of knowledge is essential to the evolution of our species, as well as the growth and development of our own souls. I created this site in an attempt to bring the obscurely dendritic patterns of the American-English lexicon into focus, and it is my sincerest hope that it will be able to foster new and exciting insights for all!
                                         <br />
                                         <br />
-                                        &emsp;&emsp;Any and all correspondence is both welcome and encouraged, so feel free to contact me at any of my linked profiles in the bottom right. I would love to hear about any issues, inspirations or ideas that you may encounter while browsing the site! Register to gain access to favorites and take part in the discussions! Query a word, phrase, suffix, prefix or colloquialism to get started, but beware: for better or for worse, results are uncurated and may be offensive! Enjoy!
+                                        &emsp;&emsp;Any and all correspondence is both welcome and encouraged, so feel free to contact me at any of my linked profiles in the bottom right. If you're bored, check out the list other fascinating and informative links that I have compiled at the bottom of this page. I would love to hear about any issues, inspirations or ideas that you may encounter while browsing the site! Register to gain access to favorites and take part in the discussions! Query a word, phrase, suffix, prefix or colloquialism to get started, but beware: for better or for worse, results are uncurated and may be offensive! Enjoy!
                                         <br />
                                         <br />
                                         &emsp;&ensp;- Zack
@@ -119,14 +119,24 @@ const Main = props => {
                                 variant="fullWidth"
                                 className={classes.divider}
                             />
+                            <h3 className="qQuotes">
+                                <i>
+                                    Venmo Tip Jar
+                                </i>
+                            </h3>
+                            <Typography className="rITipJarChars">
+                                <strong>
+                                    <i>
+                                        @Zack-Bielicki-1
+                                    </i>
+                                </strong>
+                            </Typography>
                             <div className="rITipJars">
                                 <div className="m-sm-auto">
                                     <h3 className="qQuotes">
-                                        <strong>
-                                            <i>
-                                                BTC Tip Jar
-                                            </i>
-                                        </strong>
+                                        <i>
+                                            BTC Tip Jar
+                                        </i>
                                     </h3>
                                     <Typography className="rITipJarChars">
                                         <strong>
@@ -146,11 +156,9 @@ const Main = props => {
                                 <br />
                                 <div className="m-sm-auto">
                                     <h3 className="qQuotes">
-                                        <strong>
-                                            <i>
-                                                ETH Tip Jar
-                                            </i>
-                                        </strong>
+                                        <i>
+                                            ETH Tip Jar
+                                        </i>
                                     </h3>
                                     <Typography className="rITipJarChars">
                                         <strong>
@@ -168,122 +176,140 @@ const Main = props => {
                                     />
                                 </div>
                             </div>
+                            <br />
+                            <Typography className="rITipJarChars">
+                                <strong>
+                                    <i>
+                                        <Link
+                                            target="_blank"
+                                            href="https://blockfi.com/?ref=cb8d5d22"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; Apply for the world's first BTC rewards credit card! &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="http://bitcoinfaq.io"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; Bitcoin FAQ &lt;
+                                        </Link>
+                                        <br />
+                                    </i>
+                                </strong>
+                            </Typography>
                             <Divider
                                 variant="fullWidth"
                                 className={classes.divider}
                             />
                             <h3 className="qQuotes">
-                                Educational & Beguiling Links:
+                                Other Educational & Beguiling Links:
                             </h3>
                             <br />
-                            <h5>
-                                <i>
-                                    <Link
-                                        target="_blank"
-                                        href="https://blockfi.com/?ref=cb8d5d22"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; Apply for the world's first BTC rewards credit card! &lt;
-                                    </Link>
-                                    <br />
-                                    <br />
-                                    <Link
-                                        target="_blank"
-                                        href="http://bitcoinfaq.io"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; Bitcoin FAQ &lt;
-                                    </Link>
-                                    <br />
-                                    <br />
-                                    <Link
-                                        target="_blank"
-                                        href="http://www.ZeeboVO.com"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; Zeebo Voiceovers &lt;
-                                    </Link>
-                                    <br />
-                                    <br />
-                                    <Link
-                                        target="_blank"
-                                        href="http://libraryofbabel.info"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; The Library of Babel &lt;
-                                    </Link>
-                                    <br />
-                                    <br />
-                                    <Link
-                                        target="_blank"
-                                        href="https://www.dictionaryofobscuresorrows.com/"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; The Dictionary of Obscure Sorrows &lt;
-                                    </Link>
-                                    <br />
-                                    <br />
-                                    <Link
-                                        target="_blank"
-                                        href="http://www.youtube.com/user/vsauce"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; Vsauce (Science/Philosophy Videos) &lt;
-                                    </Link>
-                                    <br />
-                                    <br />
-                                    <Link
-                                        target="_blank"
-                                        href="https://www.duolingo.com/"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; Duolingo (Free Language Courses) &lt;
-                                    </Link>
-                                    <br />
-                                    <br />
-                                    <Link
-                                        target="_blank"
-                                        href="https://ocw.mit.edu/"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; MIT OCW (Free College Courses from MIT) &lt;
-                                    </Link>
-                                    <br />
-                                    <br />
-                                    <Link
-                                        target="_blank"
-                                        href="https://www.freecodecamp.org/learn/"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; FreeCodeCamp (Free Online Coding Bootcamp) &lt;
-                                    </Link>
-                                    <br />
-                                    <br />
-                                    <Link
-                                        target="_blank"
-                                        href="https://www.youtube.com/watch?v=1t1OL2zN0LQ"
-                                        className="flatLinkPurple"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        &gt; How to solve a Rubik's Cube &lt;
-                                    </Link>
-                                </i>
-                            </h5>
+                            <Typography className="rITipJarChars">
+                                <strong>
+                                    <i>
+                                        <Link
+                                            target="_blank"
+                                            href="http://libraryofbabel.info"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; The Library of Babel &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="https://www.dictionaryofobscuresorrows.com/"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; The Dictionary of Obscure Sorrows &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="http://www.ZeeboVO.com"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; Zeebo Voiceovers &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="http://www.youtube.com/user/vsauce"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; Vsauce (Science/Philosophy Videos) &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="https://www.youtube.com/user/zbielicki88"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; My youtube library (Music/Curiosities) &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="https://www.duolingo.com/"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; Duolingo (Free Language Courses) &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="https://ocw.mit.edu/"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; MIT OCW (Free College Courses from MIT) &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="https://www.freecodecamp.org/learn/"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; FreeCodeCamp (Free Online Coding Bootcamp) &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="https://www.youtube.com/watch?v=1t1OL2zN0LQ"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; How to solve a Rubik's Cube &lt;
+                                        </Link>
+                                    </i>
+                                </strong>
+                            </Typography>
                         </div>
                     </div>
                 </div>
             </div>
             <StickyFooter />
-        </div>
+        </div >
     );
 };
 
