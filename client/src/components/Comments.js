@@ -97,7 +97,7 @@ const Comments = props => {
                     setTopLoaded(true);
                 });
         }
-    }, [query]);
+    }, [query, topComments]);
 
     // posts a comment
     const postComment = comment => {
