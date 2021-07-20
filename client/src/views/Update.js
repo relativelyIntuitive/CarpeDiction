@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { navigate } from '@reach/router';
 
 import NavBar from '../components/NavBar';
@@ -54,7 +54,7 @@ const Update = props => {
     // retrieves the User and updates the state variables with its info
     useEffect(() => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
+            axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
                 .then(res => {
                     setUser(res.data.user);
                     setLoaded(true);
@@ -64,7 +64,7 @@ const Update = props => {
                         navigate('/login');
                 });
         } else {
-            Axios.get(`http://localhost:8000/api/users/${localUser._id}`, { withCredentials: true })
+            axios.get(`http://localhost:8000/api/users/${localUser._id}`, { withCredentials: true })
                 .then(res => {
                     setUser(res.data.user);
                     setLoaded(true);
@@ -79,7 +79,7 @@ const Update = props => {
     // updates the User's data with the new data
     const updateUser = user => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/`, user, { withCredentials: true })
+            axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/`, user, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                     navigate("/user/account");
@@ -99,7 +99,7 @@ const Update = props => {
                     }
                 });
         } else {
-            Axios.put(`http://localhost:8000/api/users/`, user, { withCredentials: true })
+            axios.put(`http://localhost:8000/api/users/`, user, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                     navigate("/user/account");

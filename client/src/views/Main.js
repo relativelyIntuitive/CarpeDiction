@@ -256,6 +256,16 @@ const Main = props => {
                                     >
                                         &gt; FreeCodeCamp (Free Online Coding Bootcamp) &lt;
                                     </Link>
+                                    <br />
+                                    <br />
+                                    <Link
+                                        target="_blank"
+                                        href="https://www.youtube.com/watch?v=1t1OL2zN0LQ"
+                                        className="flatLinkPurple"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        &gt; How to solve a Rubik's Cube &lt;
+                                    </Link>
                                 </i>
                             </h5>
                         </div>

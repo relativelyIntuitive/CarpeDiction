@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -59,7 +59,7 @@ const WordsApiFreq = props => {
         };
 
         // makes the request
-        Axios.request(options)
+        axios.request(options)
             .then(res => {
                 const resEntry = res.data;
                 // updates all pertinent state variables

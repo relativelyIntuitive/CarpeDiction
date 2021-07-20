@@ -1,5 +1,5 @@
 // configures axios and imports cheerio parser for WOTD retrieval
-const Axios = require('axios');
+const axios = require('axios');
 const cheerio = require('cheerio');
 
 // configures dotenv and mongoose
@@ -39,8 +39,8 @@ setInterval(
     function getWOTD() {
         const WOTD = {};
 
-        // Axios.get('http://randomword.com/')
-        Axios.get('https://www.merriam-webster.com/word-of-the-day')
+        // axios.get('http://randomword.com/')
+        axios.get('https://www.merriam-webster.com/word-of-the-day')
             .then(res => {
                 const html = res.data;
                 const $ = cheerio.load(html);
@@ -49,7 +49,7 @@ setInterval(
                 WOTD.word = $("h1:first").text().trim();
                 WOTD.def = "";
                 console.log(WOTD);
-                Axios.post(`${process.env.API_ROOT}/api/wotd/add`, WOTD)
+                axios.post(`${process.env.API_ROOT}/api/wotd/add`, WOTD)
                     .then(res => console.log(res.data))
                     .catch(err => console.log(err));
             })

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { navigate } from '@reach/router';
 
 import LoginForm from '../components/LoginForm';
@@ -53,7 +53,7 @@ const Login = props => {
     // API post function; to be passed down to the LoginForm
     const loginUser = user => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.post(`${process.env.REACT_APP_API_ROOT}/api/login/`, user, { withCredentials: true })
+            axios.post(`${process.env.REACT_APP_API_ROOT}/api/login/`, user, { withCredentials: true })
                 .then(res => {
                     if (res.data.user) {
                         setLogged(res.data.user);
@@ -71,7 +71,7 @@ const Login = props => {
                     setErrors(errorArr);
                 });
         } else {
-            Axios.post(`http://localhost:8000/api/login/`, user, { withCredentials: true })
+            axios.post(`http://localhost:8000/api/login/`, user, { withCredentials: true })
                 .then(res => {
                     if (res.data.user) {
                         setLogged(res.data.user);

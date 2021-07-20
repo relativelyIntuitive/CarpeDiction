@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { navigate } from '@reach/router';
 
 import { Button } from 'react-bootstrap';
@@ -21,13 +21,13 @@ const DeleteButton = props => {
     // function to handle logouts
     const handleLogout = () => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
+            axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
                 .then(res => {
                     setLogged(null);
                     navigate('/');
                 });
         } else {
-            Axios.get(`http://localhost:8000/api/logout`, { withCredentials: true })
+            axios.get(`http://localhost:8000/api/logout`, { withCredentials: true })
                 .then(res => {
                     setLogged(null);
                     navigate('/');
@@ -39,7 +39,7 @@ const DeleteButton = props => {
     // deletes the User
     const deleteUser = e => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.delete(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, { withCredentials: true })
+            axios.delete(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, { withCredentials: true })
                 .then(res => {
                     handleLogout();
                     successCallback();
@@ -49,7 +49,7 @@ const DeleteButton = props => {
                         navigate('/login');
                 });
         } else {
-            Axios.delete(`http://localhost:8000/api/users/${logged._id}`, { withCredentials: true })
+            axios.delete(`http://localhost:8000/api/users/${logged._id}`, { withCredentials: true })
                 .then(res => {
                     handleLogout();
                     successCallback();
@@ -64,7 +64,7 @@ const DeleteButton = props => {
     // deletes the Comment
     const deleteComment = e => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.delete(`${process.env.REACT_APP_API_ROOT}/api/comments/delete/${comment._id}`, { withCredentials: true })
+            axios.delete(`${process.env.REACT_APP_API_ROOT}/api/comments/delete/${comment._id}`, { withCredentials: true })
                 .then(res => {
                 })
                 .catch(err => {
@@ -72,7 +72,7 @@ const DeleteButton = props => {
                         navigate('/login');
                 });
         } else {
-            Axios.delete(`http://localhost:8000/api/comments/delete/${comment._id}`, { withCredentials: true })
+            axios.delete(`http://localhost:8000/api/comments/delete/${comment._id}`, { withCredentials: true })
                 .then(res => {
                 })
                 .catch(err => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { navigate } from '@reach/router';
 
 import fav_icon_gray from '../images/fav_icon_gray.png';
@@ -89,7 +89,7 @@ const Search = props => {
         };
 
         // makes the request
-        Axios.request(options)
+        axios.request(options)
             .then(res => {
                 let entry = res.data;
                 let resSyllables = "";
@@ -119,7 +119,7 @@ const Search = props => {
     // updates the User's data with the new data
     const updateUser = newUser => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, newUser, { withCredentials: true })
+            axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, newUser, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                 })
@@ -128,7 +128,7 @@ const Search = props => {
                         navigate('/login');
                 });
         } else {
-            Axios.put(`http://localhost:8000/api/users/${logged._id}`, newUser, { withCredentials: true })
+            axios.put(`http://localhost:8000/api/users/${logged._id}`, newUser, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                 })

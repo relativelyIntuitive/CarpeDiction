@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { Link } from '@reach/router';
 
 import WOTDArchive from './WOTDArchive';
@@ -47,7 +47,7 @@ const WOTDCard = () => {
     // retrieves the WOTD data
     useEffect(() => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/wotd/latest`)
+            axios.get(`${process.env.REACT_APP_API_ROOT}/api/wotd/latest`)
                 .then(res => {
                     console.log(res)
                     const newWord = res.data.WOTD.word;
@@ -57,7 +57,7 @@ const WOTDCard = () => {
                     setLoaded(true);
                 });
         } else {
-            Axios.get(`http://localhost:8000/api/wotd/latest`)
+            axios.get(`http://localhost:8000/api/wotd/latest`)
                 .then(res => {
                     console.log(res)
                     const newWord = res.data.WOTD.word;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { Link, navigate } from '@reach/router';
 
 import FavoritesAZ from '../components/FavoritesAZ';
@@ -65,7 +65,7 @@ const Detail = props => {
     // retrieves the User data
     useEffect(() => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
+            axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
                 .then(res => {
                     setUser(res.data.user);
                     setLoaded(true);
@@ -75,7 +75,7 @@ const Detail = props => {
                         navigate('/login');
                 });
         } else {
-            Axios.get(`http://localhost:8000/api/users/${localUser._id}`, { withCredentials: true })
+            axios.get(`http://localhost:8000/api/users/${localUser._id}`, { withCredentials: true })
                 .then(res => {
                     setUser(res.data.user);
                     setLoaded(true);

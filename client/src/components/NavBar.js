@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { Link, navigate } from '@reach/router';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -55,12 +55,12 @@ const NavBar = props => {
     const handleLogout = () => {
         navigate('/');
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
+            axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
                 .then(res => {
                     setLogged(null);
                 });
         } else {
-            Axios.get(`http://localhost:8000/api/logout`, { withCredentials: true })
+            axios.get(`http://localhost:8000/api/logout`, { withCredentials: true })
                 .then(res => {
                     setLogged(null);
                 });

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { Link } from '@reach/router';
 
 import Accordion from '@material-ui/core/Accordion';
@@ -44,14 +44,14 @@ const WOTDArchive = props => {
     // retrieves the WOTD archive
     useEffect(() => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/wotd/archive`)
+            axios.get(`${process.env.REACT_APP_API_ROOT}/api/wotd/archive`)
                 .then(res => {
                     const newWords = res.data.Archive;
                     setWords(newWords);
                     setLoaded(true);
                 });
         } else {
-            Axios.get(`http://localhost:8000/api/wotd/archive`)
+            axios.get(`http://localhost:8000/api/wotd/archive`)
                 .then(res => {
                     const newWords = res.data.Archive;
                     setWords(newWords);

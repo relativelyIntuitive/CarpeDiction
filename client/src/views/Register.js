@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { navigate } from '@reach/router';
 
 import NavBar from '../components/NavBar';
@@ -55,7 +55,7 @@ const Register = props => {
     // API post function; to be passed down to the RegForm
     const createUser = user => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.post(`${process.env.REACT_APP_API_ROOT}/api/register/`, user, { withCredentials: true })
+            axios.post(`${process.env.REACT_APP_API_ROOT}/api/register/`, user, { withCredentials: true })
                 .then(res => {
                     if (res.data.user) {
                         setLogged(res.data.user);
@@ -73,7 +73,7 @@ const Register = props => {
                     setErrors(errorArr);
                 });
         } else {
-            Axios.post(`http://localhost:8000/api/register/`, user, { withCredentials: true })
+            axios.post(`http://localhost:8000/api/register/`, user, { withCredentials: true })
                 .then(res => {
                     if (res.data.user) {
                         setLogged(res.data.user);

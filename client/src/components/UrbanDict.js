@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -64,7 +64,7 @@ const UrbanDict = props => {
         };
 
         // makes the request
-        Axios.request(options)
+        axios.request(options)
             .then(res => {
                 // generates an array of the entries found by the search
                 const resEntries = [];

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { Link } from '@reach/router';
 
 import Accordion from '@material-ui/core/Accordion';
@@ -60,7 +60,7 @@ const LinguaCons = props => {
         };
 
         // makes the request
-        Axios.request(options)
+        axios.request(options)
             .then(res => {
                 const resEntry = res.data;
                 // updates all pertinent state variables

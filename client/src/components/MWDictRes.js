@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -65,7 +65,7 @@ const MWDictRes = props => {
 
     // retrieves the query results and saves them
     useEffect(() => {
-        Axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query.toLowerCase() + '?key=' + process.env.REACT_APP_MW_DICT_KEY)
+        axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query.toLowerCase() + '?key=' + process.env.REACT_APP_MW_DICT_KEY)
             .then(res => {
                 // generates an array of the entries found by the search or an array of spellcheck suggestion if no entries found
                 const resEntries = [];

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -60,7 +60,7 @@ const DeepTrans = props => {
             data: { q: query.toLowerCase(), source: 'en', target: 'es' }
         };
         // makes the request
-        Axios.request(optionsEs)
+        axios.request(optionsEs)
             .then(res => {
                 console.log(res.data)
                 const resEntry = res.data;
@@ -85,7 +85,7 @@ const DeepTrans = props => {
             data: { q: query.toLowerCase(), source: 'en', target: 'fr' }
         };
         // makes the request
-        Axios.request(optionsFr)
+        axios.request(optionsFr)
             .then(res => {
                 const resEntry = res.data;
                 // adds the translation to results
@@ -109,7 +109,7 @@ const DeepTrans = props => {
             data: { q: query.toLowerCase(), source: 'en', target: 'la' }
         };
         // makes the request
-        Axios.request(optionsLa)
+        axios.request(optionsLa)
             .then(res => {
                 const resEntry = res.data;
                 // adds the translation to results
@@ -133,7 +133,7 @@ const DeepTrans = props => {
             data: { q: query.toLowerCase(), source: 'en', target: 'it' }
         };
         // makes the request
-        Axios.request(optionsIt)
+        axios.request(optionsIt)
             .then(res => {
                 const resEntry = res.data;
                 // adds the translation to results
@@ -157,7 +157,7 @@ const DeepTrans = props => {
             data: { q: query.toLowerCase(), source: 'en', target: 'pt' }
         };
         // makes the request
-        Axios.request(optionsPt)
+        axios.request(optionsPt)
             .then(res => {
                 const resEntry = res.data;
                 // adds the translation to results

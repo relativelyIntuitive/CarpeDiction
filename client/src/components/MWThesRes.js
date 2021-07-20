@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { Link } from '@reach/router';
 
 import Accordion from '@material-ui/core/Accordion';
@@ -49,7 +49,7 @@ const MWThesRes = props => {
 
     // retrieves the query results and saves them
     useEffect(() => {
-        Axios.get('https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query.toLowerCase() + '?key=' + process.env.REACT_APP_MW_THES_KEY)
+        axios.get('https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query.toLowerCase() + '?key=' + process.env.REACT_APP_MW_THES_KEY)
             .then(res => {
                 // generates an array of the entries found by the search
                 const resEntries = [];
