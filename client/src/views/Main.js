@@ -80,6 +80,13 @@ const Main = props => {
                                 </strong>
                             </p>
                             <WOTDCard />
+                            <p className="cdInstructions">
+                                <strong>
+                                    <i>
+                                        ^ (Query a word, phrase, suffix or colloquialism above to get started!) ^
+                                    </i>
+                                </strong>
+                            </p>
                             <Divider
                                 variant="fullWidth"
                                 className={classes.divider}
@@ -177,6 +184,10 @@ const Main = props => {
                                 </div>
                             </div>
                             <br />
+                            <h3 className="qQuotes">
+                                Cryptocurrency Referrals:
+                            </h3>
+                            <br />
                             <Typography className="rITipJarChars">
                                 <strong>
                                     <i>
@@ -186,7 +197,7 @@ const Main = props => {
                                             className="flatLinkPurple"
                                             style={{ textDecoration: "none" }}
                                         >
-                                            &gt; Apply for the world's first BTC rewards credit card! &lt;
+                                            &gt; Apply for the world's first BTC rewards credit card here! &lt;
                                         </Link>
                                         <br />
                                         <br />
@@ -210,9 +221,19 @@ const Main = props => {
                                 Other Educational & Beguiling Links:
                             </h3>
                             <br />
-                            <h5>
+                            <Typography className="">
                                 <strong>
                                     <i>
+                                        <Link
+                                            target="_blank"
+                                            href="http://www.ZeeboVO.com"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; Zeebo Voiceovers (My side hustle) &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
                                         <Link
                                             target="_blank"
                                             href="http://libraryofbabel.info"
@@ -235,31 +256,11 @@ const Main = props => {
                                         <br />
                                         <Link
                                             target="_blank"
-                                            href="http://www.ZeeboVO.com"
+                                            href="https://archive.org/web/"
                                             className="flatLinkPurple"
                                             style={{ textDecoration: "none" }}
                                         >
-                                            &gt; Zeebo Voiceovers &lt;
-                                        </Link>
-                                        <br />
-                                        <br />
-                                        <Link
-                                            target="_blank"
-                                            href="http://www.youtube.com/user/vsauce"
-                                            className="flatLinkPurple"
-                                            style={{ textDecoration: "none" }}
-                                        >
-                                            &gt; Vsauce (Science/Philosophy Videos) &lt;
-                                        </Link>
-                                        <br />
-                                        <br />
-                                        <Link
-                                            target="_blank"
-                                            href="https://www.youtube.com/user/zbielicki88"
-                                            className="flatLinkPurple"
-                                            style={{ textDecoration: "none" }}
-                                        >
-                                            &gt; My youtube library (Music/Curiosities) &lt;
+                                            &gt; The Wayback Machine (Archive of the internet!) &lt;
                                         </Link>
                                         <br />
                                         <br />
@@ -295,6 +296,26 @@ const Main = props => {
                                         <br />
                                         <Link
                                             target="_blank"
+                                            href="http://www.youtube.com/user/vsauce"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; Vsauce (Science/Philosophy Videos) &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="https://www.youtube.com/user/zbielicki88"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; My youtube library (Music/Curiosities) &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
                                             href="https://www.youtube.com/watch?v=1t1OL2zN0LQ"
                                             className="flatLinkPurple"
                                             style={{ textDecoration: "none" }}
@@ -303,7 +324,7 @@ const Main = props => {
                                         </Link>
                                     </i>
                                 </strong>
-                            </h5>
+                            </Typography>
                         </div>
                     </div>
                 </div>
