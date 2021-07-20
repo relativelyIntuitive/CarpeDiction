@@ -1,4 +1,5 @@
-const Comment = require("../models/comment.model");
+const Comment = require("../models/comment.model"),
+    User = require("../models/user.model");
 
 
 
@@ -17,7 +18,7 @@ module.exports.post = (req, res) => {
                 },
             });
         })
-        .catch(err => res.status(401).json(err));
+        .catch(err => res.status(400).json(err));
 };
 
 
@@ -44,9 +45,10 @@ module.exports.getTops = (req, res) => {
 
 
 // updates one comment via their ID
-module.exports.updateComment = (req, res) => {
+module.exports.likeComment = (req, res) => {
     Comment.findById(req.body._id)
         .then(commentToUpdate => {
+            // updates likers if comment is being liked/unliked
             if (req.body.likers)
                 commentToUpdate.likers = req.body.likers;
             // saves the changes to the updated comment
@@ -65,7 +67,7 @@ module.exports.updateComment = (req, res) => {
                 })
                 .catch(err => res.status(400).json(err));
         })
-        .catch(err => res.status(401).json(err));
+        .catch(err => res.status(400).json(err));
 };
 
 
@@ -73,5 +75,5 @@ module.exports.updateComment = (req, res) => {
 module.exports.deleteComment = (req, res) => {
     Comment.deleteOne({ _id: req.params.id })
         .then(deleteConfirmation => res.json(deleteConfirmation))
-        .catch(err => res.status(401).json(err));
+        .catch(err => res.status(400).json(err));
 };

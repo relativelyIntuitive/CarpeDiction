@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Axios from '../../node_modules/axios';
+import axios from '../../node_modules/axios';
 import { navigate } from '@reach/router';
 
 import like_icon_purple from '../images/like_icon_purple.png';
@@ -64,14 +64,14 @@ const Comments = props => {
     // retrieves all comments
     useEffect(() => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/retrieve/${query.toLowerCase()}`)
+            axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/retrieve/${query.toLowerCase()}`)
                 .then(res => {
                     const resComments = res.data.comments;
                     setComments(resComments);
                     setAllLoaded(true);
                 });
         } else {
-            Axios.get(`http://localhost:8000/api/comments/retrieve/${query.toLowerCase()}`)
+            axios.get(`http://localhost:8000/api/comments/retrieve/${query.toLowerCase()}`)
                 .then(res => {
                     const resComments = res.data.comments;
                     setComments(resComments);
@@ -83,14 +83,14 @@ const Comments = props => {
     // retrieves the top comments
     useEffect(() => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/tops/${query.toLowerCase()}`)
+            axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/tops/${query.toLowerCase()}`)
                 .then(res => {
                     const resTopComments = res.data.comments;
                     setTopComments(resTopComments);
                     setTopLoaded(true);
                 });
         } else {
-            Axios.get(`http://localhost:8000/api/comments/tops/${query.toLowerCase()}`)
+            axios.get(`http://localhost:8000/api/comments/tops/${query.toLowerCase()}`)
                 .then(res => {
                     const resTopComments = res.data.comments;
                     setTopComments(resTopComments);
@@ -102,7 +102,7 @@ const Comments = props => {
     // posts a comment
     const postComment = comment => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.post(`${process.env.REACT_APP_API_ROOT}/api/comments/post/`, comment, { withCredentials: true })
+            axios.post(`${process.env.REACT_APP_API_ROOT}/api/comments/post/`, comment, { withCredentials: true })
                 .then(res => {
                     setErrors([]);
                 })
@@ -117,7 +117,7 @@ const Comments = props => {
                     setErrors(errorArr);
                 });
         } else {
-            Axios.post(`http://localhost:8000/api/comments/post/`, comment, { withCredentials: true })
+            axios.post(`http://localhost:8000/api/comments/post/`, comment, { withCredentials: true })
                 .then(res => {
                     setErrors([]);
                 })
@@ -135,18 +135,20 @@ const Comments = props => {
     }
 
     // updates comments when liked
-    const updateComment = comment => {
+    const likeComment = comment => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.put(`${process.env.REACT_APP_API_ROOT}/api/comments/update/`, comment, { withCredentials: true })
+            axios.put(`${process.env.REACT_APP_API_ROOT}/api/comments/update/`, comment, { withCredentials: true })
                 .then(res => {
+                    setErrors([]);
                 })
                 .catch(err => {
                     if (err.response.status === 401)
                         navigate('/login');
                 });
         } else {
-            Axios.put(`http://localhost:8000/api/comments/update/`, comment, { withCredentials: true })
+            axios.put(`http://localhost:8000/api/comments/update/`, comment, { withCredentials: true })
                 .then(res => {
+                    setErrors([]);
                 })
                 .catch(err => {
                     if (err.response.status === 401)
@@ -190,8 +192,8 @@ const Comments = props => {
             const index = comment.likers.indexOf(logged._id);
             comment.likers.splice(index, index + 1);
         }
-        // favorite the word
-        updateComment(comment);
+        // like the comment
+        likeComment(comment);
         // refresh page
         navigate('/search/' + query);
     }
