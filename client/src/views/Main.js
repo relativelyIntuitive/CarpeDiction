@@ -210,7 +210,7 @@ const Main = props => {
                                 Other Educational & Beguiling Links:
                             </h3>
                             <br />
-                            <Typography className="rITipJarChars">
+                            <h5>
                                 <strong>
                                     <i>
                                         <Link
@@ -303,7 +303,7 @@ const Main = props => {
                                         </Link>
                                     </i>
                                 </strong>
-                            </Typography>
+                            </h5>
                         </div>
                     </div>
                 </div>
