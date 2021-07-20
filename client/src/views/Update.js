@@ -79,7 +79,7 @@ const Update = props => {
     // updates the User's data with the new data
     const updateUser = user => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/`, user, { withCredentials: true })
+            axios.put(`${process.env.REACT_APP_API_ROOT}/api/users`, user, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                     navigate("/user/account");
@@ -99,7 +99,7 @@ const Update = props => {
                     }
                 });
         } else {
-            axios.put(`http://localhost:8000/api/users/`, user, { withCredentials: true })
+            axios.put(`http://localhost:8000/api/users`, user, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                     navigate("/user/account");
