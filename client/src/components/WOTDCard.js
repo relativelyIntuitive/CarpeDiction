@@ -16,7 +16,7 @@ import Typography from '@material-ui/core/Typography';
 // defines style rulesets for Material UI components
 const useStyles = makeStyles({
     root: {
-        width: '75%',
+        width: '85%',
         marginTop: '3rem',
         marginBottom: '3rem',
         marginLeft: 'auto',
