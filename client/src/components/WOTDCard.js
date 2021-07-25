@@ -116,11 +116,11 @@ const WOTDCard = () => {
                     {loaded && (
                         <>
                             <strong className="qQuotes">
-                                "&ensp;
+                                "
                                 <span className="rIPurple">
                                     {word}
                                 </span>
-                                &ensp;"
+                                "
                             </strong>
                             {/* <Typography
                             variant="h6"
@@ -138,7 +138,6 @@ const WOTDCard = () => {
                         </>
                     )}
                 </Typography>
-
             </CardContent>
             <CardActions>
                 <Link to={"/search/" + word} className="mgMargAuto flatLinkWOTD">
