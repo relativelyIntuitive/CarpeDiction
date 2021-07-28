@@ -49,7 +49,7 @@ const Main = props => {
 
     // alert user of current site issues
     useEffect(() => {
-        alert('* NOTICE:\n- The site will not currently work on Safari browsers...\n- If you want that to change, consider tipping generously below so that I can buy a Mac to figure out why!\n- Enjoy!');
+        alert('* NOTICE:\n- The site will not currently work on Safari browsers...\n- If you want that to change, consider tipping generously below so that I can buy a Mac to figure out why!');
     }, [])
 
     // returns the homepage
