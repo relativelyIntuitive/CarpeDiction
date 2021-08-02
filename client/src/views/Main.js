@@ -185,35 +185,6 @@ const Main = props => {
                                 </div>
                             </div>
                             <br />
-                            <h3 className="qQuotes">
-                                Cryptocurrency Referrals:
-                            </h3>
-                            <br />
-                            <Typography className="rITipJarChars">
-                                <strong>
-                                    <i>
-                                        <Link
-                                            target="_blank"
-                                            href="https://blockfi.com/?ref=cb8d5d22"
-                                            className="flatLinkPurple"
-                                            style={{ textDecoration: "none" }}
-                                        >
-                                            &gt; Apply for the world's first BTC rewards credit card here! &lt;
-                                        </Link>
-                                        <br />
-                                        <br />
-                                        <Link
-                                            target="_blank"
-                                            href="http://bitcoinfaq.io"
-                                            className="flatLinkPurple"
-                                            style={{ textDecoration: "none" }}
-                                        >
-                                            &gt; Bitcoin FAQ &lt;
-                                        </Link>
-                                        <br />
-                                    </i>
-                                </strong>
-                            </Typography>
                             <Divider
                                 variant="fullWidth"
                                 className={classes.divider}
@@ -252,6 +223,16 @@ const Main = props => {
                                             style={{ textDecoration: "none" }}
                                         >
                                             &gt; The Dictionary of Obscure Sorrows &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="http://bitcoinfaq.io"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; Bitcoin FAQ &lt;
                                         </Link>
                                         <br />
                                         <br />
