@@ -49,8 +49,9 @@ const Main = props => {
 
     // alert user of current site issues
     useEffect(() => {
-        alert('* NOTICE:\n- The site will not currently work on Safari browsers...\n- If you want that to change, consider tipping generously below so that I can buy a Mac to figure out why!');
-    }, [])
+        if (logged !== null)
+            alert('* NOTICE:\n- The site will not currently work on Safari browsers...\n- If you want that to change, consider tipping generously below so that I can buy a Mac to figure out why');
+    }, [logged])
 
     // returns the homepage
     return (
@@ -109,7 +110,7 @@ const Main = props => {
                             <div className="cdAbout">
                                 <Typography>
                                     <strong>
-                                        &emsp;Greetings to you, denizens and fellow logophiles!
+                                        &emsp;Greetings to you, denizens and fellow logophiles,
                                         <br />
                                         <br />
                                         &emsp;&emsp;Welcome to CarpeDiction! Here, in this veritable verbal shangri-la, language and history are celebrated and censorship is spurned! The freedom of knowledge is essential to the evolution of our species, as well as the growth and development of our own souls. Words carry great power, and I created this site in an attempt to bring the obscurely dendritic patterns of the American-English lexicon into focus, and it is my sincerest hope that it will be able to foster new and exciting insights for all!
