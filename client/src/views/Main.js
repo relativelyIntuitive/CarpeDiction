@@ -49,8 +49,8 @@ const Main = props => {
 
     // alert user of current site issues
     useEffect(() => {
-        if (logged !== null)
-            alert('* NOTICE:\n- The site will not currently work on Safari browsers...\n- If you want that to change, consider tipping generously below so that I can buy a Mac to figure out why');
+        if (logged === null)
+            alert('* NOTICE:\n- The site will not currently work on Safari browsers...');
     }, [logged])
 
     // returns the homepage

@@ -140,8 +140,9 @@ const NavBar = props => {
                                     </strong>
                                 </span>
                             </Link>
+                                |
                             <i>
-                                Not you?&ensp;
+                                &ensp;Not you?&ensp;
                             </i>
                             <Button
                                 onClick={handleLogout}
