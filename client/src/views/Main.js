@@ -228,16 +228,6 @@ const Main = props => {
                                         <br />
                                         <Link
                                             target="_blank"
-                                            href="http://bitcoinfaq.io"
-                                            className="flatLinkPurple"
-                                            style={{ textDecoration: "none" }}
-                                        >
-                                            &gt; Bitcoin FAQ &lt;
-                                        </Link>
-                                        <br />
-                                        <br />
-                                        <Link
-                                            target="_blank"
                                             href="https://archive.org/web/"
                                             className="flatLinkPurple"
                                             style={{ textDecoration: "none" }}
@@ -303,6 +293,16 @@ const Main = props => {
                                             style={{ textDecoration: "none" }}
                                         >
                                             &gt; How to solve a Rubik's Cube &lt;
+                                        </Link>
+                                        <br />
+                                        <br />
+                                        <Link
+                                            target="_blank"
+                                            href="http://bitcoinfaq.io"
+                                            className="flatLinkPurple"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            &gt; Bitcoin FAQ &lt;
                                         </Link>
                                     </i>
                                 </strong>
