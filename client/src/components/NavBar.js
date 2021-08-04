@@ -140,7 +140,7 @@ const NavBar = props => {
                                     </strong>
                                 </span>
                             </Link>
-                                |
+                                &ensp;|
                             <i>
                                 &ensp;Not you?&ensp;
                             </i>
