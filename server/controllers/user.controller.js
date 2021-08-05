@@ -22,11 +22,12 @@ module.exports.register = (req, res) => {
                                         res
                                             .cookie(
                                                 "usertoken",
-                                                jwt.sign({ _id: userNew._id }, process.env.JWT_KEY),
+                                                jwt.sign({ _id: userNew._id }, process.env.JWT_KEY, { expiresIn: '1d' }),
                                                 {
-                                                    secure: true,
-                                                    sameSite: "none",
-                                                    httpOnly: false,
+                                                    secure: process.env.NODE_ENV === 'production' ? true : false,
+                                                    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+                                                    httpOnly: true,
+                                                    maxAge: 24 * 60 * 60 * 1000,
                                                 }
                                             )
                                             .json({
@@ -211,11 +212,12 @@ module.exports.login = (req, res) => {
                             res
                                 .cookie(
                                     "usertoken",
-                                    jwt.sign({ _id: user._id }, process.env.JWT_KEY),
+                                    jwt.sign({ _id: user._id }, process.env.JWT_KEY, { expiresIn: '1d' }),
                                     {
-                                        secure: true,
-                                        sameSite: "none",
-                                        httpOnly: false,
+                                        secure: process.env.NODE_ENV === 'production' ? true : false,
+                                        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+                                        httpOnly: true,
+                                        maxAge: 24 * 60 * 60 * 1000,
                                     }
                                 )
                                 .json({
