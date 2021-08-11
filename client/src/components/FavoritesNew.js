@@ -68,10 +68,10 @@ const FavoritesNew = props => {
                                     <li key={index} className="mgInlineBlock">
                                         <Typography>
                                             &nbsp;
-                                            <Link to={"/search/" + word}>
+                                            <Link to={"/search/" + word.replace(/\//g, '%2F')}>
                                                 <i>
                                                     <span className="rIPurple mgWordBreak">
-                                                        {word}
+                                                        {word.replace(/%2f/g, '/')}
                                                     </span>
                                                 </i>
                                             </Link>

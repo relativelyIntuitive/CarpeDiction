@@ -84,7 +84,7 @@ const Main = props => {
                             <p className="cdInstructions">
                                 <strong>
                                     <i>
-                                        ^ (Query a word, phrase, suffix or colloquialism above to get started!) ^
+                                        ^ (Query a word, phrase, suffix, prefix or colloquialism above to get started!) ^
                                     </i>
                                 </strong>
                             </p>
@@ -199,17 +199,19 @@ const Main = props => {
                                         <Link
                                             target="_blank"
                                             href="http://www.ZeeboVO.com"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
-                                            &gt; Zeebo Voiceovers (My side hustle) &lt;
+                                            &gt; Zeebo Voiceover &lt;
+                                            <br />
+                                            (My side hustle)
                                         </Link>
                                         <br />
                                         <br />
                                         <Link
                                             target="_blank"
                                             href="http://libraryofbabel.info"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
                                             &gt; The Library of Babel &lt;
@@ -219,7 +221,7 @@ const Main = props => {
                                         <Link
                                             target="_blank"
                                             href="https://www.dictionaryofobscuresorrows.com/"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
                                             &gt; The Dictionary of Obscure Sorrows &lt;
@@ -229,67 +231,79 @@ const Main = props => {
                                         <Link
                                             target="_blank"
                                             href="https://archive.org/web/"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
-                                            &gt; The Wayback Machine (Archive of the internet!) &lt;
+                                            &gt; The Wayback Machine &lt;
+                                            <br />
+                                            (Archive of the internet!)
                                         </Link>
                                         <br />
                                         <br />
                                         <Link
                                             target="_blank"
                                             href="https://www.duolingo.com/"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
-                                            &gt; Duolingo (Free Language Courses) &lt;
+                                            &gt; Duolingo &lt;
+                                            <br />
+                                            (Free Language Courses)
                                         </Link>
                                         <br />
                                         <br />
                                         <Link
                                             target="_blank"
                                             href="https://ocw.mit.edu/"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
-                                            &gt; MIT OCW (Free College Courses from MIT) &lt;
+                                            &gt; MIT OCW &lt;
+                                            <br />
+                                            (Free College Courses from MIT)
                                         </Link>
                                         <br />
                                         <br />
                                         <Link
                                             target="_blank"
                                             href="https://www.freecodecamp.org/learn/"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
-                                            &gt; FreeCodeCamp (Free Online Coding Bootcamp) &lt;
+                                            &gt; FreeCodeCamp &lt;
+                                            <br />
+                                            (Free Online Coding Bootcamp)
                                         </Link>
                                         <br />
                                         <br />
                                         <Link
                                             target="_blank"
                                             href="http://www.youtube.com/user/vsauce"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
-                                            &gt; Vsauce (Science/Philosophy Videos) &lt;
+                                            &gt; Vsauce &lt;
+                                            <br />
+                                            (Science/Philosophy Videos)
                                         </Link>
                                         <br />
                                         <br />
                                         <Link
                                             target="_blank"
                                             href="https://www.youtube.com/user/zbielicki88"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
-                                            &gt; My youtube library (Music/Curiosities) &lt;
+                                            &gt; My youtube library &lt;
+                                            <br />
+                                            (Music/Misc.)
                                         </Link>
                                         <br />
                                         <br />
                                         <Link
                                             target="_blank"
                                             href="https://www.youtube.com/watch?v=1t1OL2zN0LQ"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
                                             &gt; How to solve a Rubik's Cube &lt;
@@ -299,7 +313,7 @@ const Main = props => {
                                         <Link
                                             target="_blank"
                                             href="http://bitcoinfaq.io"
-                                            className="flatLinkPurple"
+                                            className="flatLinkRedirect"
                                             style={{ textDecoration: "none" }}
                                         >
                                             &gt; Bitcoin FAQ &lt;

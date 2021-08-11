@@ -46,7 +46,7 @@ const DeepTrans = props => {
 
     // retrieves the query results for various languages and saves them
     useEffect(() => {
-        let newResults = { 'query': query.toLowerCase() };
+        let newResults = { 'query': query };
         // results['query'] = query;
         // set the options for the Spanish translation request through rapidAPI
         const optionsEs = {
@@ -57,7 +57,7 @@ const DeepTrans = props => {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
-            data: { q: query.toLowerCase(), source: 'en', target: 'es' }
+            data: { q: query.replace(/\//g, '%2F'), source: 'en', target: 'es' }
         };
         // makes the request
         axios.request(optionsEs)
@@ -70,7 +70,7 @@ const DeepTrans = props => {
             })
             .catch(err => {
                 console.log(err);
-                setError(`No results for translations of "${query.toLowerCase()}" from Deep Translate API...`);
+                setError(`No results for translations of "${query}" from Deep Translate API...`);
             });
 
         // set the options for the French translation request through rapidAPI
@@ -82,7 +82,7 @@ const DeepTrans = props => {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
-            data: { q: query.toLowerCase(), source: 'en', target: 'fr' }
+            data: { q: query.replace(/\//g, '%2F'), source: 'en', target: 'fr' }
         };
         // makes the request
         axios.request(optionsFr)
@@ -94,7 +94,7 @@ const DeepTrans = props => {
             })
             .catch(err => {
                 console.log(err);
-                setError(`No results for translations of "${query.toLowerCase()}" from Deep Translate API...`);
+                setError(`No results for translations of "${query}" from Deep Translate API...`);
             });
 
         // set the options for the French translation request through rapidAPI
@@ -106,7 +106,7 @@ const DeepTrans = props => {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
-            data: { q: query.toLowerCase(), source: 'en', target: 'la' }
+            data: { q: query.replace(/\//g, '%2F'), source: 'en', target: 'la' }
         };
         // makes the request
         axios.request(optionsLa)
@@ -118,7 +118,7 @@ const DeepTrans = props => {
             })
             .catch(err => {
                 console.log(err);
-                setError(`No results for translations of "${query.toLowerCase()}" from Deep Translate API...`);
+                setError(`No results for translations of "${query}" from Deep Translate API...`);
             });
 
         // set the options for the French translation request through rapidAPI
@@ -130,7 +130,7 @@ const DeepTrans = props => {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
-            data: { q: query.toLowerCase(), source: 'en', target: 'it' }
+            data: { q: query.replace(/\//g, '%2F'), source: 'en', target: 'it' }
         };
         // makes the request
         axios.request(optionsIt)
@@ -142,7 +142,7 @@ const DeepTrans = props => {
             })
             .catch(err => {
                 console.log(err);
-                setError(`No results for translations of "${query.toLowerCase()}" from Deep Translate API...`);
+                setError(`No results for translations of "${query}" from Deep Translate API...`);
             });
 
         // set the options for the French translation request through rapidAPI
@@ -154,7 +154,7 @@ const DeepTrans = props => {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'deep-translate1.p.rapidapi.com'
             },
-            data: { q: query.toLowerCase(), source: 'en', target: 'pt' }
+            data: { q: query.replace(/\//g, '%2F'), source: 'en', target: 'pt' }
         };
         // makes the request
         axios.request(optionsPt)
@@ -166,7 +166,7 @@ const DeepTrans = props => {
             })
             .catch(err => {
                 console.log(err);
-                setError(`No results for translations of "${query.toLowerCase()}" from Deep Translate API...`);
+                setError(`No results for translations of "${query}" from Deep Translate API...`);
             });
 
         // update loaded when all requests are complete
@@ -325,7 +325,7 @@ const DeepTrans = props => {
                                 <strong>
                                     <i>
                                         &emsp;
-                                        {`No results for translations of "${query.toLowerCase()}" from Deep Translate API...`}
+                                        {`No results for translations of "${query}" from Deep Translate API...`}
                                     </i>
                                 </strong>
                             </Typography>

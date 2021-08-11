@@ -89,23 +89,23 @@
 }
 
 .flatLinkMuted {
-    color: #6c757d;
+    color: #6c757d!important;
     font-size: x-large;
 }
 
 .flatLinkMuted:hover {
-    color: #800080;
+    color: #800080!important;
     text-decoration: none;
 }
 
 .flatLinkOrange {
-    color: #ffa500;
+    color: #ffa500!important;
     text-decoration: none;
 }
 
 .flatLinkOrange:hover {
     text-decoration: none;
-    color: #adff2f;
+    color: #adff2f!important;
     text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
 }
 
@@ -121,26 +121,26 @@
 }
 
 .flatLinkRedirect {
-    color: #800080;
+    color: #800080!important;
     text-decoration: none;
     font-size: larger;
 }
 
 .flatLinkRedirect:hover {
     text-decoration: none;
-    color: #adff2f;
+    color: #adff2f!important;
     text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
 }
 
 .flatLinkWOTD {
-    color: #800080;
+    color: #800080!important;
     text-decoration: none;
     font-size: larger;
 }
 
 .flatLinkWOTD:hover {
     text-decoration: none;
-    color: #ffa500;
+    color: #ffa500!important;
     text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
 }
 
@@ -393,6 +393,31 @@
     color:#adff2f;
     text-shadow: -1px 0 #343A40, 0 1px #343A40, 1px 0 #343A40, 0 -1px #343A40;
 }
+
+.cdTooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #800080;
+}
+
+    .cdTooltip .cdTooltipText {
+        visibility: hidden;
+        width: 8rem;
+        font-size: small;
+        background-color: #800080;
+        color: #ffa500;
+        text-align: center;
+        border-radius: 7px;
+        padding: 0.5rem 0.5rem;
+
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+    }
+
+    .cdTooltip:hover .cdTooltipText {
+        visibility: visible;
+    }
 
 .topList {
     list-style-type: none;

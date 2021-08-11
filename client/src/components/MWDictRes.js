@@ -65,7 +65,7 @@ const MWDictRes = props => {
 
     // retrieves the query results and saves them
     useEffect(() => {
-        axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query.toLowerCase() + '?key=' + process.env.REACT_APP_MW_DICT_KEY)
+        axios.get('https://dictionaryapi.com/api/v3/references/collegiate/json/' + query.replace(/\//g, '%2F') + '?key=' + process.env.REACT_APP_MW_DICT_KEY)
             .then(res => {
                 // generates an array of the entries found by the search or an array of spellcheck suggestion if no entries found
                 const resEntries = [];
@@ -151,7 +151,7 @@ const MWDictRes = props => {
                 }
                 // updates all pertinent state variables
                 if (resEntries.length === 0) {
-                    setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Dictionary...`);
+                    setError(`No results for "${query}" from the Merriam-Webster Dictionary...`);
                     setEntries(null);
                     setLoaded(false);
                 } else {
@@ -169,7 +169,7 @@ const MWDictRes = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Dictionary...`);
+                setError(`No results for "${query}" from the Merriam-Webster Dictionary...`);
                 setEntries(null);
                 setLoaded(false);
             });
@@ -347,8 +347,11 @@ const MWDictRes = props => {
                                                                                             <span className="rIOrange">
                                                                                                 &ensp;:&ensp;
                                                                                             </span>
-                                                                                            <span className="text-danger">
-                                                                                                Offensive?
+                                                                                            <span className="cdTooltip text-danger">
+                                                                                                ( ✗ )
+                                                                                                <span className="cdTooltipText">
+                                                                                                    Offensive?
+                                                                                                </span>
                                                                                             </span>
                                                                                         </i>
                                                                                     )}
@@ -357,8 +360,11 @@ const MWDictRes = props => {
                                                                                             <span className="rIOrange">
                                                                                                 &ensp;:&ensp;
                                                                                             </span>
-                                                                                            <span className="text-success">
-                                                                                                Inoffensive!
+                                                                                            <span className="cdTooltip text-success">
+                                                                                                ( ✔ )
+                                                                                                <span className="cdTooltipText">
+                                                                                                    Innoffensive?
+                                                                                                </span>
                                                                                             </span>
                                                                                         </i>
                                                                                     )}

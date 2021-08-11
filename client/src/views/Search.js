@@ -75,13 +75,15 @@ const Search = props => {
     const [syllables, setSyllables] = useState("");
     const [loaded, setLoaded] = useState(true);
 
+    const encQuery = query.toLowerCase();
+    const decQuery = query.replace(/%2F/g, '/').replace(/%2f/g, '/').toLowerCase();
 
     // retrieves the query syllables results and processes them
     useEffect(() => {
         // sets the options for the request through Rapid API
         const options = {
             method: 'GET',
-            url: `https://wordsapiv1.p.rapidapi.com/words/${query.toLowerCase()}/syllables`,
+            url: `https://wordsapiv1.p.rapidapi.com/words/${encQuery}/syllables`,
             headers: {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com'
@@ -114,7 +116,7 @@ const Search = props => {
                 }
                 setLoaded(true);
             });
-    }, [query, logged, setAudioLoaded])
+    }, [query, encQuery, logged, setAudioLoaded])
 
     // updates the User's data with the new data
     const updateUser = newUser => {
@@ -141,10 +143,10 @@ const Search = props => {
 
     // toggles favorite status on query
     const handleFavs = () => {
-        if (!logged.favs.includes(query.toLowerCase())) {
-            logged.favs.push(query.toLowerCase());
+        if (!logged.favs.includes(encQuery)) {
+            logged.favs.push(encQuery);
         } else {
-            const index = logged.favs.indexOf(query.toLowerCase());
+            const index = logged.favs.indexOf(encQuery);
             logged.favs.splice(index, index + 1);
         }
         // favorite the word
@@ -174,7 +176,7 @@ const Search = props => {
                                 <strong className="qQuotes">
                                     "&nbsp;
                                     <span className="rIPurple resHeading">
-                                        {query.toLowerCase()}
+                                        {decQuery}
                                     </span>
                                     &nbsp;"
                                 </strong>
@@ -194,7 +196,7 @@ const Search = props => {
                                     />
                                 </Button>
                             )}
-                            {(logged !== null) && (logged.favs !== undefined) && !(logged.favs.includes(query.toLowerCase())) && (
+                            {(logged !== null) && (logged.favs !== undefined) && !(logged.favs.includes(encQuery)) && (
                                 <Button
                                     variant="outline-warning"
                                     className="cdFavIcon"
@@ -210,7 +212,7 @@ const Search = props => {
                                     />
                                 </Button>
                             )}
-                            {(logged !== null) && (logged.favs !== undefined) && (logged.favs.includes(query.toLowerCase())) && (
+                            {(logged !== null) && (logged.favs !== undefined) && (logged.favs.includes(encQuery)) && (
                                 <Button
                                     variant="outline-dark"
                                     className="cdFavIcon"
@@ -284,7 +286,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i className="mgWordBreak">
-                                            {query.toLowerCase()}
+                                            {decQuery}
                                         </i>
                                         " is not considered offensive by any official sources.
                                     </strong>
@@ -295,7 +297,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i>
-                                            {query.toLowerCase()}
+                                            {decQuery}
                                         </i>
                                         " is considered offensive by some official sources...
                                     </strong>
@@ -306,7 +308,7 @@ const Search = props => {
                                     <strong>
                                         "
                                         <i>
-                                            {query.toLowerCase()}
+                                            {decQuery}
                                         </i>
                                         " is considered offensive by most official sources.
                                     </strong>
@@ -323,7 +325,7 @@ const Search = props => {
                             />
                         </div>
                         <MWDictRes
-                            query={query}
+                            query={decQuery}
                             setIsOffensive={setIsOffensive}
                             setNotOffensive={setNotOffensive}
                             setPronunciations={setPronunciations}
@@ -336,13 +338,13 @@ const Search = props => {
                             setHeadWords={setHeadWords}
                             setSpellings={setSpellings}
                         />
-                        <MWThesRes query={query} />
-                        <UrbanDict query={query} />
-                        <WordsApiRhymes query={query} />
-                        <LinguaConj query={query} />
+                        <MWThesRes query={decQuery} />
+                        <UrbanDict query={decQuery} />
+                        <WordsApiRhymes query={decQuery} />
+                        <LinguaConj query={decQuery} />
                         {/* <DeepTrans query={query} /> */}
-                        <WordsApiFreq query={query} />
-                        <WordAssocRes query={query} />
+                        <WordsApiFreq query={decQuery} />
+                        <WordAssocRes query={decQuery} />
                         <br />
                         <Link
                             href={"http://libraryofbabel.info/search.html"}
@@ -351,36 +353,36 @@ const Search = props => {
                         >
                             <strong className="flatLinkRedirect mgWordBreak">
                                 Search The Library of Babel for "
-                                {query.toLowerCase()}
+                                {decQuery}
                                 "
                             </strong>
                         </Link>
                         <br />
                         <Link
-                            href={"http://www.wikipedia.com/wiki/" + query.toLowerCase()}
+                            href={"http://www.wikipedia.com/wiki/" + encQuery}
                             target="_blank"
                             style={{ textDecoration: "none" }}
                         >
                             <strong className="flatLinkRedirect mgWordBreak">
                                 Search Wikipedia for "
-                                {query.toLowerCase()}
+                                {decQuery}
                                 "
                             </strong>
                         </Link>
                         <br />
                         <Link
-                            href={"http://www.google.com/search?q=" + query.toLowerCase()}
+                            href={"http://www.google.com/search?q=" + encQuery}
                             target="_blank"
                             style={{ textDecoration: "none" }}
                         >
                             <strong className="flatLinkRedirect mgWordBreak">
                                 Search Google for "
-                                {query.toLowerCase()}
+                                {decQuery}
                                 "
                             </strong>
                         </Link>
                         <Comments
-                            query={query}
+                            query={decQuery}
                             logged={logged}
                         />
                     </div>

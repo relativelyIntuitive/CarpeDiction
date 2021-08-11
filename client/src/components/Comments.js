@@ -64,14 +64,14 @@ const Comments = props => {
     // retrieves all comments
     useEffect(() => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/retrieve/${query.toLowerCase()}`)
+            axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/retrieve/${query.replace(/\//g, '%2F')}`)
                 .then(res => {
                     const resComments = res.data.comments;
                     setComments(resComments);
                     setAllLoaded(true);
                 });
         } else {
-            axios.get(`http://localhost:8000/api/comments/retrieve/${query.toLowerCase()}`)
+            axios.get(`http://localhost:8000/api/comments/retrieve/${query.replace(/\//g, '%2F')}`)
                 .then(res => {
                     const resComments = res.data.comments;
                     setComments(resComments);
@@ -83,14 +83,14 @@ const Comments = props => {
     // retrieves the top comments
     useEffect(() => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/tops/${query.toLowerCase()}`)
+            axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/tops/${query.replace(/\//g, '%2F')}`)
                 .then(res => {
                     const resTopComments = res.data.comments;
                     setTopComments(resTopComments);
                     setTopLoaded(true);
                 });
         } else {
-            axios.get(`http://localhost:8000/api/comments/tops/${query.toLowerCase()}`)
+            axios.get(`http://localhost:8000/api/comments/tops/${query.replace(/\//g, '%2F')}`)
                 .then(res => {
                     const resTopComments = res.data.comments;
                     setTopComments(resTopComments);
@@ -227,7 +227,7 @@ const Comments = props => {
                                     <u>
                                         Post a comment for "
                                         <span className="mgWordBreak">
-                                            {query.toLowerCase()}
+                                            {query}
                                         </span>
                                         "
                                     </u>
@@ -285,7 +285,7 @@ const Comments = props => {
                             <u>
                                 Top comments for "
                                 <span className="mgWordBreak">
-                                    {query.toLowerCase()}
+                                    {query}
                                 </span>
                                 "
                             </u>
@@ -302,7 +302,7 @@ const Comments = props => {
                                         <i>
                                             There are not yet any comments for "
                                             <span className="mgWordBreak">
-                                                {query.toLowerCase()}
+                                                {query}
                                             </span>
                                             ," be the first!
                                         </i>
@@ -449,7 +449,7 @@ const Comments = props => {
                                             <u>
                                                 Latest comments for "
                                                 <span className="mgWordBreak">
-                                                    {query.toLowerCase()}
+                                                    {query}
                                                 </span>
                                                 "
                                             </u>

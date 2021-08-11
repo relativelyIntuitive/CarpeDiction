@@ -44,10 +44,10 @@ const NavBar = props => {
         if (softQuery.toLowerCase() !== query.toLowerCase()) {
             setAudioLoaded(false);
             setSyllables("");
-            setQuery(softQuery.toLowerCase());
+            setQuery(softQuery.toLowerCase().replace(/\//g, '%2F'));
             // if query is present, redirect to search view, passing along the query
             if (softQuery !== undefined && softQuery.replace(/\s/g, '').length)
-                navigate('/search/' + softQuery.toLowerCase());
+                navigate('/search/' + softQuery.toLowerCase().replace(/\//g, '%2F'));
         }
     };
 
@@ -136,7 +136,7 @@ const NavBar = props => {
                             >
                                 <span className="rIOrange">
                                     <strong>
-                                        {logged.userName}&nbsp;
+                                        {logged.userName}
                                     </strong>
                                 </span>
                             </Link>

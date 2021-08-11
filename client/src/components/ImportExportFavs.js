@@ -55,7 +55,7 @@ const ImportExportFavs = props => {
     // update the user with the new favorites
     const updateUser = newUser => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users/${user._id}`, newUser, { withCredentials: true })
+            Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users`, newUser, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                 })
@@ -64,7 +64,7 @@ const ImportExportFavs = props => {
                         navigate('/login');
                 });
         } else {
-            Axios.put(`http://localhost:8000/api/users/${user._id}`, newUser, { withCredentials: true })
+            Axios.put(`http://localhost:8000/api/users`, newUser, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                 })
@@ -90,7 +90,7 @@ const ImportExportFavs = props => {
             // add words to the favorites list if not present
             for (let word of words)
                 if (word.replace(/\s/g, '').length && !user.favs.includes(word.toLowerCase()))
-                    user.favs.push(word.trim().toLowerCase());
+                    user.favs.push(word.trim().replace(/\//g, '%2F').toLowerCase());
             // favorite the words
             updateUser(user);
             // clear comment box and errors after submit
@@ -109,7 +109,7 @@ const ImportExportFavs = props => {
             // const favsFile = new Blob(user.favs, { type: "text/plain;charset=utf-8" });
             // saveAs(favsFile, "cdFavs.txt");
             let prettyFavs = user.favs;
-            prettyFavs = prettyFavs.toString().replace(/,/g, ', ');
+            prettyFavs = prettyFavs.toString().replace(/,/g, ', ').replace(/%2f/g, '/');
             prettyFavs = (`@${user.userName} ~ (${user.favs.length}): `).concat(prettyFavs);
             // prettyFavs = prettyFavs.replace(',', ':');
             function download(filename, text) {

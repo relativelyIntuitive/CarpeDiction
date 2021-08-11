@@ -94,7 +94,7 @@ const WOTDCard = () => {
                             <strong className="qQuotes">
                                 <i>
                                     <span className="rIPurple">
-                                        Loading...
+                                        ⏳ Loading... ⌛
                                     </span>
                                 </i>
                             </strong>

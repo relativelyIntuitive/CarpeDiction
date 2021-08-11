@@ -8,6 +8,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Container from '@material-ui/core/Container';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
@@ -51,7 +52,7 @@ const WordsApiFreq = props => {
         // set the options for the query request through rapidAPI
         const options = {
             method: 'GET',
-            url: `https://wordsapiv1.p.rapidapi.com/words/${query.toLowerCase()}/frequency`,
+            url: `https://wordsapiv1.p.rapidapi.com/words/${query}/frequency`,
             headers: {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com'
@@ -64,7 +65,7 @@ const WordsApiFreq = props => {
                 const resEntry = res.data;
                 // updates all pertinent state variables
                 if (!resEntry.frequency) {
-                    setError(`No results for frequency data of "${query.toLowerCase()}" from Words API...`);
+                    setError(`No results for frequency data of "${query}" from Words API...`);
                     setEntry(null);
                     setLoaded(false);
                 } else {
@@ -74,7 +75,7 @@ const WordsApiFreq = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for frequency data of "${query.toLowerCase()}" from Words API...`);
+                setError(`No results for frequency data of "${query}" from Words API...`);
                 setEntry(null);
                 setLoaded(false);
             });
@@ -153,7 +154,7 @@ const WordsApiFreq = props => {
                                                         &emsp;
                                                         Frequency data for :&ensp;
                                                         "
-                                                        {entry.word.toLowerCase()}
+                                                        {entry.word}
                                                         "
                                                     </strong>
                                                 </Typography>
@@ -166,13 +167,23 @@ const WordsApiFreq = props => {
                                                     <i>
                                                         <strong>
                                                             <span className="rIOrange">
-                                                                &emsp;&emsp;~
+                                                                &emsp;&emsp;~&nbsp;
                                                             </span>
-                                                            <span className="text-muted">
-                                                                &nbsp;Zipf Rating :
+                                                            <span className="cdTooltip text-muted">
+                                                                Zipf Rating
+                                                                <span className="cdTooltipText">
+                                                                    <Link
+                                                                        target="_blank"
+                                                                        href="https://www.youtube.com/watch?v=fCn8zs912OE"
+                                                                        className="flatLinkOrange"
+                                                                        style={{ textDecoration: "none" }}
+                                                                    >
+                                                                        Click here to learn about the Zipf mystery!
+                                                                    </Link>
+                                                                </span>
                                                             </span>
                                                             <span className="rIPurple">
-                                                                &nbsp;
+                                                                &ensp;:&nbsp;
                                                                 {entry.frequency.zipf}
                                                             </span>
                                                         </strong>

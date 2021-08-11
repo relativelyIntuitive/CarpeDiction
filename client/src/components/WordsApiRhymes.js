@@ -53,7 +53,7 @@ const WordsApiRhymes = props => {
         // set the options for the query request through rapidAPI
         const options = {
             method: 'GET',
-            url: `https://wordsapiv1.p.rapidapi.com/words/${query.toLowerCase()}/rhymes`,
+            url: `https://wordsapiv1.p.rapidapi.com/words/${query}/rhymes`,
             headers: {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com'
@@ -79,7 +79,7 @@ const WordsApiRhymes = props => {
 
                 // updates all pertinent state variables
                 if (Object.keys(res.data.rhymes).length === 0) {
-                    setError(`No results for rhymes of "${query.toLowerCase()}" from Words API...`);
+                    setError(`No results for rhymes of "${query}" from Words API...`);
                     setWords(null);
                     setLoaded(false);
                 } else {
@@ -91,7 +91,7 @@ const WordsApiRhymes = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for rhymes of "${query.toLowerCase()}" from Words API...`);
+                setError(`No results for rhymes of "${query}" from Words API...`);
                 setWords(null);
                 setLoaded(false);
             });

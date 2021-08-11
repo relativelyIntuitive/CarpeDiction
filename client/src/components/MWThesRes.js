@@ -49,7 +49,7 @@ const MWThesRes = props => {
 
     // retrieves the query results and saves them
     useEffect(() => {
-        axios.get('https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query.toLowerCase() + '?key=' + process.env.REACT_APP_MW_THES_KEY)
+        axios.get('https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query.replace(/\//g, '%2F') + '?key=' + process.env.REACT_APP_MW_THES_KEY)
             .then(res => {
                 // generates an array of the entries found by the search
                 const resEntries = [];
@@ -80,7 +80,7 @@ const MWThesRes = props => {
 
                 // updates all pertinent state variables
                 if (resEntries.length === 0) {
-                    setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Thesaurus...`);
+                    setError(`No results for "${query}" from the Merriam-Webster Thesaurus...`);
                     setEntries(null);
                     setLoaded(false);
                 } else {
@@ -91,7 +91,7 @@ const MWThesRes = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for "${query.toLowerCase()}" from the Merriam-Webster Thesaurus...`);
+                setError(`No results for "${query}" from the Merriam-Webster Thesaurus...`);
                 setEntries(null);
                 setLoaded(false);
             });
@@ -192,8 +192,11 @@ const MWThesRes = props => {
                                                                                     <span className="rIOrange">
                                                                                         &ensp;:&ensp;
                                                                                     </span>
-                                                                                    <span className="text-danger">
-                                                                                        Offensive?
+                                                                                    <span className="cdTooltip text-danger">
+                                                                                        ( ✗ )
+                                                                                        <span className="cdTooltipText">
+                                                                                            Offensive?
+                                                                                        </span>
                                                                                     </span>
                                                                                 </i>
                                                                             )}
@@ -202,8 +205,11 @@ const MWThesRes = props => {
                                                                                     <span className="rIOrange">
                                                                                         &ensp;:&ensp;
                                                                                     </span>
-                                                                                    <span className="text-success">
-                                                                                        Inoffensive!
+                                                                                    <span className="cdTooltip text-success">
+                                                                                        ( ✔ )
+                                                                                        <span className="cdTooltipText">
+                                                                                            Innoffensive?
+                                                                                        </span>
                                                                                     </span>
                                                                                 </i>
                                                                             )}

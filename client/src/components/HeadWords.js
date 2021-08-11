@@ -26,7 +26,7 @@ const Search = props => {
                                 key={index}
                                 className="mgInlineBlock"
                             >
-                                <Link to={`/search/${headWord}`} style={{ textDecoration: 'none' }}>
+                                <Link to={`/search/${headWord.replace(/\//g, '%2F')}`} style={{ textDecoration: 'none' }}>
                                     <strong className="flatLinkMuted">
                                         <i>
                                             &nbsp;"
@@ -61,7 +61,7 @@ const Search = props => {
                                 key={index}
                                 className="mgInlineBlock"
                             >
-                                <Link to={`/search/${spelling}`} style={{ textDecoration: 'none' }}>
+                                <Link to={`/search/${spelling.replace(/\//g, '%2F')}`} style={{ textDecoration: 'none' }}>
                                     <strong className="flatLinkMuted">
                                         <i>
                                             &nbsp;"

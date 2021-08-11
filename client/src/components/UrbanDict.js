@@ -56,7 +56,7 @@ const UrbanDict = props => {
         const options = {
             method: 'GET',
             url: 'https://mashape-community-urban-dictionary.p.rapidapi.com/define',
-            params: { term: query.toLowerCase() },
+            params: { term: query.replace(/\//g, '%2F') },
             headers: {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'mashape-community-urban-dictionary.p.rapidapi.com'
@@ -226,22 +226,34 @@ const UrbanDict = props => {
                                                     >
                                                         <Typography>
                                                             <strong className="mgSmFont">
-                                                                <span className="rIOrange">
-                                                                </span>
-                                                                <span className="text-success">
-                                                                    ✓&nbsp;
-                                                                </span>
-                                                                <span className="rIPurple">
-                                                                    {entry.thumbs_up}
+                                                                <span className="cdTooltip">
+                                                                    <span className="text-success">
+                                                                        👍&nbsp;
+                                                                        <span className="cdTooltipText">
+                                                                            <i>
+                                                                                Likes!
+                                                                            </i>
+                                                                        </span>
+                                                                    </span>
+                                                                    <span className="rIPurple">
+                                                                        {entry.thumbs_up}
+                                                                    </span>
                                                                 </span>
                                                                 <span className="rIOrange">
                                                                     &nbsp;:&nbsp;
                                                                 </span>
-                                                                <span className="text-danger">
-                                                                    ✗&nbsp;
-                                                                </span>
-                                                                <span className="rIPurple">
-                                                                    {entry.thumbs_down}
+                                                                <span className="cdTooltip">
+                                                                    <span className=" text-danger">
+                                                                        👎&nbsp;
+                                                                        <span className="cdTooltipText">
+                                                                            <i>
+                                                                                Dislikes!
+                                                                            </i>
+                                                                        </span>
+                                                                    </span>
+                                                                    <span className="rIPurple">
+                                                                        {entry.thumbs_down}
+                                                                    </span>
                                                                 </span>
                                                             </strong>
                                                         </Typography>

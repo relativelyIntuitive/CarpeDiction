@@ -53,7 +53,7 @@ const WordAssocRes = props => {
         const options = {
             method: 'GET',
             url: 'https://twinword-word-associations-v1.p.rapidapi.com/associations/',
-            params: { entry: query.toLowerCase() },
+            params: { entry: query },
             headers: {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'twinword-word-associations-v1.p.rapidapi.com'
@@ -72,12 +72,12 @@ const WordAssocRes = props => {
 
                 // updates all pertinent state variables
                 if (resEntry.result_code === "462") {
-                    setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
+                    setError(`No results for words related to "${query}" from Word Associations API...`);
                     setEntry(null);
                     setWords(null);
                     setLoaded(false);
                 } else if (resWords.length === 0) {
-                    setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
+                    setError(`No results for words related to "${query}" from Word Associations API...`);
                     setEntry(null);
                     setWords(null);
                     setLoaded(false);
@@ -95,7 +95,7 @@ const WordAssocRes = props => {
                     setWords(null);
                     setLoaded(false);
                 } else {
-                    setError(`No results for words related to "${query.toLowerCase()}" from Word Associations API...`);
+                    setError(`No results for words related to "${query}" from Word Associations API...`);
                     setEntry(null);
                     setWords(null);
                     setLoaded(false);
@@ -174,7 +174,7 @@ const WordAssocRes = props => {
                                                 <strong>
                                                     &emsp;Related words / similarity score for "
                                                     <span className="mgWordBreak">
-                                                        {query.toLowerCase()}
+                                                        {query}
                                                     </span>
                                                     " :&nbsp;
                                                 </strong>

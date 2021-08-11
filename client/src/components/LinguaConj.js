@@ -52,7 +52,7 @@ const LinguaCons = props => {
         const options = {
             method: 'GET',
             url: 'https://linguatools-conjugations.p.rapidapi.com/conjugate/',
-            params: { verb: query.toLowerCase() },
+            params: { verb: query.replace(/\//g, '%2F') },
             headers: {
                 'x-rapidapi-key': process.env.REACT_APP_X_RAPIDAPI_KEY,
                 'x-rapidapi-host': 'linguatools-conjugations.p.rapidapi.com'
@@ -65,7 +65,7 @@ const LinguaCons = props => {
                 const resEntry = res.data;
                 // updates all pertinent state variables
                 if (resEntry.result !== 'OK') {
-                    setError(`No results for conjugations of "${query.toLowerCase()}" from Linguatools Conjugations API...`);
+                    setError(`No results for conjugations of "${query}" from Linguatools Conjugations API...`);
                     setEntry(null);
                     setLoaded(false);
                 } else {
@@ -75,7 +75,7 @@ const LinguaCons = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for conjugations of "${query.toLowerCase()}" from Linguatools Conjugations API...`);
+                setError(`No results for conjugations of "${query}" from Linguatools Conjugations API...`);
                 setEntry(null);
                 setLoaded(false);
             });
@@ -155,7 +155,7 @@ const LinguaCons = props => {
                                                         Conjugations of :&ensp;
                                                         "
                                                         <span className="mgWordBreak">
-                                                            {query.toLowerCase()}
+                                                            {query}
                                                         </span>
                                                         "
                                                     </strong>
@@ -177,10 +177,10 @@ const LinguaCons = props => {
                                                         <span className="rIPurple">
                                                             &nbsp;
                                                             "&nbsp;
-                                                            <Link to={`/search/` + form[1]}>
+                                                            <Link to={`/search/` + form[1].replace(/\//g, '%2F')}>
                                                                 <span className="rIPurple">
                                                                     ...&ensp;
-                                                                    {form[1]}
+                                                                    {form[1].replace(/%2f/g,'/')}
                                                                 </span>
                                                             </Link>
                                                             &ensp;"
