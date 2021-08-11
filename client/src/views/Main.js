@@ -84,7 +84,13 @@ const Main = props => {
                             <p className="cdInstructions">
                                 <strong>
                                     <i>
-                                        ^ (Query a word, phrase, suffix, prefix or colloquialism above to get started!) ^
+                                        ^ ***** ******** ***** ^
+                                        <br />
+                                        <br />
+                                        Query a word, phrase, suffix, prefix or colloquialism above to get started!
+                                        <br />
+                                        <br />
+                                        ^ *** ******* *********** ******* *** ^
                                     </i>
                                 </strong>
                             </p>
@@ -99,7 +105,7 @@ const Main = props => {
                                             *&nbsp;
                                         </span>
                                         <u>
-                                            A note from the founder
+                                            Founder's note
                                         </u>
                                         <span className="qQuotes">
                                             &nbsp;*
