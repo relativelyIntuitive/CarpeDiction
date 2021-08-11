@@ -97,7 +97,7 @@ const UrbanDict = props => {
                 }
                 // updates all pertinent state variables
                 if (resEntries.length === 0) {
-                    setError(`No results for "${query.toLowerCase()}" from Urban Dictionary API...`);
+                    setError(`No results for "${query}" from Urban Dictionary API...`);
                     setEntries(null);
                     setLoaded(false);
                 } else {
@@ -107,7 +107,7 @@ const UrbanDict = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for "${query.toLowerCase()}" from Urban Dictionary API...`);
+                setError(`No results for "${query}" from Urban Dictionary API...`);
                 setEntries(null);
                 setLoaded(false);
             });

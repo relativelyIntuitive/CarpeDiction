@@ -154,7 +154,7 @@ const WordsApiFreq = props => {
                                                         &emsp;
                                                         Frequency data for :&ensp;
                                                         "
-                                                        {entry.word}
+                                                        {entry.word.toLowerCase()}
                                                         "
                                                     </strong>
                                                 </Typography>
