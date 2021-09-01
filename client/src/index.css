@@ -93,32 +93,32 @@
     font-size: x-large;
 }
 
-.flatLinkMuted:hover {
-    color: #800080!important;
-    text-decoration: none;
-}
+    .flatLinkMuted:hover {
+        color: #800080!important;
+        text-decoration: none;
+    }
 
 .flatLinkOrange {
     color: #ffa500!important;
     text-decoration: none;
 }
 
-.flatLinkOrange:hover {
-    text-decoration: none;
-    color: #adff2f!important;
-    text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
-}
+    .flatLinkOrange:hover {
+        text-decoration: none;
+        color: #adff2f!important;
+        text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
+    }
 
 .flatLinkPurple {
     color: #800080!important;
     text-decoration: none;
 }
 
-.flatLinkPurple:hover {
-    text-decoration: none;
-    color: #adff2f!important;
-    text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
-}
+    .flatLinkPurple:hover {
+        text-decoration: none;
+        color: #adff2f!important;
+        text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
+    }
 
 .flatLinkRedirect {
     color: #800080!important;
@@ -126,11 +126,11 @@
     font-size: larger;
 }
 
-.flatLinkRedirect:hover {
-    text-decoration: none;
-    color: #adff2f!important;
-    text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
-}
+    .flatLinkRedirect:hover {
+        text-decoration: none;
+        color: #adff2f!important;
+        text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
+    }
 
 .flatLinkWOTD {
     color: #800080!important;
@@ -138,11 +138,11 @@
     font-size: larger;
 }
 
-.flatLinkWOTD:hover {
-    text-decoration: none;
-    color: #ffa500!important;
-    text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
-}
+    .flatLinkWOTD:hover {
+        text-decoration: none;
+        color: #ffa500!important;
+        text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
+    }
 
 .formButt {
     color: #800080!important;
@@ -184,13 +184,13 @@
     background-color: #ffe1a39e;
 }
 
-.mgFormControl:hover {
-    background-color: #ffe1a39e;
-}
+    .mgFormControl:hover {
+        background-color: #ffe1a39e;
+    }
 
-.mgFormControl:focus {
-    background-color: #ffe1a39e;
-}
+    .mgFormControl:focus {
+        background-color: #ffe1a39e;
+    }
 
 .mgMargAuto {
     margin: auto;
@@ -200,9 +200,9 @@
     background-color: #FFE1AF;
 }
 
-.mgSearchControl:focus {
-    background-color: #FFE1AF;
-}
+    .mgSearchControl:focus {
+        background-color: #FFE1AF;
+    }
 
 .mgTxtRight {
     text-align: right;
@@ -234,11 +234,11 @@
     background-color: #ffe2afa1!important;
 }
 
-.rIAccordion:hover {
-    border: 2px solid #ffa500;
-    margin-top: 0.3rem;
-    margin-bottom: 0.3rem;
-}
+    .rIAccordion:hover {
+        border: 2px solid #ffa500;
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
+    }
 
 .rIWOTDAccordion {
     border: 2px solid #800080!important;
@@ -253,11 +253,11 @@
     background-color: #ffffffab!important;
 }
 
-.rIInnerAccordion:hover {
-    border: 2px solid #800080;
-    margin-top: 0.3rem;
-    margin-bottom: 0.3rem;
-}
+    .rIInnerAccordion:hover {
+        border: 2px solid #800080;
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
+    }
 
 .rIWOTDAccordion {
     border: 2px solid #800080!important;
@@ -265,10 +265,10 @@
     background-color: #ffe2af!important;
 }
 
-.rIWOTDAccordion:hover {
-    border: 3px solid #ffa500!important;
-    margin-top: 0.3rem;
-}
+    .rIWOTDAccordion:hover {
+        border: 3px solid #ffa500!important;
+        margin-top: 0.3rem;
+    }
 
 .rIAudio {
     box-shadow: 0px 0px 1px #800080 inset, 0px 0px 8px #800080;
@@ -279,16 +279,16 @@
     width: 75%;
 }
 
+    .rIAudio:hover {
+        box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
+    }
+
 .rIAudioSm {
     box-shadow: 0px 0px 1px #800080 inset, 0px 0px 8px #800080;
     border: 3px solid #800080;
     border-radius: 30px;
     margin-top: 0.7rem;
     margin-bottom: 1.7rem;
-}
-
-.rIAudio:hover {
-    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500;
 }
 
 .rIOrange {
@@ -334,19 +334,19 @@
     margin-right: 0.5rem!important;
 }
 
-.sButt:focus {
-    color: #800080!important;
-    background-color: #ffa500!important;
-    border: 3px solid #800080!important;
-    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500!important;
-}
+    .sButt:focus {
+        color: #800080!important;
+        background-color: #ffa500!important;
+        border: 3px solid #800080!important;
+        box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500!important;
+    }
 
-.sButt:hover {
-    color: #800080!important;
-    background-color: #ffa500!important;
-    border: 3px solid #ffa500!important;
-    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500!important;
-}
+    .sButt:hover {
+        color: #800080!important;
+        background-color: #ffa500!important;
+        border: 3px solid #ffa500!important;
+        box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 8px #ffa500!important;
+    }
 
 .sBox {
     border-color: #800080!important;
@@ -355,11 +355,11 @@
     background-color: #FFE1AF!important;
 }
 
-.sBox:focus {
-    border-color: #ffa500!important;
-    box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 5px #ffa500!important;
-    background-color: #FFE1AF!important;
-}
+    .sBox:focus {
+        border-color: #ffa500!important;
+        box-shadow: 0px 0px 1px #ffa500 inset, 0px 0px 5px #ffa500!important;
+        background-color: #FFE1AF!important;
+    }
 
 .sFooter {
     background-color: #343A40;
