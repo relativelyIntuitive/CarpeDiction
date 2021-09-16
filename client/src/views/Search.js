@@ -3,13 +3,9 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../node_modules/axios';
 import { navigate } from '@reach/router';
 
-import fav_icon_gray from '../images/fav_icon_gray.png';
-import fav_icon_orange from '../images/fav_icon_orange.png';
-
 import Comments from '../components/Comments';
 // disabled for now due to 429 error...retry in a month or so maybe a bad useEffect ran up the limit...
 // import DeepTrans from '../components/DeepTrans';
-import HeadWords from '../components/HeadWords';
 import LinguaConj from '../components/LinguaConj';
 import MWDictRes from '../components/MWDictRes';
 import MWThesRes from '../components/MWThesRes';
@@ -19,14 +15,11 @@ import UrbanDict from '../components/UrbanDict';
 import WordsApiRhymes from '../components/WordsApiRhymes';
 import WordsApiFreq from '../components/WordsApiFreq';
 import WordAssocRes from '../components/WordAssocRes';
-
-import { Button } from 'react-bootstrap';
+import QueryRedirects from '../components/QueryRedirects';
+import ResultsHeading from '../components/ResultsHeading';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Divider } from "@material-ui/core";
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 
 
 
@@ -166,164 +159,24 @@ const Search = props => {
             <div className="chocolate">
                 <div className="filling">
                     <div className={classes.paper}>
-                        <div className="resHeading">
-                            <h4 className="mb-sm-3 cdTagLine">
-                                <i>
-                                    You queried:
-                                </i>
-                            </h4>
-                            <h1 className="mgWordBreak mb-sm-3">
-                                <strong className="qQuotes">
-                                    "&nbsp;
-                                    <span className="rIPurple resHeading">
-                                        {decQuery}
-                                    </span>
-                                    &nbsp;"
-                                </strong>
-                            </h1>
-                            {logged === null && (
-                                <Button
-                                    variant="outline-warning"
-                                    className="cdFavIcon"
-                                    onClick={() => navigate("/login")}
-                                >
-                                    <img
-                                        src={fav_icon_gray}
-                                        width="35"
-                                        height="35"
-                                        className="d-inline-block"
-                                        alt="Favorite?"
-                                    />
-                                </Button>
-                            )}
-                            {(logged !== null) && (logged.favs !== undefined) && !(logged.favs.includes(encQuery)) && (
-                                <Button
-                                    variant="outline-warning"
-                                    className="cdFavIcon"
-                                    type="submit"
-                                    onClick={() => handleFavs()}
-                                >
-                                    <img
-                                        src={fav_icon_gray}
-                                        width="35"
-                                        height="35"
-                                        className="d-inline-block"
-                                        alt="Favorite?"
-                                    />
-                                </Button>
-                            )}
-                            {(logged !== null) && (logged.favs !== undefined) && (logged.favs.includes(encQuery)) && (
-                                <Button
-                                    variant="outline-dark"
-                                    className="cdFavIcon"
-                                    onClick={() => handleFavs()}
-                                >
-                                    <img
-                                        src={fav_icon_orange}
-                                        width="35"
-                                        height="35"
-                                        className="d-inline-block"
-                                        alt="Favorited!"
-                                    />
-                                </Button>
-                            )}
-                            <HeadWords
-                                headWords={headWords}
-                                spellings={spellings}
-                            />
-                            {pronunciations.length > 0 && (
-                                <ul className="inlineList topList">
-                                    {pronunciations.map((variant, index) => (
-                                        <li
-                                            key={index}
-                                            className="mgInlineBlock"
-                                        >
-                                            <h3 className="text-info">
-                                                <strong>
-                                                    <i>
-                                                        \&nbsp;
-                                                        {variant}
-                                                        &nbsp;
-                                                        {(pronunciations.indexOf(variant) === (pronunciations.length - 1)) && (
-                                                            <>
-                                                                \
-                                                            </>
-                                                        )}
-                                                    </i>
-                                                </strong>
-                                            </h3>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                            {(loaded && syllables.length > 0) && (
-                                <>
-                                    <h2>
-                                        <strong className="text-muted">
-                                            (&nbsp;
-                                            <i className="rIOrange syllables">
-                                                {syllables}
-                                            </i>
-                                            &nbsp;)
-                                        </strong>
-                                    </h2>
-                                    <br />
-                                </>
-                            )}
-                            {(audioLoaded && ((mp3s && Object.keys(mp3s).length > 0) || (wavs && Object.keys(wavs).length > 0))) && (
-                                <audio controls className="rIAudio">
-                                    {(mp3s && Object.keys(mp3s).length > 0) && (
-                                        <source src={mp3s[Object.keys(mp3s)[0]]} type="audio/mpeg" />
-                                    )}
-                                    {(wavs && Object.keys(wavs).length > 0) && (
-                                        <source src={[Object.keys(wavs)[0]]} type="audio/wav" />
-                                    )}
-                                    Your browser does not support the audio element!
-                                </audio>
-                            )}
-                            {isOffensive === 0 && (
-                                <h6 className="text-success isOffensive">
-                                    <strong>
-                                        "
-                                        <i className="mgWordBreak">
-                                            {decQuery}
-                                        </i>
-                                        " is not considered offensive by any official sources.
-                                    </strong>
-                                </h6>
-                            )}
-                            {(isOffensive > 0 && isOffensive <= notOffensive) && (
-                                <h6 className="text-warning isOffensive">
-                                    <strong>
-                                        "
-                                        <i>
-                                            {decQuery}
-                                        </i>
-                                        " is considered offensive by some official sources...
-                                    </strong>
-                                </h6>
-                            )}
-                            {(isOffensive > notOffensive) && (
-                                <h6 className="text-danger isOffensive">
-                                    <strong>
-                                        "
-                                        <i>
-                                            {decQuery}
-                                        </i>
-                                        " is considered offensive by most official sources.
-                                    </strong>
-                                </h6>
-                            )}
-                            <Typography className="text-muted">
-                                <i>
-                                    ( some results may take a moment to update )
-                                </i>
-                            </Typography>
-                            <Divider
-                                variant="fullWidth"
-                                className={classes.divider}
-                            />
-                        </div>
+                        <ResultsHeading
+                            logged={logged}
+                            handleFavs={handleFavs}
+                            headWords={headWords}
+                            spellings={spellings}
+                            pronunciations={pronunciations}
+                            syllables={syllables}
+                            audioLoaded={audioLoaded}
+                            loaded={loaded}
+                            mp3s={mp3s}
+                            wavs={wavs}
+                            isOffensive={isOffensive}
+                            notOffensive={notOffensive}
+                            encQuery={encQuery}
+                            decQuery={decQuery}
+                            query={query}
+                        />
+                        <br />
                         <MWDictRes
                             query={decQuery}
                             setIsOffensive={setIsOffensive}
@@ -346,41 +199,10 @@ const Search = props => {
                         <WordsApiFreq query={decQuery} />
                         <WordAssocRes query={decQuery} />
                         <br />
-                        <Link
-                            href={"http://libraryofbabel.info/search.html"}
-                            target="_blank"
-                            style={{ textDecoration: "none" }}
-                        >
-                            <strong className="flatLinkRedirect mgWordBreak">
-                                Search The Library of Babel for "
-                                {decQuery}
-                                "
-                            </strong>
-                        </Link>
-                        <br />
-                        <Link
-                            href={"http://www.wikipedia.com/wiki/" + encQuery}
-                            target="_blank"
-                            style={{ textDecoration: "none" }}
-                        >
-                            <strong className="flatLinkRedirect mgWordBreak">
-                                Search Wikipedia for "
-                                {decQuery}
-                                "
-                            </strong>
-                        </Link>
-                        <br />
-                        <Link
-                            href={"http://www.google.com/search?q=" + encQuery}
-                            target="_blank"
-                            style={{ textDecoration: "none" }}
-                        >
-                            <strong className="flatLinkRedirect mgWordBreak">
-                                Search Google for "
-                                {decQuery}
-                                "
-                            </strong>
-                        </Link>
+                        <QueryRedirects
+                            decQuery={decQuery}
+                            encQuery={encQuery}
+                        />
                         <Comments
                             query={decQuery}
                             logged={logged}
