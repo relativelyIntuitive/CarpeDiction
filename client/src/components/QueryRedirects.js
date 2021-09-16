@@ -3,6 +3,7 @@ import React from 'react';
 import Link from '@material-ui/core/Link';
 
 
+
 // SearchRedirects component displays links to search the users query on external sites
 const QueryRedirects = props => {
 

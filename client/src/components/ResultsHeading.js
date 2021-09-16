@@ -8,9 +8,18 @@ import fav_icon_orange from '../images/fav_icon_orange.png';
 import HeadWords from '../components/HeadWords';
 
 import { Button } from 'react-bootstrap';
-import Link from '@material-ui/core/Link';
+import { Divider } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
+
+
+// defines style rulesets for Material UI components
+const useStyles = makeStyles((theme) => ({
+    divider: {
+        margin: "30px 0",
+    },
+}));
 
 
 // ResultsHeading displays the query results heading info gathered from the search components
@@ -29,9 +38,11 @@ const ResultsHeading = props => {
         wavs,
         isOffensive,
         notOffensive,
-        query,
         decQuery,
         encQuery } = props;
+
+    // generates CSS rulesets
+    const classes = useStyles();
 
     // returns some basic query results for the results heading
     return (
@@ -188,6 +199,10 @@ const ResultsHeading = props => {
                     ( some results may take a moment to update )
                 </i>
             </Typography>
+            <Divider
+                variant="fullWidth"
+                className={classes.divider}
+            />
         </div>
     );
 };

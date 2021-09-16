@@ -176,7 +176,6 @@ const Search = props => {
                             decQuery={decQuery}
                             query={query}
                         />
-                        <br />
                         <MWDictRes
                             query={decQuery}
                             setIsOffensive={setIsOffensive}
