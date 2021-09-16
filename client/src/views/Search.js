@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import axios from '../../node_modules/axios';
+import axios from 'axios';
 import { navigate } from '@reach/router';
 
-import Comments from '../components/Comments';
+import Comments from '../components/Results/Comments';
 // disabled for now due to 429 error...retry in a month or so maybe a bad useEffect ran up the limit...
-// import DeepTrans from '../components/DeepTrans';
-import LinguaConj from '../components/LinguaConj';
+// import DeepTrans from '../components/Results/DeepTrans';
+import LinguaConj from '../components/Results/LinguaConj';
 import MWDictRes from '../components/MWDictRes';
 import MWThesRes from '../components/MWThesRes';
 import NavBar from '../components/NavBar';

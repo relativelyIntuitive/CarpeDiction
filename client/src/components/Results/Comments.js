@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import axios from '../../node_modules/axios';
+import axios from 'axios';
 import { navigate } from '@reach/router';
 
-import like_icon_purple from '../images/like_icon_purple.png';
-import like_icon_orange from '../images/like_icon_orange.png';
+import like_icon_purple from '../../images/like_icon_purple.png';
+import like_icon_orange from '../../images/like_icon_orange.png';
 
-import DeleteButton from '../components/DeleteButton';
+import DeleteButton from '../DeleteButton';
 
 import { Button } from 'react-bootstrap';
 

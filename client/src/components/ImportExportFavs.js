@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Axios from '../../node_modules/axios';
+import axios from 'axios';
 import { navigate } from '@reach/router';
 
 import { Button } from 'react-bootstrap';
@@ -55,7 +55,7 @@ const ImportExportFavs = props => {
     // update the user with the new favorites
     const updateUser = newUser => {
         if (process.env.REACT_APP_NODE_ENV === 'production') {
-            Axios.put(`${process.env.REACT_APP_API_ROOT}/api/users`, newUser, { withCredentials: true })
+            axios.put(`${process.env.REACT_APP_API_ROOT}/api/users`, newUser, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                 })
@@ -64,7 +64,7 @@ const ImportExportFavs = props => {
                         navigate('/login');
                 });
         } else {
-            Axios.put(`http://localhost:8000/api/users`, newUser, { withCredentials: true })
+            axios.put(`http://localhost:8000/api/users`, newUser, { withCredentials: true })
                 .then(res => {
                     setLogged(res.data.user);
                 })
