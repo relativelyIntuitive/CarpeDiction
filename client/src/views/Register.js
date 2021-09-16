@@ -5,7 +5,7 @@ import { navigate } from '@reach/router';
 
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
-import UserForm from '../components/UserForm';
+import UserForm from '../components/user/UserForm';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';

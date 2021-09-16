@@ -1,7 +1,7 @@
 import React from 'react';
 
-import btc_qr from '../images/btc_qr.png';
-import eth_qr from '../images/eth_qr.png';
+import btc_qr from '../../images/btc_qr.png';
+import eth_qr from '../../images/eth_qr.png';
 
 import Typography from '@material-ui/core/Typography';
 

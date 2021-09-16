@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
 
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../components/user/LoginForm';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
 

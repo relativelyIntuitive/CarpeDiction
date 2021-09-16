@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, navigate } from '@reach/router';
 
-import FavoritesAZ from '../components/FavoritesAZ';
-import FavoritesNew from '../components/FavoritesNew';
-import ImportExportFavs from '../components/ImportExportFavs';
+import FavoritesAZ from '../components/user/FavoritesAZ';
+import FavoritesNew from '../components/user/FavoritesNew';
+import ImportExportFavs from '../components/user/ImportExportFavs';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
 
