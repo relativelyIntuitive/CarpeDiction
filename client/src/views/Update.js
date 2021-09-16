@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import axios from '../../node_modules/axios';
+import axios from 'axios';
 import { navigate } from '@reach/router';
 
 import NavBar from '../components/NavBar';

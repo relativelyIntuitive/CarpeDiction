@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import axios from '../../node_modules/axios';
+import axios from 'axios';
 import { Link } from '@reach/router';
 
 import WOTDArchive from './WOTDArchive';

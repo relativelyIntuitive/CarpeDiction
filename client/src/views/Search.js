@@ -3,20 +3,20 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
 
-import Comments from '../components/Results/Comments';
+import Comments from '../components/search/Comments';
 // disabled for now due to 429 error...retry in a month or so maybe a bad useEffect ran up the limit...
 // import DeepTrans from '../components/Results/DeepTrans';
-import LinguaConj from '../components/Results/LinguaConj';
-import MWDictRes from '../components/MWDictRes';
-import MWThesRes from '../components/MWThesRes';
+import LinguaConj from '../components/search/LinguaConj';
+import MWDictRes from '../components/search/MWDictRes';
+import MWThesRes from '../components/search/MWThesRes';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
-import UrbanDict from '../components/UrbanDict';
-import WordsApiRhymes from '../components/WordsApiRhymes';
-import WordsApiFreq from '../components/WordsApiFreq';
-import WordAssocRes from '../components/WordAssocRes';
-import QueryRedirects from '../components/QueryRedirects';
-import ResultsHeading from '../components/ResultsHeading';
+import UrbanDict from '../components/search/UrbanDict';
+import WordsApiRhymes from '../components/search/WordsApiRhymes';
+import WordsApiFreq from '../components/search/WordsApiFreq';
+import WordAssocRes from '../components/search/WordAssocRes';
+import QueryRedirects from '../components/search/QueryRedirects';
+import ResultsHeading from '../components/search/ResultsHeading';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';

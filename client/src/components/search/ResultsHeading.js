@@ -2,10 +2,10 @@ import React from 'react';
 
 import { navigate } from '@reach/router';
 
-import fav_icon_gray from '../images/fav_icon_gray.png';
-import fav_icon_orange from '../images/fav_icon_orange.png';
+import fav_icon_gray from '../../images/fav_icon_gray.png';
+import fav_icon_orange from '../../images/fav_icon_orange.png';
 
-import HeadWords from '../components//Results/HeadWords';
+import HeadWords from './HeadWords';
 
 import { Button } from 'react-bootstrap';
 import { Divider } from "@material-ui/core";

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import axios from '../../node_modules/axios';
+import axios from 'axios';
 import { navigate } from '@reach/router';
 
 import LoginForm from '../components/LoginForm';

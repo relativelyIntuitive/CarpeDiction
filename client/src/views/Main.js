@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 
 import carpe_diction from '../images/carpe_diction.png';
 
-import FoundersNote from '../components/FoundersNote';
-import Links from '../components/Links';
+import FoundersNote from '../components/main/FoundersNote';
+import Links from '../components/main/Links';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
-import TipJars from '../components/TipJars';
-import WOTDCard from '../components/WOTDCard';
+import TipJars from '../components/main/TipJars';
+import WOTDCard from '../components/main/WOTDCard';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Divider } from "@material-ui/core";
