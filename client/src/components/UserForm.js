@@ -104,7 +104,7 @@ const UserForm = props => {
                 <br />
                 {formFunc === "Update" && (
                     <Link
-                        to='/'
+                        to="/user/account"
                         className="flatLinkPurple"
                     >
                         <i>

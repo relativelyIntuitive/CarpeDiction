@@ -137,19 +137,19 @@ const Detail = props => {
                                                 (&ensp;
                                             </span>
                                             <Link
-                                                to={"/user/account/edit"}
+                                                to='/'
                                                 className="flatLinkPurple"
                                             >
-                                                Edit Account
+                                                Back to Home...
                                             </Link>
                                             <span className="rIOrange">
                                                 &ensp;|&ensp;
                                             </span>
                                             <Link
-                                                to='/'
+                                                to={"/user/account/edit"}
                                                 className="flatLinkPurple"
                                             >
-                                                Nevermind...
+                                                Edit Account
                                             </Link>
                                             <span className="rIOrange">
                                                 &ensp;)
