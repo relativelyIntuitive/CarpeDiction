@@ -56,14 +56,20 @@ const NavBar = props => {
         navigate('/');
         if (process.env.REACT_APP_NODE_ENV === 'production') {
             axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
-                .then(res => {
-                    setLogged(null);
-                });
+            .then(res => {
+                setLogged(null);
+            })
+            .catch(err => {
+                setLogged(null);
+            });
         } else {
             axios.get(`http://localhost:8000/api/logout`, { withCredentials: true })
-                .then(res => {
-                    setLogged(null);
-                });
+            .then(res => {
+                setLogged(null);
+            })
+            .catch(err => {
+                setLogged(null);
+            });
         }
     };
 
