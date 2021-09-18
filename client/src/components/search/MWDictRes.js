@@ -151,7 +151,7 @@ const MWDictRes = props => {
                 }
                 // updates all pertinent state variables
                 if (resEntries.length === 0) {
-                    setError(`No results for "${query}" from the Merriam-Webster Dictionary...`);
+                    setError(`No results from the Merriam-Webster Dictionary...`);
                     setEntries(null);
                     setLoaded(false);
                 } else {
@@ -169,7 +169,7 @@ const MWDictRes = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for "${query}" from the Merriam-Webster Dictionary...`);
+                setError(`No results from the Merriam-Webster Dictionary...`);
                 setEntries(null);
                 setLoaded(false);
             });

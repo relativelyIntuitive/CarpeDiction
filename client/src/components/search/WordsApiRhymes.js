@@ -79,7 +79,7 @@ const WordsApiRhymes = props => {
 
                 // updates all pertinent state variables
                 if (Object.keys(res.data.rhymes).length === 0) {
-                    setError(`No results for rhymes of "${query}" from Words API...`);
+                    setError(`No results from Words API...`);
                     setWords(null);
                     setLoaded(false);
                 } else {
@@ -91,7 +91,7 @@ const WordsApiRhymes = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for rhymes of "${query}" from Words API...`);
+                setError(`No results from Words API...`);
                 setWords(null);
                 setLoaded(false);
             });

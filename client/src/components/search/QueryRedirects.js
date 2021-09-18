@@ -8,7 +8,7 @@ import Link from '@material-ui/core/Link';
 const QueryRedirects = props => {
 
     // retrieves the encoded and decoded query state variables from props
-    const { decQuery, encQuery } = props;
+    const { encQuery } = props;
 
     // returns the list of query redirects
     return (
@@ -19,10 +19,7 @@ const QueryRedirects = props => {
                 style={{ textDecoration: "none" }}
             >
                 <strong className="flatLinkRedirect mgWordBreak">
-                    Search The Library of Babel for:
-                    "
-                    {decQuery}
-                    "
+                    * Search The Library of Babel for your query *
                 </strong>
             </Link>
             <br />
@@ -32,9 +29,7 @@ const QueryRedirects = props => {
                 style={{ textDecoration: "none" }}
             >
                 <strong className="flatLinkRedirect mgWordBreak">
-                    Search Wikipedia for "
-                    {decQuery}
-                    "
+                    * Search Wikipedia for your query *
                 </strong>
             </Link>
             <br />
@@ -44,9 +39,7 @@ const QueryRedirects = props => {
                 style={{ textDecoration: "none" }}
             >
                 <strong className="flatLinkRedirect mgWordBreak">
-                    Search Google for "
-                    {decQuery}
-                    "
+                    * Search Google for your query *
                 </strong>
             </Link>
         </>

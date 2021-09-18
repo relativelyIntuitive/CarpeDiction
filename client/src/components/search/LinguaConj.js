@@ -65,7 +65,7 @@ const LinguaCons = props => {
                 const resEntry = res.data;
                 // updates all pertinent state variables
                 if (resEntry.result !== 'OK') {
-                    setError(`No results for conjugations of "${query}" from Linguatools Conjugations API...`);
+                    setError(`No results from Linguatools Conjugations API...`);
                     setEntry(null);
                     setLoaded(false);
                 } else {
@@ -75,7 +75,7 @@ const LinguaCons = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for conjugations of "${query}" from Linguatools Conjugations API...`);
+                setError(`No results from Linguatools Conjugations API...`);
                 setEntry(null);
                 setLoaded(false);
             });

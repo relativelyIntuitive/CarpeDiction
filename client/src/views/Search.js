@@ -198,10 +198,7 @@ const Search = props => {
                         <WordsApiFreq query={decQuery} />
                         <WordAssocRes query={decQuery} />
                         <br />
-                        <QueryRedirects
-                            decQuery={decQuery}
-                            encQuery={encQuery}
-                        />
+                        <QueryRedirects encQuery={encQuery} />
                         <Comments
                             query={decQuery}
                             logged={logged}

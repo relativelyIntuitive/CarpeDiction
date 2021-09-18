@@ -80,7 +80,7 @@ const MWThesRes = props => {
 
                 // updates all pertinent state variables
                 if (resEntries.length === 0) {
-                    setError(`No results for "${query}" from the Merriam-Webster Thesaurus...`);
+                    setError(`No results from the Merriam-Webster Thesaurus...`);
                     setEntries(null);
                     setLoaded(false);
                 } else {
@@ -91,7 +91,7 @@ const MWThesRes = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for "${query}" from the Merriam-Webster Thesaurus...`);
+                setError(`No results from the Merriam-Webster Thesaurus...`);
                 setEntries(null);
                 setLoaded(false);
             });

@@ -65,7 +65,7 @@ const WordsApiFreq = props => {
                 const resEntry = res.data;
                 // updates all pertinent state variables
                 if (!resEntry.frequency) {
-                    setError(`No results for frequency data of "${query}" from Words API...`);
+                    setError(`No results from Words API...`);
                     setEntry(null);
                     setLoaded(false);
                 } else {
@@ -75,7 +75,7 @@ const WordsApiFreq = props => {
                 }
             })
             .catch(err => {
-                setError(`No results for frequency data of "${query}" from Words API...`);
+                setError(`No results from Words API...`);
                 setEntry(null);
                 setLoaded(false);
             });

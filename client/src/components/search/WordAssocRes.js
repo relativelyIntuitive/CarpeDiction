@@ -72,12 +72,12 @@ const WordAssocRes = props => {
 
                 // updates all pertinent state variables
                 if (resEntry.result_code === "462") {
-                    setError(`No results for words related to "${query}" from Word Associations API...`);
+                    setError(`No results from Word Associations API...`);
                     setEntry(null);
                     setWords(null);
                     setLoaded(false);
                 } else if (resWords.length === 0) {
-                    setError(`No results for words related to "${query}" from Word Associations API...`);
+                    setError(`No results from Word Associations API...`);
                     setEntry(null);
                     setWords(null);
                     setLoaded(false);
@@ -95,7 +95,7 @@ const WordAssocRes = props => {
                     setWords(null);
                     setLoaded(false);
                 } else {
-                    setError(`No results for words related to "${query}" from Word Associations API...`);
+                    setError(`No results from Word Associations API...`);
                     setEntry(null);
                     setWords(null);
                     setLoaded(false);
