@@ -282,13 +282,13 @@ const Comments = props => {
                 <Typography className="rIPurple resHeading">
                     <strong>
                         <i>
-                            <u>
-                                Top comments for "
-                                <span className="mgWordBreak">
-                                    {query}
-                                </span>
-                                "
-                            </u>
+                            Top comments for:
+                            <br />
+                            "
+                            <span className="mgWordBreak">
+                                {query}
+                            </span>
+                            "
                         </i>
                     </strong>
                 </Typography>
@@ -300,11 +300,7 @@ const Comments = props => {
                                 <Typography className="text-danger resHeading">
                                     <strong>
                                         <i>
-                                            There are not yet any comments for "
-                                            <span className="mgWordBreak">
-                                                {query}
-                                            </span>
-                                            ," be the first!
+                                            There are not yet any comments for this query, be the first!
                                         </i>
                                     </strong>
                                 </Typography>
