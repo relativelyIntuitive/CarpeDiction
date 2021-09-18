@@ -184,7 +184,9 @@ const ImportExportFavs = props => {
                         variant="contained"
                         className="formButt mt-sm-3"
                     >
-                        Import!
+                        <strong>
+                            Import!
+                        </strong>
                     </Button>
                 </form>
                 <Divider
@@ -231,7 +233,9 @@ const ImportExportFavs = props => {
                         variant="contained"
                         className="formButt mt-sm-3"
                     >
-                        Export!
+                        <strong>
+                            Export!
+                        </strong>
                     </Button>
                 </form>
             </Paper>

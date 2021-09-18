@@ -262,7 +262,9 @@ const Comments = props => {
                             variant="contained"
                             className="formButt mt-sm-3"
                         >
-                            Post!
+                            <strong>
+                                Post!
+                            </strong>
                         </Button>
                     </form>
                 )}
