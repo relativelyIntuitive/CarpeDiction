@@ -164,33 +164,21 @@ const ResultsHeading = props => {
             {isOffensive === 0 && (
                 <h6 className="text-success isOffensive">
                     <strong>
-                        "
-                        <i className="mgWordBreak">
-                            {decQuery}
-                        </i>
-                        " is not considered offensive by any official sources.
+                        Your query is not considered offensive by any official sources.
                     </strong>
                 </h6>
             )}
             {(isOffensive > 0 && isOffensive <= notOffensive) && (
                 <h6 className="text-warning isOffensive">
                     <strong>
-                        "
-                        <i>
-                            {decQuery}
-                        </i>
-                        " is considered offensive by some official sources...
+                        Your query is considered offensive by some official sources...
                     </strong>
                 </h6>
             )}
             {(isOffensive > notOffensive) && (
                 <h6 className="text-danger isOffensive">
                     <strong>
-                        "
-                        <i>
-                            {decQuery}
-                        </i>
-                        " is considered offensive by most official sources.
+                        Your query is considered offensive by most official sources.
                     </strong>
                 </h6>
             )}

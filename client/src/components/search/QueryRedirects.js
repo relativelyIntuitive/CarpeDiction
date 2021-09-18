@@ -19,7 +19,8 @@ const QueryRedirects = props => {
                 style={{ textDecoration: "none" }}
             >
                 <strong className="flatLinkRedirect mgWordBreak">
-                    Search The Library of Babel for "
+                    Search The Library of Babel for:
+                    "
                     {decQuery}
                     "
                 </strong>
