@@ -140,7 +140,7 @@ const Detail = props => {
                                                 to='/'
                                                 className="flatLinkPurple"
                                             >
-                                                Back to Home...
+                                                Back to Home
                                             </Link>
                                             <span className="rIOrange">
                                                 &ensp;|&ensp;
