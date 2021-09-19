@@ -161,6 +161,7 @@ const Detail = props => {
                                         className={classes.divider}
                                     />
                                     <FavoritesNew user={user} />
+                                    <br/>
                                     <FavoritesAZ user={user} />
                                     <Divider
                                         variant="fullWidth"

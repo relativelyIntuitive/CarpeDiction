@@ -59,6 +59,7 @@ const Register = props => {
                 .then(res => {
                     if (res.data.user) {
                         setLogged(res.data.user);
+                        alert("* Please note that your account will remain logged in on this web browser until you manually log out!");
                         navigate("/");
                     } else {
                         setErrors(res.data);
@@ -77,6 +78,7 @@ const Register = props => {
                 .then(res => {
                     if (res.data.user) {
                         setLogged(res.data.user);
+                        alert("* Please note that your account will remain logged in on this web browser until you manually log out!");
                         navigate("/");
                     } else {
                         setErrors(res.data);

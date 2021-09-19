@@ -54,7 +54,8 @@ const FavoritesAZ = props => {
                         <strong>
                             <i>
                                 <u>
-                                    Favorite Queries (A - Z)
+                                    {user.userName}
+                                    's Favorite Queries (A - Z)
                                 </u>
                             </i>
                         </strong>
