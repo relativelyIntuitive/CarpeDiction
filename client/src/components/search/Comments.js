@@ -225,7 +225,9 @@ const Comments = props => {
                             <strong>
                                 <i>
                                     <u>
-                                        Post a comment for "
+                                        Post a comment for:
+                                        <br />
+                                        "
                                         <span className="mgWordBreak">
                                             {query}
                                         </span>
@@ -284,13 +286,15 @@ const Comments = props => {
                 <Typography className="rIPurple resHeading">
                     <strong>
                         <i>
-                            Top comments for:
-                            <br />
-                            "
-                            <span className="mgWordBreak">
-                                {query}
-                            </span>
-                            "
+                            <u>
+                                Top comments for:
+                                <br />
+                                "
+                                <span className="mgWordBreak">
+                                    {query}
+                                </span>
+                                "
+                            </u>
                         </i>
                     </strong>
                 </Typography>
