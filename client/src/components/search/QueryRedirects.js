@@ -19,7 +19,7 @@ const QueryRedirects = props => {
                 style={{ textDecoration: "none" }}
             >
                 <strong className="flatLinkRedirect mgWordBreak">
-                    * Search The Library of Babel for your query *
+                    * Query The Library of Babel *
                 </strong>
             </Link>
             <br />
@@ -29,7 +29,7 @@ const QueryRedirects = props => {
                 style={{ textDecoration: "none" }}
             >
                 <strong className="flatLinkRedirect mgWordBreak">
-                    * Search Wikipedia for your query *
+                    * Query Wikipedia *
                 </strong>
             </Link>
             <br />
@@ -39,7 +39,7 @@ const QueryRedirects = props => {
                 style={{ textDecoration: "none" }}
             >
                 <strong className="flatLinkRedirect mgWordBreak">
-                    * Search Google for your query *
+                    * Query Google *
                 </strong>
             </Link>
         </>
