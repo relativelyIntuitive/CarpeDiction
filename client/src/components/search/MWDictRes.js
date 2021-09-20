@@ -153,6 +153,7 @@ const MWDictRes = props => {
                 if (resEntries.length === 0) {
                     setError(`No results from the Merriam-Webster Dictionary...`);
                     setEntries(null);
+                    setHeadWords(null);
                     setLoaded(false);
                 } else {
                     setError(null);

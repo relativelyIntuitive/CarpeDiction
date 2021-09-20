@@ -108,6 +108,9 @@ const Search = props => {
                     setAudioLoaded(true);
                 }
                 setLoaded(true);
+            })
+            .catch(err => {
+                setLoaded(false);
             });
     }, [query, encQuery, logged, setAudioLoaded])
 

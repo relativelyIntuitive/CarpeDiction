@@ -15,7 +15,7 @@ const Search = props => {
 // returns the homepage
     return (
         <>
-            {headWords.length > 0 && (
+            {(headWords && headWords.length > 0) && (
                 <>
                     <h5 className="text-muted mt-sm-2">
                         Definitions retrieved for:
