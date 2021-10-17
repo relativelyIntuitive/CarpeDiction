@@ -102,13 +102,12 @@ const Main = props => {
                                 variant="fullWidth"
                                 className={classes.divider}
                             />
-                            <TipJars />
-                            <br />
+                            <Links />
                             <Divider
                                 variant="fullWidth"
                                 className={classes.divider}
                             />
-                            <Links />
+                            <TipJars />
                         </div>
                     </div>
                 </div>

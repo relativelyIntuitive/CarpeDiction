@@ -11,7 +11,7 @@ const Links = () => {
     return (
         <>
             <h3 className="qQuotes">
-                Other Educational & Beguiling Links:
+                Educational & Beguiling Links:
             </h3>
             <br />
             <Typography className="">
