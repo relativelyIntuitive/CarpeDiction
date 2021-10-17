@@ -36,6 +36,8 @@ const Links = () => {
                             style={{ textDecoration: "none" }}
                         >
                             &gt; The Library of Babel &lt;
+                            <br />
+                            (Artistic language experiment)
                         </Link>
                         <br />
                         <br />
@@ -46,6 +48,8 @@ const Links = () => {
                             style={{ textDecoration: "none" }}
                         >
                             &gt; The Dictionary of Obscure Sorrows &lt;
+                            <br />
+                            (Exactly what it sounds like!)
                         </Link>
                         <br />
                         <br />
@@ -57,7 +61,7 @@ const Links = () => {
                         >
                             &gt; The Wayback Machine &lt;
                             <br />
-                            (Archive of the internet!)
+                            (Archive of the internet)
                         </Link>
                         <br />
                         <br />
@@ -128,6 +132,8 @@ const Links = () => {
                             style={{ textDecoration: "none" }}
                         >
                             &gt; How to solve a Rubik's Cube &lt;
+                            <br />
+                            (Beginner video)
                         </Link>
                         <br />
                         <br />
@@ -138,6 +144,8 @@ const Links = () => {
                             style={{ textDecoration: "none" }}
                         >
                             &gt; Bitcoin FAQ &lt;
+                            <br />
+                            (A friend's site)
                         </Link>
                     </i>
                 </strong>
