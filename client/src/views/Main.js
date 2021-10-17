@@ -49,7 +49,7 @@ const Main = props => {
     // alert user of current site issues
     useEffect(() => {
         if (logged === null)
-            alert("* NOTICE:\n- The site will not currently work on Safari browsers...\n- I just got a MacBook, fix coming soon!");
+            alert("* NOTICE:\n- The site will not currently work on Safari browsers \n- A fix for this is coming soon!");
     }, [logged])
 
     // returns the homepage
