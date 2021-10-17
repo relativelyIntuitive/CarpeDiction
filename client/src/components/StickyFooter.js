@@ -36,18 +36,6 @@ const StickyFooter = () => {
                     xs={6}
                 >
                     <Link
-                        href="http://www.linkedin.com/in/relativelyIntuitive"
-                        target="_blank"
-                    >
-                        <img
-                            src={li_icon}
-                            width="35"
-                            height="35"
-                            className="d-inline-block align-top socialIcon"
-                            alt="LinkedIn!"
-                        />
-                    </Link>
-                    <Link
                         href="http://github.com/relativelyIntuitive"
                         target="_blank"
                     >
@@ -57,6 +45,18 @@ const StickyFooter = () => {
                             height="35"
                             className="d-inline-block align-top socialIcon"
                             alt="GitHub!"
+                        />
+                    </Link>
+                    <Link
+                        href="http://www.linkedin.com/in/relativelyIntuitive"
+                        target="_blank"
+                    >
+                        <img
+                            src={li_icon}
+                            width="35"
+                            height="35"
+                            className="d-inline-block align-top socialIcon"
+                            alt="LinkedIn!"
                         />
                     </Link>
                     <Link
