@@ -21,7 +21,7 @@
     "mongoose": "^5.13.9",
     "node-pre-gyp": "^0.17.0",
     "nodejs": "0.0.0",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.13"
   },
   "engines": {
     "npm": "6.x",
