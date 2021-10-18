@@ -36,7 +36,7 @@ const StickyFooter = () => {
                     xs={6}
                 >
                     <Link
-                        href="http://github.com/relativelyIntuitive"
+                        href="http://github.com/relativelyIntuitive/CarpeDiction"
                         target="_blank"
                     >
                         <img
