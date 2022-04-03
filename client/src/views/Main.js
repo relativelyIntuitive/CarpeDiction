@@ -47,11 +47,11 @@ const Main = props => {
     // generates CSS rulesets
     const classes = useStyles();
 
-    // alert user of current site issues
-    useEffect(() => {
-        if (logged === null)
-            alert("* NOTICE:\n- The site will not currently work on Safari browsers \n- A fix for this is coming soon!");
-    }, [logged])
+    // alert user of any current site issues
+    // useEffect(() => {
+    //     if (logged === null)
+    //         alert("* NOTICE:");
+    // }, [logged])
 
     // returns the homepage
     return (
