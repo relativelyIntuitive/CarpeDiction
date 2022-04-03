@@ -7,7 +7,7 @@ import Links from '../components/main/Links';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
 import TipJars from '../components/main/TipJars';
-import WOTDCard from '../components/main/WOTDCard';
+import WotdCard from '../components/main/WotdCard';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Divider } from "@material-ui/core";
@@ -81,7 +81,7 @@ const Main = props => {
                                     </i>
                                 </strong>
                             </p>
-                            <WOTDCard envUrl={envUrl} />
+                            <WotdCard envUrl={envUrl} />
                             <p className="cdInstructions">
                                 <strong>
                                     <i>

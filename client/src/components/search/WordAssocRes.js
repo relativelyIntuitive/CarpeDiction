@@ -66,8 +66,9 @@ const WordAssocRes = props => {
                 const resEntry = res.data;
                 // generates an array of the word found by the search
                 const resWords = [];
-                for (const resWord in res.data.associations_scored) {
-                    resWords.push(`${resWord} : ${res.data.associations_scored[resWord].toString().split(".")[0]}%`)
+                for (const resWord in resEntry.associations_scored) {
+                    const percentage = (resEntry.associations_scored[resWord] * 100).toFixed(2)
+                    resWords.push(`${resWord} : ${percentage}%`)
                 }
 
                 // updates all pertinent state variables
@@ -115,7 +116,7 @@ const WordAssocRes = props => {
                 >
                     <Grid
                         container
-                        justify="space-between"
+                        justifyContent="space-between"
                         alignItems="center"
                     >
                         <Grid
@@ -125,7 +126,7 @@ const WordAssocRes = props => {
                             <Typography className={classes.heading}>
                                 <strong>
                                     (
-                                    {(words && words.length > 0) && (
+                                    {(words?.length > 0) && (
                                         words.length
                                     )}
                                     {!words && (
@@ -167,7 +168,7 @@ const WordAssocRes = props => {
                     <div className={classes.root}>
                         {loaded && (
                             <>
-                                {(words && words.length > 0 && entry && entry.associations_scored) && (
+                                {(words?.length > 0 && entry?.associations_scored) && (
                                     <ul className="inlineList">
                                         <li className="mgInlineBlock text-muted">
                                             <Typography>
@@ -180,18 +181,18 @@ const WordAssocRes = props => {
                                                 </strong>
                                             </Typography>
                                         </li>
-                                        {words.map((word, index) => (
+                                        {words?.map((word, index) => (
                                             <li key={index} className="mgInlineBlock">
                                                 <Typography>
                                                     &ensp;
-                                                    <Link to={`/search/${Object.keys(entry.associations_scored)[index]}`}>
+                                                    <Link to={`/search/${Object?.keys(entry?.associations_scored)[index]}`}>
                                                         <i>
                                                             <span className="rIPurple">
                                                                 {word}
                                                             </span>
                                                         </i>
                                                     </Link>
-                                                    {(words.indexOf(word) !== (words.length - 1)) && (
+                                                    {(words?.indexOf(word) !== (words?.length - 1)) && (
                                                         <strong>
                                                             <span className="rIOrange">
                                                                 &ensp;|

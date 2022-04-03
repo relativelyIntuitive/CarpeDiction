@@ -132,252 +132,242 @@ const MWThesRes = props => {
                     <div className={classes.root}>
                         {loaded && (
                             <>
-                                {Object.keys(entriesByType).length > 0 && (
-                                    Object.keys(entriesByType).map((type, index) => (
-                                        <Accordion
-                                            key={index}
-                                            className="rIAccordion"
+                                {Object.keys(entriesByType)?.map((type, index) => (
+                                    <Accordion
+                                        key={index}
+                                        className="rIAccordion"
+                                    >
+                                        <AccordionSummary
+                                            expandIcon={<ExpandMoreIcon />}
+                                            aria-controls="panel1a-content"
+                                            id="panel1a-header"
                                         >
-                                            <AccordionSummary
-                                                expandIcon={<ExpandMoreIcon />}
-                                                aria-controls="panel1a-content"
-                                                id="panel1a-header"
-                                            >
-                                                <Typography className={classes.heading}>
-                                                    <strong>
-                                                        (
-                                                        {entriesByType[type].length}
-                                                        )
-                                                        <span className="rIOrange">
-                                                            &nbsp;-&nbsp;
-                                                        </span>
-                                                        <i>
-                                                            {type.replace(type[0], type[0].toUpperCase())}
-                                                            &nbsp;entries...
-                                                        </i>
-                                                    </strong>
-                                                </Typography>
-                                            </AccordionSummary>
-                                            <AccordionDetails>
-                                                <div className={classes.root}>
-                                                    {entriesByType[type].length > 0 && (
-                                                        entriesByType[type].map((entry, index2) => (
-                                                            <Accordion
-                                                                key={index2}
-                                                                className="rIInnerAccordion"
-                                                            >
-                                                                <AccordionSummary
-                                                                    expandIcon={<ExpandMoreIcon />}
-                                                                    aria-controls="panel1a-content"
-                                                                    id="panel1a-header"
-                                                                >
-                                                                    <Typography className={classes.heading}>
-                                                                        <strong>
-                                                                            (
-                                                                            {entry.shortdef.length}
-                                                                            )
+                                            <Typography className={classes.heading}>
+                                                <strong>
+                                                    (
+                                                    {entriesByType[type].length}
+                                                    )
+                                                    <span className="rIOrange">
+                                                        &nbsp;-&nbsp;
+                                                    </span>
+                                                    <i>
+                                                        {type.replace(type[0], type[0].toUpperCase())}
+                                                        &nbsp;entries...
+                                                    </i>
+                                                </strong>
+                                            </Typography>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                            <div className={classes.root}>
+                                                {entriesByType[type]?.map((entry, index2) => (
+                                                    <Accordion
+                                                        key={index2}
+                                                        className="rIInnerAccordion"
+                                                    >
+                                                        <AccordionSummary
+                                                            expandIcon={<ExpandMoreIcon />}
+                                                            aria-controls="panel1a-content"
+                                                            id="panel1a-header"
+                                                        >
+                                                            <Typography className={classes.heading}>
+                                                                <strong>
+                                                                    (
+                                                                    {entry.shortdef.length}
+                                                                    )
+                                                                    <span className="rIOrange">
+                                                                        &nbsp;-
+                                                                    </span>
+                                                                    <span className="text-muted">
+                                                                        &nbsp;
+                                                                        {'{'}
+                                                                        &nbsp;
+                                                                        {entry.meta.id}
+                                                                        &nbsp;
+                                                                        {'}'}
+                                                                    </span>
+                                                                    {(entry.meta.offensive === true) && (
+                                                                        <i className="mgSmFont">
                                                                             <span className="rIOrange">
-                                                                                &nbsp;-
+                                                                                &ensp;:&ensp;
                                                                             </span>
-                                                                            <span className="text-muted">
-                                                                                &nbsp;
-                                                                                {'{'}
-                                                                                &nbsp;
-                                                                                {entry.meta.id}
-                                                                                &nbsp;
-                                                                                {'}'}
+                                                                            <span className="cdTooltip text-danger">
+                                                                                ( ✗ )
+                                                                                <span className="cdTooltipText">
+                                                                                    Offensive?
+                                                                                </span>
                                                                             </span>
-                                                                            {(entry.meta.offensive === true) && (
-                                                                                <i className="mgSmFont">
-                                                                                    <span className="rIOrange">
-                                                                                        &ensp;:&ensp;
-                                                                                    </span>
-                                                                                    <span className="cdTooltip text-danger">
-                                                                                        ( ✗ )
-                                                                                        <span className="cdTooltipText">
-                                                                                            Offensive?
-                                                                                        </span>
-                                                                                    </span>
-                                                                                </i>
-                                                                            )}
-                                                                            {(entry.meta.offensive === false) && (
-                                                                                <i className="mgSmFont">
-                                                                                    <span className="rIOrange">
-                                                                                        &ensp;:&ensp;
-                                                                                    </span>
-                                                                                    <span className="cdTooltip text-success">
-                                                                                        ( ✔ )
-                                                                                        <span className="cdTooltipText">
-                                                                                            Innoffensive?
-                                                                                        </span>
-                                                                                    </span>
-                                                                                </i>
-                                                                            )}
-                                                                        </strong>
-                                                                    </Typography>
-                                                                </AccordionSummary>
-                                                                <AccordionDetails>
-                                                                    <div className={classes.root}>
+                                                                        </i>
+                                                                    )}
+                                                                    {(entry.meta.offensive === false) && (
+                                                                        <i className="mgSmFont">
+                                                                            <span className="rIOrange">
+                                                                                &ensp;:&ensp;
+                                                                            </span>
+                                                                            <span className="cdTooltip text-success">
+                                                                                ( ✔ )
+                                                                                <span className="cdTooltipText">
+                                                                                    Innoffensive?
+                                                                                </span>
+                                                                            </span>
+                                                                        </i>
+                                                                    )}
+                                                                </strong>
+                                                            </Typography>
+                                                        </AccordionSummary>
+                                                        <AccordionDetails>
+                                                            <div className={classes.root}>
+                                                                <Typography>
+                                                                    <strong>
+                                                                        [
+                                                                        {type.replace(type[0], type[0].toUpperCase())}
+                                                                        ]
+                                                                    </strong>
+                                                                    {(entry.hwi && entry.hwi.hw) && (
+                                                                        <span className="text-muted">
+                                                                            <strong>
+                                                                                <span className="rIOrange">
+                                                                                    &ensp;&ensp;|&nbsp;
+                                                                                </span>
+                                                                                "
+                                                                                {entry.hwi.hw}
+                                                                                "&nbsp;
+                                                                            </strong>
+                                                                        </span>
+                                                                    )}
+                                                                </Typography>
+                                                                <br />
+                                                                {entry.shortdef?.map((def, index3) => (
+                                                                    <div key={index3}>
                                                                         <Typography>
                                                                             <strong>
-                                                                                [
-                                                                                {type.replace(type[0], type[0].toUpperCase())}
-                                                                                ]
+                                                                                {index3 + 1}:
                                                                             </strong>
-                                                                            {(entry.hwi && entry.hwi.hw) && (
-                                                                                <span className="text-muted">
-                                                                                    <strong>
-                                                                                        <span className="rIOrange">
-                                                                                            &ensp;&ensp;|&nbsp;
-                                                                                        </span>
-                                                                                        "
-                                                                                        {entry.hwi.hw}
-                                                                                        "&nbsp;
-                                                                                    </strong>
-                                                                                </span>
-                                                                            )}
+                                                                            &emsp;
+                                                                            {def}
+                                                                            ;
                                                                         </Typography>
-                                                                        <br />
-                                                                        {entry.shortdef.length > 0 && (
-                                                                            entry.shortdef.map((def, index3) => (
-                                                                                <div key={index3}>
-                                                                                    <Typography>
+                                                                        {(entry.def && entry.def[0] && entry.def[0].sseq[index3] && entry.def[0].sseq[index3][0] && entry.def[0].sseq[index3][0][1] && entry.def[0].sseq[index3][0][1].dt && entry.def[0].sseq[index3][0][1].dt[1] && entry.def[0].sseq[index3][0][1].dt[1][1] && entry.def[0].sseq[index3][0][1].dt[1][1][0] && entry.def[0].sseq[index3][0][1].dt[1][1][0].t && entry.def[0].sseq[index3][0][1].dt[1][1][0].t) && (
+                                                                            <>
+                                                                                <br />
+                                                                                <Typography>
+                                                                                    <i>
                                                                                         <strong>
-                                                                                            {index3 + 1}:
+                                                                                            <span className="rIOrange">
+                                                                                                &emsp;&emsp;*&ensp;
+                                                                                            </span>
                                                                                         </strong>
-                                                                                        &emsp;
-                                                                                        {def}
-                                                                                        ;
-                                                                                    </Typography>
-                                                                                    {(entry.def && entry.def[0] && entry.def[0].sseq[index3] && entry.def[0].sseq[index3][0] && entry.def[0].sseq[index3][0][1] && entry.def[0].sseq[index3][0][1].dt && entry.def[0].sseq[index3][0][1].dt[1] && entry.def[0].sseq[index3][0][1].dt[1][1] && entry.def[0].sseq[index3][0][1].dt[1][1][0] && entry.def[0].sseq[index3][0][1].dt[1][1][0].t && entry.def[0].sseq[index3][0][1].dt[1][1][0].t) && (
-                                                                                        <>
-                                                                                            <br />
-                                                                                            <Typography>
-                                                                                                <i>
-                                                                                                    <strong>
-                                                                                                        <span className="rIOrange">
-                                                                                                            &emsp;&emsp;*&ensp;
-                                                                                                        </span>
-                                                                                                    </strong>
-                                                                                                    <span className="rIPurple">
-                                                                                                        e.g.,&nbsp;
-                                                                                                    </span>
-                                                                                                    <strong>
-                                                                                                        <span className="text-muted">
-                                                                                                            "&nbsp;...&ensp;
-                                                                                                            {entry.def[0].sseq[index3][0][1].dt[1][1][0].t}
-                                                                                                            &nbsp;"
-                                                                                                        </span>
-                                                                                                    </strong>
-                                                                                                </i>
-                                                                                            </Typography>
-                                                                                            <br />
-                                                                                        </>
-                                                                                    )}
-                                                                                    <br />
-                                                                                    <ul className="inlineList">
-                                                                                        <li className="mgInlineBlock text-muted">
-                                                                                            <Typography>
-                                                                                                <strong>
-                                                                                                    <i>
-                                                                                                        &emsp;Synonyms :&nbsp;
-                                                                                                    </i>
-                                                                                                </strong>
-                                                                                            </Typography>
-                                                                                        </li>
-                                                                                        {(entry.meta.syns.length > 0 && entry.meta.syns[index3] && entry.meta.syns[index3].length > 0) && (
-                                                                                            entry.meta.syns[index3].map((syn, index4) => (
-                                                                                                <li key={index4} className="mgInlineBlock">
-                                                                                                    <Typography>
-                                                                                                        &nbsp;
-                                                                                                        <Link to={`/search/${syn}`} >
-                                                                                                            <span className="rIPurple">
-                                                                                                                <i>
-                                                                                                                    {syn}
-                                                                                                                </i>
-                                                                                                            </span>
-                                                                                                        </Link>
-                                                                                                        {(entry.meta.syns[index3].indexOf(syn) !== (entry.meta.syns[index3].length - 1)) && (
-                                                                                                            <>
-                                                                                                                ,
-                                                                                                            </>
-                                                                                                        )}
-                                                                                                    </Typography>
-                                                                                                </li>
-                                                                                            ))
-                                                                                        )}
-                                                                                        {!(entry.meta.syns.length > 0 && entry.meta.syns[index3] && entry.meta.syns[index3].length > !0) && (
-                                                                                            <li className="mgInlineBlock">
-                                                                                                <Typography>
-                                                                                                    <span className="rIPurple">
-                                                                                                        <i>
-                                                                                                            (N/A)
-                                                                                                        </i>
-                                                                                                    </span>
-                                                                                                </Typography>
-                                                                                            </li>
-                                                                                        )}
-                                                                                    </ul>
-                                                                                    <ul className="inlineList">
-                                                                                        <li className="mgInlineBlock text-muted">
-                                                                                            <Typography>
-                                                                                                <strong>
-                                                                                                    <i>
-                                                                                                        &emsp;Antonyms :&nbsp;
-                                                                                                    </i>
-                                                                                                </strong>
-                                                                                            </Typography>
-                                                                                        </li>
-                                                                                        {(entry.meta.ants.length > 0 && entry.meta.ants[index3] && entry.meta.ants[index3].length > 0) && (
-                                                                                            entry.meta.ants[index3].map((ant, index4) => (
-                                                                                                <li key={index4} className="mgInlineBlock">
-                                                                                                    <Typography>
-                                                                                                        &nbsp;
-                                                                                                        <Link to={`/search/${ant}`} >
-                                                                                                            <span className="rIPurple">
-                                                                                                                <i>
-                                                                                                                    {ant}
-                                                                                                                </i>
-                                                                                                            </span>
-                                                                                                        </Link>
-                                                                                                        {(entry.meta.ants[index3].indexOf(ant) !== (entry.meta.ants[index3].length - 1)) && (
-                                                                                                            <>
-                                                                                                                ,
-                                                                                                            </>
-                                                                                                        )}
-                                                                                                    </Typography>
-                                                                                                </li>
-                                                                                            ))
-                                                                                        )}
-                                                                                        {!(entry.meta.ants.length > 0 && entry.meta.ants[index3] && entry.meta.ants[index3].length > 0) && (
-                                                                                            <li className="mgInlineBlock">
-                                                                                                <Typography>
-                                                                                                    <span className="rIPurple">
-                                                                                                        <i>
-                                                                                                            (N/A)
-                                                                                                        </i>
-                                                                                                    </span>
-                                                                                                </Typography>
-                                                                                            </li>
-                                                                                        )}
-                                                                                        <br />
-                                                                                        <br />
-                                                                                    </ul>
-                                                                                    <hr />
-                                                                                    <br />
-                                                                                </div>
-                                                                            ))
+                                                                                        <span className="rIPurple">
+                                                                                            e.g.,&nbsp;
+                                                                                        </span>
+                                                                                        <strong>
+                                                                                            <span className="text-muted">
+                                                                                                "&nbsp;...&ensp;
+                                                                                                {entry.def[0].sseq[index3][0][1].dt[1][1][0].t}
+                                                                                                &nbsp;"
+                                                                                            </span>
+                                                                                        </strong>
+                                                                                    </i>
+                                                                                </Typography>
+                                                                                <br />
+                                                                            </>
                                                                         )}
+                                                                        <br />
+                                                                        <ul className="inlineList">
+                                                                            <li className="mgInlineBlock text-muted">
+                                                                                <Typography>
+                                                                                    <strong>
+                                                                                        <i>
+                                                                                            &emsp;Synonyms :&nbsp;
+                                                                                        </i>
+                                                                                    </strong>
+                                                                                </Typography>
+                                                                            </li>
+                                                                            {entry.meta.syns[index3]?.map((syn, index4) => (
+                                                                                <li key={index4} className="mgInlineBlock">
+                                                                                    <Typography>
+                                                                                        &nbsp;
+                                                                                        <Link to={`/search/${syn}`} >
+                                                                                            <span className="rIPurple">
+                                                                                                <i>
+                                                                                                    {syn}
+                                                                                                </i>
+                                                                                            </span>
+                                                                                        </Link>
+                                                                                        {(entry.meta.syns[index3].indexOf(syn) !== (entry.meta.syns[index3].length - 1)) && (
+                                                                                            <>
+                                                                                                ,
+                                                                                            </>
+                                                                                        )}
+                                                                                    </Typography>
+                                                                                </li>
+                                                                            ))}
+                                                                            {!(entry?.meta?.syns[index3]?.length > 0) && (
+                                                                                <li className="mgInlineBlock">
+                                                                                    <Typography>
+                                                                                        <span className="rIPurple">
+                                                                                            <i>
+                                                                                                (N/A)
+                                                                                            </i>
+                                                                                        </span>
+                                                                                    </Typography>
+                                                                                </li>
+                                                                            )}
+                                                                        </ul>
+                                                                        <ul className="inlineList">
+                                                                            <li className="mgInlineBlock text-muted">
+                                                                                <Typography>
+                                                                                    <strong>
+                                                                                        <i>
+                                                                                            &emsp;Antonyms :&nbsp;
+                                                                                        </i>
+                                                                                    </strong>
+                                                                                </Typography>
+                                                                            </li>
+                                                                            {entry.meta.ants[index3]?.map((ant, index4) => (
+                                                                                <li key={index4} className="mgInlineBlock">
+                                                                                    <Typography>
+                                                                                        &nbsp;
+                                                                                        <Link to={`/search/${ant}`} >
+                                                                                            <span className="rIPurple">
+                                                                                                <i>
+                                                                                                    {ant}
+                                                                                                </i>
+                                                                                            </span>
+                                                                                        </Link>
+                                                                                        {(entry.meta.ants[index3].indexOf(ant) !== (entry.meta.ants[index3].length - 1)) && (
+                                                                                            <>
+                                                                                                ,
+                                                                                            </>
+                                                                                        )}
+                                                                                    </Typography>
+                                                                                </li>
+                                                                            ))}
+                                                                            {!(entry?.meta?.ants[index3]?.length > 0) && (
+                                                                                <li className="mgInlineBlock">
+                                                                                    <Typography>
+                                                                                        <span className="rIPurple">
+                                                                                            <i>
+                                                                                                (N/A)
+                                                                                            </i>
+                                                                                        </span>
+                                                                                    </Typography>
+                                                                                </li>
+                                                                            )}
+                                                                            <br />
+                                                                            <br />
+                                                                        </ul>
+                                                                        <hr />
+                                                                        <br />
                                                                     </div>
-                                                                </AccordionDetails>
-                                                            </Accordion>
-                                                        ))
-                                                    )}
-                                                </div>
-                                            </AccordionDetails>
-                                        </Accordion>
-                                    ))
-                                )}
+                                                                ))}
+                                                            </div>
+                                                        </AccordionDetails>
+                                                    </Accordion>
+                                                ))}
+                                            </div>
+                                        </AccordionDetails>
+                                    </Accordion>
+                                ))}
                             </>
                         )}
                         {!loaded && (

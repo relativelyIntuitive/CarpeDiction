@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from '@reach/router';
 
-import WOTDArchive from './WOTDArchive';
+import WotdArchive from './WotdArchive';
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -32,8 +32,8 @@ const useStyles = makeStyles({
 });
 
 
-// WOTDCard retrieves and displays WOTD and archive accordion
-const WOTDCard = props => {
+// WotdCard retrieves and displays WOTD and archive accordion
+const WotdCard = props => {
 
     // retrieves state variables from props
     const {envUrl} = props;
@@ -52,8 +52,8 @@ const WOTDCard = props => {
         axios.get(`${envUrl}/api/wotd/latest`)
             .then(res => {
                 console.log(res)
-                const newWord = res.data.WOTD.word;
-                // const newDef = res.data.WOTD.def;
+                const newWord = res.data.Wotd.word;
+                // const newDef = res.data.Wotd.def;
                 setWord(newWord);
                 // setDef(newDef);
                 setLoaded(true);
@@ -131,7 +131,7 @@ const WOTDCard = props => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Link to={"/search/" + word} className="mgMargAuto flatLinkWOTD">
+                <Link to={"/search/" + word} className="mgMargAuto flatLinkWotd">
                     <strong>
                         <i>
                             * Learn more! *
@@ -139,10 +139,10 @@ const WOTDCard = props => {
                     </strong>
                 </Link>
             </CardActions>
-            <WOTDArchive envUrl={envUrl} />
+            <WotdArchive envUrl={envUrl} />
         </Card>
     );
 }
 
 
-export default WOTDCard;
+export default WotdCard;

@@ -125,7 +125,7 @@ const UrbanDict = props => {
                 >
                     <Grid
                         container
-                        justify="space-between"
+                        justifyContent="space-between"
                         alignItems="center"
                     >
                         <Grid
@@ -135,7 +135,7 @@ const UrbanDict = props => {
                             <Typography className={classes.heading}>
                                 <strong>
                                     (
-                                    {(entries && entries.length > 0) && (
+                                    {(entries?.length > 0) && (
                                         entries.length
                                     )}
                                     {!entries && (
@@ -177,150 +177,148 @@ const UrbanDict = props => {
                     <div className={classes.root}>
                         {loaded && (
                             <>
-                                {(entries && entries.length > 0) && (
-                                    entries.map((entry, index) => (
-                                        <Accordion
-                                            key={index}
-                                            className="rIInnerAccordion"
+                                {entries?.map((entry, index) => (
+                                    <Accordion
+                                        key={index}
+                                        className="rIInnerAccordion"
+                                    >
+                                        <AccordionSummary
+                                            expandIcon={<ExpandMoreIcon />}
+                                            aria-controls="panel1a-content"
+                                            id="panel1a-header"
                                         >
-                                            <AccordionSummary
-                                                expandIcon={<ExpandMoreIcon />}
-                                                aria-controls="panel1a-content"
-                                                id="panel1a-header"
+                                            <Grid
+                                                container
+                                                justifyContent="space-between"
+                                                alignItems="center"
                                             >
                                                 <Grid
-                                                    container
-                                                    justify="space-between"
-                                                    alignItems="center"
+                                                    item
+                                                    xs={9}
                                                 >
-                                                    <Grid
-                                                        item
-                                                        xs={9}
-                                                    >
-                                                        <Typography className={classes.heading}>
-                                                            <strong>
-                                                                <span className="rIOrange">
-                                                                    #&nbsp;
+                                                    <Typography className={classes.heading}>
+                                                        <strong>
+                                                            <span className="rIOrange">
+                                                                #&nbsp;
+                                                            </span>
+                                                            {index + 1}
+                                                            <span className="rIOrange">
+                                                                &nbsp;-
+                                                            </span>
+                                                            <span className="text-muted">
+                                                                &nbsp;
+                                                                {'{'}
+                                                                &nbsp;
+                                                                {entry.word}
+                                                                :
+                                                                {entry.defid}
+                                                                &nbsp;
+                                                                {'}'}
+                                                            </span>
+                                                        </strong>
+                                                    </Typography>
+                                                </Grid>
+                                                <Grid
+                                                    item
+                                                    xs={3}
+                                                    className="mgTxtRight"
+                                                >
+                                                    <Typography>
+                                                        <strong className="mgSmFont">
+                                                            <span className="cdTooltip">
+                                                                <span className="text-success">
+                                                                    👍&nbsp;
+                                                                    <span className="cdTooltipText">
+                                                                        <i>
+                                                                            Likes!
+                                                                        </i>
+                                                                    </span>
                                                                 </span>
-                                                                {index + 1}
+                                                                <span className="rIPurple">
+                                                                    {entry.thumbs_up}
+                                                                </span>
+                                                            </span>
+                                                            <span className="rIOrange">
+                                                                &nbsp;:&nbsp;
+                                                            </span>
+                                                            <span className="cdTooltip">
+                                                                <span className=" text-danger">
+                                                                    👎&nbsp;
+                                                                    <span className="cdTooltipText">
+                                                                        <i>
+                                                                            Dislikes!
+                                                                        </i>
+                                                                    </span>
+                                                                </span>
+                                                                <span className="rIPurple">
+                                                                    {entry.thumbs_down}
+                                                                </span>
+                                                            </span>
+                                                        </strong>
+                                                    </Typography>
+                                                </Grid>
+                                            </Grid>
+                                        </AccordionSummary>
+                                        <AccordionDetails>
+                                            <div className={classes.root}>
+                                                {entry.definition && (
+                                                    entry.definition.map((def, index2) => (
+                                                        <div key={index2}>
+                                                            <Typography>
                                                                 <span className="rIOrange">
-                                                                    &nbsp;-
+                                                                    &emsp;[&ensp;
                                                                 </span>
                                                                 <span className="text-muted">
-                                                                    &nbsp;
-                                                                    {'{'}
-                                                                    &nbsp;
+                                                                    "
                                                                     {entry.word}
-                                                                    :
-                                                                    {entry.defid}
-                                                                    &nbsp;
-                                                                    {'}'}
-                                                                </span>
-                                                            </strong>
-                                                        </Typography>
-                                                    </Grid>
-                                                    <Grid
-                                                        item
-                                                        xs={3}
-                                                        className="mgTxtRight"
-                                                    >
-                                                        <Typography>
-                                                            <strong className="mgSmFont">
-                                                                <span className="cdTooltip">
-                                                                    <span className="text-success">
-                                                                        👍&nbsp;
-                                                                        <span className="cdTooltipText">
-                                                                            <i>
-                                                                                Likes!
-                                                                            </i>
-                                                                        </span>
-                                                                    </span>
-                                                                    <span className="rIPurple">
-                                                                        {entry.thumbs_up}
-                                                                    </span>
+                                                                    "
                                                                 </span>
                                                                 <span className="rIOrange">
-                                                                    &nbsp;:&nbsp;
+                                                                    &ensp;]
                                                                 </span>
-                                                                <span className="cdTooltip">
-                                                                    <span className=" text-danger">
-                                                                        👎&nbsp;
-                                                                        <span className="cdTooltipText">
-                                                                            <i>
-                                                                                Dislikes!
-                                                                            </i>
+                                                                <br />
+                                                                <br />
+                                                                <strong>
+                                                                    {index2 + 1}
+                                                                    :
+                                                                </strong>
+                                                                &emsp;
+                                                                {def}
+                                                                <br />
+                                                                <br />
+                                                                {(entry.example && entry.example[index2]) && (
+                                                                    <i>
+                                                                        <span className="rIOrange">
+                                                                            &emsp;&emsp;*&ensp;
                                                                         </span>
-                                                                    </span>
-                                                                    <span className="rIPurple">
-                                                                        {entry.thumbs_down}
-                                                                    </span>
-                                                                </span>
-                                                            </strong>
-                                                        </Typography>
-                                                    </Grid>
-                                                </Grid>
-                                            </AccordionSummary>
-                                            <AccordionDetails>
-                                                <div className={classes.root}>
-                                                    {entry.definition && (
-                                                        entry.definition.map((def, index2) => (
-                                                            <div key={index2}>
-                                                                <Typography>
-                                                                    <span className="rIOrange">
-                                                                        &emsp;[&ensp;
-                                                                    </span>
-                                                                    <span className="text-muted">
-                                                                        "
-                                                                        {entry.word}
-                                                                        "
-                                                                    </span>
-                                                                    <span className="rIOrange">
-                                                                        &ensp;]
-                                                                    </span>
-                                                                    <br />
-                                                                    <br />
-                                                                    <strong>
-                                                                        {index2 + 1}
-                                                                        :
-                                                                    </strong>
-                                                                    &emsp;
-                                                                    {def}
-                                                                    <br />
-                                                                    <br />
-                                                                    {(entry.example && entry.example[index2]) && (
-                                                                        <i>
-                                                                            <span className="rIOrange">
-                                                                                &emsp;&emsp;*&ensp;
+                                                                        <span className="rIPurple">
+                                                                            e.g.,&nbsp;
+                                                                        </span>
+                                                                        <strong>
+                                                                            <span className="text-muted">
+                                                                                &nbsp;...&ensp;
+                                                                                {entry.example[index2]}
+                                                                                &nbsp;
                                                                             </span>
-                                                                            <span className="rIPurple">
-                                                                                e.g.,&nbsp;
-                                                                            </span>
-                                                                            <strong>
-                                                                                <span className="text-muted">
-                                                                                    &nbsp;...&ensp;
-                                                                                    {entry.example[index2]}
-                                                                                    &nbsp;
-                                                                                </span>
-                                                                                <br />
-                                                                                <br />
-                                                                            </strong>
-                                                                        </i>
-                                                                    )}
-                                                                </Typography>
-                                                                {(entry.definition.indexOf(def) < (entry.definition.length - 1)) && (
-                                                                    <Divider
-                                                                        variant="fullWidth"
-                                                                        className={classes.divider}
-                                                                    />
+                                                                            <br />
+                                                                            <br />
+                                                                        </strong>
+                                                                    </i>
                                                                 )}
-                                                            </div>
-                                                        ))
-                                                    )}
-                                                </div>
-                                            </AccordionDetails>
-                                        </Accordion>
-                                    ))
-                                )}
+                                                            </Typography>
+                                                            {(entry.definition.indexOf(def) < (entry.definition.length - 1)) && (
+                                                                <Divider
+                                                                    variant="fullWidth"
+                                                                    className={classes.divider}
+                                                                />
+                                                            )}
+                                                        </div>
+                                                    ))
+                                                )}
+                                            </div>
+                                        </AccordionDetails>
+                                    </Accordion>
+                                ))}
                             </>
                         )}
                         {!loaded && (

@@ -44,7 +44,7 @@ const FavoritesNew = props => {
     // returns a material UI accordion component displaying the user's favorites list
     return (
         <div className={classes.root}>
-            <Accordion className="rIWOTDAccordion">
+            <Accordion className="rIWotdAccordion">
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -63,31 +63,29 @@ const FavoritesNew = props => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <div className={classes.root}>
-                        {favsSorted.length > 0 && (
-                            <ul className="inlineList">
-                                {favsSorted.map((word, index) => (
-                                    <li key={index} className="mgInlineBlock">
-                                        <Typography>
-                                            &nbsp;
-                                            <Link to={"/search/" + word.replace(/\//g, '%2F')}>
-                                                <i>
-                                                    <span className="rIPurple mgWordBreak">
-                                                        {word.replace(/%2f/g, '/')}
-                                                    </span>
-                                                </i>
-                                            </Link>
-                                            {(favsSorted.indexOf(word) !== (favsSorted.length - 1)) && (
-                                                <strong>
-                                                    <span className="rIOrange">
-                                                        &nbsp;|&nbsp;
-                                                    </span>
-                                                </strong>
-                                            )}
-                                        </Typography>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
+                        <ul className="inlineList">
+                            {favsSorted?.map((word, index) => (
+                                <li key={index} className="mgInlineBlock">
+                                    <Typography>
+                                        &nbsp;
+                                        <Link to={"/search/" + word.replace(/\//g, '%2F')}>
+                                            <i>
+                                                <span className="rIPurple mgWordBreak">
+                                                    {word.replace(/%2f/g, '/')}
+                                                </span>
+                                            </i>
+                                        </Link>
+                                        {(favsSorted.indexOf(word) !== (favsSorted.length - 1)) && (
+                                            <strong>
+                                                <span className="rIOrange">
+                                                    &nbsp;|&nbsp;
+                                                </span>
+                                            </strong>
+                                        )}
+                                    </Typography>
+                                </li>
+                            ))}
+                        </ul>
                         {favsSorted.length === 0 && (
                             <Typography className="text-danger mgWordBreak">
                                 <strong>

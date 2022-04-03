@@ -99,21 +99,19 @@ const LoginForm = props => {
                 >
                     <Grid
                         container
-                        justify="center"
+                        justifyContent="center"
                     >
                         <Grid item>
-                            {errors.length > 0 && (
-                                errors.map((err, index) => (
-                                    <Typography
-                                        className="text-danger"
-                                        key={index}
-                                    >
-                                        <strong>
-                                            {err}
-                                        </strong>
-                                    </Typography>
-                                )
-                                ))}
+                            {errors.map((err, index) => (
+                                <Typography
+                                    className="text-danger"
+                                    key={index}
+                                >
+                                    <strong>
+                                        {err}
+                                    </strong>
+                                </Typography>
+                            ))}
                         </Grid>
                     </Grid>
                     <TextField
@@ -157,7 +155,7 @@ const LoginForm = props => {
                     <br />
                     <Grid
                         container
-                        justify="flex-end"
+                        justifyContent="flex-end"
                     >
                         <Link
                             to="/register"
@@ -173,7 +171,7 @@ const LoginForm = props => {
                     <hr />
                     <Grid
                         container
-                        justify="flex-end"
+                        justifyContent="flex-end"
                     >
                         <Link
                             to={"/"}

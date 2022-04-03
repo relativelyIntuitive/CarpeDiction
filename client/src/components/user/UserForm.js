@@ -123,11 +123,10 @@ const UserForm = props => {
                     >
                         <Grid
                             container
-                            justify="center"
+                            justifyContent="center"
                         >
                             <Grid item>
-                                {errors.length > 0 && (
-                                    errors.map((err, index) => (
+                                    {errors?.map((err, index) => (
                                         <Typography
                                             className="text-danger"
                                             key={index}
@@ -136,7 +135,6 @@ const UserForm = props => {
                                                 {err}
                                             </strong>
                                         </Typography>
-                                    )
                                     ))}
                             </Grid>
                         </Grid>
@@ -282,7 +280,7 @@ const UserForm = props => {
                         <>
                             <Grid
                                 container
-                                justify="flex-end"
+                                justifyContent="flex-end"
                             >
                                 <Link
                                     to="/login"
@@ -298,7 +296,7 @@ const UserForm = props => {
                             <hr />
                             <Grid
                                 container
-                                justify="flex-end"
+                                justifyContent="flex-end"
                             >
                                 <Link
                                     to={"/"}
@@ -318,7 +316,7 @@ const UserForm = props => {
                             <hr />
                             <Grid
                                 container
-                                justify="center"
+                                justifyContent="center"
                             >
                                 <Button
                                     size="md"

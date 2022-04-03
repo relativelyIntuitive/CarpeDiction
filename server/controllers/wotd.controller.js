@@ -1,17 +1,17 @@
-const WOTD = require("../models/wotd.model");
+const Wotd = require("../models/wotd.model");
 
 
 
 // creates a WOTD entry
 module.exports.add = (req, res) => {
-    WOTD.findOne({ word: req.body.word })
+    Wotd.findOne({ word: req.body.word })
         .then(word => {
             if (word === null) {
-                WOTD.create(req.body)
+                Wotd.create(req.body)
                     .then(wotdNew => {
                         res.json({
                             msg: "WOTD saved successfully!",
-                            WOTD: {
+                            Wotd: {
                                 _id: wotdNew._id,
                                 word: wotdNew.word,
                                 def: wotdNew.def,
@@ -31,10 +31,10 @@ module.exports.add = (req, res) => {
 
 // retrieves newest WOTD
 module.exports.latest = (req, res) => {
-    WOTD.findOne({}).sort({ _id: -1 }).limit(1)
+    Wotd.findOne({}).sort({ _id: -1 }).limit(1)
         .then(wotd => res.json({
             msg: "WOTD retrieved successfully!",
-            WOTD: {
+            Wotd: {
                 _id: wotd._id,
                 word: wotd.word,
                 def: wotd.def,
@@ -46,7 +46,7 @@ module.exports.latest = (req, res) => {
 
 // retrieves archive of WOTD
 module.exports.archive = (req, res) => {
-    WOTD.find({}).sort({ _id: -1 }).limit(31)
+    Wotd.find({}).sort({ _id: -1 }).limit(31)
         .then(archive => res.json({
             msg: "Archive retrieved successfully!",
             Archive: archive,

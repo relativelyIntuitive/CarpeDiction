@@ -31,7 +31,6 @@ function App() {
     const [audioLoaded, setAudioLoaded] = useState(false);
     const [syllables, setSyllables] = useState("");
 
-
     // hook to update logged User in sessionStorage when the state changes
     useEffect(() => {
         sessionStorage.setItem('logged', JSON.stringify(logged));

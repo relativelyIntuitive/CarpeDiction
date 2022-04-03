@@ -7,8 +7,8 @@ import Comments from '../components/search/Comments';
 // disabled for now due to 429 error...retry in a month or so maybe a bad useEffect ran up the limit...
 // import DeepTrans from '../components/Results/DeepTrans';
 import LinguaConj from '../components/search/LinguaConj';
-import MWDictRes from '../components/search/MWDictRes';
-import MWThesRes from '../components/search/MWThesRes';
+import MwDictRes from '../components/search/MwDictRes';
+import MwThesRes from '../components/search/MwThesRes';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
 import UrbanDict from '../components/search/UrbanDict';
@@ -53,7 +53,9 @@ const Search = props => {
         setLogged,
         query,
         audioLoaded,
-        setAudioLoaded } = props;
+        setAudioLoaded,
+        syllables,
+        setSyllables } = props;
 
     // generates CSS rulesets
     const classes = useStyles();
@@ -66,7 +68,6 @@ const Search = props => {
     const [wavs, setWavs] = useState({});
     const [headWords, setHeadWords] = useState([]);
     const [spellings, setSpellings] = useState([]);
-    const [syllables, setSyllables] = useState("");
     const [loaded, setLoaded] = useState(true);
 
     const encQuery = query.toLowerCase();
@@ -90,7 +91,7 @@ const Search = props => {
                 let entry = res.data;
                 let resSyllables = "";
                 // retrieve syllable data
-                if (entry.syllables && entry.syllables.list) {
+                if (entry?.syllables?.list.length > 0) {
                     for (let i = 0; i < entry.syllables.list.length; i++) {
                         if (i !== entry.syllables.list.length - 1 && res.data.syllables.list[i + 1] !== "") {
                             resSyllables += (res.data.syllables.list[i] + ' * ');
@@ -170,7 +171,7 @@ const Search = props => {
                             decQuery={decQuery}
                             query={query}
                         />
-                        <MWDictRes
+                        <MwDictRes
                             query={decQuery}
                             setIsOffensive={setIsOffensive}
                             setNotOffensive={setNotOffensive}
@@ -184,7 +185,7 @@ const Search = props => {
                             setHeadWords={setHeadWords}
                             setSpellings={setSpellings}
                         />
-                        <MWThesRes query={decQuery} />
+                        <MwThesRes query={decQuery} />
                         <UrbanDict query={decQuery} />
                         <WordsApiRhymes query={decQuery} />
                         <LinguaConj query={decQuery} />

@@ -203,18 +203,16 @@ const Comments = props => {
                             onChange={handleInputChange}
                             value={newComment.content}
                         />
-                        {errors.length > 0 && (
-                            errors.map((err, index) => (
-                                <Typography
-                                    className="text-danger resHeading"
-                                    key={index}
-                                >
-                                    <strong>
-                                        {err}
-                                    </strong>
-                                </Typography>
-                            ))
-                        )}
+                        {errors?.map((err, index) => (
+                            <Typography
+                                className="text-danger resHeading"
+                                key={index}
+                            >
+                                <strong>
+                                    {err}
+                                </strong>
+                            </Typography>
+                        ))}
                         <Button
                             type="submit"
                             variant="contained"
@@ -276,10 +274,7 @@ const Comments = props => {
                 )}
                 {topLoaded && (
                     <>
-                        {topComments.length > 0 && (
-                            <>
-                                {
-                                    topComments.map((topComment, index) => {
+                                {topComments?.map((topComment, index) => {
                                         return (
                                             <div key={index}>
                                                 <h5 className={classes.heading}>
@@ -304,7 +299,7 @@ const Comments = props => {
                                                     <br />
                                                     <Grid
                                                         container
-                                                        justify="space-between"
+                                                        justifyContent="space-between"
                                                         alignItems="center"
                                                     >
                                                         <Grid
@@ -392,148 +387,141 @@ const Comments = props => {
                                                 />
                                             </div>
                                         )
-                                    })
-                                }
-                            </>
-                        )}
+                                    })}
                     </>
                 )}
                 {allLoaded && (
                     <>
-                        {comments.length > 0 && (
-                            <>
-                                <Typography className="rIPurple resHeading">
-                                    <strong>
-                                        <i>
-                                            <u>
-                                                Latest comments for "
-                                                <span className="mgWordBreak">
-                                                    {query}
-                                                </span>
-                                                "
-                                            </u>
+                        <Typography className="rIPurple resHeading">
+                            <strong>
+                                <i>
+                                    <u>
+                                        Latest comments for "
+                                        <span className="mgWordBreak">
+                                            {query}
+                                        </span>
+                                        "
+                                    </u>
+                                </i>
+                            </strong>
+                        </Typography>
+                        <br />
+                        {comments.map((comment, index) => {
+                            return (
+                                <div key={index}>
+                                    <h5 className={classes.heading}>
+                                        <span className="qQuotes">
+                                            &ensp;@
+                                        </span>
+                                        <i className="rIPurple">
+                                            {comment.user && (
+                                                comment.user.userName
+                                            )}
+                                            {!comment.user && (
+                                                <>
+                                                    [DELETED]
+                                                </>
+                                            )}
                                         </i>
-                                    </strong>
-                                </Typography>
-                                <br />
-                                {comments.map((comment, index) => {
-                                    return (
-                                        <div key={index}>
-                                            <h5 className={classes.heading}>
-                                                <span className="qQuotes">
-                                                    &ensp;@
-                                                </span>
-                                                <i className="rIPurple">
-                                                    {comment.user && (
-                                                        comment.user.userName
-                                                    )}
-                                                    {!comment.user && (
-                                                        <>
-                                                            [DELETED]
-                                                        </>
-                                                    )}
-                                                </i>
-                                            </h5>
-                                            <p className="cdParagraph">
-                                                &emsp;&emsp;
-                                                {comment.content}
-                                                <br />
-                                                <br />
-                                                <Grid
-                                                    container
-                                                    justify="space-between"
-                                                    alignItems="center"
-                                                >
-                                                    <Grid
-                                                        item
-                                                        xs={6}
+                                    </h5>
+                                    <p className="cdParagraph">
+                                        &emsp;&emsp;
+                                        {comment.content}
+                                        <br />
+                                        <br />
+                                        <Grid
+                                            container
+                                            justifyContent="space-between"
+                                            alignItems="center"
+                                        >
+                                            <Grid
+                                                item
+                                                xs={6}
+                                            >
+                                                {comment.createdAt && (
+                                                    <i className="text-muted">
+                                                        ~
+                                                        {comment.createdAt.split("T")[0]}
+                                                    </i>
+                                                )}
+                                            </Grid>
+                                            <Grid
+                                                item
+                                                xs={6}
+                                                className="mgTxtRight"
+                                            >
+                                                <Typography className="rIPurple">
+                                                    <strong>
+                                                        <i>
+                                                            {comment.likers && (
+                                                                comment.likers.length
+                                                            )}
+                                                            &nbsp;Likes
+                                                        </i>
+                                                    </strong>
+                                                </Typography>
+                                                {(logged !== null) && (comment.user) && (comment.user.userName === logged.userName) && (
+                                                    <DeleteButton
+                                                        envUrl={envUrl}
+                                                        buttFunc={'comment'}
+                                                        comment={comment}
+                                                    />
+                                                )}
+                                                {(logged !== null) && (comment.user) && (comment.user.userName !== logged.userName) && (comment.likers) && (!comment.likers.includes(logged._id)) && (
+                                                    <Button
+                                                        variant="outline-warning"
+                                                        className="cdLikeIcon"
+                                                        onClick={() => handleLikes(comment)}
                                                     >
-                                                        {comment.createdAt && (
-                                                            <i className="text-muted">
-                                                                ~
-                                                                {comment.createdAt.split("T")[0]}
-                                                            </i>
-                                                        )}
-                                                    </Grid>
-                                                    <Grid
-                                                        item
-                                                        xs={6}
-                                                        className="mgTxtRight"
+                                                        <img
+                                                            src={like_icon_purple}
+                                                            width=""
+                                                            height="25"
+                                                            className="d-inline-block mr-sm-1 cdTitle"
+                                                            alt="Like!"
+                                                        />
+                                                    </Button>
+                                                )}
+                                                {(logged !== null) && (comment.user) && (comment.user.userName !== logged.userName) && (comment.likers) && (comment.likers.includes(logged._id)) && (
+                                                    <Button
+                                                        variant="outline-warning"
+                                                        className="cdLikeIcon"
+                                                        onClick={() => handleLikes(comment)}
                                                     >
-                                                        <Typography className="rIPurple">
-                                                            <strong>
-                                                                <i>
-                                                                    {comment.likers && (
-                                                                        comment.likers.length
-                                                                    )}
-                                                                    &nbsp;Likes
-                                                                </i>
-                                                            </strong>
-                                                        </Typography>
-                                                        {(logged !== null) && (comment.user) && (comment.user.userName === logged.userName) && (
-                                                            <DeleteButton
-                                                                envUrl={envUrl}
-                                                                buttFunc={'comment'}
-                                                                comment={comment}
-                                                            />
-                                                        )}
-                                                        {(logged !== null) && (comment.user) && (comment.user.userName !== logged.userName) && (comment.likers) && (!comment.likers.includes(logged._id)) && (
-                                                            <Button
-                                                                variant="outline-warning"
-                                                                className="cdLikeIcon"
-                                                                onClick={() => handleLikes(comment)}
-                                                            >
-                                                                <img
-                                                                    src={like_icon_purple}
-                                                                    width=""
-                                                                    height="25"
-                                                                    className="d-inline-block mr-sm-1 cdTitle"
-                                                                    alt="Like!"
-                                                                />
-                                                            </Button>
-                                                        )}
-                                                        {(logged !== null) && (comment.user) && (comment.user.userName !== logged.userName) && (comment.likers) && (comment.likers.includes(logged._id)) && (
-                                                            <Button
-                                                                variant="outline-warning"
-                                                                className="cdLikeIcon"
-                                                                onClick={() => handleLikes(comment)}
-                                                            >
-                                                                <img
-                                                                    src={like_icon_orange}
-                                                                    width=""
-                                                                    height="25"
-                                                                    className="d-inline-block mr-sm-1 cdTitle"
-                                                                    alt="Unlike!"
-                                                                />
-                                                            </Button>
-                                                        )}
-                                                        {logged === null && (
-                                                            <Button
-                                                                variant="outline-warning"
-                                                                className="cdLikeIcon"
-                                                                onClick={() => navigate("/login")}
-                                                            >
-                                                                <img
-                                                                    src={like_icon_purple}
-                                                                    width=""
-                                                                    height="25"
-                                                                    className="d-inline-block mr-sm-1 cdTitle"
-                                                                    alt="Like!!"
-                                                                />
-                                                            </Button>
-                                                        )}
-                                                    </Grid>
-                                                </Grid>
-                                            </p>
-                                            <Divider
-                                                variant="fullWidth"
-                                                className={classes.divider}
-                                            />
-                                        </div>
-                                    )
-                                })}
-                            </>
-                        )}
+                                                        <img
+                                                            src={like_icon_orange}
+                                                            width=""
+                                                            height="25"
+                                                            className="d-inline-block mr-sm-1 cdTitle"
+                                                            alt="Unlike!"
+                                                        />
+                                                    </Button>
+                                                )}
+                                                {logged === null && (
+                                                    <Button
+                                                        variant="outline-warning"
+                                                        className="cdLikeIcon"
+                                                        onClick={() => navigate("/login")}
+                                                    >
+                                                        <img
+                                                            src={like_icon_purple}
+                                                            width=""
+                                                            height="25"
+                                                            className="d-inline-block mr-sm-1 cdTitle"
+                                                            alt="Like!!"
+                                                        />
+                                                    </Button>
+                                                )}
+                                            </Grid>
+                                        </Grid>
+                                    </p>
+                                    <Divider
+                                        variant="fullWidth"
+                                        className={classes.divider}
+                                    />
+                                </div>
+                            )
+                        })}
                     </>
                 )}
             </Paper>

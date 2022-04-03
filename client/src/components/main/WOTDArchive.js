@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-// WOTDArchive retrieves the archive of all previous WOTDs
-const WOTDArchive = props => {
+// WotdArchive retrieves the archive of all previous WOTDs
+const WotdArchive = props => {
 
     // retrieves state variables from props
     const {envUrl} = props;
@@ -58,7 +58,7 @@ const WOTDArchive = props => {
     // returns a material UI accordion component displaying the WOTD archive
     return (
         <div className={classes.root}>
-            <Accordion className="rIWOTDAccordion">
+            <Accordion className="rIWotdAccordion">
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -67,9 +67,7 @@ const WOTDArchive = props => {
                     <Typography className={classes.heading}>
                         <strong>
                             <i>
-                                <u>
-                                    WOTD Monthly Archive
-                                </u>
+                                Recent words...
                             </i>
                         </strong>
                     </Typography>
@@ -78,31 +76,29 @@ const WOTDArchive = props => {
                     <div className={classes.root}>
                         {loaded && (
                             <>
-                                {words.length > 0 && (
-                                    <ul className="inlineList">
-                                        {words.map((word, index) => (
-                                            <li key={index} className="mgInlineBlock">
-                                                <Typography>
-                                                    &nbsp;
-                                                    <Link to={"/search/" + words[index].word}>
-                                                        <i>
-                                                            <span className="rIPurple">
-                                                                {word.word}
-                                                            </span>
-                                                        </i>
-                                                    </Link>
-                                                    {(words.indexOf(word) !== (words.length - 1)) && (
-                                                        <strong>
-                                                            <span className="rIOrange">
-                                                                &ensp;|&nbsp;
-                                                            </span>
-                                                        </strong>
-                                                    )}
-                                                </Typography>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
+                                <ul className="inlineList">
+                                    {words?.map((word, index) => (
+                                        <li key={index} className="mgInlineBlock">
+                                            <Typography>
+                                                &nbsp;
+                                                <Link to={"/search/" + words[index].word}>
+                                                    <i>
+                                                        <span className="rIPurple">
+                                                            {word.word}
+                                                        </span>
+                                                    </i>
+                                                </Link>
+                                                {(words.indexOf(word) !== (words.length - 1)) && (
+                                                    <strong>
+                                                        <span className="rIOrange">
+                                                            &ensp;|&nbsp;
+                                                        </span>
+                                                    </strong>
+                                                )}
+                                            </Typography>
+                                        </li>
+                                    ))}
+                                </ul>
                             </>
                         )}
                     </div>
@@ -113,4 +109,4 @@ const WOTDArchive = props => {
 }
 
 
-export default WOTDArchive;
+export default WotdArchive;

@@ -119,7 +119,7 @@ const Links = () => {
                             className="flatLinkRedirect"
                             style={{ textDecoration: "none" }}
                         >
-                            &gt; My youtube library &lt;
+                            &gt; My YouTube library &lt;
                             <br />
                             (Music/Misc.)
                         </Link>

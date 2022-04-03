@@ -155,20 +155,18 @@ const ImportExportFavs = props => {
                         onChange={handleInputChange}
                         value={imports}
                     />
-                    {importErrors.length > 0 && (
-                        importErrors.map((err, index) => (
-                            <Typography
-                                className="text-danger resHeading"
-                                key={index}
-                            >
-                                <strong>
-                                    <i>
-                                        {err}
-                                    </i>
-                                </strong>
-                            </Typography>
-                        ))
-                    )}
+                    {importErrors?.map((err, index) => (
+                        <Typography
+                            className="text-danger resHeading"
+                            key={index}
+                        >
+                            <strong>
+                                <i>
+                                    {err}
+                                </i>
+                            </strong>
+                        </Typography>
+                    ))}
                     <Button
                         type="submit"
                         variant="contained"
@@ -204,20 +202,18 @@ const ImportExportFavs = props => {
                         </strong>
                     </Typography>
                     <br />
-                    {exportErrors.length > 0 && (
-                        exportErrors.map((err, index) => (
-                            <Typography
-                                className="text-danger resHeading"
-                                key={index}
-                            >
-                                <strong>
-                                    <i>
-                                        {err}
-                                    </i>
-                                </strong>
-                            </Typography>
-                        ))
-                    )}
+                    {exportErrors?.map((err, index) => (
+                        <Typography
+                            className="text-danger resHeading"
+                            key={index}
+                        >
+                            <strong>
+                                <i>
+                                    {err}
+                                </i>
+                            </strong>
+                        </Typography>
+                    ))}
                     <Button
                         type="submit"
                         variant="contained"

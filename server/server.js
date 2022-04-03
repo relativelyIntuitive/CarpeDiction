@@ -36,20 +36,20 @@ require('./routes/comment.routes')(app);
 
 // scrapes a random WOTD every 24 hours and saves it to the db
 setInterval(
-    function getWOTD() {
-        const WOTD = {};
+    function getWotd() {
+        const Wotd = {};
 
         // axios.get('http://randomword.com/')
         axios.get('https://www.merriam-webster.com/word-of-the-day')
             .then(res => {
                 const html = res.data;
                 const $ = cheerio.load(html);
-                // WOTD.word = $('#random_word').text().trim();
-                // WOTD.def = $('#random_word_definition').text().trim();
-                WOTD.word = $("h1:first").text().trim();
-                WOTD.def = "";
-                console.log(WOTD);
-                axios.post(`${process.env.API_ROOT}/api/wotd/add`, WOTD)
+                // Wotd.word = $('#random_word').text().trim();
+                // Wotd.def = $('#random_word_definition').text().trim();
+                Wotd.word = $("h1:first").text().trim();
+                Wotd.def = "";
+                console.log(Wotd);
+                axios.post(`${process.env.API_ROOT}/api/wotd/add`, Wotd)
                     .then(res => console.log(res.data))
                     .catch(err => console.log(err));
             })

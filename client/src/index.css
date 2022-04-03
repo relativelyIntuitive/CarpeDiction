@@ -132,13 +132,13 @@
         text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
     }
 
-.flatLinkWOTD {
+.flatLinkWotd {
     color: #800080!important;
     text-decoration: none;
     font-size: larger;
 }
 
-    .flatLinkWOTD:hover {
+    .flatLinkWotd:hover {
         text-decoration: none;
         color: #ffa500!important;
         text-shadow: -1px 0 #0d0d0e, 0 1px #0d0d0e, 1px 0 #0d0d0e, 0 -1px #0d0d0e;
@@ -240,7 +240,7 @@
         margin-bottom: 0.3rem;
     }
 
-.rIWOTDAccordion {
+.rIWotdAccordion {
     border: 2px solid #800080!important;
     margin-top: 0.16rem;
     background-color: #ffe2af!important;
@@ -259,13 +259,13 @@
         margin-bottom: 0.3rem;
     }
 
-.rIWOTDAccordion {
+.rIWotdAccordion {
     border: 2px solid #800080!important;
     margin-top: 0.16rem;
     background-color: #ffe2af!important;
 }
 
-    .rIWOTDAccordion:hover {
+    .rIWotdAccordion:hover {
         border: 3px solid #ffa500!important;
         margin-top: 0.3rem;
     }

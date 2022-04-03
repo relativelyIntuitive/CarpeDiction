@@ -111,32 +111,30 @@ const ResultsHeading = props => {
                 headWords={headWords}
                 spellings={spellings}
             />
-            {pronunciations.length > 0 && (
-                <ul className="inlineList topList">
-                    {pronunciations.map((variant, index) => (
-                        <li
-                            key={index}
-                            className="mgInlineBlock"
-                        >
-                            <h3 className="text-info">
-                                <strong>
-                                    <i>
-                                        \&nbsp;
-                                        {variant}
-                                        &nbsp;
-                                        {(pronunciations.indexOf(variant) === (pronunciations.length - 1)) && (
-                                            <>
-                                                \
-                                            </>
-                                        )}
-                                    </i>
-                                </strong>
-                            </h3>
-                        </li>
-                    ))}
-                </ul>
-            )}
-            {(loaded && syllables.length > 0) && (
+            <ul className="inlineList topList" style={{marginBottom: '1rem!important'}}>
+                {pronunciations?.map((variant, index) => (
+                    <li
+                        key={index}
+                        className="mgInlineBlock"
+                    >
+                        <h3 className="text-info">
+                            <strong>
+                                <i>
+                                    \&nbsp;
+                                    {variant}
+                                    &nbsp;
+                                    {(pronunciations.indexOf(variant) === (pronunciations.length - 1)) && (
+                                        <>
+                                            \
+                                        </>
+                                    )}
+                                </i>
+                            </strong>
+                        </h3>
+                    </li>
+                ))}
+            </ul>
+            {(loaded && syllables?.length > 0) && (
                 <>
                     <h2>
                         <strong className="text-muted">
@@ -150,14 +148,10 @@ const ResultsHeading = props => {
                     <br />
                 </>
             )}
-            {(audioLoaded && ((mp3s && Object.keys(mp3s).length > 0) || (wavs && Object.keys(wavs).length > 0))) && (
+            {(audioLoaded && mp3s && ((Object?.keys(mp3s)?.length > 0) || (Object?.keys(wavs)?.length > 0))) && (
                 <audio controls className="rIAudio">
-                    {(mp3s && Object.keys(mp3s).length > 0) && (
-                        <source src={mp3s[Object.keys(mp3s)[0]]} type="audio/mpeg" />
-                    )}
-                    {(wavs && Object.keys(wavs).length > 0) && (
-                        <source src={[Object.keys(wavs)[0]]} type="audio/wav" />
-                    )}
+                    <source src={mp3s[Object?.keys(mp3s)[0]]} type="audio/mpeg" />
+                    <source src={[Object.keys(wavs)[0]]} type="audio/wav" />
                     Your browser does not support the audio element!
                 </audio>
             )}

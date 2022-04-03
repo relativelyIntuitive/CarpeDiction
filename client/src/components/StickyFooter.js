@@ -18,12 +18,12 @@ const StickyFooter = () => {
         <footer className="sFooter">
             <CssBaseline />
             <Grid container
-                justify="space-between"
+                justifyContent="space-between"
                 alignItems="center"
             >
                 <Grid container
                     item
-                    justify="flex-start"
+                    justifyContent="flex-start"
                     alignItems="center"
                     xs={6}
                 >
@@ -31,7 +31,7 @@ const StickyFooter = () => {
                 </Grid>
                 <Grid container
                     item
-                    justify="flex-end"
+                    justifyContent="flex-end"
                     alignItems="center"
                     xs={6}
                 >

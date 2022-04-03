@@ -1,7 +1,11 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "CarpeDiction.com backend API",
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/carpe-diction.git"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -21,7 +25,8 @@
     "mongoose": "^5.13.9",
     "node-pre-gyp": "^0.17.0",
     "nodejs": "0.0.0",
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "tar": "^6.1.11"
   },
   "engines": {
     "npm": "6.x",

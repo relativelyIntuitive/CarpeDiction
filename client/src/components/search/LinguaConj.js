@@ -93,7 +93,7 @@ const LinguaCons = props => {
                 >
                     <Grid
                         container
-                        justify="space-between"
+                        justifyContent="space-between"
                         alignItems="center"
                     >
                         <Grid
