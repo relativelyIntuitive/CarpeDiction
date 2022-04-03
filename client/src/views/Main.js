@@ -7,7 +7,7 @@ import Links from '../components/main/Links';
 import NavBar from '../components/NavBar';
 import StickyFooter from '../components/StickyFooter';
 import TipJars from '../components/main/TipJars';
-import WotdCard from '../components/main/WotdCard.js';
+import WotdCard from '../components/main/WotdCard';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Divider } from "@material-ui/core";
