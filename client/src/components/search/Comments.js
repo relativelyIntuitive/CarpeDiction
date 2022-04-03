@@ -46,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
 const Comments = props => {
 
     // retrieves search and logged variables from props
-    const { query,
+    const { envUrl,
+        query,
         logged } = props;
 
     // generates CSS rulesets
@@ -63,98 +64,53 @@ const Comments = props => {
 
     // retrieves all comments
     useEffect(() => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/retrieve/${query.replace(/\//g, '%2F')}`)
-                .then(res => {
-                    const resComments = res.data.comments;
-                    setComments(resComments);
-                    setAllLoaded(true);
-                });
-        } else {
-            axios.get(`http://localhost:8000/api/comments/retrieve/${query.replace(/\//g, '%2F')}`)
-                .then(res => {
-                    const resComments = res.data.comments;
-                    setComments(resComments);
-                    setAllLoaded(true);
-                });
-        }
-    }, [query, comments]);
+        axios.get(`${envUrl}/api/comments/retrieve/${query.replace(/\//g, '%2F')}`)
+            .then(res => {
+                const resComments = res.data.comments;
+                setComments(resComments);
+                setAllLoaded(true);
+            });
+    }, [query]);
 
     // retrieves the top comments
     useEffect(() => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.get(`${process.env.REACT_APP_API_ROOT}/api/comments/tops/${query.replace(/\//g, '%2F')}`)
-                .then(res => {
-                    const resTopComments = res.data.comments;
-                    setTopComments(resTopComments);
-                    setTopLoaded(true);
-                });
-        } else {
-            axios.get(`http://localhost:8000/api/comments/tops/${query.replace(/\//g, '%2F')}`)
-                .then(res => {
-                    const resTopComments = res.data.comments;
-                    setTopComments(resTopComments);
-                    setTopLoaded(true);
-                });
-        }
-    }, [query, topComments]);
+        axios.get(`${envUrl}/api/comments/tops/${query.replace(/\//g, '%2F')}`)
+            .then(res => {
+                const resTopComments = res.data.comments;
+                setTopComments(resTopComments);
+                setTopLoaded(true);
+            });
+    }, [query]);
 
     // posts a comment
     const postComment = comment => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.post(`${process.env.REACT_APP_API_ROOT}/api/comments/post/`, comment, { withCredentials: true })
-                .then(res => {
-                    setErrors([]);
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                    const errorResponse = err.response.data.errors;
-                    const errorArr = [];
-                    for (const key of Object.keys(errorResponse)) {
-                        errorArr.push(errorResponse[key].message)
-                    }
-                    setErrors(errorArr);
-                });
-        } else {
-            axios.post(`http://localhost:8000/api/comments/post/`, comment, { withCredentials: true })
-                .then(res => {
-                    setErrors([]);
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                    const errorResponse = err.response.data.errors;
-                    const errorArr = [];
-                    for (const key of Object.keys(errorResponse)) {
-                        errorArr.push(errorResponse[key].message)
-                    }
-                    setErrors(errorArr);
-                });
-        }
+        axios.post(`${envUrl}/api/comments/post/`, comment, { withCredentials: true })
+            .then(res => {
+                setErrors([]);
+                window.location.reload(false);
+            })
+            .catch(err => {
+                if (err.response.status === 401)
+                    navigate('/login');
+                const errorResponse = err.response.data.errors;
+                const errorArr = [];
+                for (const key of Object.keys(errorResponse)) {
+                    errorArr.push(errorResponse[key].message)
+                }
+                setErrors(errorArr);
+            });
     }
 
     // updates comments when liked
     const likeComment = comment => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.put(`${process.env.REACT_APP_API_ROOT}/api/comments/like/`, comment, { withCredentials: true })
-                .then(res => {
-                    setErrors([]);
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        } else {
-            axios.put(`http://localhost:8000/api/comments/like/`, comment, { withCredentials: true })
-                .then(res => {
-                    setErrors([]);
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        }
+        axios.put(`${envUrl}/api/comments/like/`, comment, { withCredentials: true })
+            .then(res => {
+                setErrors([]);
+            })
+            .catch(err => {
+                if (err.response.status === 401)
+                    navigate('/login');
+            });
     }
 
     // handler to update comment on input change
@@ -195,7 +151,7 @@ const Comments = props => {
         // like the comment
         likeComment(comment);
         // refresh page
-        navigate('/search/' + query);
+        navigate(`/search/${query}`);
     }
 
 
@@ -377,6 +333,7 @@ const Comments = props => {
                                                             </Typography>
                                                             {(logged !== null) && (topComment.user) && (topComment.user.userName === logged.userName) && (
                                                                 <DeleteButton
+                                                                    envUrl={envUrl}
                                                                     buttFunc={'comment'}
                                                                     comment={topComment}
                                                                 />
@@ -515,6 +472,7 @@ const Comments = props => {
                                                         </Typography>
                                                         {(logged !== null) && (comment.user) && (comment.user.userName === logged.userName) && (
                                                             <DeleteButton
+                                                                envUrl={envUrl}
                                                                 buttFunc={'comment'}
                                                                 comment={comment}
                                                             />

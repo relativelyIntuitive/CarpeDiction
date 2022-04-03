@@ -37,8 +37,9 @@ const useStyles = makeStyles((theme) => ({
 // Main view is the homepage
 const Main = props => {
 
-    // retrieves the logged state variables from props
-    const { logged,
+    // retrieves state variables from props
+    const { envUrl,
+        logged,
         setLogged,
         setAudioLoaded,
         setSyllables } = props;
@@ -57,6 +58,7 @@ const Main = props => {
         <div className={classes.root}>
             <CssBaseline />
             <NavBar
+                envUrl={envUrl}
                 logged={logged}
                 setLogged={setLogged}
                 setAudioLoaded={setAudioLoaded}
@@ -79,7 +81,7 @@ const Main = props => {
                                     </i>
                                 </strong>
                             </p>
-                            <WOTDCard />
+                            <WOTDCard envUrl={envUrl} />
                             <p className="cdInstructions">
                                 <strong>
                                     <i>

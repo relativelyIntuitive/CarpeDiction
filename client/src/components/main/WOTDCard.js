@@ -33,7 +33,10 @@ const useStyles = makeStyles({
 
 
 // WOTDCard retrieves and displays WOTD and archive accordion
-const WOTDCard = () => {
+const WOTDCard = props => {
+
+    // retrieves state variables from props
+    const {envUrl} = props;
 
     // generates CSS rulesets
     const classes = useStyles();
@@ -46,27 +49,15 @@ const WOTDCard = () => {
 
     // retrieves the WOTD data
     useEffect(() => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.get(`${process.env.REACT_APP_API_ROOT}/api/wotd/latest`)
-                .then(res => {
-                    console.log(res)
-                    const newWord = res.data.WOTD.word;
-                    // const newDef = res.data.WOTD.def;
-                    setWord(newWord);
-                    // setDef(newDef);
-                    setLoaded(true);
-                });
-        } else {
-            axios.get(`http://localhost:8000/api/wotd/latest`)
-                .then(res => {
-                    console.log(res)
-                    const newWord = res.data.WOTD.word;
-                    // const newDef = res.data.WOTD.def;
-                    setWord(newWord);
-                    // setDef(newDef);
-                    setLoaded(true);
-                });
-        }
+        axios.get(`${envUrl}/api/wotd/latest`)
+            .then(res => {
+                console.log(res)
+                const newWord = res.data.WOTD.word;
+                // const newDef = res.data.WOTD.def;
+                setWord(newWord);
+                // setDef(newDef);
+                setLoaded(true);
+            });
     }, [])
 
 
@@ -148,7 +139,7 @@ const WOTDCard = () => {
                     </strong>
                 </Link>
             </CardActions>
-            <WOTDArchive />
+            <WOTDArchive envUrl={envUrl} />
         </Card>
     );
 }

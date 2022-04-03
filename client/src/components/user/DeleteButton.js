@@ -10,8 +10,9 @@ import { Button } from 'react-bootstrap';
 // DeleteButton is a reusable button that deletes + logs out the current user
 const DeleteButton = props => {
 
-    // retrieves the logged state variables, comments if applicable and the buttons function from props
-    const { logged,
+    // retrieves the state variables from props
+    const { envUrl,
+        logged,
         setLogged,
         comment,
         buttFunc,
@@ -20,66 +21,37 @@ const DeleteButton = props => {
 
     // function to handle logouts
     const handleLogout = () => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
-                .then(res => {
-                    setLogged(null);
-                    navigate('/');
-                });
-        } else {
-            axios.get(`http://localhost:8000/api/logout`, { withCredentials: true })
-                .then(res => {
-                    setLogged(null);
-                    navigate('/');
-                });
-        }
+        axios.get(`${envUrl}/api/logout`, { withCredentials: true })
+            .then(res => {
+                setLogged(null);
+                navigate('/');
+            });
     };
 
 
     // deletes the User
     const deleteUser = e => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.delete(`${process.env.REACT_APP_API_ROOT}/api/users/${logged._id}`, { withCredentials: true })
-                .then(res => {
-                    handleLogout();
-                    successCallback();
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        } else {
-            axios.delete(`http://localhost:8000/api/users/${logged._id}`, { withCredentials: true })
-                .then(res => {
-                    handleLogout();
-                    successCallback();
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        }
+        axios.delete(`${envUrl}/api/users/${logged._id}`, { withCredentials: true })
+            .then(res => {
+                handleLogout();
+                successCallback();
+            })
+            .catch(err => {
+                if (err.response.status === 401)
+                    navigate('/login');
+            });
     };
 
     // deletes the Comment
     const deleteComment = e => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.delete(`${process.env.REACT_APP_API_ROOT}/api/comments/delete/${comment._id}`, { withCredentials: true })
-                .then(res => {
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        } else {
-            axios.delete(`http://localhost:8000/api/comments/delete/${comment._id}`, { withCredentials: true })
-                .then(res => {
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        }
+        axios.delete(`${envUrl}/api/comments/delete/${comment._id}`, { withCredentials: true })
+            .then(res => {
+                window.location.reload(false);
+            })
+            .catch(err => {
+                if (err.response.status === 401)
+                    navigate('/login');
+            });
     }
 
 

@@ -22,7 +22,8 @@ import Typography from '@material-ui/core/Typography';
 const NavBar = props => {
 
     // grabs logged state variables from props
-    const { logged,
+    const { envUrl,
+        logged,
         setLogged,
         setAudioLoaded,
         setSyllables } = props;
@@ -54,23 +55,14 @@ const NavBar = props => {
     // function to handle logouts
     const handleLogout = () => {
         navigate('/');
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.get(`${process.env.REACT_APP_API_ROOT}/api/logout`, { withCredentials: true })
+
+        axios.get(`${envUrl}/api/logout`, { withCredentials: true })
             .then(res => {
                 setLogged(null);
             })
             .catch(err => {
                 setLogged(null);
             });
-        } else {
-            axios.get(`http://localhost:8000/api/logout`, { withCredentials: true })
-            .then(res => {
-                setLogged(null);
-            })
-            .catch(err => {
-                setLogged(null);
-            });
-        }
     };
 
 

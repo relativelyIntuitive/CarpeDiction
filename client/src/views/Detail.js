@@ -39,8 +39,9 @@ const useStyles = makeStyles((theme) => ({
 // Detail view is for viewing account info
 const Detail = props => {
 
-    // retrieves the logged state variables from props
-    const { logged,
+    // retrieves state variables from props
+    const { envUrl,
+        logged,
         setLogged,
         setAudioLoaded,
         setSyllables } = props;
@@ -64,27 +65,15 @@ const Detail = props => {
 
     // retrieves the User data
     useEffect(() => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.get(`${process.env.REACT_APP_API_ROOT}/api/users/${localUser._id}`, { withCredentials: true })
-                .then(res => {
-                    setUser(res.data.user);
-                    setLoaded(true);
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        } else {
-            axios.get(`http://localhost:8000/api/users/${localUser._id}`, { withCredentials: true })
-                .then(res => {
-                    setUser(res.data.user);
-                    setLoaded(true);
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        }
+        axios.get(`${envUrl}/api/users/${localUser._id}`, { withCredentials: true })
+            .then(res => {
+                setUser(res.data.user);
+                setLoaded(true);
+            })
+            .catch(err => {
+                if (err.response.status === 401)
+                    navigate('/login');
+            });
     }, [localUser, logged]);
 
 
@@ -93,6 +82,7 @@ const Detail = props => {
         <div className={classes.root}>
             <CssBaseline />
             <NavBar
+                envUrl={envUrl}
                 logged={logged}
                 setLogged={setLogged}
                 setAudioLoaded={setAudioLoaded}
@@ -168,6 +158,7 @@ const Detail = props => {
                                         className={classes.divider}
                                     />
                                     <ImportExportFavs
+                                        envUrl={envUrl}
                                         user={user}
                                         setLogged={setLogged}
                                     />

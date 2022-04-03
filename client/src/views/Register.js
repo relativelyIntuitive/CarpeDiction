@@ -25,8 +25,9 @@ const useStyles = makeStyles((theme) => ({
 // Register view is for the registration version of the UserForm component 
 const Register = props => {
 
-    // retrieves the logged state variables from props
-    const { logged,
+    // retrieves state variables from props
+    const { envUrl,
+        logged,
         setLogged,
         setAudioLoaded,
         setSyllables } = props;
@@ -54,45 +55,24 @@ const Register = props => {
 
     // API post function; to be passed down to the RegForm
     const createUser = user => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.post(`${process.env.REACT_APP_API_ROOT}/api/register/`, user, { withCredentials: true })
-                .then(res => {
-                    if (res.data.user) {
-                        setLogged(res.data.user);
-                        // alert("* Please note that your account will remain logged in on this web browser until you manually log out!");
-                        navigate("/");
-                    } else {
-                        setErrors(res.data);
-                    }
-                })
-                .catch(err => {
-                    const errorResponse = err.response.data.errors;
-                    const errorArr = [];
-                    for (const key of Object.keys(errorResponse)) {
-                        errorArr.push(errorResponse[key].message)
-                    }
-                    setErrors(errorArr);
-                });
-        } else {
-            axios.post(`http://localhost:8000/api/register/`, user, { withCredentials: true })
-                .then(res => {
-                    if (res.data.user) {
-                        setLogged(res.data.user);
-                        // alert("* Please note that your account will remain logged in on this web browser until you manually log out!");
-                        navigate("/");
-                    } else {
-                        setErrors(res.data);
-                    }
-                })
-                .catch(err => {
-                    const errorResponse = err.response.data.errors;
-                    const errorArr = [];
-                    for (const key of Object.keys(errorResponse)) {
-                        errorArr.push(errorResponse[key].message)
-                    }
-                    setErrors(errorArr);
-                });
-        }
+        axios.post(`${envUrl}/api/register/`, user, { withCredentials: true })
+            .then(res => {
+                if (res.data.user) {
+                    setLogged(res.data.user);
+                    // alert("* Please note that your account will remain logged in on this web browser until you manually log out!");
+                    navigate("/");
+                } else {
+                    setErrors(res.data);
+                }
+            })
+            .catch(err => {
+                const errorResponse = err.response.data.errors;
+                const errorArr = [];
+                for (const key of Object.keys(errorResponse)) {
+                    errorArr.push(errorResponse[key].message)
+                }
+                setErrors(errorArr);
+            });
     };
 
 
@@ -101,6 +81,7 @@ const Register = props => {
         <div className={classes.root}>
             <CssBaseline />
             <NavBar
+                envUrl={envUrl}
                 logged={logged}
                 setLogged={setLogged}
                 setAudioLoaded={setAudioLoaded}

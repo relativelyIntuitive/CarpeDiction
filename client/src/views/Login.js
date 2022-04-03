@@ -25,8 +25,9 @@ const useStyles = makeStyles((theme) => ({
 // Login view is for the login form
 const Login = props => {
 
-    // retrieves the logged state variables from props
-    const { logged,
+    // retrieves state variables from props
+    const { envUrl,
+        logged,
         setLogged,
         setAudioLoaded,
         setSyllables } = props;
@@ -52,45 +53,24 @@ const Login = props => {
 
     // API post function; to be passed down to the LoginForm
     const loginUser = user => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.post(`${process.env.REACT_APP_API_ROOT}/api/login/`, user, { withCredentials: true })
-                .then(res => {
-                    if (res.data.user) {
-                        setLogged(res.data.user);
-                        // alert("* Please note that your account will remain logged in on this web browser until you manually log out!");
-                        navigate("/");
-                    } else {
-                        setErrors(res.data);
-                    }
-                })
-                .catch(err => {
-                    const errorResponse = err.response.data.errors;
-                    const errorArr = [];
-                    for (const key of Object.keys(errorResponse)) {
-                        errorArr.push(errorResponse[key].message)
-                    }
-                    setErrors(errorArr);
-                });
-        } else {
-            axios.post(`http://localhost:8000/api/login/`, user, { withCredentials: true })
-                .then(res => {
-                    if (res.data.user) {
-                        setLogged(res.data.user); 
-                        // alert("* Please note that your account will remain logged in on this web browser until you manually log out!");
-                        navigate("/");
-                    } else {
-                        setErrors(res.data);
-                    }
-                })
-                .catch(err => {
-                    const errorResponse = err.response.data.errors;
-                    const errorArr = [];
-                    for (const key of Object.keys(errorResponse)) {
-                        errorArr.push(errorResponse[key].message)
-                    }
-                    setErrors(errorArr);
-                });
-        }
+        axios.post(`${envUrl}/api/login/`, user, { withCredentials: true })
+            .then(res => {
+                if (res.data.user) {
+                    setLogged(res.data.user);
+                    // alert("* Please note that your account will remain logged in on this web browser until you manually log out!");
+                    navigate("/");
+                } else {
+                    setErrors(res.data);
+                }
+            })
+            .catch(err => {
+                const errorResponse = err.response.data.errors;
+                const errorArr = [];
+                for (const key of Object.keys(errorResponse)) {
+                    errorArr.push(errorResponse[key].message)
+                }
+                setErrors(errorArr);
+            });
     };
 
 
@@ -99,6 +79,7 @@ const Login = props => {
         <div className={classes.root}>
             <CssBaseline />
             <NavBar
+                envUrl={envUrl}
                 logged={logged}
                 setLogged={setLogged}
                 setAudioLoaded={setAudioLoaded}

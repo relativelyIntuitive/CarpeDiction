@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
 // WOTDArchive retrieves the archive of all previous WOTDs
 const WOTDArchive = props => {
 
+    // retrieves state variables from props
+    const {envUrl} = props;
+
     // generates CSS rulesets
     const classes = useStyles();
 
@@ -43,21 +46,12 @@ const WOTDArchive = props => {
 
     // retrieves the WOTD archive
     useEffect(() => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.get(`${process.env.REACT_APP_API_ROOT}/api/wotd/archive`)
-                .then(res => {
-                    const newWords = res.data.Archive;
-                    setWords(newWords);
-                    setLoaded(true);
-                });
-        } else {
-            axios.get(`http://localhost:8000/api/wotd/archive`)
-                .then(res => {
-                    const newWords = res.data.Archive;
-                    setWords(newWords);
-                    setLoaded(true);
-                });
-        }
+        axios.get(`${envUrl}/api/wotd/archive`)
+            .then(res => {
+                const newWords = res.data.Archive;
+                setWords(newWords);
+                setLoaded(true);
+            });
     }, []);
 
 

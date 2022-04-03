@@ -35,8 +35,9 @@ const useStyles = makeStyles((theme) => ({
 // Delete view is used for confirmation of account deletion
 const Delete = props => {
 
-    // retrieves the logged state variables from props
-    const { logged,
+    // retrieves state variables from props
+    const { envUrl,
+        logged,
         setLogged,
         setAudioLoaded,
         setSyllables } = props;
@@ -57,6 +58,7 @@ const Delete = props => {
         <div className={classes.root}>
             <CssBaseline />
             <NavBar
+                envUrl={envUrl}
                 logged={logged}
                 setLogged={setLogged}
                 setAudioLoaded={setAudioLoaded}
@@ -101,6 +103,7 @@ const Delete = props => {
                     <br />
                     <br />
                     <DeleteButton
+                        envUrl={envUrl}
                         successCallback={() => navigate("/")}
                         logged={logged}
                         setLogged={setLogged}

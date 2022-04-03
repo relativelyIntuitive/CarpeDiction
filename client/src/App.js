@@ -19,6 +19,9 @@ import Update from './views/Update';
 // React client routing setup
 function App() {
 
+    //sets URL for dev/prod
+    const envUrl = process.env.REACT_APP_NODE_ENV === 'production' ? process.env.REACT_APP_API_ROOT : "http://localhost:8000"
+
     // state variable to hold logged in User
     const [logged, setLogged] = useState(
         JSON.parse(sessionStorage.getItem('logged'))
@@ -41,6 +44,7 @@ function App() {
             <Router>
                 <NotFound default />
                 <Main
+                    envUrl={envUrl}
                     path="/"
                     logged={logged}
                     setLogged={setLogged}
@@ -48,6 +52,7 @@ function App() {
                     setSyllables={setSyllables}
                 />
                 <Search
+                    envUrl={envUrl}
                     path="/search/:query"
                     logged={logged}
                     setLogged={setLogged}
@@ -57,6 +62,7 @@ function App() {
                     setSyllables={setSyllables}
                 />
                 <Register
+                    envUrl={envUrl}
                     path="register/"
                     logged={logged}
                     setLogged={setLogged}
@@ -64,6 +70,7 @@ function App() {
                     setSyllables={setSyllables}
                 />
                 <Login
+                    envUrl={envUrl}
                     path="login/"
                     logged={logged}
                     setLogged={setLogged}
@@ -71,6 +78,7 @@ function App() {
                     setSyllables={setSyllables}
                 />
                 <Detail
+                    envUrl={envUrl}
                     path="user/account"
                     logged={logged}
                     setLogged={setLogged}
@@ -78,6 +86,7 @@ function App() {
                     setSyllables={setSyllables}
                 />
                 <Update
+                    envUrl={envUrl}
                     path="user/account/edit"
                     logged={logged}
                     setLogged={setLogged}
@@ -85,6 +94,7 @@ function App() {
                     setSyllables={setSyllables}
                 />
                 <Delete
+                    envUrl={envUrl}
                     path="user/account/delete"
                     logged={logged}
                     setLogged={setLogged}

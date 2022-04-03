@@ -47,8 +47,9 @@ const useStyles = makeStyles((theme) => ({
 // Search view returns search results
 const Search = props => {
 
-    // retrieves the logged state variables from props
-    const { logged,
+    // retrieves state variables from props
+    const { envUrl,
+        logged,
         setLogged,
         query,
         audioLoaded,
@@ -116,25 +117,14 @@ const Search = props => {
 
     // updates the User's data with the new data
     const updateUser = newUser => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.put(`${process.env.REACT_APP_API_ROOT}/api/users`, newUser, { withCredentials: true })
-                .then(res => {
-                    setLogged(res.data.user);
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        } else {
-            axios.put(`http://localhost:8000/api/users`, newUser, { withCredentials: true })
-                .then(res => {
-                    setLogged(res.data.user);
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        }
+        axios.put(`${envUrl}/api/users`, newUser, { withCredentials: true })
+            .then(res => {
+                setLogged(res.data.user);
+            })
+            .catch(err => {
+                if (err.response.status === 401)
+                    navigate('/login');
+            });
     };
 
     // toggles favorite status on query
@@ -154,6 +144,7 @@ const Search = props => {
         <div className={classes.root}>
             <CssBaseline />
             <NavBar
+                envUrl={envUrl}
                 logged={logged}
                 setLogged={setLogged}
                 setAudioLoaded={setAudioLoaded}
@@ -203,6 +194,7 @@ const Search = props => {
                         <br />
                         <QueryRedirects encQuery={encQuery} />
                         <Comments
+                            envUrl={envUrl}
                             query={decQuery}
                             logged={logged}
                         />

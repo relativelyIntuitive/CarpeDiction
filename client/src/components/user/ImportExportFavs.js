@@ -39,8 +39,9 @@ const useStyles = makeStyles((theme) => ({
 // ImportExportFavs displays all comments for the query and allows the user to post if they are logged in
 const ImportExportFavs = props => {
 
-    // retrieves user data and setLogged function from props
-    const { user,
+    // retrieves state variables from props
+    const { envUrl,
+        user,
         setLogged } = props;
 
     // generates CSS rulesets
@@ -54,25 +55,14 @@ const ImportExportFavs = props => {
 
     // update the user with the new favorites
     const updateUser = newUser => {
-        if (process.env.REACT_APP_NODE_ENV === 'production') {
-            axios.put(`${process.env.REACT_APP_API_ROOT}/api/users`, newUser, { withCredentials: true })
-                .then(res => {
-                    setLogged(res.data.user);
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        } else {
-            axios.put(`http://localhost:8000/api/users`, newUser, { withCredentials: true })
-                .then(res => {
-                    setLogged(res.data.user);
-                })
-                .catch(err => {
-                    if (err.response.status === 401)
-                        navigate('/login');
-                });
-        }
+        axios.put(`${envUrl}/api/users`, newUser, { withCredentials: true })
+            .then(res => {
+                setLogged(res.data.user);
+            })
+            .catch(err => {
+                if (err.response.status === 401)
+                    navigate('/login');
+            });
     };
 
     // handler to update imports list on input change
