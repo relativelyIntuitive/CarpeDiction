@@ -35,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-// MWDictRes retrieves and displays query results from the Merriam-Webster Collegiate Dictionary API
-const MWDictRes = props => {
+// MwDictRes retrieves and displays query results from the Merriam-Webster Collegiate Dictionary API
+const MwDictRes = props => {
 
     // retrieves search variables from props
     const { query,
@@ -531,4 +531,4 @@ const MWDictRes = props => {
 }
 
 
-export default MWDictRes;
+export default MwDictRes;
