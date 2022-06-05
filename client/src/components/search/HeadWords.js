@@ -15,48 +15,50 @@ const Search = props => {
 // returns the homepage
     return (
         <>
-            <h5 className="text-muted mt-sm-2">
-                Results retrieved for:
-            </h5>
-            <ul className="inlineList topList mb-sm-5 mt-sm-3">
-                {(headWords == null) && (
-                    <li
-                        className="mgInlineBlock"
-                    >
-                        <strong className="flatLinkMuted">
-                            <i>
-                                No results found for your query!
-                            </i>
-                        </strong>
-                    </li>
-                )}
-                {headWords?.map((headWord, index) => (
-                    <li
-                        key={index}
-                        className="mgInlineBlock"
-                    >
-                        <Link to={`/search/${headWord.replace(/\//g, '%2F')}`} style={{ textDecoration: 'none' }}>
-                            <strong className="flatLinkMuted">
-                                <i>
-                                    &nbsp;"
-                                    {headWord}
-                                    "
-                                    {(headWords.indexOf(headWord) !== (headWords.length - 1)) && (
-                                        <>
-                                            ,
-                                        </>
-                                    )}
-                                    {!(headWords.indexOf(headWord) !== (headWords.length - 1)) && (
-                                        <>
-                                            ;
-                                        </>
-                                    )}
-                                </i>
-                            </strong>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            {(headWords == null) && (
+                <h5 className="text-muted mt-sm-2">
+                    <strong className="flatLinkMuted">
+                        <i>
+                            No results found for your query!
+                        </i>
+                    </strong>
+                </h5>
+            )}
+            {(headWords != null) && (
+                <>
+                    <h5 className="text-muted mt-sm-2">
+                        Results retrieved for:
+                    </h5>
+                    <ul className="inlineList topList mb-sm-5 mt-sm-3">
+                        {headWords?.map((headWord, index) => (
+                            <li
+                                key={index}
+                                className="mgInlineBlock"
+                            >
+                                <Link to={`/search/${headWord.replace(/\//g, '%2F')}`} style={{ textDecoration: 'none' }}>
+                                    <strong className="flatLinkMuted">
+                                        <i>
+                                            &nbsp;"
+                                            {headWord}
+                                            "
+                                            {(headWords.indexOf(headWord) !== (headWords.length - 1)) && (
+                                                <>
+                                                    ,
+                                                </>
+                                            )}
+                                            {!(headWords.indexOf(headWord) !== (headWords.length - 1)) && (
+                                                <>
+                                                    ;
+                                                </>
+                                            )}
+                                        </i>
+                                    </strong>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </>
+            )}
             {spellings?.length > 0 && (
                 <h5 className="text-muted">
                     Did you mean...
