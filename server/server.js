@@ -20,6 +20,7 @@ const express = require('express'),
 app.use(cookieParser());
 if (process.env.NODE_ENV === 'production') {
     app.use(cors({ credentials: true, origin: 'https://www.carpediction.com' }));
+    app.use(cors({ credentials: true, origin: 'https://www.carpe-diction.herokuapp.com' }));
 } else {
     app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 }
