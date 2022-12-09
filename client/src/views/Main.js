@@ -48,10 +48,10 @@ const Main = props => {
     const classes = useStyles();
 
     // alert user of any current site issues
-    // useEffect(() => {
-    //     if (logged === null)
-    //         alert("* NOTICE:");
-    // }, [logged])
+    useEffect(() => {
+        if (logged === null)
+            alert("* NOTICE: 12/09/2022\nThe website's backend is currently down, leaving account features and other site features out of service for the time being.\nI am in the middle of a move, and will be addressing this issue ASAP!\nHappy holidays!");
+    }, [logged])
 
     // returns the homepage
     return (
