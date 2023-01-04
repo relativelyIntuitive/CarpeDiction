@@ -18,11 +18,8 @@ const express = require('express'),
 
 // configuers and registers middleware
 app.use(cookieParser());
-app.use(cors());
-// app.use(cors({ credentials: true, origin: '*' }));
-app.options('*', cors())
 if (process.env.NODE_ENV === 'production') {
-    // app.use(cors({ credentials: true, origin: 'https://www.carpediction.com' }));
+    app.use(cors({ credentials: true, origin: 'https://www.carpediction.com' }));
 } else {
     app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 }
