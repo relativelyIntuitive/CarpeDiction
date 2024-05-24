@@ -67,20 +67,20 @@ const Main = props => {
             <div className="chocolate">
                 <div className="filling">
                     <div className={classes.paper}>
-                        <p className="cdInstructions">
-                            <strong>
-                                <i>
-                                    ^ ***** ******** ***** ^
-                                    <br />
-                                    <br />
-                                    Query a word, phrase, suffix, prefix or colloquialism above to get started!
-                                    <br />
-                                    <br />
-                                    ^ *** ******* *********** ******* *** ^
-                                </i>
-                            </strong>
-                        </p>
                         <div className="resHeading">
+                            <p className="cdInstructions">
+                                <strong>
+                                    <i>
+                                        ^ ***** ******** ***** ^
+                                        <br />
+                                        <br />
+                                        Query a word, phrase, suffix, prefix or colloquialism above to get started!
+                                        <br />
+                                        <br />
+                                        ^ *** ******* *********** ******* *** ^
+                                    </i>
+                                </strong>
+                            </p>
                             <img
                                 src={carpe_diction}
                                 width="100%"
