@@ -81,6 +81,7 @@ const Main = props => {
                                     </i>
                                 </strong>
                             </p>
+                            <WotdCard envUrl={envUrl} />
                             <p className="cdInstructions">
                                 <strong>
                                     <i>
@@ -94,7 +95,6 @@ const Main = props => {
                                     </i>
                                 </strong>
                             </p>
-                            <WotdCard envUrl={envUrl} />
                         </div>
                     </div>
                 </div>
