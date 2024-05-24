@@ -67,6 +67,19 @@ const Main = props => {
             <div className="chocolate">
                 <div className="filling">
                     <div className={classes.paper}>
+                        <p className="cdInstructions">
+                            <strong>
+                                <i>
+                                    ^ ***** ******** ***** ^
+                                    <br />
+                                    <br />
+                                    Query a word, phrase, suffix, prefix or colloquialism above to get started!
+                                    <br />
+                                    <br />
+                                    ^ *** ******* *********** ******* *** ^
+                                </i>
+                            </strong>
+                        </p>
                         <div className="resHeading">
                             <img
                                 src={carpe_diction}
@@ -82,19 +95,6 @@ const Main = props => {
                                 </strong>
                             </p>
                             <WotdCard envUrl={envUrl} />
-                            <p className="cdInstructions">
-                                <strong>
-                                    <i>
-                                        ^ ***** ******** ***** ^
-                                        <br />
-                                        <br />
-                                        Query a word, phrase, suffix, prefix or colloquialism above to get started!
-                                        <br />
-                                        <br />
-                                        ^ *** ******* *********** ******* *** ^
-                                    </i>
-                                </strong>
-                            </p>
                         </div>
                     </div>
                 </div>
