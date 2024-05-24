@@ -95,21 +95,6 @@ const Main = props => {
                                     </i>
                                 </strong>
                             </p>
-                            <Divider
-                                variant="fullWidth"
-                                className={classes.divider}
-                            />
-                            <FoundersNote />
-                            <Divider
-                                variant="fullWidth"
-                                className={classes.divider}
-                            />
-                            <Links />
-                            <Divider
-                                variant="fullWidth"
-                                className={classes.divider}
-                            />
-                            <TipJars />
                         </div>
                     </div>
                 </div>
